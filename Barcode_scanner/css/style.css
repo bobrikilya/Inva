@@ -94,6 +94,7 @@ body {
   z-index: 3;
   top: 4vh;
   display: flex;
+  transition-duration: 0.5s;
 }
 
 button {
@@ -160,5 +161,8 @@ video, .cover {
 @media (max-height: 600px) {
   video, .cover {
     display: none;
+  }
+  .input_zone {
+    top: 15vh;
   }
 }
