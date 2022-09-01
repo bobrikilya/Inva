@@ -145,13 +145,14 @@ input.camera_on {
 }
 
 video {
+  overflow: hidden;
   display: inline;
   border-radius: 50%;
   position: absolute;
   transition-duration: 0.5s;
   opacity: 0;
-  height: 80vh;
-  bottom: -28vh;
+  height: 70vh;
+  bottom: -30vh;
   box-shadow: 0px 0px 15px grey;
   transform: translateY(25rem);
 }
