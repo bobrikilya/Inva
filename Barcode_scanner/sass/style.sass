@@ -10,17 +10,20 @@ body
 
 .container
     display: flex
-    flex-direction: column
+    // flex-direction: column
     justify-content: center
-    align-items: center
     width: 700px
     height: 100vh
     background-color: #8685858b
 
 .input_zone
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
     position: absolute
     z-index: 3
-    top: 5rem
+    top: 6vh
     display: flex
     // justify-content: flex-start
     // align-items: flex-start
@@ -28,7 +31,7 @@ body
 
 button
     width: 13vw
-    min-width: 60px
+    min-width: 120px
     height: 5rem
     background-color: #9aabf7
     font-size: 1.4rem
@@ -45,11 +48,11 @@ input
     text-decoration: none
     text-align: center
     width: 60vw
-    max-width: 250px
-    min-width: 190px
+    max-width: 450px
+    min-width: 300px
     height: 5rem
-    font-size: 2rem
-    margin: 0 1.5vw
+    font-size: 1.8rem
+    margin: 2.5vh 0
     box-shadow: 1px 1px 5px grey
     background-color: white
     border-radius: 35px
@@ -58,9 +61,10 @@ video, .cover
     position: absolute
     width: 100vw
     min-width: 320px
-    max-width: 500px
-    height: 24rem
-    bottom: 2rem
+    max-width: 600px
+    height: 50vh
+    max-height: 550px
+    bottom: 6vh
     border: 2px solid black
     box-shadow: 0px 0px 10px grey
     border-radius: 30px
