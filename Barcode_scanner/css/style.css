@@ -150,8 +150,8 @@ video {
   position: absolute;
   transition-duration: 0.5s;
   opacity: 0;
-  height: 60vh;
-  top: 45vh;
+  height: 80vh;
+  bottom: -28vh;
   box-shadow: 0px 0px 15px grey;
   transform: translateY(25rem);
 }
