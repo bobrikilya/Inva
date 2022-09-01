@@ -3,6 +3,8 @@ let video = document.querySelector('video');
 let camera_button = document.querySelector('button');
 let cover_img = document.querySelector('.cover');
 let input = document.querySelector('input');
+let input_zone = document.querySelector('.input_zone');
+
 
 // console.log(devices)
 // navigator.mediaDevices.enumerateDevices().then(devices =>{console.log(devices)});
@@ -54,3 +56,13 @@ input.addEventListener('keydown', (event) => {
 	} else event.preventDefault();
 });
 
+input.onfocus = () => {
+    cover_img.style.display = 'none';
+    video.style.display = 'none';
+    input_zone.style.top = '10vh' 
+};
+input.onblur = () => {
+    cover_img.style.display = 'inline';
+    video.style.display = 'inline';
+    input_zone.style.top = '4vh' 
+};
