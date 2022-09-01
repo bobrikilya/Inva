@@ -29,5 +29,5 @@ function getStream(stream){
 };
 
 function noStream(fail){
-    alert("Вы не дали доступ к камере((");
+    alert("Вы не дали доступ к камере");
 };
