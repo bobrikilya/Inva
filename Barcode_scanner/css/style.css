@@ -97,7 +97,7 @@ body {
   transition-duration: 0.3s;
 }
 .input_zone.camera_on {
-  top: 4vh;
+  top: 6vh;
 }
 .input_zone.onfocus {
   top: 15vh;
@@ -150,8 +150,8 @@ video {
   position: absolute;
   transition-duration: 0.5s;
   opacity: 0;
-  height: 40vh;
-  top: 44vh;
+  height: 60vh;
+  top: 45vh;
   box-shadow: 0px 0px 15px grey;
   transform: translateY(25rem);
 }
