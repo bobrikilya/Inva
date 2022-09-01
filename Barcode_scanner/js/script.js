@@ -17,13 +17,21 @@ let options = {
 };
 
 function camera_access(){
+    // запрашиваем доступ к веб-камере
     if (!video.classList.contains('active')){
-        if(navigator.webkitGetUserMedia!=null) { 
-            // запрашиваем доступ к веб-камере
-            navigator.webkitGetUserMedia(options, getStream, noStream);    
+        if (navigator.getUserMedia!=null) {
+            navigator.getUserMedia(options, getStream, noStream);
             video.classList.add('active');
+        }else if (navigator.webkitGetUserMedia!=null){
+                  navigator.webkitGetUserMedia(options, getStream, noStream);
+                  video.classList.add('active');
+        }else if (navigator.mozGetUserMedia!=null){
+                  navigator.mozGetUserMedia(options, getStream, noStream);
+                  video.classList.add('active');
+        }else if (navigator.msUserMedia!=null){
+                  navigator.msGetUserMedia(options, getStream, noStream);
+                  video.classList.add('active');
         }else alert("Камера не найдена");
-        
     }else cover_img.classList.toggle('active');
 };
 
@@ -35,7 +43,7 @@ function getStream(stream){
     };
 };  
 
-function noStream(fail){
+function noStream(e){
     alert("Вы не дали доступ к камере");
 };
 
@@ -44,3 +52,4 @@ input.addEventListener('keydown', (event) => {
 		return;
 	} else event.preventDefault();
 });
+
