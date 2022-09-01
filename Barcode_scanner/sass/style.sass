@@ -25,9 +25,11 @@ body
     z-index: 3
     top: 30vh
     display: flex
-    transition-duration: 0.5s
+    transition-duration: 0.3s
     &.camera_on
         top: 4vh
+    &.onfocus
+        top: 10vh
 
 
 button
@@ -66,6 +68,7 @@ input
         margin: 2vh 0
 
 video
+    display: inline
     border-radius: 50%
     position: absolute
     transition-duration: 0.5s
@@ -81,3 +84,5 @@ video
         opacity: 1
         border-radius: 30px
         background: url('../img/loading.jpg') center center / cover no-repeat
+    &.onfocus
+        display: none

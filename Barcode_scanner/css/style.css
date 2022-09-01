@@ -94,10 +94,13 @@ body {
   z-index: 3;
   top: 30vh;
   display: flex;
-  transition-duration: 0.5s;
+  transition-duration: 0.3s;
 }
 .input_zone.camera_on {
   top: 4vh;
+}
+.input_zone.onfocus {
+  top: 10vh;
 }
 
 button {
@@ -142,6 +145,7 @@ input.camera_on {
 }
 
 video {
+  display: inline;
   border-radius: 50%;
   position: absolute;
   transition-duration: 0.5s;
@@ -158,4 +162,7 @@ video.camera_on {
   opacity: 1;
   border-radius: 30px;
   background: url("../img/loading.jpg") center center/cover no-repeat;
+}
+video.onfocus {
+  display: none;
 }

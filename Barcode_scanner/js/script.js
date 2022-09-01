@@ -12,7 +12,7 @@ camera_button.addEventListener('click', camera_access);
 
 let options = {
     video: {
-    facingMode: {exact: "environment"},
+    // facingMode: {exact: "environment"},
     width: 1280,
     height: 720
     }
@@ -73,12 +73,10 @@ input.addEventListener('keydown', (event) => {
 });
 
 input.onfocus = () => {
-    video.style.display = 'none';
-    if (video.classList.contains('included')) 
-        input_zone.style.top = '10vh';
+    video.classList.add('onfocus');
+    input_zone.classList.add('onfocus');
 };
 input.onblur = () => {
-    video.style.display = 'inline';
-    if (video.classList.contains('included'))
-        input_zone.style.top = '4vh' ;
+    video.classList.remove('onfocus');
+    input_zone.classList.remove('onfocus');
 };
