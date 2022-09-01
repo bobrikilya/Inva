@@ -6,11 +6,21 @@ if(navigator.webkitGetUserMedia!=null) {
 
 
 function getStream(stream){
-    let video = document.querySelector('video'); 
-    let url = webkitURL.createObjectURL(stream);
-    video.src = url;
+    let video = document.querySelector('video');
+    // video.src = window.webkitURL.createObjectURL(stream);
+    video.srcObject = stream;
 };
 
 function noStream(fail){
     console.log("error happened");
 };
+
+// const mediaStream = await
+// navigator.mediaDevices.getUserMedia({video: true});
+// const video = document.createElement('video');
+// if ('srcObject' in video) {
+//   video.srcObject = mediaStream;
+// } else {
+//   // Avoid using this in new browsers, as it is going away.
+//   video.src = URL.createObjectURL(mediaStream);
+// }
