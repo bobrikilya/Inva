@@ -1,18 +1,23 @@
 
-if(navigator.webkitGetUserMedia!=null) { 
-    // запрашиваем доступ к веб-камере
-    navigator.webkitGetUserMedia({video: true}, getStream, noStream);
+let video = document.querySelector('video');
+let camera_button = document.querySelector('button');
+
+camera_button.addEventListener('click', camera_access);
+
+function camera_access(){
+    if(navigator.webkitGetUserMedia!=null) { 
+        // запрашиваем доступ к веб-камере
+        navigator.webkitGetUserMedia({video: true}, getStream, noStream);
+    };
 };
 
-
 function getStream(stream){
-    let video = document.querySelector('video');
     // video.src = window.webkitURL.createObjectURL(stream);
     video.srcObject = stream;
 };
 
 function noStream(fail){
-    console.log("error happened");
+    alert("Камера не найдена");
 };
 
 // const mediaStream = await
