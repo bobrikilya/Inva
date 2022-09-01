@@ -1,7 +1,6 @@
 
 let video = document.querySelector('video');
 let camera_button = document.querySelector('button');
-let cover_img = document.querySelector('.cover');
 let input = document.querySelector('input');
 let input_zone = document.querySelector('.input_zone');
 
@@ -22,20 +21,33 @@ let options = {
 function camera_access(){
     // запрашиваем доступ к веб-камере
     if (!video.classList.contains('active')){
-        if (navigator.getUserMedia!=null) {
-            navigator.getUserMedia(options, getStream, noStream);
-            video.classList.add('active');
+        if       (navigator.getUserMedia!=null) {
+                  navigator.getUserMedia(options, getStream, noStream);
+                  open_camera();
         }else if (navigator.webkitGetUserMedia!=null){
                   navigator.webkitGetUserMedia(options, getStream, noStream);
-                  video.classList.add('active');
+                  open_camera();
         }else if (navigator.mozGetUserMedia!=null){
                   navigator.mozGetUserMedia(options, getStream, noStream);
-                  video.classList.add('active');
+                  open_camera();
         }else if (navigator.msUserMedia!=null){
                   navigator.msGetUserMedia(options, getStream, noStream);
-                  video.classList.add('active');
+                  open_camera();
         }else alert("Камера не найдена");
-    }else cover_img.classList.toggle('active');
+    }else toggle_camera(); 
+};
+
+function open_camera(){
+    video.classList.add('active');
+    video.classList.add('camera_on');
+    input_zone.classList.add('camera_on');
+    input.classList.add('camera_on');
+};
+
+function toggle_camera(){
+    input_zone.classList.toggle('camera_on');
+    input.classList.toggle('camera_on');
+    video.classList.toggle('camera_on');
 };
 
 function getStream(stream){
@@ -47,7 +59,11 @@ function getStream(stream){
 };  
 
 function noStream(e){
-    alert("Вы не дали доступ к камере");
+    setTimeout((e) => {alert("Вы не дали доступ к камере");
+    input_zone.classList.remove('camera_on');
+    input.classList.remove('camera_on');
+    video.classList.remove('camera_on');
+    video.classList.remove('active');}, 800);
 };
 
 input.addEventListener('keydown', (event) => {
@@ -57,12 +73,12 @@ input.addEventListener('keydown', (event) => {
 });
 
 input.onfocus = () => {
-    cover_img.style.display = 'none';
     video.style.display = 'none';
-    input_zone.style.top = '10vh' 
+    if (video.classList.contains('included')) 
+        input_zone.style.top = '10vh';
 };
 input.onblur = () => {
-    cover_img.style.display = 'inline';
     video.style.display = 'inline';
-    input_zone.style.top = '4vh' 
+    if (video.classList.contains('included'))
+        input_zone.style.top = '4vh' ;
 };

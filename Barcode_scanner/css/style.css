@@ -92,9 +92,12 @@ body {
   align-items: center;
   position: absolute;
   z-index: 3;
-  top: 4vh;
+  top: 30vh;
   display: flex;
   transition-duration: 0.5s;
+}
+.input_zone.camera_on {
+  top: 4vh;
 }
 
 button {
@@ -129,31 +132,30 @@ input {
   min-width: 300px;
   height: 5rem;
   font-size: 1.8rem;
-  margin: 2vh 0;
+  margin: 4vh 0;
   box-shadow: 0px 1px 5px grey;
   background-color: white;
   border-radius: 40px;
 }
+input.camera_on {
+  margin: 2vh 0;
+}
 
-video, .cover {
+video {
+  border-radius: 50%;
   position: absolute;
+  transition-duration: 0.5s;
+  opacity: 0;
   width: 100vw;
   min-width: 320px;
   max-width: 412px;
-  height: 50vh;
-  max-height: 550px;
-  bottom: 4vh;
-  border: 1px solid black;
-  box-shadow: 0px 0px 10px grey;
-  border-radius: 30px;
-  background: url("../img/Camera_not_available.jpg") center center/cover no-repeat;
+  top: 50vh;
+  box-shadow: 0px 0px 15px grey;
+  transform: translateY(25rem);
 }
-
-.cover {
-  z-index: 2;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-.cover.active {
+video.camera_on {
+  transform: translateY(0);
   opacity: 1;
+  border-radius: 30px;
+  background: url("../img/loading.jpg") center center/cover no-repeat;
 }
