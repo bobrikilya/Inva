@@ -21,8 +21,9 @@ function camera_access(){
         if(navigator.webkitGetUserMedia!=null) { 
             // запрашиваем доступ к веб-камере
             navigator.webkitGetUserMedia(options, getStream, noStream);    
+            video.classList.add('active');
         }else alert("Камера не найдена");
-        video.classList.add('active');
+        
     }else cover_img.classList.toggle('active');
 };
 
