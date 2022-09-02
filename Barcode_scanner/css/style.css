@@ -100,6 +100,11 @@ body {
 .input_zone.camera_on {
   margin-top: 6vh;
 }
+.input_zone.onfocus {
+  margin-top: 0;
+  position: absolute;
+  top: 10vh;
+}
 
 button {
   width: 13vw;
@@ -162,5 +167,6 @@ video.camera_on {
   background: url("../img/loading.jpg") center center/cover no-repeat;
 }
 video.onfocus {
+  display: none;
   opacity: 0;
 }

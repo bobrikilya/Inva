@@ -29,8 +29,10 @@ body
     transition-duration: 0.3s
     &.camera_on
         margin-top: 6vh
-    // &.onfocus
-    //     margin-top: 10vh
+    &.onfocus
+        margin-top: 0
+        position: absolute
+        top: 10vh
 
 button
     width: 13vw
@@ -85,4 +87,5 @@ video
         border-radius: 30px
         background: url('../img/loading.jpg') center center / cover no-repeat
     &.onfocus
+        display: none
         opacity: 0
