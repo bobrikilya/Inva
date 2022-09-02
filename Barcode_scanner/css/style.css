@@ -101,10 +101,9 @@ body {
   margin-top: 6vh;
 }
 .input_zone.onfocus {
+  top: 20vh;
   margin-top: 0;
   position: absolute;
-  top: 20vh;
-  transition-duration: 0;
 }
 
 button {
@@ -157,7 +156,7 @@ video {
   border-radius: 50%;
   transition-duration: 0.5s;
   opacity: 0;
-  height: 50vh;
+  height: 48vh;
   min-width: 320px;
   width: 80vw;
   margin-top: 5vh;
