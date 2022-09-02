@@ -103,7 +103,7 @@ body {
 .input_zone.onfocus {
   margin-top: 0;
   position: absolute;
-  top: 10vh;
+  top: 20vh;
   transition-duration: 0;
 }
 
@@ -148,7 +148,7 @@ input {
   border-radius: 40px;
   transition-duration: 0.3s;
 }
-input.camera_on, input.onfocus {
+input.camera_on {
   margin: 2vh 0;
 }
 
