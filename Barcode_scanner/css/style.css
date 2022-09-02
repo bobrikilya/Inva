@@ -120,6 +120,9 @@ button {
 button:active {
   background-color: #7b8aca;
 }
+button.onfocus {
+  display: none;
+}
 
 .search {
   background-color: #4ff1a0;

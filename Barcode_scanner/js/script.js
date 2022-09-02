@@ -12,7 +12,7 @@ camera_button.addEventListener('click', camera_access);
 
 let options = {
     video: {
-    // facingMode: {exact: "environment"},
+    facingMode: {exact: "environment"},
     width: 1280,
     height: 720
     }
@@ -76,9 +76,11 @@ input.onfocus = () => {
     video.classList.add('onfocus');
     input_zone.classList.add('onfocus');
     input.classList.add('onfocus');
+    camera_button.classList.add('onfocus');
 };
 input.onblur = () => {
     video.classList.remove('onfocus');
     input_zone.classList.remove('onfocus');
     input.classList.remove('onfocus');
+    camera_button.classList.remove('onfocus');
 };
