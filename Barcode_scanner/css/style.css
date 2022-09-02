@@ -79,7 +79,10 @@ body {
 
 .container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  overflow: hidden;
   width: 700px;
   height: 100vh;
   background-color: rgba(142, 178, 189, 0.5333333333);
@@ -90,17 +93,15 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: absolute;
   z-index: 3;
-  top: 30vh;
-  display: flex;
+  margin-top: 30vh;
   transition-duration: 0.3s;
 }
 .input_zone.camera_on {
-  top: 6vh;
+  margin-top: 6vh;
 }
 .input_zone.onfocus {
-  top: 15vh;
+  margin-top: 10vh;
 }
 
 button {
@@ -131,34 +132,38 @@ input {
   text-decoration: none;
   text-align: center;
   width: 60vw;
-  max-width: 450px;
   min-width: 300px;
+  max-width: 450px;
   height: 5rem;
   font-size: 1.8rem;
   margin: 4vh 0;
   box-shadow: 0px 1px 5px grey;
   background-color: white;
   border-radius: 40px;
+  transition-duration: 0.3s;
 }
-input.camera_on {
+input.camera_on, input.onfocus {
   margin: 2vh 0;
 }
 
 video {
   display: inline;
   border-radius: 50%;
-  position: absolute;
   transition-duration: 0.5s;
   opacity: 0;
-  height: 70vh;
-  bottom: -30vh;
+  height: 50vh;
+  min-width: 320px;
+  width: 80vw;
+  margin-top: 5vh;
   box-shadow: 0px 0px 15px grey;
+  transform: translateY(25rem);
 }
 video.camera_on {
+  transform: translateY(0);
   opacity: 1;
   border-radius: 30px;
   background: url("../img/loading.jpg") center center/cover no-repeat;
 }
 video.onfocus {
-  display: none;
+  opacity: 0;
 }

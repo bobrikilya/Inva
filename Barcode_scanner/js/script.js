@@ -75,8 +75,10 @@ input.addEventListener('keydown', (event) => {
 input.onfocus = () => {
     video.classList.add('onfocus');
     input_zone.classList.add('onfocus');
+    input.classList.add('onfocus');
 };
 input.onblur = () => {
     video.classList.remove('onfocus');
     input_zone.classList.remove('onfocus');
+    input.classList.remove('onfocus');
 };
