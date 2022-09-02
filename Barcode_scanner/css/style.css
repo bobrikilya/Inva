@@ -145,7 +145,6 @@ input.camera_on {
 }
 
 video {
-  overflow: hidden;
   display: inline;
   border-radius: 50%;
   position: absolute;
@@ -154,10 +153,8 @@ video {
   height: 70vh;
   bottom: -30vh;
   box-shadow: 0px 0px 15px grey;
-  transform: translateY(25rem);
 }
 video.camera_on {
-  transform: translateY(0);
   opacity: 1;
   border-radius: 30px;
   background: url("../img/loading.jpg") center center/cover no-repeat;
