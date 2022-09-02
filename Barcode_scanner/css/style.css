@@ -100,9 +100,6 @@ body {
 .input_zone.camera_on {
   margin-top: 6vh;
 }
-.input_zone.onfocus {
-  margin-top: 10vh;
-}
 
 button {
   width: 13vw;
