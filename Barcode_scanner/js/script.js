@@ -15,34 +15,29 @@ let options = {
     }
 };
 
-// function camera_access(){
-//     // запрашиваем доступ к веб-камере
-//     if (!video.classList.contains('active')){
-//         if       (navigator.getUserMedia!=null) {
-//                   navigator.getUserMedia(options, getStream, noStream);
-//                   open_camera();
-//         // Chrome    
-//         }else if (navigator.webkitGetUserMedia!=null){
-//                   navigator.webkitGetUserMedia(options, getStream, noStream);
-//                   open_camera();
-//         // Firefox
-//         }else if (navigator.mozGetUserMedia!=null){
-//                   navigator.mozGetUserMedia(options, getStream, noStream);
-//                   open_camera();
-//         // Other
-//         }else if (navigator.msUserMedia!=null){
-//                   navigator.msGetUserMedia(options, getStream, noStream);
-//                   open_camera();
-
-//         }else alert("Камера не найдена");
-//     }else toggle_camera(); 
-// };
-
-
 function camera_access(){
-    navigator.webkitGetUserMedia(options, getStream, noStream);
-    open_camera();
+    // запрашиваем доступ к веб-камере
+    if (!video.classList.contains('active')){
+        if       (navigator.getUserMedia!=null) {
+                  navigator.getUserMedia(options, getStream, noStream);
+                  open_camera();
+        // Chrome    
+        }else if (navigator.webkitGetUserMedia!=null){
+                  navigator.webkitGetUserMedia(options, getStream, noStream);
+                  open_camera();
+        // Firefox
+        }else if (navigator.mozGetUserMedia!=null){
+                  navigator.mozGetUserMedia(options, getStream, noStream);
+                  open_camera();
+        // Other
+        }else if (navigator.msUserMedia!=null){
+                  navigator.msGetUserMedia(options, getStream, noStream);
+                  open_camera();
+
+        }else alert("Камера не найдена");
+    }else toggle_camera(); 
 };
+
 
 function open_camera(){
     video.classList.add('active');
@@ -71,8 +66,8 @@ function noStream(e){
     setTimeout((e) => {alert("Вы не дали доступ к камере");
     input_zone.classList.remove('camera_on');
     input.classList.remove('camera_on');
-    video.classList.remove('camera_on');}, 800);
-    // video.classList.remove('active');}, 800);
+    video.classList.remove('camera_on');
+    video.classList.remove('active');}, 800);
 };
 
 // Number filter
@@ -88,11 +83,11 @@ input.addEventListener('keydown', (event) => {
 	} else event.preventDefault();
 });
 
-input.addEventListener('keydown', (event) => {
-    console.log(input.value[0]);
-    // input.value[0].style.color = 'red';
-    // input.value[1].style.color = 'blue';
-});
+// input.addEventListener('keydown', (event) => {
+//     console.log(input.value[0]);
+//     // input.value[0].style.color = 'red';
+//     // input.value[1].style.color = 'blue';
+// });
 
 input.onfocus = () => {
     video.classList.add('onfocus');
