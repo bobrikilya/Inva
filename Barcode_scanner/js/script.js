@@ -9,7 +9,7 @@ camera_button.addEventListener('click', camera_access);
 
 let options = {
     video: {
-    facingMode: {exact: "environment"},
+    // facingMode: {exact: "environment"},
     width: 1350,
     height: 1280
     }
@@ -47,11 +47,10 @@ function open_camera(){
 };
 
 function toggle_camera(){
-    // if (!video.classList.contains('camera_on')) video.getTracks().play();
+    // webcamStream.getTracks()[0].stop();
     input_zone.classList.toggle('camera_on');
     input.classList.toggle('camera_on');
     video.classList.toggle('camera_on');
-    // if (!video.classList.contains('camera_on')) video.getTracks().stop();
 };
 
 function getStream(stream){
@@ -72,10 +71,10 @@ function noStream(e){
 
 // Number filter
 input.addEventListener('keydown', (event) => {
-    if (['-', '.'].includes(event.key)) event.preventDefault();
-    if (input.value.length > 12 && 
-        ['1','2','3','4','5','6','7','8','9','0'].includes(event.key)) 
-        event.preventDefault();
+    // if (event.key == '-' || event.key == '.') event.preventDefault();
+    // if (input.value.length >= 17 &&
+    //     ['1','2','3','4','5','6','7','8','9','0'].includes(event.key)) 
+    //     event.preventDefault();
 	if (['Escape', 'Delete', 'Tab', 'Backspace', 
          'Home', 'End', 'ArrowLeft', 'ArrowRight',
          '1','2','3','4','5','6','7','8','9','0'].includes(event.key)) {
@@ -83,11 +82,10 @@ input.addEventListener('keydown', (event) => {
 	} else event.preventDefault();
 });
 
-// input.addEventListener('keydown', (event) => {
-//     console.log(input.value[0]);
-//     // input.value[0].style.color = 'red';
-//     // input.value[1].style.color = 'blue';
-// });
+input.addEventListener('keydown', (event) => {
+    if (input.value.length == 1) input.value = input.value + ' ';
+    if (input.value.length == 8) input.value = input.value + ' ';
+});
 
 input.onfocus = () => {
     video.classList.add('onfocus');

@@ -149,25 +149,10 @@ input {
   background-color: white;
   border-radius: 40px;
   transition-duration: 0.3s;
-  letter-spacing: 3px;
+  letter-spacing: 1px;
 }
 input.camera_on {
   margin: 2vh 0;
-}
-
-input[type=number] {
-  -moz-appearance: textfield;
-}
-input[type=number]::-webkit-outer-spin-button, input[type=number]::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-input[type=number]:hover, input[type=number]:focus {
-  -moz-appearance: number-input;
-}
-input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
 }
 
 video {

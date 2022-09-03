@@ -11,7 +11,8 @@
     <div class="container">
         <div class="input_zone">
             <button class="camera">Камера</button>
-            <input type="number" placeholder="Шрих-код" maxlength="13" >
+            <input type="text" placeholder="Шрих-код" maxlength="15" inputmode="numeric">
+            <!-- onkeyup="this.value = this.value.replace (/\D/, '')" -->
             <button class="search">Поиск</button>
         </div>
         <video autoplay="autoplay"></video> 
