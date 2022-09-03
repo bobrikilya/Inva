@@ -9,7 +9,7 @@ camera_button.addEventListener('click', camera_access);
 
 let options = {
     video: {
-    // facingMode: {exact: "environment"},
+    facingMode: {exact: "environment"},
     width: 1350,
     height: 1280
     }
