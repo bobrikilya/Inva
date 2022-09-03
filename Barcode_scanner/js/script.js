@@ -78,14 +78,16 @@ input.addEventListener('keydown', (event) => {
 	if (['Escape', 'Delete', 'Tab', 'Backspace', 
          'Home', 'End', 'ArrowLeft', 'ArrowRight',
          '1','2','3','4','5','6','7','8','9','0'].includes(event.key)) {
-		return;
+            return
 	} else event.preventDefault();
 });
 
-input.addEventListener('keydown', (event) => {
-    if (input.value.length == 1) input.value = input.value + ' ';
-    if (input.value.length == 8) input.value = input.value + ' ';
-});
+// input.addEventListener('keydown', (event) => {
+//     if (event.key != 'Backspace' && event.key != 'Delete'){
+//         if (input.value.length == 1) input.value = input.value + ' ';
+//         if (input.value.length == 8) input.value = input.value + ' ';
+//     };
+// });
 
 input.onfocus = () => {
     video.classList.add('onfocus');

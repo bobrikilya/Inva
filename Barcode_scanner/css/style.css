@@ -149,7 +149,7 @@ input {
   background-color: white;
   border-radius: 40px;
   transition-duration: 0.3s;
-  letter-spacing: 1px;
+  letter-spacing: 3px;
 }
 input.camera_on {
   margin: 2vh 0;
