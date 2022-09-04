@@ -101,36 +101,63 @@ body {
   margin-top: 6vh;
 }
 .input_zone.onfocus {
-  top: 20vh;
+  top: 25vh;
   margin-top: 0;
   position: absolute;
 }
 
 button {
-  width: 13vw;
-  min-width: 120px;
+  width: 120px;
   height: 5rem;
-  background-color: #9aabf7;
   font-size: 1.4rem;
   box-shadow: 0px 0px 2px grey;
   border-radius: 20px;
-  transition-duration: 0.2s;
-}
-button:active {
-  background-color: #7b8aca;
+  transition-duration: 0.3s;
 }
 button:hover {
   box-shadow: 0px 0px 3px black;
 }
-button.onfocus {
+
+.camera {
+  background-color: #9aabf7;
+}
+.camera:active {
+  background-color: #7b8aca;
+}
+.camera.onfocus {
   display: none;
+}
+
+.clear_search_cont {
+  position: relative;
 }
 
 .search {
   background-color: #4ff1a0;
+  position: relative;
+  z-index: 1;
 }
 .search:active {
   background-color: #3ca872;
+}
+.search.clear_on {
+  transform: translateX(70px);
+}
+
+.clear {
+  background-color: rgba(216, 58, 79, 0.8274509804);
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+.clear:active {
+  background-color: rgba(177, 47, 65, 0.8274509804);
+}
+.clear.clear_on {
+  pointer-events: auto;
+  transform: translateX(-70px);
 }
 
 input {
@@ -150,6 +177,12 @@ input {
   border-radius: 40px;
   transition-duration: 0.3s;
   letter-spacing: 3px;
+}
+input:focus {
+  box-shadow: 0px 0px 3px black;
+}
+input:hover {
+  box-shadow: 0px 0px 3px black;
 }
 input.camera_on {
   margin: 2vh 0;

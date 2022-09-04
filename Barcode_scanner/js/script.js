@@ -1,11 +1,15 @@
 
 let video = document.querySelector('video');
 let camera_button = document.querySelector('.camera');
+let search_button = document.querySelector('.search');
+let clear_button = document.querySelector('.clear');
 let input = document.querySelector('input');
 let input_zone = document.querySelector('.input_zone');
 
 
 camera_button.addEventListener('click', camera_access);
+clear_button.addEventListener('click', inpute_cleaning);
+
 
 let options = {
     video: {
@@ -15,8 +19,8 @@ let options = {
     }
 };
 
+// Camera access request
 function camera_access(){
-    // запрашиваем доступ к веб-камере
     if (!video.classList.contains('active')){
         if       (navigator.getUserMedia!=null) {
                   navigator.getUserMedia(options, getStream, noStream);
@@ -38,6 +42,21 @@ function camera_access(){
     }else toggle_camera(); 
 };
 
+function getStream(stream){
+    // video.src = window.webkitURL.createObjectURL(stream);
+    video.srcObject = stream;
+    video.onloadedmetadata = function(e){
+        video.play();
+    };
+};
+
+function noStream(){
+    setTimeout(() => {alert("Вы не дали доступ к камере");
+    input_zone.classList.remove('camera_on');
+    input.classList.remove('camera_on');
+    video.classList.remove('camera_on');
+    video.classList.remove('active');}, 800);
+};
 
 function open_camera(){
     video.classList.add('active');
@@ -47,31 +66,23 @@ function open_camera(){
 };
 
 function toggle_camera(){
-    // webcamStream.getTracks()[0].stop();
     input_zone.classList.toggle('camera_on');
     input.classList.toggle('camera_on');
     video.classList.toggle('camera_on');
 };
 
-function getStream(stream){
-    // video.src = window.webkitURL.createObjectURL(stream);
-    video.srcObject = stream;
-    video.onloadedmetadata = function(e){
-        video.play();
-    };
-};
 
-function noStream(e){
-    setTimeout((e) => {alert("Вы не дали доступ к камере");
-    input_zone.classList.remove('camera_on');
-    input.classList.remove('camera_on');
-    video.classList.remove('camera_on');
-    video.classList.remove('active');}, 800);
+function inpute_cleaning(){
+    input.value = ''
+    setTimeout(() => {
+        search_button.classList.remove('clear_on');
+        clear_button.classList.remove('clear_on');
+    }, 200);
+    input.focus();
 };
-
 // Number filter
 input.addEventListener('keydown', (event) => {
-    // if (event.key == '-' || event.key == '.') event.preventDefault();
+    if (event.key == '-' || event.key == '.') event.preventDefault();
     // if (input.value.length >= 17 &&
     //     ['1','2','3','4','5','6','7','8','9','0'].includes(event.key)) 
     //     event.preventDefault();
@@ -81,6 +92,20 @@ input.addEventListener('keydown', (event) => {
             return
 	} else event.preventDefault();
 });
+
+input.addEventListener('input', (event) => {
+    // console.log(input.value)
+    if (input.value.length != 0){
+        search_button.classList.add('clear_on');
+        clear_button.classList.add('clear_on');
+    }else {
+        setTimeout(() => {
+            search_button.classList.remove('clear_on');
+            clear_button.classList.remove('clear_on');
+        }, 300);
+    };
+});
+
 
 // input.addEventListener('keydown', (event) => {
 //     if (event.key != 'Backspace' && event.key != 'Delete'){
@@ -95,7 +120,17 @@ input.onfocus = () => {
     input.classList.add('onfocus');
     camera_button.classList.add('onfocus');
 };
-input.onblur = () => {
+
+document.addEventListener('click', (event) => {
+    const insideInput = event.composedPath().includes(input);
+    const insideSearch = event.composedPath().includes(search_button);
+    const insideClear = event.composedPath().includes(clear_button);
+
+    if (!insideInput && !insideSearch && !insideClear &&
+        input_zone.classList.contains('onfocus')) input_blur();
+});
+
+function input_blur(){
     video.classList.remove('onfocus');
     input_zone.classList.remove('onfocus');
     input.classList.remove('onfocus');
