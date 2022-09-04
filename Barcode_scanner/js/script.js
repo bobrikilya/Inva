@@ -79,6 +79,7 @@ function inpute_cleaning(){
         clear_button.classList.remove('clear_on');
     }, 200);
     input.focus();
+    input_focus();
 };
 // Number filter
 input.addEventListener('keydown', (event) => {
@@ -93,7 +94,7 @@ input.addEventListener('keydown', (event) => {
 	} else event.preventDefault();
 });
 
-input.addEventListener('input', (event) => {
+input.addEventListener('keyup', (event) => {
     // console.log(input.value)
     if (input.value.length != 0){
         search_button.classList.add('clear_on');
