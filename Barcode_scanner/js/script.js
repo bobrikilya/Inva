@@ -114,7 +114,7 @@ input.addEventListener('input', (event) => {
 //     };
 // });
 
-input.onfocus = () => {
+function input_focus(){
     video.classList.add('onfocus');
     input_zone.classList.add('onfocus');
     input.classList.add('onfocus');
@@ -126,8 +126,11 @@ document.addEventListener('click', (event) => {
     const insideSearch = event.composedPath().includes(search_button);
     const insideClear = event.composedPath().includes(clear_button);
 
-    if (!insideInput && !insideSearch && !insideClear &&
-        input_zone.classList.contains('onfocus')) input_blur();
+    if (input_zone.classList.contains('onfocus') &&
+        !insideInput && !insideSearch && !insideClear)
+        input_blur()
+    else if (insideInput && !input_zone.classList.contains('onfocus'))
+             input_focus();
 });
 
 function input_blur(){
