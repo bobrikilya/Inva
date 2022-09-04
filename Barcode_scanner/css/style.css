@@ -101,7 +101,7 @@ body {
   margin-top: 6vh;
 }
 .input_zone.onfocus {
-  top: 25vh;
+  top: 30vh;
   margin-top: 0;
   position: absolute;
 }

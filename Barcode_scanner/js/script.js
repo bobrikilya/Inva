@@ -13,7 +13,7 @@ clear_button.addEventListener('click', inpute_cleaning);
 
 let options = {
     video: {
-    // facingMode: {exact: "environment"},
+    facingMode: {exact: "environment"},
     width: 1350,
     height: 1280
     }
@@ -78,8 +78,8 @@ function inpute_cleaning(){
         search_button.classList.remove('clear_on');
         clear_button.classList.remove('clear_on');
     }, 200);
-    input.focus();
-    input_focus();
+    // input.focus();
+    // input_focus();
 };
 // Number filter
 input.addEventListener('keydown', (event) => {
@@ -103,7 +103,7 @@ input.addEventListener('keyup', (event) => {
         setTimeout(() => {
             search_button.classList.remove('clear_on');
             clear_button.classList.remove('clear_on');
-        }, 300);
+        }, 200);
     };
 });
 
