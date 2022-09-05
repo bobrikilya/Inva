@@ -116,7 +116,7 @@ button {
   transition-duration: 0.2s;
   text-transform: lowercase;
 }
-button.clear_ons {
+button.clear_on {
   width: 120px;
 }
 

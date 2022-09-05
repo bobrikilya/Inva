@@ -13,7 +13,7 @@ clear_button.addEventListener('click', inpute_cleaning);
 
 let options = {
     video: {
-    facingMode: {exact: "environment"},
+    // facingMode: {exact: "environment"},
     width: 1350,
     height: 1280
     }
@@ -205,6 +205,8 @@ function stream_start(){
         input_zone.classList.remove('camera_on');
         input.classList.remove('camera_on');
         video.classList.remove('camera_on');
+        search_button.classList.add('clear_on');
+        clear_button.classList.add('clear_on');
     });
 };
 
