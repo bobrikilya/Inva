@@ -14,7 +14,8 @@ clear_button.addEventListener('click', inpute_cleaning);
 let options = {
     video: {
     width: 1920,
-    height: 1920
+    height: 1920,
+    facingMode: {exact: "environment"},
     }
 };
 
