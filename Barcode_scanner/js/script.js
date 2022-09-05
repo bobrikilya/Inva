@@ -118,7 +118,7 @@ function stream_start(){
         type : "LiveStream",
         target: video,
         },
-        frequency: 5,
+        frequency: 15,
         decoder: {
             readers: ["ean_reader"],
         }
