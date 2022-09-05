@@ -170,7 +170,7 @@ input {
 }
 
 .stream_cont {
-  bottom: 2vh;
+  top: 50vh;
   box-shadow: 0px 0px 7px grey;
 }
 .stream_cont.onfocus {
@@ -196,9 +196,19 @@ video.camera_on {
   bottom: 0;
   left: 0;
   opacity: 0;
+  transition-duration: 0.4s;
   background: url("../img/scan_icon.png") center center/45% no-repeat;
 }
 .scan_icon.camera_on {
   transition-duration: 0.3s;
   opacity: 1;
+}
+
+@media (max-height: 530px) {
+  .stream_cont {
+    top: 57vh;
+  }
+  .scan_icon {
+    background: url("../img/scan_icon.png") center 40%/55% no-repeat;
+  }
 }
