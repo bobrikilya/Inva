@@ -61,18 +61,18 @@ function noStream(){
 };
 
 function open_camera(){
-    // video.classList.add('active');
+    video.classList.add('active');
     // video.classList.add('camera_on');
     // input_zone.classList.add('camera_on');
     // input.classList.add('camera_on');
     stream_start();
 };
 
-function toggle_camera(){
-    input_zone.classList.toggle('camera_on');
-    input.classList.toggle('camera_on');
-    video.classList.toggle('camera_on');
-};
+// function toggle_camera(){
+//     input_zone.classList.toggle('camera_on');
+//     input.classList.toggle('camera_on');
+//     video.classList.toggle('camera_on');
+// };
 
 
 function inpute_cleaning(){
@@ -204,9 +204,9 @@ function stream_start(){
     Quagga.onDetected(function(result) {
         let code = result.codeResult.code;
         input.value = code;
-        input_zone.classList.remove('camera_on');
-        input.classList.remove('camera_on');
-        video.classList.remove('camera_on');
+        // input_zone.classList.remove('camera_on');
+        // input.classList.remove('camera_on');
+        // video.classList.remove('camera_on');
         search_button.classList.add('clear_on');
         clear_button.classList.add('clear_on');
     });
