@@ -13,7 +13,7 @@ clear_button.addEventListener('click', inpute_cleaning);
 
 let options = {
     video: {
-    // facingMode: {exact: "environment"},
+    facingMode: {exact: "environment"},
     width: 1350,
     height: 1280
     }
@@ -149,7 +149,7 @@ function stream_start(){
         },
         frequency: 2,
         decoder: {
-            readers: ["code_128_reader", "ean_reader"],
+            readers: ["ean_reader"],
             // debug: {
             //     showCanvas: true,
             //     showPatches: true,
