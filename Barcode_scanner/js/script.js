@@ -65,13 +65,14 @@ function open_camera(){
 function camera_off(){
     video.classList.remove('active');
     webcamStream.getTracks()[0].stop();
+    Quagga.stop();
 };
-
 
 function inpute_cleaning(){
     input_blur();
     input.value = '';
 };
+
 // Number filter
 input.addEventListener('keydown', (event) => {
     if (event.key == '-' || event.key == '.') event.preventDefault();
@@ -82,24 +83,25 @@ input.addEventListener('keydown', (event) => {
 	} else event.preventDefault();
 });
 
+
+document.addEventListener('click', (event) => {
+    const insideInput = event.composedPath().includes(input);
+    const insideSearch = event.composedPath().includes(search_button);
+    const insideClear = event.composedPath().includes(clear_button);
+    
+    if (input_zone.classList.contains('onfocus') &&
+    !insideInput && !insideSearch && !insideClear)
+    input_blur()
+    else if (insideInput && !input_zone.classList.contains('onfocus'))
+    input_focus();
+});
+
 function input_focus(){
     video.classList.add('onfocus');
     input_zone.classList.add('onfocus');
     input.classList.add('onfocus');
     camera_button.classList.add('onfocus');
 };
-
-document.addEventListener('click', (event) => {
-    const insideInput = event.composedPath().includes(input);
-    const insideSearch = event.composedPath().includes(search_button);
-    const insideClear = event.composedPath().includes(clear_button);
-
-    if (input_zone.classList.contains('onfocus') &&
-        !insideInput && !insideSearch && !insideClear)
-            input_blur()
-    else if (insideInput && !input_zone.classList.contains('onfocus'))
-             input_focus();
-});
 
 function input_blur(){
     video.classList.remove('onfocus');
@@ -129,10 +131,8 @@ function stream_start(){
     });
 
     Quagga.onDetected(function(result) {
-        if (video.classList.contains('active')){
-            let code = result.codeResult.code;
-            input.value = code;
-        };
+        let code = result.codeResult.code;
+        input.value = code;
     });
 };
 
