@@ -32,9 +32,10 @@ body
     &.camera_on
         margin-top: 6vh
     &.onfocus
-        top: 30vh
-        margin-top: 0
-        position: absolute
+        margin-top: 30vh
+        // position: absolute
+        // top: 30vh
+        // margin-top: 0
 
 
 button
@@ -53,8 +54,8 @@ button
     background-color: #9aabf7
     &:active
         background-color: #7b8aca
-    &.onfocus
-        display: none
+    // &.onfocus
+    //     display: none
 
 .clear_search_cont
     position: relative
@@ -125,4 +126,5 @@ video
         border-radius: 30px
         background: url('../img/loading.jpg') center center / cover no-repeat
     &.onfocus
-        display: none
+        transition-duration: 0.1s
+        opacity: 0

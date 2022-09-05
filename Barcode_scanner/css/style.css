@@ -103,9 +103,7 @@ body {
   margin-top: 6vh;
 }
 .input_zone.onfocus {
-  top: 30vh;
-  margin-top: 0;
-  position: absolute;
+  margin-top: 30vh;
 }
 
 button {
@@ -126,9 +124,6 @@ button.clear_on {
 }
 .camera:active {
   background-color: #7b8aca;
-}
-.camera.onfocus {
-  display: none;
 }
 
 .clear_search_cont {
@@ -211,5 +206,6 @@ video.camera_on {
   background: url("../img/loading.jpg") center center/cover no-repeat;
 }
 video.onfocus {
-  display: none;
+  transition-duration: 0.1s;
+  opacity: 0;
 }
