@@ -17,7 +17,7 @@ let options = {
     video: {
     width: 1380, //height
     height: 1920, //width
-    // facingMode: {exact: "environment"},
+    facingMode: {exact: "environment"},
     }
 };
 
@@ -126,7 +126,7 @@ function stream_start(){
         type : "LiveStream",
         target: video,
         },
-        frequency: 2,
+        frequency: 5,
         decoder: {
             readers: ["ean_reader"],
         }
