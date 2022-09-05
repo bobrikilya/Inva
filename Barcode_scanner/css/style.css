@@ -91,8 +91,8 @@ body {
 }
 
 .input_zone {
-  position: fixed;
-  top: 31vh;
+  position: absolute;
+  top: 28vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -105,8 +105,7 @@ body {
 }
 .input_zone.onfocus {
   position: absolute;
-  top: 0;
-  top: 22vh;
+  top: 20vh;
 }
 
 button {
@@ -199,7 +198,7 @@ input.camera_on {
 
 video {
   position: absolute;
-  bottom: 5vh;
+  bottom: 3vh;
   border-radius: 50%;
   transition-duration: 0.5s;
   opacity: 0;
