@@ -70,7 +70,6 @@ h1, h2, h3, h4, h5, h6 {
 
 body {
   overflow: hidden;
-  display: flex;
   justify-content: center;
   align-items: center;
   max-width: 100%;
@@ -92,7 +91,7 @@ body {
 
 .input_zone {
   position: absolute;
-  top: 28vh;
+  top: 25vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -101,7 +100,7 @@ body {
   transition-duration: 0.3s;
 }
 .input_zone.camera_on {
-  top: 6vh;
+  top: 4.5vh;
 }
 .input_zone.onfocus {
   position: absolute;
@@ -198,7 +197,7 @@ input.camera_on {
 
 video {
   position: absolute;
-  bottom: 3vh;
+  bottom: 2vh;
   border-radius: 50%;
   transition-duration: 0.5s;
   opacity: 0;
