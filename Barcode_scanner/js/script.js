@@ -63,6 +63,7 @@ function open_camera(){
     video.classList.add('camera_on');
     input_zone.classList.add('camera_on');
     input.classList.add('camera_on');
+    stream_start();
 };
 
 function toggle_camera(){
@@ -139,71 +140,73 @@ function input_blur(){
 };
 
 
-Quagga.init({
-    inputStream : {
-      name : "Live",
-      type : "LiveStream",
-      target: video,
-    },
-    frequency: 2,
-    decoder: {
-        readers: ["code_128_reader", "ean_reader"],
-        // debug: {
-        //     showCanvas: true,
-        //     showPatches: true,
-        //     showFoundPatches: true,
-        //     showSkeleton: true,
-        //     showLabels: true,
-        //     showPatchesLabels: true,
-        //     showRemainingPatchesLabels: true,
-        //     boxFromPatches: {
-        //         showTransformed: true,
-        //         showTransformedBox: true,
-        //         showBB: true,
-        //     }
-        // },
-        // locate: true,
-    }
-  }, function(err) {
-      if (err) {
-          console.log(err);
-          return
-      }
-      console.log("Initialization finished. Ready to start");
-      Quagga.start();
-  });
-
-  Quagga.onProcessed(function(result) {
-    let drawingCtx = Quagga.canvas.ctx.overlay,
-        drawingCanvas = Quagga.canvas.dom.overlay;
-
-    if (result) {
-        if (result.boxes) {
-            drawingCtx.clearRect(0, 0, parseInt(drawingCanvas.getAttribute("width")), parseInt(drawingCanvas.getAttribute("height")));
-            result.boxes.filter(function (box) {
-                return box !== result.box;
-            }).forEach(function (box) {
-                Quagga.ImageDebug.drawPath(box, {x: 0, y: 1}, drawingCtx, {color: "green", lineWidth: 2});
-            });
+function stream_start(){
+    Quagga.init({
+        inputStream : {
+        name : "Live",
+        type : "LiveStream",
+        target: video,
+        },
+        frequency: 2,
+        decoder: {
+            readers: ["code_128_reader", "ean_reader"],
+            // debug: {
+            //     showCanvas: true,
+            //     showPatches: true,
+            //     showFoundPatches: true,
+            //     showSkeleton: true,
+            //     showLabels: true,
+            //     showPatchesLabels: true,
+            //     showRemainingPatchesLabels: true,
+            //     boxFromPatches: {
+            //         showTransformed: true,
+            //         showTransformedBox: true,
+            //         showBB: true,
+            //     }
+            // },
+            // locate: true,
         }
-
-        if (result.box) {
-            Quagga.ImageDebug.drawPath(result.box, {x: 0, y: 1}, drawingCtx, {color: "#00F", lineWidth: 2});
+    }, function(err) {
+        if (err) {
+            console.log(err);
+            return
         }
+        console.log("Initialization finished. Ready to start");
+        Quagga.start();
+    });
 
-        if (result.codeResult && result.codeResult.code) {
-            Quagga.ImageDebug.drawPath(result.line, {x: 'x', y: 'y'}, drawingCtx, {color: 'red', lineWidth: 3});
+    Quagga.onProcessed(function(result) {
+        let drawingCtx = Quagga.canvas.ctx.overlay,
+            drawingCanvas = Quagga.canvas.dom.overlay;
+
+        if (result) {
+            if (result.boxes) {
+                drawingCtx.clearRect(0, 0, parseInt(drawingCanvas.getAttribute("width")), parseInt(drawingCanvas.getAttribute("height")));
+                result.boxes.filter(function (box) {
+                    return box !== result.box;
+                }).forEach(function (box) {
+                    Quagga.ImageDebug.drawPath(box, {x: 0, y: 1}, drawingCtx, {color: "green", lineWidth: 2});
+                });
+            }
+
+            if (result.box) {
+                Quagga.ImageDebug.drawPath(result.box, {x: 0, y: 1}, drawingCtx, {color: "#00F", lineWidth: 2});
+            }
+
+            if (result.codeResult && result.codeResult.code) {
+                Quagga.ImageDebug.drawPath(result.line, {x: 'x', y: 'y'}, drawingCtx, {color: 'red', lineWidth: 3});
+            }
         }
-    }
-});
+    });
 
-Quagga.onDetected(function(result) {
-    let code = result.codeResult.code;
-    input.value = code;
-    input_zone.classList.remove('camera_on');
-    input.classList.remove('camera_on');
-    video.classList.remove('camera_on');
-});
+    Quagga.onDetected(function(result) {
+        let code = result.codeResult.code;
+        input.value = code;
+        input_zone.classList.remove('camera_on');
+        input.classList.remove('camera_on');
+        video.classList.remove('camera_on');
+    });
+};
 
 
 
