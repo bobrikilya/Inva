@@ -13,7 +13,7 @@ clear_button.addEventListener('click', inpute_cleaning);
 
 let options = {
     video: {
-    facingMode: {exact: "environment"},
+    // facingMode: {exact: "environment"},
     width: 1350,
     height: 1280
     }
@@ -39,8 +39,7 @@ function camera_access(){
                   open_camera();
 
         }else alert("Камера не найдена");
-    }
-    // }else toggle_camera(); 
+    }else toggle_camera(); 
 };
 
 function getStream(stream){
@@ -68,11 +67,12 @@ function open_camera(){
     stream_start();
 };
 
-// function toggle_camera(){
-//     input_zone.classList.toggle('camera_on');
-//     input.classList.toggle('camera_on');
-//     video.classList.toggle('camera_on');
-// };
+function toggle_camera(){
+    // input_zone.classList.toggle('camera_on');
+    // input.classList.toggle('camera_on');
+    // video.classList.toggle('camera_on');
+    Quagga.stop();
+};
 
 
 function inpute_cleaning(){
@@ -173,33 +173,33 @@ function stream_start(){
             console.log(err);
             return
         }
-        console.log("Initialization finished. Ready to start");
+        // console.log("Initialization finished. Ready to start");
         Quagga.start();
     });
 
-    Quagga.onProcessed(function(result) {
-        let drawingCtx = Quagga.canvas.ctx.overlay,
-            drawingCanvas = Quagga.canvas.dom.overlay;
+    // Quagga.onProcessed(function(result) {
+    //     let drawingCtx = Quagga.canvas.ctx.overlay,
+    //         drawingCanvas = Quagga.canvas.dom.overlay;
 
-        if (result) {
-            if (result.boxes) {
-                drawingCtx.clearRect(0, 0, parseInt(drawingCanvas.getAttribute("width")), parseInt(drawingCanvas.getAttribute("height")));
-                result.boxes.filter(function (box) {
-                    return box !== result.box;
-                }).forEach(function (box) {
-                    Quagga.ImageDebug.drawPath(box, {x: 0, y: 1}, drawingCtx, {color: "green", lineWidth: 2});
-                });
-            }
+    //     if (result) {
+    //         if (result.boxes) {
+    //             drawingCtx.clearRect(0, 0, parseInt(drawingCanvas.getAttribute("width")), parseInt(drawingCanvas.getAttribute("height")));
+    //             result.boxes.filter(function (box) {
+    //                 return box !== result.box;
+    //             }).forEach(function (box) {
+    //                 Quagga.ImageDebug.drawPath(box, {x: 0, y: 1}, drawingCtx, {color: "green", lineWidth: 2});
+    //             });
+    //         }
 
-            if (result.box) {
-                Quagga.ImageDebug.drawPath(result.box, {x: 0, y: 1}, drawingCtx, {color: "#00F", lineWidth: 2});
-            }
+    //         if (result.box) {
+    //             Quagga.ImageDebug.drawPath(result.box, {x: 0, y: 1}, drawingCtx, {color: "#00F", lineWidth: 2});
+    //         }
 
-            if (result.codeResult && result.codeResult.code) {
-                Quagga.ImageDebug.drawPath(result.line, {x: 'x', y: 'y'}, drawingCtx, {color: 'red', lineWidth: 3});
-            }
-        }
-    });
+    //         if (result.codeResult && result.codeResult.code) {
+    //             Quagga.ImageDebug.drawPath(result.line, {x: 'x', y: 'y'}, drawingCtx, {color: 'red', lineWidth: 3});
+    //         }
+    //     }
+    // });
 
     Quagga.onDetected(function(result) {
         let code = result.codeResult.code;

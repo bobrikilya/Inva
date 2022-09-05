@@ -103,15 +103,15 @@ body {
 }
 
 button {
-  width: 120px;
+  width: 50vw;
   height: 5rem;
   font-size: 1.6rem;
-  box-shadow: 0px 0px 2px grey;
   text-transform: lowercase;
 }
 
 .camera {
   background-color: #9aabf7;
+  box-shadow: 0px 0px 2px grey;
 }
 .camera.onfocus {
   opacity: 0;
@@ -119,23 +119,16 @@ button {
 }
 
 .clear_search_cont {
-  position: relative;
+  display: flex;
+  box-shadow: 0px 0px 2px grey;
 }
 
 .search {
   background-color: #4ff1a0;
-  position: relative;
-  z-index: 1;
-  transform: translateX(70px);
 }
 
 .clear {
   background-color: rgba(216, 58, 79, 0.8274509804);
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 0;
-  transform: translateX(-70px);
 }
 .clear:active {
   background-color: rgba(177, 47, 65, 0.8274509804);
@@ -154,7 +147,6 @@ input {
   max-width: 449px;
   height: 5rem;
   font-size: 2.2rem;
-  margin: 4vh 0;
   box-shadow: 0px 1px 5px grey;
   background-color: white;
   letter-spacing: 3px;
