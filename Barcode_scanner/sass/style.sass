@@ -1,5 +1,4 @@
 @import "./_stylereset"
-// @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap')
 
 body
     overflow: hidden
@@ -7,7 +6,6 @@ body
     align-items: center
     max-width: 100%
     height: 100%
-    // font-family: "Nunito"
     font-family: "Arial"
     text-transform: uppercase
 
@@ -20,50 +18,35 @@ body
     width: 100vw
     height: 120vh
     background-color: #8eb2bd88
-    // background: url('../img/bg_repeat.jpg') center center / 120% repeat
 
 .input_zone
     position: absolute
-    // top: 25vh
     top: 5vh
     display: flex
     flex-direction: column
     justify-content: center
     align-items: center
     z-index: 3
-    // transition-duration: 0.2s
-    // &.camera_on
-    //     top: 5vh
     &.onfocus
         position: absolute
         top: 20vh
 
 
 button
-    // width: 150px
     width: 50vw
     height: 5rem
     font-size: 1.6rem
-    // box-shadow: 0px 0px 2px grey
-    // border-radius: 20px
-    // transition-duration: 0.2s
     text-transform: lowercase
-    // &.clear_on
-    //     width: 120px
 
 .camera
     background-color: #9aabf7
     box-shadow: 0px 0px 2px grey
-    // &:active
-    //     background-color: #7b8aca
     &.onfocus
         opacity: 0
-        // transform: translateY(15vh)
         pointer-events: none
 
 
 .clear_search_cont
-    // position: relative
     display: flex
     box-shadow: 0px 0px 2px grey
 
@@ -71,28 +54,13 @@ button
 $dist: 70px
 .search
     background-color: #4ff1a0
-    // position: relative
-    // z-index: 1
-    // &:active
-    //     background-color: #3ca872
-    // &.clear_on
-    //     transform: translateX($dist)
-    // transform: translateX($dist)
+
 
 .clear
     background-color: #d83a4fd3
-
-    // position: absolute
-    // left:0
-    // top: 0
-    // z-index: 0
-    // pointer-events: none
     &:active
         background-color: #b12f41d3
-    // &.clear_on
-    //     pointer-events: auto
-    //     transform: translateX(-$dist)
-    // transform: translateX(-$dist)
+
 
 input
     position: relative
@@ -102,47 +70,26 @@ input
     background: none
     text-decoration: none
     text-align: center
-    // width: 95vw
     width: 100vw
     min-width: 300px
     max-width: 449px
     height: 5rem
     font-size: 2.2rem
-    // margin: 4vh 0
     box-shadow: 0px 1px 5px grey
     background-color: white
-    // border-radius: 40px
-    // transition-duration: 0.3s
     letter-spacing: 3px
-    // &:focus
-    //     box-shadow: 0px 0px 3px black
-    // &:hover
-    //     box-shadow: 0px 0px 3px black
-    // &.camera_on
-    //     margin: 2vh 0
     margin: 2vh 0
 
 
 video
     position: absolute
     bottom: 2vh
-    // border-radius: 50%
-    // transition-duration: 0.4s
     opacity: 1
     height: 45vh
-    // width: 95vw
     width: 100vw
     min-width: 260px
     max-width: 449px
     margin-top: 3vh
-    // box-shadow: 0px 0px 15px grey
     box-shadow: 0px 0px 7px grey
-    // transform: translateY(20rem)
-    // &.camera_on
-    //     transform: translateY(0)
-    //     opacity: 1
-    //     border-radius: 30px
-        // background: url('../img/loading.jpg') center center / cover no-repeat
     &.onfocus
-        // transition-duration: 0s
         opacity: 0

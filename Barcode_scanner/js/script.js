@@ -13,7 +13,6 @@ clear_button.addEventListener('click', inpute_cleaning);
 
 let options = {
     video: {
-    facingMode: {exact: "environment"},
     width: 1350,
     height: 1280
     }
@@ -43,7 +42,6 @@ function camera_access(){
 };
 
 function getStream(stream){
-    // video.src = window.webkitURL.createObjectURL(stream);
     video.srcObject = stream;
     video.onloadedmetadata = function(e){
         video.play();
@@ -52,25 +50,15 @@ function getStream(stream){
 
 function noStream(){
     setTimeout(() => {alert("Вы не дали доступ к камере");
-        // input_zone.classList.remove('camera_on');
-        // input.classList.remove('camera_on');
-        // video.classList.remove('camera_on');
-        // video.classList.remove('active');
     }, 800);
 };
 
 function open_camera(){
     video.classList.add('active');
-    // video.classList.add('camera_on');
-    // input_zone.classList.add('camera_on');
-    // input.classList.add('camera_on');
     stream_start();
 };
 
 function toggle_camera(){
-    // input_zone.classList.toggle('camera_on');
-    // input.classList.toggle('camera_on');
-    // video.classList.toggle('camera_on');
     Quagga.stop();
 };
 
@@ -78,12 +66,6 @@ function toggle_camera(){
 function inpute_cleaning(){
     input_blur();
     input.value = ''
-    // setTimeout(() => {
-    //     search_button.classList.remove('clear_on');
-    //     clear_button.classList.remove('clear_on');
-    // }, 200);
-    // // input.focus();
-    // input_focus();
 };
 // Number filter
 input.addEventListener('keydown', (event) => {
@@ -94,26 +76,6 @@ input.addEventListener('keydown', (event) => {
             return
 	} else event.preventDefault();
 });
-
-// input.addEventListener('keyup', (event) => {
-//     // console.log(input.value)
-//     if (input.value.length != 0){
-//         search_button.classList.add('clear_on');
-//         clear_button.classList.add('clear_on');
-//     }else {
-//         setTimeout(() => {
-//             search_button.classList.remove('clear_on');
-//             clear_button.classList.remove('clear_on');
-//         }, 200);
-//     };
-// });
-
-// input.addEventListener('keydown', (event) => {
-//     if (event.key != 'Backspace' && event.key != 'Delete'){
-//         if (input.value.length == 1) input.value = input.value + ' ';
-//         if (input.value.length == 8) input.value = input.value + ' ';
-//     };
-// });
 
 function input_focus(){
     video.classList.add('onfocus');
@@ -152,63 +114,18 @@ function stream_start(){
         frequency: 2,
         decoder: {
             readers: ["ean_reader"],
-            // debug: {
-            //     showCanvas: true,
-            //     showPatches: true,
-            //     showFoundPatches: true,
-            //     showSkeleton: true,
-            //     showLabels: true,
-            //     showPatchesLabels: true,
-            //     showRemainingPatchesLabels: true,
-            //     boxFromPatches: {
-            //         showTransformed: true,
-            //         showTransformedBox: true,
-            //         showBB: true,
-            //     }
-            // },
-            // locate: true,
         }
     }, function(err) {
         if (err) {
             console.log(err);
             return
         }
-        // console.log("Initialization finished. Ready to start");
         Quagga.start();
     });
-
-    // Quagga.onProcessed(function(result) {
-    //     let drawingCtx = Quagga.canvas.ctx.overlay,
-    //         drawingCanvas = Quagga.canvas.dom.overlay;
-
-    //     if (result) {
-    //         if (result.boxes) {
-    //             drawingCtx.clearRect(0, 0, parseInt(drawingCanvas.getAttribute("width")), parseInt(drawingCanvas.getAttribute("height")));
-    //             result.boxes.filter(function (box) {
-    //                 return box !== result.box;
-    //             }).forEach(function (box) {
-    //                 Quagga.ImageDebug.drawPath(box, {x: 0, y: 1}, drawingCtx, {color: "green", lineWidth: 2});
-    //             });
-    //         }
-
-    //         if (result.box) {
-    //             Quagga.ImageDebug.drawPath(result.box, {x: 0, y: 1}, drawingCtx, {color: "#00F", lineWidth: 2});
-    //         }
-
-    //         if (result.codeResult && result.codeResult.code) {
-    //             Quagga.ImageDebug.drawPath(result.line, {x: 'x', y: 'y'}, drawingCtx, {color: 'red', lineWidth: 3});
-    //         }
-    //     }
-    // });
 
     Quagga.onDetected(function(result) {
         let code = result.codeResult.code;
         input.value = code;
-        // input_zone.classList.remove('camera_on');
-        // input.classList.remove('camera_on');
-        // video.classList.remove('camera_on');
-        // search_button.classList.add('clear_on');
-        // clear_button.classList.add('clear_on');
     });
 };
 
