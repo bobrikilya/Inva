@@ -91,21 +91,22 @@ body {
 }
 
 .input_zone {
+  position: fixed;
+  top: 31vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   z-index: 3;
-  margin-top: 31vh;
   transition-duration: 0.3s;
 }
 .input_zone.camera_on {
-  margin-top: 6vh;
+  top: 6vh;
 }
 .input_zone.onfocus {
   position: absolute;
   top: 0;
-  margin-top: 22vh;
+  top: 22vh;
 }
 
 button {
@@ -197,7 +198,8 @@ input.camera_on {
 }
 
 video {
-  display: inline;
+  position: absolute;
+  bottom: 5vh;
   border-radius: 50%;
   transition-duration: 0.5s;
   opacity: 0;

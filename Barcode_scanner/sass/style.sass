@@ -22,19 +22,23 @@ body
     background-color: #8eb2bd88
 
 .input_zone
+    position: fixed
+    top: 31vh
     display: flex
     flex-direction: column
     justify-content: center
     align-items: center
     z-index: 3
-    margin-top: 31vh
+    // margin-top: 31vh
     transition-duration: 0.3s
     &.camera_on
-        margin-top: 6vh
+        // margin-top: 6vh
+        top: 6vh
     &.onfocus
         position: absolute
         top: 0
-        margin-top: 22vh
+        top: 22vh
+        // margin-top: 22vh
 
 
 button
@@ -114,7 +118,9 @@ input
 
 
 video
-    display: inline
+    // display: inline
+    position: absolute
+    bottom: 5vh
     border-radius: 50%
     transition-duration: 0.5s
     opacity: 0

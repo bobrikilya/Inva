@@ -13,7 +13,7 @@ clear_button.addEventListener('click', inpute_cleaning);
 
 let options = {
     video: {
-    facingMode: {exact: "environment"},
+    // facingMode: {exact: "environment"},
     width: 1350,
     height: 1280
     }
@@ -73,6 +73,7 @@ function toggle_camera(){
 
 
 function inpute_cleaning(){
+    input_blur();
     input.value = ''
     setTimeout(() => {
         search_button.classList.remove('clear_on');
@@ -80,7 +81,6 @@ function inpute_cleaning(){
     }, 200);
     // input.focus();
     // input_focus();
-    input_blur();
 };
 // Number filter
 input.addEventListener('keydown', (event) => {
