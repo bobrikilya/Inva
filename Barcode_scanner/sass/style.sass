@@ -21,14 +21,14 @@ body
 
 .input_zone
     position: absolute
+    z-index: 3
     top: 5vh
     display: flex
     flex-direction: column
     justify-content: center
     align-items: center
-    z-index: 3
+    transition-duration: 0.3s
     &.onfocus
-        position: absolute
         top: 20vh
 
 
@@ -41,6 +41,7 @@ button
 .camera
     background-color: #9aabf7
     box-shadow: 0px 0px 2px grey
+    width: 100vw
     &.onfocus
         opacity: 0
         pointer-events: none

@@ -13,10 +13,12 @@ clear_button.addEventListener('click', inpute_cleaning);
 
 let options = {
     video: {
-    width: 1350,
-    height: 1280
+    width: 1920,
+    height: 1920
     }
 };
+
+let webcamStream;
 
 // Camera access request
 function camera_access(){
@@ -38,7 +40,7 @@ function camera_access(){
                   open_camera();
 
         }else alert("Камера не найдена");
-    }else toggle_camera(); 
+    }else camera_off(); 
 };
 
 function getStream(stream){
@@ -46,6 +48,7 @@ function getStream(stream){
     video.onloadedmetadata = function(e){
         video.play();
     };
+    webcamStream = stream;
 };
 
 function noStream(){
@@ -58,14 +61,15 @@ function open_camera(){
     stream_start();
 };
 
-function toggle_camera(){
-    Quagga.stop();
+function camera_off(){
+    video.classList.remove('active');
+    webcamStream.getTracks()[0].stop();
 };
 
 
 function inpute_cleaning(){
     input_blur();
-    input.value = ''
+    input.value = '';
 };
 // Number filter
 input.addEventListener('keydown', (event) => {
@@ -91,7 +95,7 @@ document.addEventListener('click', (event) => {
 
     if (input_zone.classList.contains('onfocus') &&
         !insideInput && !insideSearch && !insideClear)
-        input_blur()
+            input_blur()
     else if (insideInput && !input_zone.classList.contains('onfocus'))
              input_focus();
 });
@@ -124,8 +128,10 @@ function stream_start(){
     });
 
     Quagga.onDetected(function(result) {
-        let code = result.codeResult.code;
-        input.value = code;
+        if (video.classList.contains('active')){
+            let code = result.codeResult.code;
+            input.value = code;
+        };
     });
 };
 
