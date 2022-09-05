@@ -13,7 +13,7 @@ clear_button.addEventListener('click', inpute_cleaning);
 
 let options = {
     video: {
-    facingMode: {exact: "environment"},
+    // facingMode: {exact: "environment"},
     width: 1350,
     height: 1280
     }
@@ -84,9 +84,6 @@ function inpute_cleaning(){
 // Number filter
 input.addEventListener('keydown', (event) => {
     if (event.key == '-' || event.key == '.') event.preventDefault();
-    // if (input.value.length >= 17 &&
-    //     ['1','2','3','4','5','6','7','8','9','0'].includes(event.key)) 
-    //     event.preventDefault();
 	if (['Escape', 'Delete', 'Tab', 'Backspace', 
          'Home', 'End', 'ArrowLeft', 'ArrowRight',
          '1','2','3','4','5','6','7','8','9','0'].includes(event.key)) {
