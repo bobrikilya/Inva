@@ -13,7 +13,7 @@ clear_button.addEventListener('click', inpute_cleaning);
 
 let options = {
     video: {
-    // facingMode: {exact: "environment"},
+    facingMode: {exact: "environment"},
     width: 1350,
     height: 1280
     }
@@ -138,78 +138,71 @@ function input_blur(){
     camera_button.classList.remove('onfocus');
 };
 
-// Quagga.init({
-//     inputStream : {
-//       name : "Live",
-//       type : "LiveStream",
-//       target: video,
+
+Quagga.init({
+    inputStream : {
+      name : "Live",
+      type : "LiveStream",
+      target: video,
       
-//     },
-//     frequency: 2,
-//     decoder: {
-//         readers: ["code_128_reader", "ean_reader"],
-//         debug: {
-//             showCanvas: true,
-//             showPatches: true,
-//             showFoundPatches: true,
-//             showSkeleton: true,
-//             showLabels: true,
-//             showPatchesLabels: true,
-//             showRemainingPatchesLabels: true,
-//             boxFromPatches: {
-//                 showTransformed: true,
-//                 showTransformedBox: true,
-//                 showBB: true,
-//             }
-//         },
-//         // locate: true,
-//     }
-//   }, function(err) {
-//       if (err) {
-//           console.log(err);
-//           return
-//       }
-//       console.log("Initialization finished. Ready to start");
-//       Quagga.start();
-//   });
+    },
+    frequency: 2,
+    decoder: {
+        readers: ["code_128_reader", "ean_reader"],
+        debug: {
+            showCanvas: true,
+            showPatches: true,
+            showFoundPatches: true,
+            showSkeleton: true,
+            showLabels: true,
+            showPatchesLabels: true,
+            showRemainingPatchesLabels: true,
+            boxFromPatches: {
+                showTransformed: true,
+                showTransformedBox: true,
+                showBB: true,
+            }
+        },
+        locate: true,
+    }
+  }, function(err) {
+      if (err) {
+          console.log(err);
+          return
+      }
+      console.log("Initialization finished. Ready to start");
+      Quagga.start();
+  });
 
-//   Quagga.onProcessed(function(result) {
-//     var drawingCtx = Quagga.canvas.ctx.overlay,
-//         drawingCanvas = Quagga.canvas.dom.overlay;
+  Quagga.onProcessed(function(result) {
+    let drawingCtx = Quagga.canvas.ctx.overlay,
+        drawingCanvas = Quagga.canvas.dom.overlay;
 
-//     if (result) {
-//         if (result.boxes) {
-//             drawingCtx.clearRect(0, 0, parseInt(drawingCanvas.getAttribute("width")), parseInt(drawingCanvas.getAttribute("height")));
-//             result.boxes.filter(function (box) {
-//                 return box !== result.box;
-//             }).forEach(function (box) {
-//                 Quagga.ImageDebug.drawPath(box, {x: 0, y: 1}, drawingCtx, {color: "green", lineWidth: 2});
-//             });
-//         }
+    if (result) {
+        if (result.boxes) {
+            drawingCtx.clearRect(0, 0, parseInt(drawingCanvas.getAttribute("width")), parseInt(drawingCanvas.getAttribute("height")));
+            result.boxes.filter(function (box) {
+                return box !== result.box;
+            }).forEach(function (box) {
+                Quagga.ImageDebug.drawPath(box, {x: 0, y: 1}, drawingCtx, {color: "green", lineWidth: 2});
+            });
+        }
 
-//         if (result.box) {
-//             Quagga.ImageDebug.drawPath(result.box, {x: 0, y: 1}, drawingCtx, {color: "#00F", lineWidth: 2});
-//         }
+        if (result.box) {
+            Quagga.ImageDebug.drawPath(result.box, {x: 0, y: 1}, drawingCtx, {color: "#00F", lineWidth: 2});
+        }
 
-//         if (result.codeResult && result.codeResult.code) {
-//             Quagga.ImageDebug.drawPath(result.line, {x: 'x', y: 'y'}, drawingCtx, {color: 'red', lineWidth: 3});
-//         }
-//     }
-// });
+        if (result.codeResult && result.codeResult.code) {
+            Quagga.ImageDebug.drawPath(result.line, {x: 'x', y: 'y'}, drawingCtx, {color: 'red', lineWidth: 3});
+        }
+    }
+});
 
-// Quagga.onDetected(function(result) {
-//     var code = result.codeResult.code;
-
-//     if (App.lastResult !== code) {
-//         App.lastResult = code;
-//         var $node = null, canvas = Quagga.canvas.dom.image;
-
-//         $node = $('<li><div class="thumbnail"><div class="imgWrapper"><img /></div><div class="caption"><h4 class="code"></h4></div></div></li>');
-//         $node.find("img").attr("src", canvas.toDataURL());
-//         $node.find("h4.code").html(code);
-//         $("#result_strip ul.thumbnails").prepend($node);
-//     }
-// });
+Quagga.onDetected(function(result) {
+    let code = result.codeResult.code;
+    input.value = code
+    toggle_camera()
+});
 
 
 
