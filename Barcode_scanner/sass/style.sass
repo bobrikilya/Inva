@@ -43,6 +43,7 @@ button
     box-shadow: 0px 0px 2px grey
     width: 100vw
     max-width: 550px
+    transition-duration: 0.1s
     &.onfocus
         opacity: 0
         pointer-events: none
@@ -85,16 +86,29 @@ input
     letter-spacing: 4px
     margin: 2vh 0
 
-
-video
+.cont_size
     position: absolute
-    bottom: 2vh
-    opacity: 1
     height: 45vh
     width: 160vw
     min-width: 260px
     max-width: 550px
-    margin-top: 3vh
+
+.stream_cont
+    bottom: 2vh
     box-shadow: 0px 0px 7px grey
     &.onfocus
+        transition-duration: 0.1s
         opacity: 0
+
+video
+    z-index: 0
+    bottom: 0
+    left: 0
+    opacity: 1
+    transition-duration: 0.4s
+    &.camera_off
+        transition-duration: 0.3s
+        opacity: 0
+
+.scan_icon
+    

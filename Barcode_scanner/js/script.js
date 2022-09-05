@@ -5,6 +5,8 @@ let search_button = document.querySelector('.search');
 let clear_button = document.querySelector('.clear');
 let input = document.querySelector('input');
 let input_zone = document.querySelector('.input_zone');
+let stream_cont = document.querySelector('.stream_cont');
+
 
 
 camera_button.addEventListener('click', camera_access);
@@ -15,11 +17,10 @@ let options = {
     video: {
     width: 1380, //height
     height: 1920, //width
-    facingMode: {exact: "environment"},
+    // facingMode: {exact: "environment"},
     }
 };
 
-let webcamStream;
 
 // Camera access request
 function camera_access(){
@@ -41,7 +42,7 @@ function camera_access(){
                   open_camera();
 
         }else alert("Камера не найдена");
-    }else camera_off(); 
+    }else toggle_camera(); 
 };
 
 function getStream(stream){
@@ -49,7 +50,6 @@ function getStream(stream){
     video.onloadedmetadata = function(e){
         video.play();
     };
-    webcamStream = stream;
 };
 
 function noStream(){
@@ -62,10 +62,14 @@ function open_camera(){
     stream_start();
 };
 
-function camera_off(){
-    video.classList.remove('active');
-    webcamStream.getTracks()[0].stop();
-    Quagga.stop();
+function toggle_camera(){
+    if (!video.classList.contains('camera_off')){
+        Quagga.pause();
+        video.classList.add('camera_off');
+    }else {
+        Quagga.start();
+        video.classList.remove('camera_off');
+    };
 };
 
 function inpute_cleaning(){
@@ -79,7 +83,6 @@ input.addEventListener('keydown', (event) => {
 	if (['Escape', 'Delete', 'Tab', 'Backspace', 
          'Home', 'End', 'ArrowLeft', 'ArrowRight',
          '1','2','3','4','5','6','7','8','9','0'].includes(event.key)) {
-            return
 	} else event.preventDefault();
 });
 
@@ -97,14 +100,14 @@ document.addEventListener('click', (event) => {
 });
 
 function input_focus(){
-    video.classList.add('onfocus');
+    stream_cont.classList.add('onfocus');
     input_zone.classList.add('onfocus');
     input.classList.add('onfocus');
     camera_button.classList.add('onfocus');
 };
 
 function input_blur(){
-    video.classList.remove('onfocus');
+    stream_cont.classList.remove('onfocus');
     input_zone.classList.remove('onfocus');
     input.classList.remove('onfocus');
     camera_button.classList.remove('onfocus');
@@ -118,21 +121,23 @@ function stream_start(){
         type : "LiveStream",
         target: video,
         },
-        frequency: 15,
+        frequency: 2,
         decoder: {
             readers: ["ean_reader"],
         }
     }, function(err) {
         if (err) {
             console.log(err);
+            console.log("Поломал");
             return
         }
         Quagga.start();
     });
 
-    Quagga.onDetected(function(result) {
+    Quagga.onDetected((result) => {
         let code = result.codeResult.code;
         input.value = code;
+        toggle_camera();
     });
 };
 
