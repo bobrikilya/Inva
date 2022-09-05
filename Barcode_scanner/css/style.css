@@ -86,12 +86,12 @@ body {
   overflow: hidden;
   width: 100vw;
   height: 120vh;
-  background: url("../img/bg_repeat.jpg") center center/120% repeat;
+  background-color: rgba(142, 178, 189, 0.5333333333);
 }
 
 .input_zone {
   position: absolute;
-  top: 25vh;
+  top: 5vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -194,21 +194,14 @@ input.camera_on {
 video {
   position: absolute;
   bottom: 2vh;
-  border-radius: 50%;
-  opacity: 0;
+  border-radius: 30px;
+  opacity: 1;
   height: 45vh;
   width: 95vw;
   min-width: 260px;
   max-width: 449px;
   margin-top: 3vh;
   box-shadow: 0px 0px 15px grey;
-  transform: translateY(20rem);
-}
-video.camera_on {
-  transform: translateY(0);
-  opacity: 1;
-  border-radius: 30px;
-  background: url("../img/loading.jpg") center center/cover no-repeat;
 }
 video.onfocus {
   transition-duration: 0s;

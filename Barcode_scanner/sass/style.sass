@@ -18,12 +18,13 @@ body
     overflow: hidden
     width: 100vw
     height: 120vh
-    // background-color: #8eb2bd88
-    background: url('../img/bg_repeat.jpg') center center / 120% repeat
+    background-color: #8eb2bd88
+    // background: url('../img/bg_repeat.jpg') center center / 120% repeat
 
 .input_zone
     position: absolute
-    top: 25vh
+    // top: 25vh
+    top: 5vh
     display: flex
     flex-direction: column
     justify-content: center
@@ -114,21 +115,22 @@ input
 video
     position: absolute
     bottom: 2vh
-    border-radius: 50%
+    // border-radius: 50%
+    border-radius: 30px
     // transition-duration: 0.4s
-    opacity: 0
+    opacity: 1
     height: 45vh
     width: 95vw
     min-width: 260px
     max-width: 449px
     margin-top: 3vh
     box-shadow: 0px 0px 15px grey
-    transform: translateY(20rem)
-    &.camera_on
-        transform: translateY(0)
-        opacity: 1
-        border-radius: 30px
-        background: url('../img/loading.jpg') center center / cover no-repeat
+    // transform: translateY(20rem)
+    // &.camera_on
+    //     transform: translateY(0)
+    //     opacity: 1
+    //     border-radius: 30px
+        // background: url('../img/loading.jpg') center center / cover no-repeat
     &.onfocus
         transition-duration: 0s
         opacity: 0

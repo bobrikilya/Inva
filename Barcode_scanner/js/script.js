@@ -39,7 +39,8 @@ function camera_access(){
                   open_camera();
 
         }else alert("Камера не найдена");
-    }else toggle_camera(); 
+    }
+    // }else toggle_camera(); 
 };
 
 function getStream(stream){
@@ -52,17 +53,18 @@ function getStream(stream){
 
 function noStream(){
     setTimeout(() => {alert("Вы не дали доступ к камере");
-    input_zone.classList.remove('camera_on');
-    input.classList.remove('camera_on');
-    video.classList.remove('camera_on');
-    video.classList.remove('active');}, 800);
+        // input_zone.classList.remove('camera_on');
+        // input.classList.remove('camera_on');
+        // video.classList.remove('camera_on');
+        // video.classList.remove('active');
+    }, 800);
 };
 
 function open_camera(){
-    video.classList.add('active');
-    video.classList.add('camera_on');
-    input_zone.classList.add('camera_on');
-    input.classList.add('camera_on');
+    // video.classList.add('active');
+    // video.classList.add('camera_on');
+    // input_zone.classList.add('camera_on');
+    // input.classList.add('camera_on');
     stream_start();
 };
 
