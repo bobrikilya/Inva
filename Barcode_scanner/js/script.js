@@ -13,7 +13,7 @@ clear_button.addEventListener('click', inpute_cleaning);
 
 let options = {
     video: {
-    facingMode: {exact: "environment"},
+    // facingMode: {exact: "environment"},
     width: 1350,
     height: 1280
     }
@@ -144,26 +144,25 @@ Quagga.init({
       name : "Live",
       type : "LiveStream",
       target: video,
-      
     },
     frequency: 2,
     decoder: {
         readers: ["code_128_reader", "ean_reader"],
-        debug: {
-            showCanvas: true,
-            showPatches: true,
-            showFoundPatches: true,
-            showSkeleton: true,
-            showLabels: true,
-            showPatchesLabels: true,
-            showRemainingPatchesLabels: true,
-            boxFromPatches: {
-                showTransformed: true,
-                showTransformedBox: true,
-                showBB: true,
-            }
-        },
-        locate: true,
+        // debug: {
+        //     showCanvas: true,
+        //     showPatches: true,
+        //     showFoundPatches: true,
+        //     showSkeleton: true,
+        //     showLabels: true,
+        //     showPatchesLabels: true,
+        //     showRemainingPatchesLabels: true,
+        //     boxFromPatches: {
+        //         showTransformed: true,
+        //         showTransformedBox: true,
+        //         showBB: true,
+        //     }
+        // },
+        // locate: true,
     }
   }, function(err) {
       if (err) {
@@ -200,8 +199,10 @@ Quagga.init({
 
 Quagga.onDetected(function(result) {
     let code = result.codeResult.code;
-    input.value = code
-    toggle_camera()
+    input.value = code;
+    input_zone.classList.remove('camera_on');
+    input.classList.remove('camera_on');
+    video.classList.remove('camera_on');
 });
 
 
