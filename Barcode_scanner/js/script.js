@@ -13,7 +13,7 @@ clear_button.addEventListener('click', inpute_cleaning);
 
 let options = {
     video: {
-    // facingMode: {exact: "environment"},
+    facingMode: {exact: "environment"},
     width: 1350,
     height: 1280
     }
@@ -80,6 +80,7 @@ function inpute_cleaning(){
     }, 200);
     // input.focus();
     // input_focus();
+    input_blur();
 };
 // Number filter
 input.addEventListener('keydown', (event) => {
