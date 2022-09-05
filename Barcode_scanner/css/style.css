@@ -103,7 +103,9 @@ body {
   margin-top: 6vh;
 }
 .input_zone.onfocus {
-  margin-top: 30vh;
+  position: absolute;
+  top: 0;
+  margin-top: 25vh;
 }
 
 button {
@@ -124,6 +126,12 @@ button.clear_on {
 }
 .camera:active {
   background-color: #7b8aca;
+}
+.camera.onfocus {
+  transition-duration: 0.5s;
+  opacity: 0;
+  transform: translateY(15vh);
+  pointer-events: none;
 }
 
 .clear_search_cont {
@@ -159,6 +167,8 @@ button.clear_on {
 }
 
 input {
+  position: relative;
+  z-index: 2;
   border: none;
   outline: none;
   background: none;
@@ -206,6 +216,6 @@ video.camera_on {
   background: url("../img/loading.jpg") center center/cover no-repeat;
 }
 video.onfocus {
-  transition-duration: 0.1s;
+  transition-duration: 0s;
   opacity: 0;
 }

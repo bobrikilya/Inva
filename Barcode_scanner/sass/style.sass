@@ -32,10 +32,9 @@ body
     &.camera_on
         margin-top: 6vh
     &.onfocus
-        margin-top: 30vh
-        // position: absolute
-        // top: 30vh
-        // margin-top: 0
+        position: absolute
+        top: 0
+        margin-top: 25vh
 
 
 button
@@ -54,8 +53,12 @@ button
     background-color: #9aabf7
     &:active
         background-color: #7b8aca
-    // &.onfocus
-    //     display: none
+    &.onfocus
+        transition-duration: 0.5s
+        opacity: 0
+        transform: translateY(15vh)
+        pointer-events: none
+
 
 .clear_search_cont
     position: relative
@@ -84,6 +87,8 @@ $dist: 70px
         transform: translateX(-$dist)
 
 input
+    position: relative
+    z-index: 2
     border: none
     outline: none
     background: none
@@ -126,5 +131,5 @@ video
         border-radius: 30px
         background: url('../img/loading.jpg') center center / cover no-repeat
     &.onfocus
-        transition-duration: 0.1s
+        transition-duration: 0s
         opacity: 0
