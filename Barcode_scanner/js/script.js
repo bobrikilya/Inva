@@ -105,7 +105,6 @@ input.addEventListener('keyup', (event) => {
     };
 });
 
-
 // input.addEventListener('keydown', (event) => {
 //     if (event.key != 'Backspace' && event.key != 'Delete'){
 //         if (input.value.length == 1) input.value = input.value + ' ';
