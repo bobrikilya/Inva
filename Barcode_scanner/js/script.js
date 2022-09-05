@@ -78,11 +78,11 @@ function open_camera(){
 function inpute_cleaning(){
     input_blur();
     input.value = ''
-    setTimeout(() => {
-        search_button.classList.remove('clear_on');
-        clear_button.classList.remove('clear_on');
-    }, 200);
-    // input.focus();
+    // setTimeout(() => {
+    //     search_button.classList.remove('clear_on');
+    //     clear_button.classList.remove('clear_on');
+    // }, 200);
+    // // input.focus();
     // input_focus();
 };
 // Number filter
@@ -95,18 +95,18 @@ input.addEventListener('keydown', (event) => {
 	} else event.preventDefault();
 });
 
-input.addEventListener('keyup', (event) => {
-    // console.log(input.value)
-    if (input.value.length != 0){
-        search_button.classList.add('clear_on');
-        clear_button.classList.add('clear_on');
-    }else {
-        setTimeout(() => {
-            search_button.classList.remove('clear_on');
-            clear_button.classList.remove('clear_on');
-        }, 200);
-    };
-});
+// input.addEventListener('keyup', (event) => {
+//     // console.log(input.value)
+//     if (input.value.length != 0){
+//         search_button.classList.add('clear_on');
+//         clear_button.classList.add('clear_on');
+//     }else {
+//         setTimeout(() => {
+//             search_button.classList.remove('clear_on');
+//             clear_button.classList.remove('clear_on');
+//         }, 200);
+//     };
+// });
 
 // input.addEventListener('keydown', (event) => {
 //     if (event.key != 'Backspace' && event.key != 'Delete'){
@@ -207,8 +207,8 @@ function stream_start(){
         // input_zone.classList.remove('camera_on');
         // input.classList.remove('camera_on');
         // video.classList.remove('camera_on');
-        search_button.classList.add('clear_on');
-        clear_button.classList.add('clear_on');
+        // search_button.classList.add('clear_on');
+        // clear_button.classList.add('clear_on');
     });
 };
 
