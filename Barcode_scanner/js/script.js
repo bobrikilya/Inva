@@ -17,7 +17,7 @@ let options = {
     video: {
     width: 1380, //height
     height: 1920, //width
-    facingMode: {exact: "environment"},
+    // facingMode: {exact: "environment"},
     }
 };
 
@@ -140,11 +140,9 @@ function stream_start(){
     });
 
     Quagga.onDetected((result) => {
+        Quagga.pause();
         let code = result.codeResult.code;
         input.value = code;
         toggle_camera();
     });
 };
-
-
-

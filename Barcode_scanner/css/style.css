@@ -170,6 +170,7 @@ input {
 }
 
 .stream_cont {
+  overflow: hidden;
   top: 50vh;
   box-shadow: 0px 0px 7px grey;
 }
@@ -184,7 +185,7 @@ video {
   left: 0;
   opacity: 0;
   transition-duration: 0.4s;
-  background: url("../img/loading.png") center center/30% no-repeat;
+  background: url("../img/loading.png") center center/20vh no-repeat;
 }
 video.camera_on {
   transition-duration: 0.3s;
