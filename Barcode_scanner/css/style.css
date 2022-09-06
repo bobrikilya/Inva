@@ -107,6 +107,7 @@ button {
   height: 5rem;
   font-size: 1.7rem;
   text-transform: lowercase;
+  color: black;
 }
 
 .camera {
@@ -155,6 +156,7 @@ input {
   max-width: 550px;
   height: 5rem;
   font-size: 2.4rem;
+  color: #2e2f36;
   box-shadow: 0px 1px 5px grey;
   background-color: white;
   letter-spacing: 4px;
@@ -179,30 +181,31 @@ input {
   opacity: 0;
 }
 
-video {
-  z-index: 0;
+.camera_zone {
+  overflow: hidden;
   bottom: 0;
   left: 0;
   opacity: 0;
   transition-duration: 0.4s;
-  background: url("../img/loading.png") center center/20vh no-repeat;
 }
-video.camera_on {
+.camera_zone.camera_on {
   transition-duration: 0.3s;
   opacity: 1;
 }
 
+video {
+  z-index: 0;
+  background: url("../img/loading.png") center center/20vh no-repeat;
+}
+
 .scan_icon {
-  z-index: 1;
-  bottom: 0;
-  left: 0;
-  opacity: 0;
-  transition-duration: 0.4s;
+  z-index: 2;
   background: url("../img/scan_icon.png") center center/45% no-repeat, url("../img/scan_icon_big.png") center center/65% no-repeat;
 }
-.scan_icon.camera_on {
-  transition-duration: 0.3s;
-  opacity: 1;
+
+.blur {
+  z-index: 1;
+  background: url("../img/blur_bg.png") center center/105% no-repeat;
 }
 
 @media (max-height: 530px) {
@@ -211,5 +214,8 @@ video.camera_on {
   }
   .scan_icon {
     background: url("../img/scan_icon.png") center 40%/50% no-repeat, url("../img/scan_icon_big.png") center 40%/70% no-repeat;
+  }
+  .blur {
+    background: url("../img/blur_bg.png") center 47.5%/113% no-repeat;
   }
 }

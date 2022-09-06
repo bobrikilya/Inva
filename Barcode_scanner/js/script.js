@@ -7,6 +7,7 @@ let input = document.querySelector('input');
 let input_zone = document.querySelector('.input_zone');
 let stream_cont = document.querySelector('.stream_cont');
 let scan_icon = document.querySelector('.scan_icon');
+let blur_cover = document.querySelector('.blur');
 
 
 camera_button.addEventListener('click', camera_access);
@@ -17,7 +18,7 @@ let options = {
     video: {
     width: 1380, //height
     height: 1920, //width
-    // facingMode: {exact: "environment"},
+    facingMode: {exact: "environment"},
     }
 };
 
@@ -62,7 +63,8 @@ function open_camera(){
     video.classList.add('active');
     stream_start();
     video.classList.add('camera_on');
-    // scan_icon.classList.add('camera_on');
+    scan_icon.classList.add('camera_on');
+    blur_cover.classList.add('camera_on');
 };
 
 function toggle_camera(){
@@ -70,10 +72,12 @@ function toggle_camera(){
         Quagga.pause();
         video.classList.remove('camera_on');
         scan_icon.classList.remove('camera_on');
+        blur_cover.classList.remove('camera_on');
     }else {
         Quagga.start();
         video.classList.add('camera_on');
         scan_icon.classList.add('camera_on');
+        blur_cover.classList.add('camera_on');
     };
 };
 
