@@ -28,41 +28,42 @@ function camera_access(){
     if (!video.classList.contains('active')){
         if       (navigator.getUserMedia!=null) {
                   navigator.getUserMedia(options, getStream, noStream);
-                  open_camera();
         // Chrome    
         }else if (navigator.webkitGetUserMedia!=null){
                   navigator.webkitGetUserMedia(options, getStream, noStream);
-                  open_camera();
         // Firefox
         }else if (navigator.mozGetUserMedia!=null){
                   navigator.mozGetUserMedia(options, getStream, noStream);
-                  open_camera();
         // Other
         }else if (navigator.msUserMedia!=null){
                   navigator.msGetUserMedia(options, getStream, noStream);
-                  open_camera();
 
         }else alert("Камера не найдена");
     }else toggle_camera(); 
 };
 
 function getStream(stream){
+    video.classList.add('camera_on');
     video.srcObject = stream;
-    video.onloadedmetadata = function(e){
+    video.onloadedmetadata = function(){
         video.play();
+        open_camera();
     };
-    scan_icon.classList.add('camera_on');
 };
 
 function noStream(){
     setTimeout(() => {alert("Вы не дали доступ к камере");
     }, 800);
+    Quagga.pause();
+    video.classList.remove('camera_on');
+    scan_icon.classList.remove('camera_on');
+    blur_cover.classList.remove('camera_on');
 };
 
 function open_camera(){
     video.classList.add('active');
     stream_start();
-    video.classList.add('camera_on');
+    // video.classList.add('camera_on');
     scan_icon.classList.add('camera_on');
     blur_cover.classList.add('camera_on');
 };
