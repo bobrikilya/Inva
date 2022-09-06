@@ -203,11 +203,19 @@ video {
   background: url("../img/scan_icon.png") center center/45% no-repeat, url("../img/scan_icon_big.png") center center/105% no-repeat;
 }
 
-@media (max-height: 530px) {
+@media (max-height: 590px) {
+  .stream_cont {
+    top: 50vh;
+  }
+  .scan_icon {
+    background: url("../img/scan_icon.png") center 40%/50% no-repeat, url("../img/scan_icon_big.png") center 55%/110% no-repeat;
+  }
+}
+@media (max-height: 540px) {
   .stream_cont {
     top: 55vh;
   }
   .scan_icon {
-    background: url("../img/scan_icon.png") center 40%/50% no-repeat, url("../img/scan_icon_big.png") center 40%/70% no-repeat;
+    background: url("../img/scan_icon.png") center 40%/55% no-repeat, url("../img/scan_icon_big.png") center 50%/115% no-repeat;
   }
 }
