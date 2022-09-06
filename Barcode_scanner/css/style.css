@@ -200,12 +200,7 @@ video {
 
 .scan_icon {
   z-index: 2;
-  background: url("../img/scan_icon.png") center center/45% no-repeat, url("../img/scan_icon_big.png") center center/65% no-repeat;
-}
-
-.blur {
-  z-index: 1;
-  background: url("../img/blur_bg.png") center center/103% no-repeat;
+  background: url("../img/scan_icon.png") center center/45% no-repeat, url("../img/scan_icon_big.png") center center/105% no-repeat;
 }
 
 @media (max-height: 530px) {
@@ -214,8 +209,5 @@ video {
   }
   .scan_icon {
     background: url("../img/scan_icon.png") center 40%/50% no-repeat, url("../img/scan_icon_big.png") center 40%/70% no-repeat;
-  }
-  .blur {
-    background: url("../img/blur_bg.png") center 47.5%/111% no-repeat;
   }
 }
