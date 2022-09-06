@@ -18,7 +18,7 @@ let options = {
     video: {
     width: 1380, //height
     height: 1920, //width
-    facingMode: {exact: "environment"},
+    // facingMode: {exact: "environment"},
     }
 };
 
