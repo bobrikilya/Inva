@@ -22,14 +22,14 @@ body
 .input_zone
     position: absolute
     z-index: 3
-    top: 5vh
+    bottom: 10vh
     display: flex
     flex-direction: column
     justify-content: center
     align-items: center
     transition-duration: 0.3s
-    &.onfocus
-        top: 20vh
+    // &.onfocus
+    //     bottom: 10vh
 
 
 button
@@ -97,8 +97,8 @@ input
 
 .stream_cont
     overflow: hidden
-    top: 45vh
-    box-shadow: 0px 0px 7px grey
+    top: 5vh
+    box-shadow: 0px 2px 7px grey
     &.onfocus
         transition-duration: 0.1s
         opacity: 0
@@ -113,11 +113,6 @@ input
         transition-duration: 0.3s
         opacity: 1
 
-.camera_off
-    opacity: 1
-    background: url("../img/not_available.png") 51% center / 10vh no-repeat
-    &.camera_on
-        opacity: 0
 
 video
     z-index: 0
