@@ -7,6 +7,7 @@ let input = document.querySelector('input');
 let input_zone = document.querySelector('.input_zone');
 let stream_cont = document.querySelector('.stream_cont');
 let scan_icon = document.querySelector('.scan_icon');
+let camera_off = document.querySelector('.scan_icon');
 
 
 camera_button.addEventListener('click', camera_access);
@@ -17,7 +18,7 @@ let options = {
     video: {
     width: 1380, //height
     height: 1920, //width
-    facingMode: {exact: "environment"},
+    // facingMode: {exact: "environment"},
     }
 };
 
@@ -42,6 +43,7 @@ function camera_access(){
 };
 
 function getStream(stream){
+    camera_off.classList.add('camera_on');
     video.classList.add('camera_on');
     video.srcObject = stream;
     video.onloadedmetadata = function(){
@@ -55,6 +57,7 @@ function noStream(){
     }, 800);
     Quagga.pause();
     video.classList.remove('camera_on');
+    camera_off.classList.remove('camera_on');
     scan_icon.classList.remove('camera_on');
 };
 
@@ -69,10 +72,12 @@ function toggle_camera(){
         Quagga.pause();
         video.classList.remove('camera_on');
         scan_icon.classList.remove('camera_on');
+        camera_off.classList.remove('camera_on');
     }else {
         Quagga.start();
         video.classList.add('camera_on');
         scan_icon.classList.add('camera_on');
+        camera_off.classList.add('camera_on');
     };
 };
 
@@ -121,29 +126,15 @@ function input_blur(){
 function stream_start(){
     Quagga.init({
         inputStream : {
-        name : "Live",
-        type : "LiveStream",
-        target: video,
-        singleChannel: true,
-        area: {
-            top: '10%',
-            right: '10%',
-            left: '10%',
-            bottom: '10%',
-        },
+            name : "Live",
+            type : "LiveStream",
+            target: video,
         },
         frequency: 5,
-        locate: true,
         decoder: {
             readers: ["ean_reader"],
             multiple: false,
-            debug: {
-                drawBoundingBox: true, 
-                showFrequency: true, 
-                drawScanline: true, 
-                showPattern: true,
-            },
-        }
+        },
     }, function(err) {
         if (err) {
             console.log(err);
