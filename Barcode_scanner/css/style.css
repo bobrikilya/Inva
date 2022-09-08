@@ -165,7 +165,7 @@ input {
 
 .cont_size {
   position: absolute;
-  height: 45vh;
+  height: 50vh;
   width: 160vw;
   min-width: 260px;
   max-width: 550px;
@@ -173,8 +173,8 @@ input {
 
 .stream_cont {
   overflow: hidden;
-  top: 5vh;
-  box-shadow: 0px 1px 7px grey;
+  top: 0;
+  box-shadow: 0px 1px 5px grey;
   background: url("../img/not_available.png") center center/10vh no-repeat;
 }
 .stream_cont.onfocus {
@@ -196,7 +196,7 @@ input {
 
 video {
   z-index: 0;
-  background: url("../img/loading.png") 53% 90%/12vh no-repeat;
+  background: url("../img/loading.png") 50% 76%/11vh no-repeat;
 }
 
 .scan_icon {
@@ -206,13 +206,11 @@ video {
 
 @media (max-height: 610px) {
   .cont_size {
-    top: 3vh;
-    height: 44vh;
+    height: 47vh;
   }
 }
-@media (max-height: 540px) {
+@media (max-height: 550px) {
   .cont_size {
-    top: 2vh;
-    height: 40vh;
+    height: 43vh;
   }
 }
