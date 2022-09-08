@@ -43,8 +43,8 @@ function camera_access(){
 };
 
 function getStream(stream){
-    camera_off.style.opacity = '0';
     video.classList.add('camera_on');
+    camera_off.classList.add('camera_on');
     video.srcObject = stream;
     video.onloadedmetadata = function(){
         video.play();
@@ -57,7 +57,7 @@ function noStream(){
     }, 800);
     Quagga.pause();
     video.classList.remove('camera_on');
-    camera_off.style.opacity = '1';
+    camera_off.classList.remove('camera_on');
     scan_icon.classList.remove('camera_on');
 };
 
@@ -72,12 +72,12 @@ function toggle_camera(){
         Quagga.pause();
         video.classList.remove('camera_on');
         scan_icon.classList.remove('camera_on');
-        camera_off.style.opacity = '1';
+        camera_off.classList.remove('camera_on');
     }else {
         Quagga.start();
         video.classList.add('camera_on');
         scan_icon.classList.add('camera_on');
-        camera_off.style.opacity = '0';
+        camera_off.classList.add('camera_on');
     };
 };
 

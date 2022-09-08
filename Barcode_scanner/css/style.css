@@ -197,6 +197,9 @@ input {
   opacity: 1;
   background: url("../img/not_available.png") 51% center/10vh no-repeat;
 }
+.camera_off.camera_on {
+  opacity: 0;
+}
 
 video {
   z-index: 0;
