@@ -28,8 +28,8 @@ body
     justify-content: center
     align-items: center
     transition-duration: 0.3s
-    // &.onfocus
-    //     bottom: 10vh
+    &.onfocus
+        bottom: 5vh
 
 
 button
@@ -98,7 +98,7 @@ input
 .stream_cont
     overflow: hidden
     top: 5vh
-    box-shadow: 0px 2px 7px grey
+    box-shadow: 0px 1px 7px grey
     &.onfocus
         transition-duration: 0.1s
         opacity: 0
@@ -124,9 +124,11 @@ video
 
 
 @media ( max-height: 590px )
-    .stream_cont
-        top: 50vh
+    .cont_size
+        top: 2vh
+        height: 43vh
 
 @media ( max-height: 540px )
-    .stream_cont
-        top: 55vh
+    .cont_size
+        top: 2vh
+        height: 40vh

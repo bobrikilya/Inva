@@ -28,12 +28,12 @@
             <div class="scan_icon cont_size camera_zone"></div>
         </div>
         <div class="input_zone">
+            <button class="camera">Камера</button>
+            <input type="text" placeholder="Штрих-код" maxlength="13" inputmode="numeric" onkeyup="this.value = this.value.replace (/\D/, '')">
             <div class="clear_search_cont">
                 <button class="clear">Очистка</button>
                 <button class="search">Поиск</button>
             </div>
-            <input type="text" placeholder="Штрих-код" maxlength="13" inputmode="numeric" onkeyup="this.value = this.value.replace (/\D/, '')">
-            <button class="camera">Камера</button>
         </div>
     </div>
     <script src="js/quagga.min.js"></script>
