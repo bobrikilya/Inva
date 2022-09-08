@@ -43,7 +43,7 @@ function camera_access(){
 
 function getStream(stream){
     video.classList.add('camera_on');
-    video.srcObject = stream;
+    // video.srcObject = stream;
     video.onloadedmetadata = function(){
         video.play();
         open_camera();
