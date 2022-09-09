@@ -1,36 +1,70 @@
 @import "./_stylereset"
 @import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap")
 
-body
+.cont
     overflow: hidden
+    display: flex
+    flex-direction: column
     justify-content: center
     align-items: center
+
+body
     max-width: 100%
     height: 100%
     font-family: "Nunito"
 
 .container
-    overflow: hidden
-    display: flex
-    flex-direction: column
-    justify-content: center
-    align-items: center
+    justify-content: space-between
     width: 100vw
-    height: 120vh
+    height: 100vh
     background-color: #8eb2bd88
 
-.input_zone
-    position: absolute
-    z-index: 3
-    bottom: 10vh
-    display: flex
-    flex-direction: column
-    justify-content: center
-    align-items: center
-    transition-duration: 0.3s
-    &.onfocus
-        bottom: 5vh
 
+.cont_size
+    position: relative
+    height: 60vh
+    width: 160vw
+    min-width: 260px
+    max-width: 550px
+
+.camera_half
+    margin-top: -2vh
+    box-shadow: 0px 1px 5px grey
+    background-color: #72949e88
+
+.stream_cont
+    overflow: hidden
+    background: url("../img/not_available.png") center center / 10vh no-repeat
+    &.onfocus
+        transition-duration: 0.1s
+        opacity: 0
+
+.camera_zone
+    overflow: hidden
+    opacity: 0
+    transition-duration: 0.4s
+    &.camera_on
+        transition-duration: 0.3s
+        opacity: 1
+
+video
+    z-index: 0
+    background: url("../img/loading.png") 50% 71% / 11vh no-repeat
+
+.scan_icon
+    position: absolute
+    top: 0
+    z-index: 2
+    background: url("../img/scan_icon_big.png") center 52% / cover no-repeat
+
+
+.input_zone
+    position: relative
+    z-index: 3
+    transition-duration: 0.3s
+    margin-bottom: 10vh
+    &.onfocus
+        margin-bottom: 5vh
 
 button
     width: 50vw
@@ -40,33 +74,16 @@ button
     color: black
 
 .camera
+    position: relative
+    z-index: 4
     background-color: #9aabf7
-    box-shadow: 0px 0px 2px grey
     width: 100vw
     max-width: 550px
     transition-duration: 0.1s
+    margin-top: -2vh
     &.onfocus
         opacity: 0
         pointer-events: none
-
-
-.clear_search_cont
-    display: flex
-    box-shadow: 0px 0px 2px grey
-
-
-$dist: 70px
-.search
-    background-color: #4ff1a0
-    max-width: 275px
-    &:active
-        background-color: #44c987
-
-.clear
-    background-color: #e95b6e
-    max-width: 275px
-    &:active
-        background-color: #b12f41d3
 
 
 input
@@ -86,48 +103,29 @@ input
     box-shadow: 0px 1px 5px grey
     background-color: white
     letter-spacing: 4px
-    margin: 2vh 0
 
-.cont_size
-    position: absolute
-    height: 50vh
-    width: 160vw
-    min-width: 260px
-    max-width: 550px
+.clear_search_cont
+    display: flex
+    box-shadow: 0px 0px 2px grey
 
-.stream_cont
-    overflow: hidden
-    top: 0
-    box-shadow: 0px 1px 5px grey
-    &.onfocus
-        transition-duration: 0.1s
-        opacity: 0
-    background: url("../img/not_available.png") center center / 10vh no-repeat
+$dist: 70px
+.search
+    background-color: #4ff1a0
+    max-width: 275px
+    &:active
+        background-color: #44c987
 
-.camera_zone
-    overflow: hidden
-    bottom: 0
-    left: 0
-    opacity: 0
-    transition-duration: 0.4s
-    &.camera_on
-        transition-duration: 0.3s
-        opacity: 1
+.clear
+    background-color: #e95b6e
+    max-width: 275px
+    &:active
+        background-color: #b12f41d3
 
 
-video
-    z-index: 0
-    background: url("../img/loading.png") 50% 76% / 11vh no-repeat
+// @media ( max-height: 610px )
+//     .cont_size
+//         height: 57vh
 
-.scan_icon
-    z-index: 2
-    background: url("../img/scan_icon_big.png") center center / cover no-repeat
-
-
-@media ( max-height: 610px )
-    .cont_size
-        height: 47vh
-
-@media ( max-height: 550px )
-    .cont_size
-        height: 43vh
+// @media ( max-height: 550px )
+//     .cont_size
+//         height: 43vh

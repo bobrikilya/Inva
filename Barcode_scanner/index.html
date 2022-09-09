@@ -21,14 +21,16 @@
     <title>Стройпродукт: Сканер</title>
     <link rel="icon" type="image/x-icon" href="img/favicon.ico">
 </head>
-<body>
-    <div class="container">
-        <div class="stream_cont cont_size">
-            <video class="cont_size camera_zone" autoplay playsinline muted></video>
-            <div class="scan_icon cont_size camera_zone"></div>
-        </div>
-        <div class="input_zone">
+<body class="cont">
+    <div class="container cont">
+        <div class="camera_half cont">
+            <div class="stream_cont cont_size">
+                <video class="cont_size camera_zone" autoplay playsinline muted></video>
+                <div class="scan_icon cont_size camera_zone"></div>
+            </div>
             <button class="camera">Камера</button>
+        </div>
+        <div class="input_zone cont">
             <input type="text" placeholder="Штрих-код" maxlength="13" inputmode="numeric" onkeyup="this.value = this.value.replace (/\D/, '')">
             <div class="clear_search_cont">
                 <button class="clear">Очистка</button>
