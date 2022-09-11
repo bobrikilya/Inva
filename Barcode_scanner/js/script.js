@@ -5,7 +5,7 @@ let search_button = document.querySelector('.search');
 let clear_button = document.querySelector('.clear');
 let input = document.querySelector('input');
 let input_zone = document.querySelector('.input_zone');
-let stream_cont = document.querySelector('.stream_cont');
+let stream_cont = document.querySelector('.camera_half');
 let scan_icon = document.querySelector('.scan_icon');
 
 
@@ -15,7 +15,7 @@ clear_button.addEventListener('click', inpute_cleaning);
 
 let options = {
     video: {
-    width: 1380, //height
+    width: 1380, //height0
     height: 1920, //width
     facingMode: {exact: "environment"},
     }
