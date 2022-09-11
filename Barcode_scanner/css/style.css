@@ -156,6 +156,7 @@ video {
 .input_zone.onfocus {
   position: absolute;
   bottom: 0;
+  margin-bottom: 1vh;
 }
 
 button {
@@ -211,7 +212,7 @@ input {
 
 .water_tag {
   position: absolute;
-  bottom: 1.5vh;
+  bottom: 0.5vh;
   z-index: 0;
   width: 100vw;
   height: 5vh;
@@ -219,5 +220,4 @@ input {
   text-align: center;
   line-height: 5vh;
   color: rgba(60, 64, 82, 0.4588235294);
-  background-color: rgba(87, 148, 167, 0.1215686275);
 }
