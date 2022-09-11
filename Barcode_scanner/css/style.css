@@ -226,13 +226,13 @@ input {
 .info_block {
   display: none;
   position: absolute;
-  bottom: 0;
+  top: 0;
   z-index: 4;
   color: #1d2325;
   width: 100vw;
   min-width: 0;
   background-color: #dbfae7;
-  box-shadow: inset 0px 0px 5px grey;
+  box-shadow: inset 0px 0px 15px grey;
   border: 1px solid black;
 }
 .info_block.info_on {
@@ -243,14 +243,14 @@ input {
   font-size: 5vh;
   line-height: 5vh;
   text-align: center;
-  padding: 4vh 3vw;
+  padding: 3vh 2vw;
 }
 
 .item_cont {
   position: relative;
   width: 100%;
   text-align: center;
-  margin-bottom: 2vh;
+  margin-bottom: 1vh;
 }
 
 .item_title {
