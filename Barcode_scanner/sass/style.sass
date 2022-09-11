@@ -32,6 +32,7 @@ body
     max-width: 550px
 
 .camera_block
+    // display: flex
     position: relative
     height: 100%
     margin-top: -2vh
@@ -39,10 +40,11 @@ body
     // background-color: #72949e88
     flex-shrink: 1
     // opacity: 0
-    &.onfocus
-        transition-duration: 0.1s
-        opacity: 0
-        pointer-events: none
+    &.onfocus   
+        display: none
+        // transition-duration: 0.1s
+        // opacity: 0
+        // pointer-events: none
 
 .stream_cont
     overflow: hidden
