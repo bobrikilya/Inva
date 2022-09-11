@@ -23,23 +23,31 @@
 </head>
 <body class="cont">
     <div class="container cont">
-        <div class="camera_half cont">
+        <div class="camera_block cont">
             <div class="stream_cont cont_size">
                 <video class="cont_size camera_zone" autoplay playsinline muted></video>
                 <div class="scan_icon cont_size camera_zone"></div>
             </div>
+            <div class="info_block cont cont_size">
+                <div class="item_name">Разъём компьютерный RJ-45</div>
+                <div class="item_price_cont item_cont cont">
+                    <div class="item_price_title item_title">Цена</div>
+                    <div class="item_price_value item_value">22р.</div>
+                </div>
+                <div class="item_discount_cont item_cont cont">
+                    <div class="item_discount_title item_title">Цена на акции</div>
+                    <div class="item_discount_value item_value">16р.</div>
+                </div>
+            </div>
             <button class="camera">Камера</button>
         </div>
-        <div class="input_zone cont">
+        <div class="input_block cont">
             <input type="text" placeholder="Штрих-код" maxlength="13" inputmode="numeric" onkeyup="this.value = this.value.replace (/\D/, '')">
             <div class="clear_search_cont">
                 <button class="clear">Очистка</button>
                 <button class="search">Поиск</button>
             </div>
         </div>
-        <!-- <div class="info_block">
-
-        </div> -->
         <div class="water_tag">ООО "Торговый дом "Стройпродукт"</div>
     </div>
     <script src="js/quagga.min.js"></script>

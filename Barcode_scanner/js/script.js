@@ -4,13 +4,15 @@ let camera_button = document.querySelector('.camera');
 let search_button = document.querySelector('.search');
 let clear_button = document.querySelector('.clear');
 let input = document.querySelector('input');
-let input_zone = document.querySelector('.input_zone');
-let stream_cont = document.querySelector('.camera_half');
+let input_zone = document.querySelector('.input_block');
+let stream_cont = document.querySelector('.camera_block');
 let scan_icon = document.querySelector('.scan_icon');
+let info_block = document.querySelector('.info_block');
 
 
 camera_button.addEventListener('click', camera_access);
 clear_button.addEventListener('click', inpute_cleaning);
+search_button.addEventListener('click', searching);
 
 
 let options = {
@@ -73,13 +75,39 @@ function toggle_camera(){
         Quagga.start();
         video.classList.add('camera_on');
         scan_icon.classList.add('camera_on');
+        input_zone.classList.remove('info_on');
+        info_block.classList.remove('info_on');
     };
 };
 
 function inpute_cleaning(){
     input_blur();
     input.value = '';
+    input_zone.classList.remove('info_on');
+    info_block.classList.remove('info_on');
 };
+
+function searching(){
+    // console.log('Hello');
+    if (input.value = '1') {
+        Quagga.pause();
+        input_blur();
+        input_zone.classList.add('info_on');
+        info_block.classList.add('info_on');
+        video.classList.remove('camera_on');
+        scan_icon.classList.remove('camera_on');
+    };
+};
+
+function request(code){
+    // Quagga.pause();
+    input.value = code;
+    input_blur();
+    input_zone.classList.add('info_on');
+    info_block.classList.add('info_on');
+    toggle_camera();
+};
+
 
 // Number filter
 input.addEventListener('keydown', (event) => {
@@ -128,6 +156,7 @@ function stream_start(){
             readers: ["ean_reader"],
             multiple: false,
         },
+        debug: false,
     }, function(err) {
         if (err) {
             console.log(err);
@@ -138,9 +167,7 @@ function stream_start(){
     });
 
     Quagga.onDetected((result) => {
-        Quagga.pause();
         let code = result.codeResult.code;
-        input.value = code;
-        toggle_camera();
+        request(code);
     });
 };

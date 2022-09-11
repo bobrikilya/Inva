@@ -69,6 +69,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .cont {
+  position: relative;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -81,7 +82,7 @@ body {
   max-width: 100%;
   height: 100%;
   font-family: "Nunito";
-  background-color: rgba(142, 178, 189, 0.5333333333);
+  background-color: rgba(114, 156, 170, 0.6784313725);
 }
 
 .container {
@@ -100,15 +101,14 @@ body {
   max-width: 550px;
 }
 
-.camera_half {
+.camera_block {
   position: relative;
   height: 100%;
   margin-top: -2vh;
   box-shadow: 0px 1px 5px grey;
-  background-color: rgba(114, 148, 158, 0.5333333333);
   flex-shrink: 1;
 }
-.camera_half.onfocus {
+.camera_block.onfocus {
   transition-duration: 0.1s;
   opacity: 0;
   pointer-events: none;
@@ -116,7 +116,7 @@ body {
 
 .stream_cont {
   overflow: hidden;
-  background: url("../img/not_available.png") center 52%/10vh no-repeat;
+  background: url("../img/not_available.png") center 53%/10vh no-repeat;
 }
 
 .camera_zone {
@@ -150,14 +150,17 @@ video {
   transition-duration: 0.1s;
 }
 
-.input_zone {
+.input_block {
   position: relative;
   z-index: 3;
   margin-bottom: 10vh;
 }
-.input_zone.onfocus {
+.input_block.onfocus {
   position: absolute;
   bottom: 0;
+  margin-bottom: 0;
+}
+.input_block.info_on {
   margin-bottom: 0;
 }
 
@@ -220,4 +223,49 @@ input {
   font-size: 1.5vh;
   text-align: center;
   color: rgba(60, 64, 82, 0.4588235294);
+}
+
+.info_block {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  z-index: 4;
+  color: #1d2325;
+  width: 100vw;
+  min-width: 0;
+  background-color: #dbfae7;
+  box-shadow: inset 0px 0px 5px grey;
+  border: 1px solid black;
+}
+.info_block.info_on {
+  display: flex;
+}
+
+.item_name {
+  font-size: 5vh;
+  line-height: 5vh;
+  text-align: center;
+  padding: 4vh 3vw;
+}
+
+.item_cont {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 2vh;
+}
+
+.item_title {
+  background-color: rgba(97, 231, 180, 0.8705882353);
+  width: 100%;
+  font-size: 4vh;
+  height: 6vh;
+  line-height: 6vh;
+}
+
+.item_value {
+  width: 100%;
+  font-size: 9vh;
+  height: 12vh;
+  line-height: 12vh;
 }

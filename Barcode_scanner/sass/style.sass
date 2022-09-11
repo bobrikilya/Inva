@@ -2,6 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap")
 
 .cont
+    position: relative
     overflow: hidden
     display: flex
     flex-direction: column
@@ -13,7 +14,7 @@ body
     max-width: 100%
     height: 100%
     font-family: "Nunito"
-    background-color: #8eb2bd88
+    background-color: #729caaad
 
 .container
     justify-content: space-between
@@ -30,13 +31,14 @@ body
     min-width: 260px
     max-width: 550px
 
-.camera_half
+.camera_block
     position: relative
     height: 100%
     margin-top: -2vh
     box-shadow: 0px 1px 5px grey
-    background-color: #72949e88
+    // background-color: #72949e88
     flex-shrink: 1
+    // opacity: 0
     &.onfocus
         transition-duration: 0.1s
         opacity: 0
@@ -44,7 +46,7 @@ body
 
 .stream_cont
     overflow: hidden
-    background: url("../img/not_available.png") center 52% / 10vh no-repeat
+    background: url("../img/not_available.png") center 53% / 10vh no-repeat
 
 .camera_zone
     overflow: hidden
@@ -73,13 +75,15 @@ video
     transition-duration: 0.1s
 
 
-.input_zone
+.input_block
     position: relative
     z-index: 3
     margin-bottom: 10vh
     &.onfocus
         position: absolute
         bottom: 0
+        margin-bottom: 0
+    &.info_on
         margin-bottom: 0
 
 button
@@ -89,7 +93,6 @@ button
     font-size: 1.7rem
     text-transform: lowercase
     color: #18191d
-
 
 
 input
@@ -138,3 +141,56 @@ $dist: 70px
     font-size: 1.5vh
     text-align: center
     color: #3c405275
+
+
+.info_block
+    display: none
+    position: absolute
+    bottom: 0
+    z-index: 4
+    color: #1d2325
+    width: 100vw
+    min-width: 0
+    // height: 100%
+    background-color: #dbfae7
+    box-shadow: inset 0px 0px 5px grey
+    border: 1px solid black
+    &.info_on
+        display: flex
+
+.item_name
+    font-size: 5vh
+    line-height: 5vh
+    text-align: center
+    // margin-top: 2vh
+    padding: 4vh 3vw
+    // background-color: #ffffff
+    // box-shadow: 0px 2px 15px grey
+
+.item_cont
+    position: relative
+    width: 100%
+    text-align: center
+    // border: 1px solid black
+    margin-bottom: 2vh
+
+.item_title
+    background-color: #61e7b4de
+    // box-shadow: 0px 2px 5px #61e7d5de
+    // border: 1px solid black
+    width: 100%
+    font-size: 4vh
+    height: 6vh
+    line-height: 6vh
+
+.item_value
+    // background-color: #ffffff
+    width: 100%
+    font-size: 9vh
+    height: 12vh
+    line-height: 12vh
+
+.item_price_title
+    
+
+.item_discount_title
