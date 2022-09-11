@@ -107,11 +107,12 @@ body {
 .camera_half.onfocus {
   transition-duration: 0.1s;
   opacity: 0;
+  pointer-events: none;
 }
 
 .stream_cont {
   overflow: hidden;
-  background: url("../img/not_available.png") center center/10vh no-repeat;
+  background: url("../img/not_available.png") center 52%/10vh no-repeat;
 }
 
 .camera_zone {
@@ -136,6 +137,16 @@ video {
   background: url("../img/scan_icon_big.png") center 52%/cover no-repeat;
 }
 
+.camera {
+  position: relative;
+  z-index: 4;
+  background-color: #9aabf7;
+  width: 100vw;
+  max-width: 550px;
+  transition-duration: 0.1s;
+  margin-top: -3vh;
+}
+
 .input_zone {
   position: relative;
   z-index: 3;
@@ -143,7 +154,8 @@ video {
   margin-bottom: 10vh;
 }
 .input_zone.onfocus {
-  margin-bottom: 5vh;
+  position: absolute;
+  bottom: 0;
 }
 
 button {
@@ -152,24 +164,11 @@ button {
   min-height: 5rem;
   font-size: 1.7rem;
   text-transform: lowercase;
-  color: black;
-}
-
-.camera {
-  position: relative;
-  z-index: 4;
-  background-color: #9aabf7;
-  width: 100vw;
-  max-width: 550px;
-  transition-duration: 0.1s;
-  margin-top: -2vh;
-}
-.camera.onfocus {
-  opacity: 0;
-  pointer-events: none;
+  color: #18191d;
 }
 
 input {
+  overflow: hidden;
   position: relative;
   z-index: 2;
   border: none;
@@ -208,4 +207,17 @@ input {
 }
 .clear:active {
   background-color: rgba(177, 47, 65, 0.8274509804);
+}
+
+.water_tag {
+  position: absolute;
+  bottom: 1.5vh;
+  z-index: 0;
+  width: 100vw;
+  height: 5vh;
+  font-size: 2.5vh;
+  text-align: center;
+  line-height: 5vh;
+  color: rgba(60, 64, 82, 0.4588235294);
+  background-color: rgba(87, 148, 167, 0.1215686275);
 }

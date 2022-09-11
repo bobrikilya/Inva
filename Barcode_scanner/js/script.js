@@ -107,14 +107,12 @@ function input_focus(){
     stream_cont.classList.add('onfocus');
     input_zone.classList.add('onfocus');
     input.classList.add('onfocus');
-    camera_button.classList.add('onfocus');
 };
 
 function input_blur(){
     stream_cont.classList.remove('onfocus');
     input_zone.classList.remove('onfocus');
     input.classList.remove('onfocus');
-    camera_button.classList.remove('onfocus');
 };
 
 
