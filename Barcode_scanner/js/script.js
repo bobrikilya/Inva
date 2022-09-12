@@ -20,8 +20,8 @@ search_button.addEventListener('click', searching);
 
 let options = {
     video: {
-    width: 1920, //height
-    height: 1920, //width
+    width: 2000, //height
+    height: 1800, //width
     facingMode: {exact: "environment"},
     }
 };
@@ -133,6 +133,10 @@ input.addEventListener('keydown', (event) => {
 	} else event.preventDefault();
 });
 
+input.addEventListener('keyup', (event) => {
+    if (event.key == 'Enter' && input_zone.classList.contains('onfocus')) searching();
+});
+
 
 document.addEventListener('click', (event) => {
     const insideInput = event.composedPath().includes(input);
@@ -150,12 +154,14 @@ function input_focus(){
     camera_block.classList.add('onfocus');
     input_zone.classList.add('onfocus');
     input.classList.add('onfocus');
+    water_tag.classList.add('hide');
 };
 
 function input_blur(){
     camera_block.classList.remove('onfocus');
     input_zone.classList.remove('onfocus');
     input.classList.remove('onfocus');
+    water_tag.classList.remove('hide');
 };
 
 
