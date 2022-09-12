@@ -10,6 +10,7 @@ let scan_icon = document.querySelector('.scan_icon');
 let info_block = document.querySelector('.info_block');
 
 
+
 camera_button.addEventListener('click', camera_access);
 clear_button.addEventListener('click', inpute_cleaning);
 search_button.addEventListener('click', searching);
@@ -89,7 +90,7 @@ function inpute_cleaning(){
 
 function searching(){
     // console.log('Hello');
-    if (input.value = '1') {
+    if (input.value == '1') {
         Quagga.pause();
         input_blur();
         input_zone.classList.add('info_on');

@@ -17,40 +17,39 @@ body
     background-color: #729caaad
 
 .container
+    position: relative
     justify-content: space-between
     width: 100vw
     height: 100vh
     max-width: 550px
-    box-shadow: 0px 0px 10px grey 
+    box-shadow: 0px 0px 10px grey
 
 
 .cont_size
     position: relative
     height: 100%
-    width: 160vw
+    width: 100vw
     min-width: 260px
     max-width: 550px
 
 .camera_block
-    // display: flex
     position: relative
     height: 100%
-    margin-top: -2vh
-    box-shadow: 0px 1px 5px grey
-    // background-color: #72949e88
+    width: 100vw
+    background-color: #72949e88
     flex-shrink: 1
-    // opacity: 0
-    &.onfocus   
+    border-radius: 30px
+    max-width: 550px
+    &.onfocus  
         display: none
-        // transition-duration: 0.1s
-        // opacity: 0
-        // pointer-events: none
 
 .stream_cont
     overflow: hidden
     background: url("../img/not_available.png") center 53% / 10vh no-repeat
+    width: 160vw
 
 .camera_zone
+    width: 160vw
     overflow: hidden
     opacity: 0
     transition-duration: 0.4s
@@ -68,6 +67,15 @@ video
     z-index: 2
     background: url("../img/scan_icon_big.png") center 52% / cover no-repeat
 
+button
+    width: 50vw
+    height: 5rem
+    min-height: 5rem
+    font-size: 1.7rem
+    text-transform: lowercase
+    color: #18191d
+    border-radius: 30px
+
 .camera
     position: relative
     z-index: 4
@@ -75,6 +83,7 @@ video
     width: 100vw
     max-width: 550px
     transition-duration: 0.1s
+    border-radius: 0 0 30px 30px
 
 
 .input_block
@@ -84,17 +93,10 @@ video
     &.onfocus
         position: absolute
         bottom: 0
-        margin-bottom: 0
+        margin-bottom: 4vh
     &.info_on
         margin-bottom: 0
 
-button
-    width: 50vw
-    height: 5rem
-    min-height: 5rem
-    font-size: 1.7rem
-    text-transform: lowercase
-    color: #18191d
 
 
 input
@@ -113,24 +115,26 @@ input
     min-height: 5rem
     font-size: 2.4rem
     color: #2e2f36
-    box-shadow: 0px 1px 5px grey
     background-color: white
     letter-spacing: 4px
+    border-radius: 30px
+    // margin: 1vh 0
 
 .clear_search_cont
     display: flex
-    box-shadow: 0px 0px 2px grey
 
 $dist: 70px
 .search
     background-color: #4ff1a0
     max-width: 275px
+    // border-radius: 0 30px 30px 0
     &:active
         background-color: #44c987
 
 .clear
     background-color: #e95b6e
     max-width: 275px
+    // border-radius: 30px 0 0 30px
     &:active
         background-color: #b12f41d3
 
@@ -143,6 +147,8 @@ $dist: 70px
     font-size: 1.5vh
     text-align: center
     color: #3c405275
+    &.camera_on
+        display: none
 
 
 .info_block
@@ -153,10 +159,10 @@ $dist: 70px
     color: #1d2325
     width: 100vw
     min-width: 0
-    // height: 100%
     background-color: #dbfae7
-    box-shadow: inset 0px 0px 15px grey
-    border: 1px solid black
+    box-shadow: inset 0px 0px 25px grey
+    margin: 0
+    padding: 0
     &.info_on
         display: flex
 
@@ -193,6 +199,6 @@ $dist: 70px
     line-height: 12vh
 
 .item_price_title
-    
+
 
 .item_discount_title
