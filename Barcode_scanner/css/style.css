@@ -79,53 +79,48 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 body {
-  max-width: 100%;
-  height: 100%;
+  max-width: 100vw;
+  height: 100vh;
   font-family: "Nunito";
   background-color: rgba(114, 156, 170, 0.6784313725);
 }
 
 .container {
-  position: relative;
-  justify-content: space-between;
-  width: 100vw;
   height: 100vh;
+  width: 100vw;
   max-width: 550px;
-}
-
-.cont_size {
-  position: relative;
-  height: 100%;
-  width: 100%;
-  min-width: 260px;
-  max-width: 550px;
+  min-width: 300px;
+  box-shadow: 0px 0px 10px grey;
+  padding: 0 20px;
 }
 
 .camera_block {
-  position: relative;
-  height: 100vh;
-  width: 95vw;
-  background-color: rgba(114, 148, 158, 0.5333333333);
   flex-shrink: 1;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(114, 148, 158, 0.5333333333);
   border-radius: 30px;
-  max-width: 550px;
-  margin-top: 1vh;
+  margin-top: 5vh;
 }
 .camera_block.onfocus {
   display: none;
 }
 
 .stream_cont {
-  overflow: hidden;
-  background: url("../img/not_available.png") center 53%/10vh no-repeat;
-  width: 160vw;
+  flex-shrink: 1;
+  width: 100%;
+  height: 100%;
+  background: url("../img/not_available.png") center 51%/10vh no-repeat;
+}
+.stream_cont.info_on {
+  display: none;
 }
 
 .camera_zone {
-  width: 160vw;
-  overflow: hidden;
-  opacity: 0;
+  width: 100%;
+  height: 100%;
   transition-duration: 0.4s;
+  opacity: 0;
 }
 .camera_zone.camera_on {
   transition-duration: 0.3s;
@@ -145,9 +140,8 @@ video {
 }
 
 button {
-  width: 47vw;
   height: 5rem;
-  min-height: 5rem;
+  width: 50%;
   font-size: 1.7rem;
   text-transform: lowercase;
   color: #18191d;
@@ -155,27 +149,28 @@ button {
 }
 
 .camera {
+  flex-shrink: 0;
   position: relative;
   z-index: 4;
   background-color: #9aabf7;
-  width: 100vw;
-  max-width: 550px;
+  width: 100%;
   transition-duration: 0.1s;
-  border-radius: 0 0 30px 30px;
+  border-radius: 0;
 }
 
 .input_block {
-  position: relative;
   z-index: 3;
   margin-bottom: 10vh;
+  width: 100%;
 }
 .input_block.onfocus {
   position: absolute;
+  width: 90%;
   bottom: 0;
-  margin-bottom: 10vh;
+  margin-bottom: 13vh;
 }
 .input_block.info_on {
-  margin-bottom: 0;
+  margin-bottom: 3vh;
 }
 
 input {
@@ -187,12 +182,9 @@ input {
   background: none;
   text-decoration: none;
   text-align: center;
-  width: 95vw;
-  min-width: 300px;
-  max-width: 550px;
+  width: 100%;
   height: 5rem;
-  min-height: 5rem;
-  font-size: 2.4rem;
+  font-size: 2.3rem;
   color: #2e2f36;
   background-color: white;
   letter-spacing: 4px;
@@ -201,12 +193,13 @@ input {
 }
 
 .clear_search_cont {
-  display: flex;
+  flex-direction: row;
+  width: 100%;
 }
 
 .search {
   background-color: #4ff1a0;
-  max-width: 275px;
+  width: 50%;
 }
 .search:active {
   background-color: #44c987;
@@ -214,7 +207,7 @@ input {
 
 .clear {
   background-color: #e95b6e;
-  max-width: 275px;
+  width: 50%;
 }
 .clear:active {
   background-color: rgba(177, 47, 65, 0.8274509804);
@@ -222,56 +215,62 @@ input {
 
 .water_tag {
   position: absolute;
-  bottom: 5px;
+  bottom: 3vh;
   z-index: 0;
-  width: 100vw;
-  font-size: 1.5vh;
+  width: 100%;
+  font-size: 2vh;
   text-align: center;
-  color: rgba(60, 64, 82, 0.4588235294);
+  color: rgba(47, 51, 68, 0.4588235294);
+}
+.water_tag.hide {
+  display: none;
 }
 
 .info_block {
-  display: none;
-  position: absolute;
-  top: 0;
-  z-index: 4;
+  flex-shrink: 1;
+  justify-content: flex-start;
   color: #1d2325;
-  width: 100vw;
-  min-width: 0;
-  background-color: #dbfae7;
-  box-shadow: inset 0px 0px 25px grey;
-  margin: 0;
-  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #effff5;
+  display: none;
 }
 .info_block.info_on {
   display: flex;
 }
 
 .item_name {
-  font-size: 5vh;
+  flex-shrink: 1;
+  width: 100%;
+  font-size: 4.2vh;
   line-height: 5vh;
   text-align: center;
-  padding: 3vh 2vw;
+  padding: 0 3vw;
+  padding-top: 2.5vh;
+  padding-bottom: 1vh;
+  margin-bottom: 1.5vh;
+  background-color: #c4a0ff;
 }
 
 .item_cont {
-  position: relative;
-  width: 100%;
+  width: 250px;
   text-align: center;
-  margin-bottom: 1vh;
+  margin-top: 1vh;
 }
 
 .item_title {
-  background-color: rgba(97, 231, 180, 0.8705882353);
+  background-color: #4ecc87;
   width: 100%;
-  font-size: 4vh;
-  height: 6vh;
-  line-height: 6vh;
+  font-size: 2rem;
+  height: 7vh;
+  line-height: 7vh;
+  padding: 0 3vw;
+  border-radius: 30px;
 }
 
 .item_value {
   width: 100%;
-  font-size: 9vh;
+  font-size: 3.5rem;
   height: 12vh;
   line-height: 12vh;
 }

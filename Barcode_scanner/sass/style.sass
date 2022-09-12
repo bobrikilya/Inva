@@ -11,52 +11,48 @@
     flex-shrink: 0
 
 body
-    max-width: 100%
-    height: 100%
+    max-width: 100vw
+    height: 100vh
     font-family: "Nunito"
     background-color: #729caaad
 
 .container
-    position: relative
-    justify-content: space-between
-    width: 100vw
     height: 100vh
+    width: 100vw
     max-width: 550px
-    // box-shadow: 0px 0px 10px grey
-
-
-.cont_size
-    position: relative
-    height: 100%
-    width: 100%
-    min-width: 260px
-    max-width: 550px
+    min-width: 300px
+    box-shadow: 0px 0px 10px grey
+    padding: 0 20px
 
 .camera_block
-    position: relative
-    height: 100vh
-    width: 95vw
-    background-color: #72949e88
     flex-shrink: 1
+    height: 100%
+    width: 100%
+    background-color: #72949e88
     border-radius: 30px
-    max-width: 550px
-    margin-top: 1vh
-    &.onfocus  
+    margin-top: 5vh
+    &.onfocus
         display: none
+    // border: 2px solid black
 
 .stream_cont
-    overflow: hidden
-    background: url("../img/not_available.png") center 53% / 10vh no-repeat
-    width: 160vw
+    flex-shrink: 1
+    width: 100%
+    height: 100%
+    background: url("../img/not_available.png") center 51% / 10vh no-repeat
+    &.info_on
+        display: none
+    // border: 2px solid green
 
 .camera_zone
-    width: 160vw
-    overflow: hidden
-    opacity: 0
+    width: 100%
+    height: 100%
     transition-duration: 0.4s
+    opacity: 0
     &.camera_on
         transition-duration: 0.3s
         opacity: 1
+    // border: 2px solid orange
 
 video
     z-index: 0
@@ -69,36 +65,37 @@ video
     background: url("../img/scan_icon_big.png") center 52% / cover no-repeat
 
 button
-    width: 47vw
     height: 5rem
-    min-height: 5rem
+    width: 50%
     font-size: 1.7rem
     text-transform: lowercase
     color: #18191d
     border-radius: 30px
 
 .camera
+    flex-shrink: 0
     position: relative
     z-index: 4
     background-color: #9aabf7
-    width: 100vw
-    max-width: 550px
+    width: 100%
     transition-duration: 0.1s
-    border-radius: 0 0 30px 30px
+    border-radius: 0
+    // border: 2px solid red
+
 
 
 .input_block
-    position: relative
     z-index: 3
     margin-bottom: 10vh
+    width: 100%
     &.onfocus
         position: absolute
+        width: 90%
         bottom: 0
-        margin-bottom: 10vh
+        margin-bottom: 13vh
     &.info_on
-        margin-bottom: 0
-
-
+        margin-bottom: 3vh
+    // border: 2px solid orange
 
 input
     overflow: hidden
@@ -109,12 +106,9 @@ input
     background: none
     text-decoration: none
     text-align: center
-    width: 95vw
-    min-width: 300px
-    max-width: 550px
+    width: 100%
     height: 5rem
-    min-height: 5rem
-    font-size: 2.4rem
+    font-size: 2.3rem
     color: #2e2f36
     background-color: white
     letter-spacing: 4px
@@ -122,80 +116,85 @@ input
     margin: 1vh 0
 
 .clear_search_cont
-    display: flex
+    flex-direction: row
+    width: 100%
+    // border: 2px solid red
 
-$dist: 70px
 .search
     background-color: #4ff1a0
-    max-width: 275px
-    // border-radius: 0 30px 30px 0
+    width: 50%
     &:active
         background-color: #44c987
 
 .clear
     background-color: #e95b6e
-    max-width: 275px
-    // border-radius: 30px 0 0 30px
+    width: 50%
     &:active
         background-color: #b12f41d3
 
 
 .water_tag
     position: absolute
-    bottom: 5px
+    bottom: 3vh
     z-index: 0
-    width: 100vw
-    font-size: 1.5vh
+    width: 100%
+    font-size: 2vh
     text-align: center
-    color: #3c405275
-    // &.camera_on
-    //     display: none
+    color: #2f334475
+    &.hide
+        display: none
+    // border: 2px solid white
 
 
 .info_block
-    display: none
-    position: absolute
-    top: 0
-    z-index: 4
+    flex-shrink: 1
+    justify-content: flex-start
     color: #1d2325
-    width: 100vw
-    min-width: 0
-    background-color: #dbfae7
-    box-shadow: inset 0px 0px 25px grey
-    margin: 0
-    padding: 0
+    width: 100%
+    height: 100%
+    background-color: #effff5
+    display: none
     &.info_on
         display: flex
+    // border: 2px solid green
 
 .item_name
-    font-size: 5vh
+    flex-shrink: 1
+    width: 100%
+    font-size: 4.2vh
     line-height: 5vh
     text-align: center
-    // margin-top: 2vh
-    padding: 3vh 2vw
-    // background-color: #ffffff
-    // box-shadow: 0px 2px 15px grey
+    padding: 0 3vw
+    padding-top: 2.5vh
+    padding-bottom: 1vh 
+    margin-bottom: 1.5vh 
+    background-color: #c4a0ff
+    // border: 2px solid red
 
 .item_cont
-    position: relative
-    width: 100%
+    width: 250px
     text-align: center
-    // border: 1px solid black
-    margin-bottom: 1vh
+    margin-top: 1vh
+    // background-color: #d0fce4
+    // border-radius: 30px
+    // border: 2px solid black
 
 .item_title
-    background-color: #61e7b4de
+    background-color: #4ecc87
     // box-shadow: 0px 2px 5px #61e7d5de
-    // border: 1px solid black
     width: 100%
-    font-size: 4vh
-    height: 6vh
-    line-height: 6vh
+    font-size: 2rem
+    height: 7vh
+    line-height: 7vh
+    padding: 0 3vw
+    border-radius: 30px
+    // border-radius: 0 0 10px 10px
+    // border: 2px solid red
 
 .item_value
     // background-color: #ffffff
     width: 100%
-    font-size: 9vh
+    font-size: 3.5rem
     height: 12vh
     line-height: 12vh
 
