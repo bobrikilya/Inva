@@ -170,7 +170,7 @@ button {
   margin-bottom: 13vh;
 }
 .input_block.info_on {
-  margin-bottom: 3vh;
+  margin-bottom: 5vh;
 }
 
 input {
@@ -215,10 +215,10 @@ input {
 
 .water_tag {
   position: absolute;
-  bottom: 3vh;
+  bottom: 5vh;
   z-index: 0;
   width: 100%;
-  font-size: 2vh;
+  font-size: 1rem;
   text-align: center;
   color: rgba(47, 51, 68, 0.4588235294);
 }
@@ -255,7 +255,6 @@ input {
 .item_cont {
   width: 250px;
   text-align: center;
-  margin-top: 1vh;
 }
 
 .item_title {
