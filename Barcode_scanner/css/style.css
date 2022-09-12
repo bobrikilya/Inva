@@ -253,23 +253,24 @@ input {
 }
 
 .item_cont {
-  width: 250px;
+  width: 70%;
   text-align: center;
 }
 
 .item_title {
   background-color: #4ecc87;
   width: 100%;
-  font-size: 2rem;
+  font-size: 3.8vh;
   height: 7vh;
   line-height: 7vh;
   padding: 0 3vw;
   border-radius: 30px;
+  white-space: nowrap;
 }
 
 .item_value {
   width: 100%;
-  font-size: 3.5rem;
-  height: 12vh;
-  line-height: 12vh;
+  font-size: 5.5vh;
+  height: 10vh;
+  line-height: 10vh;
 }
