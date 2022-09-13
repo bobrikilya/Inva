@@ -14,12 +14,17 @@ camera_button.addEventListener('click', camera_access);
 clear_button.addEventListener('click', inpute_cleaning);
 search_button.addEventListener('click', searching);
 
+// For easy working 
+const doc = window.document;
+const Moz = navigator.userAgent.includes('Mozilla');
+const fMode = Moz ? {exact: "user"} : {exact: "environment"};
+
 
 const options = {
     video: {
-    width: 2300, //height
+    width: 2250, //height
     height: 1800, //width
-    facingMode: {exact: "environment"},
+    facingMode: fMode,
     }
 };
 
@@ -27,6 +32,7 @@ const options = {
 // Camera access request
 function camera_access(){
     if (!video.classList.contains('active')){
+        video.classList.add('camera_on');
         if       (navigator.getUserMedia!=null) {
                   navigator.getUserMedia(options, getStream, noStream);
         // Chrome    
@@ -44,7 +50,6 @@ function camera_access(){
 };
 
 function getStream(stream){
-    video.classList.add('camera_on');
     input_zone.classList.remove('info_on');
     info_block.classList.remove('info_on');
     stream_cont.classList.remove('info_on');
@@ -114,12 +119,14 @@ function request(code){
 };
 
 function startFullScreen() {
-    const doc = window.document;
     const docEl = doc.documentElement;
     
     const requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen;
+
+    if(!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement) { 
+        requestFullScreen.call(docEl);
+    };
     
-    requestFullScreen.call(docEl);
     
 };
 
@@ -143,6 +150,12 @@ document.addEventListener('click', (event) => {
     const insideSearch = event.composedPath().includes(search_button);
     const insideClear = event.composedPath().includes(clear_button);
 
+    if (!Moz){
+        if(!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement) { 
+            startFullScreen();
+        };
+    };
+
     if (input_zone.classList.contains('onfocus') &&
     !insideInput && !insideSearch && !insideClear)
     input_blur()
@@ -150,16 +163,11 @@ document.addEventListener('click', (event) => {
     input_focus();
 });
 
-document.addEventListener('onTouchEvent', () =>{
-    if(!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement) { 
-        startFullScreen();
-      }
-});
 
-window.onbeforeunload = function() {
+window.onbeforeunload = () => {
     if(!doc.fullscreenElement && !doc.mozFullScreenElement 
-       && !doc.webkitFullscreenElement) { 
-        cancelFullScreen.call(doc); 
+       && !doc.webkitFullscreenElement) {
+        cancelFullScreen.call(doc);
     };
 };
 
