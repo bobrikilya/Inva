@@ -1,28 +1,37 @@
 
-let video = document.querySelector('video');
-let camera_button = document.querySelector('.camera');
-let search_button = document.querySelector('.search');
-let clear_button = document.querySelector('.clear');
-let input = document.querySelector('input');
-let input_zone = document.querySelector('.input_block');
-let camera_block = document.querySelector('.camera_block');
-let stream_cont = document.querySelector('.stream_cont');
-let scan_icon = document.querySelector('.scan_icon');
-let info_block = document.querySelector('.info_block');
-let water_tag = document.querySelector('.water_tag');
+const video = document.querySelector('video');
+const camera_button = document.querySelector('.camera');
+const search_button = document.querySelector('.search');
+const clear_button = document.querySelector('.clear');
+const input = document.querySelector('input');
+const input_zone = document.querySelector('.input_block');
+const camera_block = document.querySelector('.camera_block');
+const stream_cont = document.querySelector('.stream_cont');
+const scan_icon = document.querySelector('.scan_icon');
+const info_block = document.querySelector('.info_block');
+const water_tag = document.querySelector('.water_tag');
 
-window.scrollTo(0,1);
-// document.documentElement.requestFullScreen;
-// document.documentElement.webkitRequestFullScreen;
-// document.documentElement.mozRequestFullScreen;
-// element.requestFullScreen() || element.webkitRequestFullScreen || element.mozRequestFullScreen;
+// function toggleFullScreen() {
+//     const doc = window.document;
+//     const docEl = doc.documentElement;
+    
+//     let requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen;
+//     let cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen;
+    
+//     if(!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement) { 
+//       requestFullScreen.call(docEl);
+//     }
+//     else {
+//       cancelFullScreen.call(doc);
+//     }
+// };
 
 camera_button.addEventListener('click', camera_access);
 clear_button.addEventListener('click', inpute_cleaning);
 search_button.addEventListener('click', searching);
 
 
-let options = {
+const options = {
     video: {
     width: 2000, //height
     height: 1800, //width
@@ -192,7 +201,7 @@ function stream_start(){
     });
 
     Quagga.onDetected((result) => {
-        let code = result.codeResult.code;
+        const code = result.codeResult.code;
         request(code);
     });
 };
