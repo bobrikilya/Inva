@@ -14,11 +14,14 @@ camera_button.addEventListener('click', camera_access);
 clear_button.addEventListener('click', inpute_cleaning);
 search_button.addEventListener('click', searching);
 
-// For easy working 
 const doc = window.document;
-const Moz = navigator.userAgent.includes('Mozilla/5.0 (iPhone;', 'Mozilla/5.0 (Linux;');
+
+// For easy working 
+const Moz = navigator.userAgent.includes('Mozilla/5.0 (iPhone;') || 
+            navigator.userAgent.includes('Mozilla/5.0 (Linux;');
 const fMode = Moz ? {exact: "user"} : {exact: "environment"};
-console.log(navigator.userAgent)
+// console.log(navigator.userAgent)
+alert(Moz)
 
 
 const options = {
