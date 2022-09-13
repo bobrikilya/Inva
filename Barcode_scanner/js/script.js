@@ -22,7 +22,7 @@ const fMode = Moz ? {exact: "user"} : {exact: "environment"};
 
 const options = {
     video: {
-    width: 2210, //height
+    width: 2200, //height
     height: 1800, //width
     facingMode: fMode,
     }
@@ -167,9 +167,6 @@ document.addEventListener('click', (event) => {
     input_focus();
 });
 
-document.addEventListener('keyup', (event) => {
-    alert(event.key);
-});
 
 window.onbeforeunload = () => {
     if(!doc.fullscreenElement && !doc.mozFullScreenElement 

@@ -28,14 +28,21 @@ body
     flex-shrink: 1
     height: 100%
     width: 100%
-    background-color: #72949e88
-    border-radius: 20px
     margin-top: 4vh
     &.onfocus
         display: none
     // border: 2px solid black
 
+.bg_cont
+    flex-shrink: 1
+    height: 100%
+    width: 100%
+    background-color: #72949e88
+    margin-bottom: 1vh
+    border-radius: 20px
+
 .stream_cont
+    display: none
     flex-shrink: 1
     width: 100%
     height: 100%
@@ -80,7 +87,7 @@ button
     width: 100%
     transition-duration: 0.1s
     border-radius: 0
-    border-radius: 20px 20px 0 0
+    border-radius: 20px
     // border: 2px solid red
 
 
@@ -91,7 +98,7 @@ button
     width: 100%
     &.onfocus
         position: absolute
-        width: 90%
+        width: 95%
         bottom: 0
         margin-bottom: 7vh
     &.info_on
@@ -142,7 +149,7 @@ input
     width: 100%
     font-size: 1rem
     text-align: center
-    color: #2f334475
+    color: #272b3d75
     &.hide
         display: none
     // border: 2px solid white
@@ -155,45 +162,69 @@ input
     width: 100%
     height: 100%
     background-color: #ffffff
-    display: none
+    // display: none
     &.info_on
         display: flex
     // border: 2px solid green
 
 .item_name
     flex-shrink: 1
-    width: 100%
+    width: 95%
     font-size: 4.2vh
     line-height: 5vh
     text-align: center
-    padding: 0 3vw
-    padding-top: 2.5vh
-    padding-bottom: 1.3vh 
-    margin-bottom: 2.5vh 
-    background-color: #c4a0ff
+    padding: 1vh 3vw
+    margin-top: 1.3vh
+    margin-bottom: 2.5vh
+    border-radius: 20px
+    background-color: #c4a0ffdc
     // border: 2px solid red
 
+.price_cont
+    flex-shrink: 1
+    min-width: 70%
+    height: 100%
+    align-items: center
+    justify-content: flex-start
+    // border: 2px solid yellow
+
 .item_cont
-    width: 70%
+    flex-shrink: 0
+    flex-direction: row
+    min-height: 11vh
+    width: 100%
+    border-radius: 20px
+    margin-bottom: 2.5vh
     text-align: center
     // border: 2px solid black
 
-.item_title
-    background-color: #4ecc87
-    // box-shadow: 0px 2px 5px #61e7d5de
-    width: 100%
-    font-size: 3.8vh
-    height: 7vh
-    line-height: 7vh
-    padding: 0 3vw
-    border-radius: 20px
-    white-space: nowrap
-      // border: 2px solid red
+.item_price_cont
+    background-color: #74fdadcb
 
-.item_value
-    // background-color: #ffffff
-    width: 100%
-    font-size: 5.5vh
-    height: 10vh
-    line-height: 10vh
+.item_discount_cont
+    background-color: #faf897
+
+.item_title
+    width: 50%
+    padding-right: 3vw
+    font-size: 3.5vh
+    text-align: end
+    // border: 2px solid blue
+
+.price_val
+    align-items: flex-start
+    // border: 3px solid pink
+
+.item_value_r
+    width: 50%
+    margin-left: 3vw
+    margin-bottom: 0.5vh
+    font-size: 4.5vh
     // border: 2px solid red
+
+.item_value_c
+    color: #575f5b
+    width: 50%
+    margin-left: 4vw
+    font-size: 3.2vh
+    // border: 2px solid green
