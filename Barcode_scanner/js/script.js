@@ -16,8 +16,9 @@ search_button.addEventListener('click', searching);
 
 // For easy working 
 const doc = window.document;
-const Moz = navigator.userAgent.includes('Mozilla');
+const Moz = navigator.userAgent.includes('Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X)');
 const fMode = Moz ? {exact: "user"} : {exact: "environment"};
+console.log(navigator.userAgent)
 
 
 const options = {
