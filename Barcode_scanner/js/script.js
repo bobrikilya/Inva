@@ -144,6 +144,7 @@ input.addEventListener('keyup', (event) => {
     if (event.key == 'Enter' && input_zone.classList.contains('onfocus')) searching();
 });
 
+
 input.addEventListener('blur', () => {
     input_blur();
 });
@@ -166,6 +167,9 @@ document.addEventListener('click', (event) => {
     input_focus();
 });
 
+document.addEventListener('keyup', (event) => {
+    alert(event.key);
+});
 
 window.onbeforeunload = () => {
     if(!doc.fullscreenElement && !doc.mozFullScreenElement 
