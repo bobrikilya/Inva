@@ -9,7 +9,7 @@ const camera_block = document.querySelector('.camera_block');
 const stream_cont = document.querySelector('.stream_cont');
 const scan_icon = document.querySelector('.scan_icon');
 const info_block = document.querySelector('.info_block');
-const water_tag = document.querySelector('.water_tag');
+// const water_tag = document.querySelector('.water_tag');
 
 camera_button.addEventListener('click', camera_access);
 clear_button.addEventListener('click', inpute_cleaning);
@@ -18,7 +18,7 @@ search_button.addEventListener('click', searching);
 
 const options = {
     video: {
-    width: 2000, //height
+    width: 2200, //height
     height: 1800, //width
     facingMode: {exact: "environment"},
     }
@@ -49,7 +49,7 @@ function getStream(stream){
     input_zone.classList.remove('info_on');
     info_block.classList.remove('info_on');
     stream_cont.classList.remove('info_on');
-    water_tag.classList.remove('hide');
+    // water_tag.classList.remove('hide');
     video.srcObject = stream;
     video.onloadedmetadata = function(){
         video.play();
@@ -83,7 +83,7 @@ function toggle_camera(){
         input_zone.classList.remove('info_on');
         info_block.classList.remove('info_on');
         stream_cont.classList.remove('info_on');
-        water_tag.classList.remove('hide');
+        // water_tag.classList.remove('hide');
     };
 };
 
@@ -93,7 +93,7 @@ function inpute_cleaning(){
     input_zone.classList.remove('info_on');
     info_block.classList.remove('info_on');
     stream_cont.classList.remove('info_on');
-    water_tag.classList.remove('hide');
+    // water_tag.classList.remove('hide');
 };
 
 function searching(){
@@ -103,7 +103,7 @@ function searching(){
         input_zone.classList.add('info_on');
         info_block.classList.add('info_on');
         stream_cont.classList.add('info_on');
-        water_tag.classList.add('hide');
+        // water_tag.classList.add('hide');
         video.classList.remove('camera_on');
         scan_icon.classList.remove('camera_on');
     };
@@ -115,7 +115,7 @@ function request(code){
     input_zone.classList.add('info_on');
     info_block.classList.add('info_on');
     stream_cont.classList.add('info_on');
-    water_tag.classList.add('hide');
+    // water_tag.classList.add('hide');
     toggle_camera();
 };
 
@@ -170,14 +170,14 @@ function input_focus(){
     camera_block.classList.add('onfocus');
     input_zone.classList.add('onfocus');
     input.classList.add('onfocus');
-    water_tag.classList.add('hide');
+    // water_tag.classList.add('hide');
 };
 
 function input_blur(){
     camera_block.classList.remove('onfocus');
     input_zone.classList.remove('onfocus');
     input.classList.remove('onfocus');
-    water_tag.classList.remove('hide');
+    // water_tag.classList.remove('hide');
 };
 
 
