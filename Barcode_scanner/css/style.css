@@ -114,7 +114,6 @@ body {
 }
 
 .stream_cont {
-  display: none;
   flex-shrink: 1;
   width: 100%;
   height: 100%;
@@ -243,6 +242,7 @@ input {
   width: 100%;
   height: 100%;
   background-color: #ffffff;
+  display: none;
 }
 .info_block.info_on {
   display: flex;
