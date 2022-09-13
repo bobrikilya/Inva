@@ -16,7 +16,8 @@ search_button.addEventListener('click', searching);
 
 // For easy working 
 const doc = window.document;
-const mobile = navigator.userAgent.mobile;
+// const mobile = navigator.userAgent.mobile;
+const mobile = true;
 const fMode = mobile ? {exact: "environment"} : {exact: "user"};
 // console.log(navigator.userAgentData.mobile);
 
