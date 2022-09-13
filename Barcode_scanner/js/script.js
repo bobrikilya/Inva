@@ -97,7 +97,6 @@ function inpute_cleaning(){
 };
 
 function searching(){
-    // console.log('Hello');
     if (input.value == '1') {
         Quagga.pause();
         input_blur();
@@ -111,7 +110,6 @@ function searching(){
 };
 
 function request(code){
-    // Quagga.pause();
     input.value = code;
     input_blur();
     input_zone.classList.add('info_on');
@@ -161,8 +159,12 @@ document.addEventListener('click', (event) => {
     input_focus();
 });
 
-
-// document.addEventListener("DOMContentLoaded", () => {setTimeout(startFullScreen, 1000)})
+window.onbeforeunload = function() {
+    if(   !doc.fullscreenElement && !doc.mozFullScreenElement 
+       && !doc.webkitFullscreenElement) { 
+        cancelFullScreen.call(doc); 
+    };
+};
 
 function input_focus(){
     camera_block.classList.add('onfocus');
