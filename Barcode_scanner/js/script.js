@@ -18,12 +18,11 @@ search_button.addEventListener('click', searching);
 const doc = window.document;
 const Moz = navigator.userAgent.includes('Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X)');
 const fMode = Moz ? {exact: "user"} : {exact: "environment"};
-console.log(navigator.userAgent)
 
 
 const options = {
     video: {
-    width: 2250, //height
+    width: 2210, //height
     height: 1800, //width
     facingMode: fMode,
     }
@@ -145,6 +144,9 @@ input.addEventListener('keyup', (event) => {
     if (event.key == 'Enter' && input_zone.classList.contains('onfocus')) searching();
 });
 
+input.addEventListener('blur', () => {
+    input_blur();
+});
 
 document.addEventListener('click', (event) => {
     const insideInput = event.composedPath().includes(input);
