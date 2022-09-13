@@ -22,7 +22,7 @@ const fMode = Moz ? {exact: "user"} : {exact: "environment"};
 
 const options = {
     video: {
-    width: 2200, //height
+    width: 2205, //height
     height: 1800, //width
     facingMode: fMode,
     }
@@ -35,15 +35,18 @@ function camera_access(){
         video.classList.add('camera_on');
         if       (navigator.getUserMedia!=null) {
                   navigator.getUserMedia(options, getStream, noStream);
-        // Chrome    
+        // Chrome
         }else if (navigator.webkitGetUserMedia!=null){
                   navigator.webkitGetUserMedia(options, getStream, noStream);
         // Firefox
         }else if (navigator.mozGetUserMedia!=null){
                   navigator.mozGetUserMedia(options, getStream, noStream);
         // Other
-        }else if (navigator.msUserMedia!=null){
+        }else if (navigator.msGetUserMedia!=null){
                   navigator.msGetUserMedia(options, getStream, noStream);
+        // Apple
+        }else if  (navigator.mediaDevices.getUserMedia!=null){
+                  navigator.mediaDevices.getUserMedia(options, getStream, noStream);
 
         }else alert("Камера не найдена");
     }else toggle_camera(); 
@@ -167,11 +170,13 @@ document.addEventListener('click', (event) => {
     input_focus();
 });
 
-
-window.onbeforeunload = () => {
+// window.onbeforeunload = () => {
+window.onpagehide = () => {
     if(!doc.fullscreenElement && !doc.mozFullScreenElement 
        && !doc.webkitFullscreenElement) {
         cancelFullScreen.call(doc);
+        video.classList.remove('camera_on');
+        scan_icon.classList.remove('camera_on');
     };
 };
 
