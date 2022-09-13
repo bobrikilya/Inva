@@ -9,7 +9,6 @@ const camera_block = document.querySelector('.camera_block');
 const stream_cont = document.querySelector('.stream_cont');
 const scan_icon = document.querySelector('.scan_icon');
 const info_block = document.querySelector('.info_block');
-// const water_tag = document.querySelector('.water_tag');
 
 camera_button.addEventListener('click', camera_access);
 clear_button.addEventListener('click', inpute_cleaning);
@@ -18,7 +17,7 @@ search_button.addEventListener('click', searching);
 
 const options = {
     video: {
-    width: 2200, //height
+    width: 2300, //height
     height: 1800, //width
     facingMode: {exact: "environment"},
     }
@@ -49,7 +48,6 @@ function getStream(stream){
     input_zone.classList.remove('info_on');
     info_block.classList.remove('info_on');
     stream_cont.classList.remove('info_on');
-    // water_tag.classList.remove('hide');
     video.srcObject = stream;
     video.onloadedmetadata = function(){
         video.play();
@@ -83,7 +81,6 @@ function toggle_camera(){
         input_zone.classList.remove('info_on');
         info_block.classList.remove('info_on');
         stream_cont.classList.remove('info_on');
-        // water_tag.classList.remove('hide');
     };
 };
 
@@ -93,17 +90,15 @@ function inpute_cleaning(){
     input_zone.classList.remove('info_on');
     info_block.classList.remove('info_on');
     stream_cont.classList.remove('info_on');
-    // water_tag.classList.remove('hide');
 };
 
 function searching(){
     if (input.value == '1') {
-        Quagga.pause();
         input_blur();
+        Quagga.pause();
         input_zone.classList.add('info_on');
         info_block.classList.add('info_on');
         stream_cont.classList.add('info_on');
-        // water_tag.classList.add('hide');
         video.classList.remove('camera_on');
         scan_icon.classList.remove('camera_on');
     };
@@ -115,7 +110,6 @@ function request(code){
     input_zone.classList.add('info_on');
     info_block.classList.add('info_on');
     stream_cont.classList.add('info_on');
-    // water_tag.classList.add('hide');
     toggle_camera();
 };
 
@@ -125,9 +119,8 @@ function startFullScreen() {
     
     const requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen;
     
-    if(!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement) { 
-      requestFullScreen.call(docEl);
-    }
+    requestFullScreen.call(docEl);
+    
 };
 
 
@@ -149,8 +142,6 @@ document.addEventListener('click', (event) => {
     const insideInput = event.composedPath().includes(input);
     const insideSearch = event.composedPath().includes(search_button);
     const insideClear = event.composedPath().includes(clear_button);
-    
-    startFullScreen();
 
     if (input_zone.classList.contains('onfocus') &&
     !insideInput && !insideSearch && !insideClear)
@@ -159,8 +150,14 @@ document.addEventListener('click', (event) => {
     input_focus();
 });
 
+document.addEventListener('onTouchEvent', () =>{
+    if(!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement) { 
+        startFullScreen();
+      }
+});
+
 window.onbeforeunload = function() {
-    if(   !doc.fullscreenElement && !doc.mozFullScreenElement 
+    if(!doc.fullscreenElement && !doc.mozFullScreenElement 
        && !doc.webkitFullscreenElement) { 
         cancelFullScreen.call(doc); 
     };
@@ -170,14 +167,12 @@ function input_focus(){
     camera_block.classList.add('onfocus');
     input_zone.classList.add('onfocus');
     input.classList.add('onfocus');
-    // water_tag.classList.add('hide');
 };
 
 function input_blur(){
     camera_block.classList.remove('onfocus');
     input_zone.classList.remove('onfocus');
     input.classList.remove('onfocus');
-    // water_tag.classList.remove('hide');
 };
 
 
