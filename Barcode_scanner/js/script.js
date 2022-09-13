@@ -11,21 +11,6 @@ const scan_icon = document.querySelector('.scan_icon');
 const info_block = document.querySelector('.info_block');
 const water_tag = document.querySelector('.water_tag');
 
-// function toggleFullScreen() {
-//     const doc = window.document;
-//     const docEl = doc.documentElement;
-    
-//     let requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen;
-//     let cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen;
-    
-//     if(!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement) { 
-//       requestFullScreen.call(docEl);
-//     }
-//     else {
-//       cancelFullScreen.call(doc);
-//     }
-// };
-
 camera_button.addEventListener('click', camera_access);
 clear_button.addEventListener('click', inpute_cleaning);
 search_button.addEventListener('click', searching);
@@ -136,6 +121,17 @@ function request(code){
     toggle_camera();
 };
 
+function startFullScreen() {
+    const doc = window.document;
+    const docEl = doc.documentElement;
+    
+    const requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen;
+    
+    if(!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement) { 
+      requestFullScreen.call(docEl);
+    }
+};
+
 
 // Number filter
 input.addEventListener('keydown', (event) => {
@@ -156,12 +152,17 @@ document.addEventListener('click', (event) => {
     const insideSearch = event.composedPath().includes(search_button);
     const insideClear = event.composedPath().includes(clear_button);
     
+    startFullScreen();
+
     if (input_zone.classList.contains('onfocus') &&
     !insideInput && !insideSearch && !insideClear)
     input_blur()
     else if (insideInput && !input_zone.classList.contains('onfocus'))
     input_focus();
 });
+
+
+// document.addEventListener("DOMContentLoaded", () => {setTimeout(startFullScreen, 1000)})
 
 function input_focus(){
     camera_block.classList.add('onfocus');
