@@ -91,7 +91,7 @@ body {
   max-width: 550px;
   min-width: 300px;
   box-shadow: 0px 0px 10px grey;
-  padding: 0 20px;
+  padding: 0 10px;
 }
 
 .camera_block {
@@ -99,7 +99,7 @@ body {
   height: 100%;
   width: 100%;
   background-color: rgba(114, 148, 158, 0.5333333333);
-  border-radius: 30px;
+  border-radius: 20px;
   margin-top: 5vh;
 }
 .camera_block.onfocus {
@@ -145,7 +145,7 @@ button {
   font-size: 1.7rem;
   text-transform: lowercase;
   color: #18191d;
-  border-radius: 30px;
+  border-radius: 20px;
 }
 
 .camera {
@@ -188,18 +188,19 @@ input {
   color: #2e2f36;
   background-color: white;
   letter-spacing: 4px;
-  border-radius: 30px;
+  border-radius: 20px;
   margin: 1vh 0;
 }
 
 .clear_search_cont {
   flex-direction: row;
   width: 100%;
+  justify-content: space-between;
 }
 
 .search {
   background-color: #4ff1a0;
-  width: 50%;
+  width: 49.5%;
 }
 .search:active {
   background-color: #44c987;
@@ -207,7 +208,7 @@ input {
 
 .clear {
   background-color: #e95b6e;
-  width: 50%;
+  width: 49.5%;
 }
 .clear:active {
   background-color: rgba(177, 47, 65, 0.8274509804);
@@ -232,7 +233,7 @@ input {
   color: #1d2325;
   width: 100%;
   height: 100%;
-  background-color: #effff5;
+  background-color: #ffffff;
   display: none;
 }
 .info_block.info_on {
@@ -264,7 +265,7 @@ input {
   height: 7vh;
   line-height: 7vh;
   padding: 0 3vw;
-  border-radius: 30px;
+  border-radius: 20px;
   white-space: nowrap;
 }
 

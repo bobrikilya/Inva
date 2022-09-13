@@ -11,7 +11,11 @@ let scan_icon = document.querySelector('.scan_icon');
 let info_block = document.querySelector('.info_block');
 let water_tag = document.querySelector('.water_tag');
 
-
+window.scrollTo(0,1);
+// document.documentElement.requestFullScreen;
+// document.documentElement.webkitRequestFullScreen;
+// document.documentElement.mozRequestFullScreen;
+// element.requestFullScreen() || element.webkitRequestFullScreen || element.mozRequestFullScreen;
 
 camera_button.addEventListener('click', camera_access);
 clear_button.addEventListener('click', inpute_cleaning);
