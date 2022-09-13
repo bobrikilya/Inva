@@ -170,8 +170,8 @@ document.addEventListener('click', (event) => {
     input_focus();
 });
 
-// window.onbeforeunload = () => {
-window.onpagehide = () => {
+window.onbeforeunload = () => {
+// window.onpagehide = () => {
     if(!doc.fullscreenElement && !doc.mozFullScreenElement 
        && !doc.webkitFullscreenElement) {
         cancelFullScreen.call(doc);
