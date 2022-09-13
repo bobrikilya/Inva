@@ -16,8 +16,9 @@ search_button.addEventListener('click', searching);
 
 // For easy working 
 const doc = window.document;
-const Moz = navigator.userAgent.includes('Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X)');
-const fMode = Moz ? {exact: "user"} : {exact: "environment"};
+const mobile = navigator.userAgent.mobile;
+const fMode = mobile ? {exact: "environment"} : {exact: "user"};
+// console.log(navigator.userAgentData.mobile);
 
 
 const options = {
@@ -157,7 +158,7 @@ document.addEventListener('click', (event) => {
     const insideSearch = event.composedPath().includes(search_button);
     const insideClear = event.composedPath().includes(clear_button);
 
-    if (!Moz){
+    if (mobile){
         if(!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement) { 
             startFullScreen();
         };
