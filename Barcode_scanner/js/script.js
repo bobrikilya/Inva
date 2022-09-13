@@ -17,11 +17,10 @@ search_button.addEventListener('click', searching);
 const doc = window.document;
 
 // For easy working 
-const Moz = navigator.userAgent.includes('Mozilla/5.0 (iPhone;') || 
-            navigator.userAgent.includes('Mozilla/5.0 (Linux;');
+const Moz = navigator.userAgent.includes('Mozilla/5.0 (iPhone;');
 const fMode = Moz ? {exact: "user"} : {exact: "environment"};
 // console.log(navigator.userAgent)
-alert(Moz)
+// alert(Moz)
 
 
 const options = {
