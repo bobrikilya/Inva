@@ -280,7 +280,7 @@ input {
   background-color: rgba(116, 253, 173, 0.2666666667);
 }
 .item_price_cont img {
-  height: 6vh;
+  height: 5vh;
   margin-left: 1.5vw;
 }
 
@@ -288,16 +288,16 @@ input {
   background-color: rgba(250, 248, 151, 0.5568627451);
 }
 .item_discount_cont img {
-  height: 5.7vh;
+  height: 4.7vh;
   margin-left: 2vw;
-  opacity: 0.7;
+  opacity: 0.75;
 }
 
 .item_balance_cont {
   background-color: rgba(255, 166, 225, 0.2039215686);
 }
 .item_balance_cont img {
-  height: 5.7vh;
+  height: 4.6vh;
   margin-left: 2.4vw;
   opacity: 0.8;
 }
