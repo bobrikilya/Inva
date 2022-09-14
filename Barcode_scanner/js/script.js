@@ -25,7 +25,7 @@ const fMode = Moz ? {exact: "user"} : {exact: "environment"};
 
 const options = {
     video: {
-    width: 2205, //height
+    width: 2250, //height
     height: 1800, //width
     facingMode: fMode,
     }
