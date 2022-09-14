@@ -19,7 +19,7 @@ const doc = window.document;
 
 // For easy working 
 // const Moz = navigator.userAgent.includes('Mozilla/5.0 (iPhone;');
-const Moz = false
+const Moz = true
 const fMode = Moz ? {exact: "user"} : {exact: "environment"};
 // console.log(navigator.userAgent)
 // alert(Moz)
@@ -54,7 +54,11 @@ function camera_access(){
                 // navigator.mediaDevices.getUserMedia(options, getStream, noStream);
                 navigator.mediaDevices.getUserMedia(options).then(getStream).catch(noStream);
 
-        }else alert("Камера не найдена");
+        }else () => {
+            alert("Камера не найдена");
+            video.classList.remove('camera_on');
+            scan_icon.classList.remove('camera_on');
+        }
     }else toggle_camera(); 
 };
 
