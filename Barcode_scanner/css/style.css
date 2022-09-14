@@ -260,7 +260,7 @@ input {
 
 .price_cont {
   flex-shrink: 1;
-  min-width: 250px;
+  min-width: 260px;
   width: 70%;
   height: 100%;
   align-items: center;
@@ -285,26 +285,26 @@ input {
 
 .item_title {
   width: 50%;
-  margin-right: 2.5vw;
-  font-size: 3.5vh;
+  margin-right: 2.2vw;
+  font-size: 3.3vh;
   white-space: nowrap;
   text-align: end;
 }
 
 .price_val {
   width: 50%;
-  margin-left: 2.5vw;
+  margin-left: 2.2vw;
   align-items: flex-start;
 }
 
 .item_value_r {
   margin-bottom: 0.5vh;
-  font-size: 4.5vh;
+  font-size: 4.3vh;
 }
 
 .item_value_c {
   color: #575f5b;
   width: 50%;
   margin-left: 0.5vw;
-  font-size: 3.2vh;
+  font-size: 3vh;
 }
