@@ -42,6 +42,7 @@ body
     border-radius: 25px
 
 .stream_cont
+    display: none
     flex-shrink: 1
     width: 100%
     height: 100%
@@ -99,7 +100,7 @@ button
         position: absolute
         width: 95%
         bottom: 0
-        margin-bottom: 3vh
+        margin-bottom: 1vh
     &.info_on
         margin-bottom: 5vh
     // border: 2px solid orange
@@ -149,9 +150,8 @@ input
     font-size: 1rem
     text-align: center
     color: #272b3d75
-    &.hide
-        display: none
     // border: 2px solid white
+
 
 
 .info_block
@@ -161,7 +161,7 @@ input
     width: 100%
     height: 100%
     background-color: #ffffff
-    display: none
+    // display: none
     &.info_on
         display: flex
     // border: 2px solid green
@@ -172,8 +172,8 @@ input
     font-size: 4.2vh
     line-height: 5vh
     text-align: center
-    padding: 1vh 3vw
-    margin-top: 1.3vh
+    padding: 1.5vh 3vw
+    margin-top: 2vh
     margin-bottom: 2.5vh
     border-radius: 25px
     background-color: #c4a0ffdc
@@ -181,21 +181,20 @@ input
 
 .price_cont
     flex-shrink: 1
-    min-width: 70%
+    min-width: 230px
+    width: 70%
     height: 100%
     align-items: center
     justify-content: flex-start
-    // border: 2px solid yellow
+    // border: 2px solid green
 
 .item_cont
-    flex-shrink: 0
     flex-direction: row
-    min-height: 11vh
     width: 100%
+    min-height: 11vh
     border-radius: 25px
     margin-bottom: 2.5vh
-    text-align: center
-    // border: 2px solid black
+
 
 .item_price_cont
     background-color: #74fdadcb
@@ -205,18 +204,18 @@ input
 
 .item_title
     width: 50%
-    padding-right: 5vw
+    margin-right: 2.5vw
     font-size: 3.5vh
     text-align: end
     // border: 2px solid blue
 
 .price_val
+    width: 50%
+    margin-left: 2.5vw
     align-items: flex-start
     // border: 3px solid pink
 
 .item_value_r
-    width: 50%
-    margin-left: 1vw
     margin-bottom: 0.5vh
     font-size: 4.5vh
     // border: 2px solid red
@@ -224,6 +223,6 @@ input
 .item_value_c
     color: #575f5b
     width: 50%
-    margin-left: 1.5vw
+    margin-left: 0.5vw
     font-size: 3.2vh
     // border: 2px solid green

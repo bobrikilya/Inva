@@ -9,6 +9,7 @@ const camera_block = document.querySelector('.camera_block');
 const stream_cont = document.querySelector('.stream_cont');
 const scan_icon = document.querySelector('.scan_icon');
 const info_block = document.querySelector('.info_block');
+const water_tag = document.querySelector('.water_tag');
 
 camera_button.addEventListener('click', camera_access);
 clear_button.addEventListener('click', inpute_cleaning);
@@ -25,7 +26,7 @@ const fMode = Moz ? {exact: "user"} : {exact: "environment"};
 
 const options = {
     video: {
-    width: 2250, //height
+    width: 2255, //height
     height: 1800, //width
     facingMode: fMode,
     }
@@ -47,7 +48,7 @@ function camera_access(){
         // // Other
         // }else if (navigator.msGetUserMedia!=null){
         //           navigator.msGetUserMedia(options, getStream, noStream);
-        // // Apple
+        // Apple
         if  (navigator.getUserMedia != null){
                 // navigator.mediaDevices.getUserMedia(options, getStream, noStream);
                 navigator.mediaDevices.getUserMedia(options).then(getStream).catch(noStream);
@@ -172,26 +173,19 @@ document.addEventListener('click', (event) => {
     input_focus();
 });
 
-// window.onbeforeunload = () => {
-// window.onpagehide = () => {
-//     if(!doc.fullscreenElement && !doc.mozFullScreenElement 
-//        && !doc.webkitFullscreenElement) {
-//         cancelFullScreen.call(doc);
-//         video.classList.remove('camera_on');
-//         scan_icon.classList.remove('camera_on');
-//     };
-// };
 
 function input_focus(){
     camera_block.classList.add('onfocus');
     input_zone.classList.add('onfocus');
     input.classList.add('onfocus');
+    water_tag.style.display = 'none';
 };
 
 function input_blur(){
     camera_block.classList.remove('onfocus');
     input_zone.classList.remove('onfocus');
     input.classList.remove('onfocus');
+    water_tag.style.display = 'block';
 };
 
 
