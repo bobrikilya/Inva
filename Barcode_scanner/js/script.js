@@ -36,20 +36,21 @@ const options = {
 function camera_access(){
     if (!video.classList.contains('active')){
         video.classList.add('camera_on');
-        if       (navigator.getUserMedia!=null) {
-                  navigator.getUserMedia(options, getStream, noStream);
-        // Chrome
-        }else if (navigator.webkitGetUserMedia!=null){
-                  navigator.webkitGetUserMedia(options, getStream, noStream);
-        // Firefox
-        }else if (navigator.mozGetUserMedia!=null){
-                  navigator.mozGetUserMedia(options, getStream, noStream);
-        // Other
-        }else if (navigator.msGetUserMedia!=null){
-                  navigator.msGetUserMedia(options, getStream, noStream);
-        // Apple
-        }else if  (navigator.mediaDevices.getUserMedia!=null){
-                  navigator.mediaDevices.getUserMedia(options, getStream, noStream);
+        // if       (navigator.getUserMedia!=null) {
+        //           navigator.getUserMedia(options, getStream, noStream);
+        // // Chrome
+        // }else if (navigator.webkitGetUserMedia!=null){
+        //           navigator.webkitGetUserMedia(options, getStream, noStream);
+        // // Firefox
+        // }else if (navigator.mozGetUserMedia!=null){
+        //           navigator.mozGetUserMedia(options, getStream, noStream);
+        // // Other
+        // }else if (navigator.msGetUserMedia!=null){
+        //           navigator.msGetUserMedia(options, getStream, noStream);
+        // // Apple
+        if  (navigator.getUserMedia != null){
+                // navigator.mediaDevices.getUserMedia(options, getStream, noStream);
+                navigator.mediaDevices.getUserMedia(options).then(getStream).catch(noStream);
 
         }else alert("Камера не найдена");
     }else toggle_camera(); 
@@ -60,10 +61,8 @@ function getStream(stream){
     info_block.classList.remove('info_on');
     stream_cont.classList.remove('info_on');
     video.srcObject = stream;
-    video.onloadedmetadata = function(){
-        video.play();
-        open_camera();
-    };
+    video.play();
+    open_camera();
 };
 
 function noStream(){
@@ -174,14 +173,14 @@ document.addEventListener('click', (event) => {
 });
 
 // window.onbeforeunload = () => {
-window.onpagehide = () => {
-    if(!doc.fullscreenElement && !doc.mozFullScreenElement 
-       && !doc.webkitFullscreenElement) {
-        cancelFullScreen.call(doc);
-        video.classList.remove('camera_on');
-        scan_icon.classList.remove('camera_on');
-    };
-};
+// window.onpagehide = () => {
+//     if(!doc.fullscreenElement && !doc.mozFullScreenElement 
+//        && !doc.webkitFullscreenElement) {
+//         cancelFullScreen.call(doc);
+//         video.classList.remove('camera_on');
+//         scan_icon.classList.remove('camera_on');
+//     };
+// };
 
 function input_focus(){
     camera_block.classList.add('onfocus');
