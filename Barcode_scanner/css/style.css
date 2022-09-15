@@ -256,7 +256,7 @@ input {
   margin-bottom: 2.5vh;
   border-radius: 25px;
   background-color: rgba(196, 160, 255, 0.862745098);
-  box-shadow: 0px 0px 10px rgba(53, 42, 70, 0.2392156863);
+  box-shadow: 0px 0px 7px rgba(30, 23, 41, 0.8352941176);
 }
 
 .price_cont {
@@ -289,7 +289,7 @@ input {
 }
 .item_discount_cont img {
   height: 5.8vh;
-  margin-left: 1.2vw;
+  margin-left: 0.8vw;
 }
 
 .item_balance_cont {
@@ -297,7 +297,7 @@ input {
 }
 .item_balance_cont img {
   height: 4.2vh;
-  margin-left: 2.8vw;
+  margin-left: 2.5vw;
   opacity: 0.8;
 }
 

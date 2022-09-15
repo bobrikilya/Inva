@@ -38,26 +38,26 @@ const options = {
 function camera_access(){
     if (!video.classList.contains('active')){
         video.classList.add('camera_on');
-        // if       (navigator.getUserMedia!=null) {
-        //           navigator.getUserMedia(options, getStream, noStream);
-        // // Chrome
-        // }else if (navigator.webkitGetUserMedia!=null){
-        //           navigator.webkitGetUserMedia(options, getStream, noStream);
-        // // Firefox
-        // }else if (navigator.mozGetUserMedia!=null){
-        //           navigator.mozGetUserMedia(options, getStream, noStream);
-        // // Other
-        // }else if (navigator.msGetUserMedia!=null){
-        //           navigator.msGetUserMedia(options, getStream, noStream);
+        if       (navigator.getUserMedia!=null) {
+                  navigator.getUserMedia(options, getStream, noStream);
+        // Chrome
+        }else if (navigator.webkitGetUserMedia!=null){
+                  navigator.webkitGetUserMedia(options, getStream, noStream);
+        // Firefox
+        }else if (navigator.mozGetUserMedia!=null){
+                  navigator.mozGetUserMedia(options, getStream, noStream);
+        // Other
+        }else if (navigator.msGetUserMedia!=null){
+                  navigator.msGetUserMedia(options, getStream, noStream);
         // Apple
-        // }else if (navigator.mediaDevices.getUserMedia!=null){
+        }else if (navigator.mediaDevices.getUserMedia!=null){
                 navigator.mediaDevices.getUserMedia(options).then(getStream).catch(noStream);
 
-        // }else () => {
-        //     alert("Камера не найдена");
-        //     video.classList.remove('camera_on');
-        //     scan_icon.classList.remove('camera_on');
-        // };
+        }else () => {
+            alert("Камера не найдена");
+            video.classList.remove('camera_on');
+            scan_icon.classList.remove('camera_on');
+        };
     }else toggle_camera(); 
 };
 
@@ -195,6 +195,7 @@ function input_blur(){
 
 function stream_start(){
     Quagga.init({
+        locate :  true,
         inputStream : {
             name : "Live",
             type : "LiveStream",
@@ -204,6 +205,10 @@ function stream_start(){
         decoder: {
             readers: ["ean_reader"],
             multiple: false,
+        },
+        locator: {
+            halfSample: false,
+            patchSize : "x-small",  // x-small, small, medium, big, x-large
         },
         debug: false,
     }, function(err) {
