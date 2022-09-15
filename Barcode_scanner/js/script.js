@@ -207,8 +207,7 @@ function stream_start(){
             multiple: false,
         },
         locator: {
-            halfSample: false,
-            patchSize : "small",  // x-small, small, medium, big, x-large
+            halfSample: true,
         },
         debug: false,
     }, function(err) {
