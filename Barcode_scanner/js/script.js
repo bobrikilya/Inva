@@ -208,7 +208,7 @@ function stream_start(){
         },
         locator: {
             halfSample: false,
-            patchSize : "x-small",  // x-small, small, medium, big, x-large
+            patchSize : "small",  // x-small, small, medium, big, x-large
         },
         debug: false,
     }, function(err) {
