@@ -15,7 +15,7 @@ camera_button.addEventListener('click', camera_access);
 clear_button.addEventListener('click', inpute_cleaning);
 search_button.addEventListener('click', searching);
 
-const doc = window.document;
+const doc = document.documentElement;
 
 // For easy working 
 const Moz = navigator.userAgent.includes('Mozilla/5.0 (iPhone;');
@@ -36,6 +36,7 @@ const options = {
 
 // Camera access request
 function camera_access(){
+    cancelFullScreen();
     if (!video.classList.contains('active')){
         video.classList.add('camera_on');
         if       (navigator.getUserMedia!=null) {
@@ -128,17 +129,59 @@ function request(code){
     toggle_camera();
 };
 
-function startFullScreen() {
-    const docEl = doc.documentElement;
+// function startFullScreen() {
+//     const docEl = doc.documentElement;
     
-    const requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen;
+//     const requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen;
 
-    if(!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement) { 
-        requestFullScreen.call(docEl);
-    };
-    
-    
+//     if(!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement) { 
+//         requestFullScreen.call(doc);
+//     };
+
+//     if(!doc.fullscreenElement && !doc.mozFullScreenElement 
+//                    && !doc.webkitFullscreenElement) {
+//                     cancelFullScreen.call(doc);
+//                     // video.classList.remove('camera_on');
+//                     // scan_icon.classList.remove('camera_on');
+//                 };
+
+// };
+
+function startFullScreen() {
+    if(doc.requestFullscreen) {
+        doc.requestFullscreen();
+    } else if(doc.webkitrequestFullscreen) {
+        doc.webkitRequestFullscreen();
+    } else if(doc.mozRequestFullscreen) {
+        doc.mozRequestFullScreen();
+    }
 };
+
+
+function cancelFullScreen() {
+    if(doc.exitFullscreen) {
+        console.log('1');
+        doc.exitFullscreen();
+    } else if (doc.mozCancelFullScreen) {
+        console.log('2');
+        doc.mozCancelFullScreen();
+    } else if (doc.webkitExitFullscreen) {
+        console.log('3');
+        doc.webkitExitFullscreen();
+    }
+  };
+
+
+// function cancelFullScreen() {
+//     // if(document.requestFullscreen) {
+//     //   document.requestFullscreen();
+//     // } else if(document.webkitRequestFullscreen ) {
+//     //   document.webkitRequestFullscreen();
+//     // } else if(document.mozRequestFullscreen) {
+//     //   document.mozRequestFullScreen();
+//     // }
+//     cancelFullScreen.call(window.document);
+//   }
 
 
 // Number filter
@@ -159,43 +202,73 @@ input.addEventListener('blur', () => {
     input_blur();
 });
 
-document.addEventListener('click', (event) => {
-    const insideInput = event.composedPath().includes(input);
-    const insideSearch = event.composedPath().includes(search_button);
-    const insideClear = event.composedPath().includes(clear_button);
+input.addEventListener('focus', () => {
+    input_focus();
+});
 
+document.addEventListener('click', () => {
+    startFullScreen();
     if (!Moz){
         if(!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement) { 
             startFullScreen();
         };
     };
-
-    if (input_zone.classList.contains('onfocus') &&
-    !insideInput && !insideSearch && !insideClear)
-    input_blur()
-    else if (insideInput && !input_zone.classList.contains('onfocus'))
-    input_focus();
 });
+
+// window.addEventListener('blur', () => {
+//     startFullScreen();
+//     // cancelFullScreen();
+//     // if(!doc.fullscreenElement && !doc.mozFullScreenElement 
+//     //     && !doc.webkitFullscreenElement) {
+            
+//     video.classList.remove('camera_on');
+//     scan_icon.classList.remove('camera_on');
+//     //  };
+// });
+
+// document.addEventListener('click', (event) => {
+//     const insideInput = event.composedPath().includes(input);
+//     const insideSearch = event.composedPath().includes(search_button);
+//     const insideClear = event.composedPath().includes(clear_button);
+
+//     
+
+//     if (input_zone.classList.contains('onfocus') &&
+//     !insideInput && !insideSearch && !insideClear)
+//     input_blur()
+//     else if (insideInput && !input_zone.classList.contains('onfocus'))
+//     input_focus();
+// });
+
+
+// window.onpagehide = () => {
+//         if(!doc.fullscreenElement && !doc.mozFullScreenElement 
+//            && !doc.webkitFullscreenElement) {
+//             cancelFullScreen.call(doc);
+//             video.classList.remove('camera_on');
+//             scan_icon.classList.remove('camera_on');
+//         };
+//     };
 
 
 function input_focus(){
-    camera_block.classList.add('onfocus');
-    input_zone.classList.add('onfocus');
-    input.classList.add('onfocus');
+    // camera_block.classList.add('onfocus');
+    // input_zone.classList.add('onfocus');
+    // input.classList.add('onfocus');
     water_tag.style.display = 'none';
 };
 
 function input_blur(){
-    camera_block.classList.remove('onfocus');
-    input_zone.classList.remove('onfocus');
-    input.classList.remove('onfocus');
+    // camera_block.classList.remove('onfocus');
+    // input_zone.classList.remove('onfocus');
+    // input.classList.remove('onfocus');
     water_tag.style.display = 'block';
 };
 
 
 function stream_start(){
     Quagga.init({
-        locate :  true,
+        locate: true,
         inputStream : {
             name : "Live",
             type : "LiveStream",
@@ -220,6 +293,7 @@ function stream_start(){
     });
 
     Quagga.onDetected((result) => {
+        Quagga.pause();
         const code = result.codeResult.code;
         request(code);
     });
