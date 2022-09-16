@@ -4,7 +4,7 @@ const camera_button = document.querySelector('.camera');
 const search_button = document.querySelector('.search');
 const clear_button = document.querySelector('.clear');
 const input = document.querySelector('input');
-const input_zone = document.querySelector('.input_block');
+const input_block = document.querySelector('.input_block');
 const camera_block = document.querySelector('.camera_block');
 const stream_cont = document.querySelector('.stream_cont');
 const scan_icon = document.querySelector('.scan_icon');
@@ -65,9 +65,8 @@ function camera_access(){
 };
 
 function getStream(stream){
-    input_zone.classList.remove('info_on');
-    info_block.classList.remove('info_on');
-    stream_cont.classList.remove('info_on');
+    info_block.style.display = 'none';
+    stream_cont.style.display = 'flex';
     video.srcObject = stream;
     video.play();
     open_camera();
@@ -94,29 +93,26 @@ function toggle_camera(){
         scan_icon.classList.remove('camera_on');
     }else {
         Quagga.start();
+        info_block.style.display = 'none';
+        stream_cont.style.display = 'flex';
         video.classList.add('camera_on');
         scan_icon.classList.add('camera_on');
-        input_zone.classList.remove('info_on');
-        info_block.classList.remove('info_on');
-        stream_cont.classList.remove('info_on');
     };
 };
 
 function inpute_cleaning(){
     input_blur();
     input.value = '';
-    input_zone.classList.remove('info_on');
-    info_block.classList.remove('info_on');
-    stream_cont.classList.remove('info_on');
+    info_block.style.display = 'none';
+    stream_cont.style.display = 'flex';
 };
 
 function searching(){
     if (input.value == '1') {
         input_blur();
         Quagga.pause();
-        input_zone.classList.add('info_on');
-        info_block.classList.add('info_on');
-        stream_cont.classList.add('info_on');
+        info_block.style.display = 'flex';
+        stream_cont.style.display = 'none';
         video.classList.remove('camera_on');
         scan_icon.classList.remove('camera_on');
     };
@@ -125,9 +121,8 @@ function searching(){
 function request(code){
     input.value = code;
     input_blur();
-    input_zone.classList.add('info_on');
-    info_block.classList.add('info_on');
-    stream_cont.classList.add('info_on');
+    info_block.style.display = 'flex';
+    stream_cont.style.display = 'none';
     toggle_camera();
 };
 
@@ -196,7 +191,7 @@ input.addEventListener('keydown', (event) => {
 });
 
 input.addEventListener('keyup', (event) => {
-    if (event.key == 'Enter' && input_zone.classList.contains('onfocus')) searching();
+    if (event.key == 'Enter') searching();
 });
 
 
@@ -234,10 +229,10 @@ document.addEventListener('click', () => {
 
 //     
 
-//     if (input_zone.classList.contains('onfocus') &&
+//     if (input_block.classList.contains('onfocus') &&
 //     !insideInput && !insideSearch && !insideClear)
 //     input_blur()
-//     else if (insideInput && !input_zone.classList.contains('onfocus'))
+//     else if (insideInput && !input_block.classList.contains('onfocus'))
 //     input_focus();
 // });
 
@@ -253,20 +248,17 @@ document.addEventListener('click', () => {
 
 
 function input_focus(){
-    camera_block.classList.add('onfocus');
-    input_zone.classList.add('onfocus');
-    input.classList.add('onfocus');
+    container.style.justifyContent = 'flex-end';
     water_tag.style.display = 'none';
+    input_block.style.marginBottom = '0.5vh';
+    camera_block.style.display = 'none';
 };
 
 function input_blur(){
-    camera_block.classList.remove('onfocus');
-    input_zone.classList.remove('onfocus');
-    input.classList.remove('onfocus');
+    container.style.justifyContent = 'center';
     water_tag.style.display = 'block';
-    // container.style.justifyContent = 'center'
-    // input_zone.style.marginBottom = '6vh';
-    // camera_block.style.display = 'flex';
+    input_block.style.marginBottom = '6vh';
+    camera_block.style.display = 'flex';
 };
 
 
