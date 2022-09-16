@@ -257,8 +257,10 @@ function input_focus(){
     // camera_block.classList.add('onfocus');
     // input_zone.classList.add('onfocus');
     // input.classList.add('onfocus');
-    container.style.justifyContent = 'flex-end'
-    camera_block.style.display = 'none'
+    // container.style.justifyContent = 'flex-end'
+    input_zone.style.marginBottom = '2vh'
+    camera_block.style.opacity = '0'
+    camera_block.style.pointerEvents = 'none'
     water_tag.style.display = 'none';
 };
 
@@ -266,8 +268,10 @@ function input_blur(){
     // camera_block.classList.remove('onfocus');
     // input_zone.classList.remove('onfocus');
     // input.classList.remove('onfocus');
-    container.style.justifyContent = 'center'
-    camera_block.style.display = 'flex'
+    // container.style.justifyContent = 'center'
+    input_zone.style.marginBottom = '6vh'
+    camera_block.style.opacity = '1'
+    camera_block.style.pointerEvents = 'auto'
     water_tag.style.display = 'block';
 };
 
