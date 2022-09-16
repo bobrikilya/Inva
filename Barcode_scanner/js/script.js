@@ -20,7 +20,7 @@ search_button.addEventListener('click', searching);
 const doc = document.documentElement;
 
 // For easy working 
-const Moz = navigator.userAgent.includes('Mozilla/5.0 (iPhone;');
+const Moz = navigator.userAgent.includes('Mozilla/5.0 (iPhone');
 // const Moz = true
 const fMode = Moz ? {exact: "user"} : {exact: "environment"};
 // console.log(navigator.userAgent)
@@ -209,7 +209,6 @@ input.addEventListener('focus', () => {
 });
 
 document.addEventListener('click', () => {
-    startFullScreen();
     if (!Moz){
         if(!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement) { 
             startFullScreen();
@@ -254,23 +253,20 @@ document.addEventListener('click', () => {
 
 
 function input_focus(){
-    // camera_block.classList.add('onfocus');
-    // input_zone.classList.add('onfocus');
-    // input.classList.add('onfocus');
-    container.style.justifyContent = 'flex-end'
-    input_zone.style.marginBottom = '1vh';
-    camera_block.style.display = 'none';
+    camera_block.classList.add('onfocus');
+    input_zone.classList.add('onfocus');
+    input.classList.add('onfocus');
     water_tag.style.display = 'none';
 };
 
 function input_blur(){
-    // camera_block.classList.remove('onfocus');
-    // input_zone.classList.remove('onfocus');
-    // input.classList.remove('onfocus');
-    container.style.justifyContent = 'center'
-    input_zone.style.marginBottom = '6vh';
-    camera_block.style.display = 'flex';
+    camera_block.classList.remove('onfocus');
+    input_zone.classList.remove('onfocus');
+    input.classList.remove('onfocus');
     water_tag.style.display = 'block';
+    // container.style.justifyContent = 'center'
+    // input_zone.style.marginBottom = '6vh';
+    // camera_block.style.display = 'flex';
 };
 
 

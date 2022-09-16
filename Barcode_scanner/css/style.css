@@ -100,8 +100,7 @@ body {
   margin-top: 4vh;
 }
 .camera_block.onfocus {
-  opacity: 0;
-  pointer-events: none;
+  display: none;
 }
 
 .bg_cont {
