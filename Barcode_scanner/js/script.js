@@ -198,13 +198,13 @@ input.addEventListener('keyup', (event) => {
 });
 
 
-input.addEventListener('blur', () => {
-    input_blur();
-});
+// input.addEventListener('blur', () => {
+//     input_blur();
+// });
 
-input.addEventListener('focus', () => {
-    input_focus();
-});
+// input.addEventListener('focus', () => {
+//     input_focus();
+// });
 
 document.addEventListener('click', () => {
     startFullScreen();
