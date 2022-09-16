@@ -10,6 +10,8 @@ const stream_cont = document.querySelector('.stream_cont');
 const scan_icon = document.querySelector('.scan_icon');
 const info_block = document.querySelector('.info_block');
 const water_tag = document.querySelector('.water_tag');
+const container = document.querySelector('.container');
+
 
 camera_button.addEventListener('click', camera_access);
 clear_button.addEventListener('click', inpute_cleaning);
@@ -198,13 +200,13 @@ input.addEventListener('keyup', (event) => {
 });
 
 
-// input.addEventListener('blur', () => {
-//     input_blur();
-// });
+input.addEventListener('blur', () => {
+    input_blur();
+});
 
-// input.addEventListener('focus', () => {
-//     input_focus();
-// });
+input.addEventListener('focus', () => {
+    input_focus();
+});
 
 document.addEventListener('click', () => {
     startFullScreen();
@@ -255,6 +257,8 @@ function input_focus(){
     // camera_block.classList.add('onfocus');
     // input_zone.classList.add('onfocus');
     // input.classList.add('onfocus');
+    container.style.justifyContent = 'flex-end'
+    camera_block.style.display = 'none'
     water_tag.style.display = 'none';
 };
 
@@ -262,6 +266,8 @@ function input_blur(){
     // camera_block.classList.remove('onfocus');
     // input_zone.classList.remove('onfocus');
     // input.classList.remove('onfocus');
+    container.style.justifyContent = 'center'
+    camera_block.style.display = 'flex'
     water_tag.style.display = 'block';
 };
 
