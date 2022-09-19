@@ -22,6 +22,7 @@ const doc = document.documentElement;
 // For easy working ----------
 const Moz = navigator.userAgent.includes('Mozilla/5.0 (iPhone');
 // const Moz = true
+// const Moz = false
 const fMode = Moz ? {exact: "user"} : {exact: "environment"};
 // console.log(navigator.userAgent)
 // alert(Moz)
@@ -34,7 +35,6 @@ const options = {
     facingMode: fMode,
     }
 };
-
 
 // Camera access request ----------
 function camera_access(){
@@ -104,7 +104,7 @@ function input_cleaning(){
     input.value = '';
     info_block.style.display = 'none';
     stream_cont.style.display = 'flex';
-    input_blur();
+    // input_blur();
 };
 
 function searching(){
@@ -197,7 +197,7 @@ input.addEventListener('keyup', (event) => {
 
 
 input.addEventListener('blur', () => {
-    input_blur();
+    setTimeout(input_blur, 10);
 });
 
 input.addEventListener('focus', () => {
