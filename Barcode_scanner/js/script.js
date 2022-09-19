@@ -204,7 +204,7 @@ input.addEventListener('focus', () => {
     input_focus();
 });
 
-document.addEventListener('click', () => {
+document.addEventListener('load', () => {
     if (!Moz){
         if(!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement) { 
             startFullScreen();

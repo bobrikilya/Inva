@@ -238,6 +238,7 @@ button {
   margin-bottom: 2.5vh;
   border-radius: 25px;
   background-color: rgba(196, 160, 255, 0.862745098);
+  box-shadow: 0px 0px 7px rgba(30, 23, 41, 0.8352941176);
 }
 
 #price_cont {
@@ -258,7 +259,7 @@ button {
 }
 
 #item_price_cont {
-  border: 5px solid rgba(116, 253, 173, 0.2666666667);
+  background-color: rgba(116, 253, 173, 0.2666666667);
 }
 #item_price_cont img {
   height: 2.5rem;
@@ -266,7 +267,7 @@ button {
 }
 
 #item_discount_cont {
-  border: 5px solid rgba(250, 248, 151, 0.5568627451);
+  background-color: rgba(250, 248, 151, 0.5568627451);
 }
 #item_discount_cont img {
   height: 3rem;
@@ -274,7 +275,7 @@ button {
 }
 
 #item_balance_cont {
-  border: 5px solid rgba(255, 166, 225, 0.2039215686);
+  background-color: rgba(255, 166, 225, 0.2039215686);
 }
 #item_balance_cont img {
   height: 2rem;
