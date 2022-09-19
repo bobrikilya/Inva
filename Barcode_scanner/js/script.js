@@ -14,7 +14,7 @@ const container = document.getElementById('container');
 
 
 camera_button.addEventListener('click', camera_access);
-clear_button.addEventListener('click', inpute_cleaning);
+clear_button.addEventListener('click', input_cleaning);
 search_button.addEventListener('click', searching);
 
 const doc = document.documentElement;
@@ -100,11 +100,11 @@ function toggle_camera(){
     };
 };
 
-function inpute_cleaning(){
-    input_blur();
+function input_cleaning(){
     input.value = '';
     info_block.style.display = 'none';
     stream_cont.style.display = 'flex';
+    input_blur();
 };
 
 function searching(){
@@ -246,11 +246,11 @@ function input_focus(){
 };
 
 function input_blur(){
-    input.blur();
     if (!Moz) container.style.justifyContent = 'flex-end';
     water_tag.style.display = 'block';
     input_block.style.marginBottom = '6vh';
     camera_block.style.display = 'flex';
+    input.blur();
 };
 
 

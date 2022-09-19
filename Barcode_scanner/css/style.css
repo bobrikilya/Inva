@@ -128,7 +128,7 @@ body {
 }
 
 #video {
-  z-index: 0;
+  z-index: 1;
   background: url("../img/loading.png") 50% 71%/11vh no-repeat;
 }
 
@@ -160,7 +160,7 @@ button {
 }
 
 #input_block {
-  z-index: 3;
+  z-index: 0;
   margin-bottom: 5vh;
   width: 100%;
 }
