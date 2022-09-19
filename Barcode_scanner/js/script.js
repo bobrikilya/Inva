@@ -1,16 +1,16 @@
 
-const video = document.querySelector('video');
-const camera_button = document.querySelector('.camera');
-const search_button = document.querySelector('.search');
-const clear_button = document.querySelector('.clear');
-const input = document.querySelector('input');
-const input_block = document.querySelector('.input_block');
-const camera_block = document.querySelector('.camera_block');
-const stream_cont = document.querySelector('.stream_cont');
-const scan_icon = document.querySelector('.scan_icon');
-const info_block = document.querySelector('.info_block');
-const water_tag = document.querySelector('.water_tag');
-const container = document.querySelector('.container');
+const video = document.getElementById('video');
+const camera_button = document.getElementById('camera_butt');
+const search_button = document.getElementById('search_butt');
+const clear_button = document.getElementById('clear_butt');
+const input = document.getElementById('input');
+const input_block = document.getElementById('input_block');
+const camera_block = document.getElementById('camera_block');
+const stream_cont = document.getElementById('stream_cont');
+const scan_icon = document.getElementById('scan_icon');
+const info_block = document.getElementById('info_block');
+const water_tag = document.getElementById('water_tag');
+const container = document.getElementById('container');
 
 
 camera_button.addEventListener('click', camera_access);
@@ -19,7 +19,7 @@ search_button.addEventListener('click', searching);
 
 const doc = document.documentElement;
 
-// For easy working 
+// For easy working ----------
 const Moz = navigator.userAgent.includes('Mozilla/5.0 (iPhone');
 // const Moz = true
 const fMode = Moz ? {exact: "user"} : {exact: "environment"};
@@ -36,7 +36,7 @@ const options = {
 };
 
 
-// Camera access request
+// Camera access request ----------
 function camera_access(){
     cancelFullScreen();
     if (!video.classList.contains('active')){
@@ -119,10 +119,11 @@ function searching(){
 };
 
 function request(code){
-    input.value = code;
     input_blur();
+    input.value = code;
     info_block.style.display = 'flex';
     stream_cont.style.display = 'none';
+    
     toggle_camera();
 };
 
@@ -181,7 +182,7 @@ function cancelFullScreen() {
 //   }
 
 
-// Number filter
+// Number filter ----------
 input.addEventListener('keydown', (event) => {
     if (event.key == '-' || event.key == '.') event.preventDefault();
 	if (['Escape', 'Delete', 'Tab', 'Backspace', 
@@ -237,25 +238,14 @@ document.addEventListener('click', () => {
 // });
 
 
-// window.onpagehide = () => {
-//         if(!doc.fullscreenElement && !doc.mozFullScreenElement 
-//            && !doc.webkitFullscreenElement) {
-//             cancelFullScreen.call(doc);
-//             video.classList.remove('camera_on');
-//             scan_icon.classList.remove('camera_on');
-//         };
-//     };
-
-
 function input_focus(){
-    container.style.justifyContent = 'flex-end';
     water_tag.style.display = 'none';
     input_block.style.marginBottom = '0.5vh';
     camera_block.style.display = 'none';
 };
 
 function input_blur(){
-    container.style.justifyContent = 'center';
+    input.blur();
     water_tag.style.display = 'block';
     input_block.style.marginBottom = '6vh';
     camera_block.style.display = 'flex';

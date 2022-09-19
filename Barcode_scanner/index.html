@@ -26,18 +26,18 @@
     <title>Стройпродукт: Сканер</title>
 </head>
 <body class="cont">
-    <div class="container cont">
-        <div class="camera_block cont">
-            <div class="bg_cont cont">
-                <div class="stream_cont cont">
-                    <!-- <video class="camera_zone" autoplay playsinline muted></video> -->
-                <video class="camera_zone" opacity='1'></video>
-                    <div class="scan_icon camera_zone"></div>
+    <div id="container" class="cont">
+        <div id="camera_block" class="cont">
+            <div id="bg_cont" class="cont">
+                <div id="stream_cont" class="cont">
+                    <!-- <video id="video" class="camera_zone" autoplay playsinline muted></video> -->
+                <video id="video" class="camera_zone"></video>
+                    <div id="scan_icon" class="camera_zone"></div>
                 </div>
-                <div class="info_block cont">
-                    <div class="item_name">Разъём компьютерный RJ-45</div>
-                    <div class="price_cont cont">
-                        <div class="item_price_cont item_cont cont">
+                <div id="info_block" class="cont">
+                    <div id="item_name">Разъём компьютерный RJ-45</div>
+                    <div id="price_cont" class="cont">
+                        <div id="item_price_cont" class="item_cont cont">
                             <img src="img/price.png" alt="">
                             <div class="item_price_title item_title">Цена:</div>
                             <div class="price_val cont">
@@ -45,7 +45,7 @@
                                 <div class="item_price_value item_value_c">20коп.</div>
                             </div>
                         </div>
-                        <div class="item_discount_cont item_cont cont">
+                        <div id="item_discount_cont" class="item_cont cont">
                             <img src="img/discount.png" alt="">
                             <div class="item_discount_title item_title">Цена на<br> акции:</div>
                             <div class="price_val cont">
@@ -53,7 +53,7 @@
                                 <div class="item_discount_value item_value_c">12коп.</div>
                             </div>
                         </div>
-                        <div class="item_balance_cont item_cont cont">
+                        <div id="item_balance_cont" class="item_cont cont">
                             <img src="img/balance.png" alt="">
                             <div class="item_balance_title item_title">Остаток:</div>
                             <div class="price_val cont">
@@ -63,16 +63,16 @@
                     </div>
                 </div>
             </div>
-            <button class="camera">Камера</button>
+            <button id="camera_butt">Камера</button>
         </div>
-        <div class="input_block cont">
-            <input type="text" placeholder="Штрих-код" maxlength="13" inputmode="numeric" onkeyup="this.value = this.value.replace (/\D/, '')">
-            <div class="clear_search_cont cont">
-                <button class="clear">Очистка</button>
-                <button class="search">Поиск</button>
+        <div id="input_block" class="cont">
+            <input id="input" type="text" placeholder="Штрих-код" maxlength="13" inputmode="numeric" onkeyup="this.value = this.value.replace (/\D/, '')">
+            <div id="clear_search_cont" class="cont">
+                <button id="clear_butt">Очистка</button>
+                <button id="search_butt">Поиск</button>
             </div>
         </div>
-        <div class="water_tag">ООО "Торговый дом "Стройпродукт"</div>
+        <div id="water_tag">ООО "Торговый дом "Стройпродукт"</div>
     </div>
     <script src="js/quagga.min.js"></script>
     <script src="js/script.js"></script>
