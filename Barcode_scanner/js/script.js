@@ -239,6 +239,7 @@ document.addEventListener('click', () => {
 
 
 function input_focus(){
+    if (Moz) container.style.justifyContent = 'flex-end';
     water_tag.style.display = 'none';
     input_block.style.marginBottom = '0.5vh';
     camera_block.style.display = 'none';
@@ -246,6 +247,7 @@ function input_focus(){
 
 function input_blur(){
     input.blur();
+    if (Moz) container.style.justifyContent = 'flex-end';
     water_tag.style.display = 'block';
     input_block.style.marginBottom = '6vh';
     camera_block.style.display = 'flex';
