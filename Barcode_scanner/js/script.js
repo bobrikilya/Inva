@@ -128,31 +128,14 @@ function request(code){
     toggle_camera();
 };
 
-// function startFullScreen() {
-//     const docEl = doc.documentElement;
-    
-//     const requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen;
-
-//     if(!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement) { 
-//         requestFullScreen.call(doc);
-//     };
-
-//     if(!doc.fullscreenElement && !doc.mozFullScreenElement 
-//                    && !doc.webkitFullscreenElement) {
-//                     cancelFullScreen.call(doc);
-//                     // video.classList.remove('camera_on');
-//                     // scan_icon.classList.remove('camera_on');
-//                 };
-
-// };
 
 function startFullScreen() {
     if(doc.requestFullscreen) {
         doc.requestFullscreen();
-    // } else if(doc.webkitrequestFullscreen) {
-    //     doc.webkitRequestFullscreen();
-    // } else if(doc.mozRequestFullscreen) {
-    //     doc.mozRequestFullScreen();
+    } else if(doc.webkitrequestFullscreen) {
+        doc.webkitRequestFullscreen();
+    } else if(doc.mozRequestFullscreen) {
+        doc.mozRequestFullScreen();
     }
 };
 
@@ -171,19 +154,6 @@ function cancelFullScreen() {
     //     doc.webkitExitFullscreen();
     // }
   };
-
-
-// function cancelFullScreen() {
-    // if(document.requestFullscreen) {
-    //   document.requestFullscreen();
-    // } else if(document.webkitRequestFullscreen ) {
-    //   document.webkitRequestFullscreen();
-    // } else if(document.mozRequestFullscreen) {
-    //   document.mozRequestFullScreen();
-    // }
-    // cancelFullScreen.call(window.document);
-//   }
-
 
 // Number filter ----------
 input.addEventListener('keydown', (event) => {
@@ -214,31 +184,6 @@ document.addEventListener('click', () => {
         // };
     };
 });
-
-// window.addEventListener('blur', () => {
-//     // startFullScreen();
-//     cancelFullScreen();
-//     // if(!doc.fullscreenElement && !doc.mozFullScreenElement 
-//     //     && !doc.webkitFullscreenElement) {
-            
-//     video.classList.remove('camera_on');
-//     scan_icon.classList.remove('camera_on');
-//     //  };
-// });
-
-// document.addEventListener('click', (event) => {
-//     const insideInput = event.composedPath().includes(input);
-//     const insideSearch = event.composedPath().includes(search_button);
-//     const insideClear = event.composedPath().includes(clear_button);
-
-//     
-
-//     if (input_block.classList.contains('onfocus') &&
-//     !insideInput && !insideSearch && !insideClear)
-//     input_blur()
-//     else if (insideInput && !input_block.classList.contains('onfocus'))
-//     input_focus();
-// });
 
 
 function input_focus(){
