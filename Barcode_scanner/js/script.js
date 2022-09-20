@@ -23,8 +23,8 @@ const doc = document.documentElement;
 const Moz = navigator.userAgent.includes('Mozilla/5.0 (iPhone');
 // const Moz = true
 // const Moz = false
-// const fMode = Moz ? {exact: "user"} : {exact: "environment"};
-const fMode = {exact: "environment"};
+const fMode = Moz ? {exact: "user"} : {exact: "environment"};
+// const fMode = {exact: "environment"};
 // console.log(navigator.userAgent)
 // alert(Moz)
 
@@ -71,6 +71,8 @@ function getStream(stream){
     video.srcObject = stream;
     video.play();
     open_camera();
+
+    // webcamStream = stream;
 };
 
 function noStream(){
@@ -89,6 +91,7 @@ function open_camera(){
 
 function toggle_camera(){
     if (video.classList.contains('camera_on')){
+        // webcamStream.getTracks()[1].stop();
         Quagga.pause();
         video.classList.remove('camera_on');
         scan_icon.classList.remove('camera_on');
