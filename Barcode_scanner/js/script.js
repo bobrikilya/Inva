@@ -20,10 +20,11 @@ search_button.addEventListener('click', searching);
 const doc = document.documentElement;
 
 // For easy working ----------
-// const Moz = navigator.userAgent.includes('Mozilla/5.0 (iPhone');
+const Moz = navigator.userAgent.includes('Mozilla/5.0 (iPhone');
 // const Moz = true
-const Moz = false
-const fMode = Moz ? {exact: "user"} : {exact: "environment"};
+// const Moz = false
+// const fMode = Moz ? {exact: "user"} : {exact: "environment"};
+const fMode = {exact: "environment"};
 // console.log(navigator.userAgent)
 // alert(Moz)
 
@@ -207,10 +208,10 @@ input.addEventListener('focus', () => {
 });
 
 document.addEventListener('click', () => {
-    if (!Moz){
+    // if (!Moz){
         if(!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement) { 
             startFullScreen();
-        };
+        // };
     };
 });
 
@@ -241,16 +242,17 @@ document.addEventListener('click', () => {
 
 
 function input_focus(){
-    if (!Moz) container.style.justifyContent = 'flex-end';
+    if (Moz) input_block.style.marginBottom = "10vh"
+    else input_block.style.marginBottom = '0.5vh';
+    container.style.justifyContent = 'flex-end';
     water_tag.style.display = 'none';
-    input_block.style.marginBottom = '0.5vh';
     camera_block.style.display = 'none';
 };
 
 function input_blur(){
-    if (!Moz) container.style.justifyContent = 'flex-end';
+    input_block.style.marginBottom = '5vh';
+    container.style.justifyContent = 'center'
     water_tag.style.display = 'block';
-    input_block.style.marginBottom = '6vh';
     camera_block.style.display = 'flex';
     input.blur();
 };
