@@ -105,6 +105,7 @@ body {
   flex-shrink: 1;
   height: 100%;
   width: 100%;
+  background-color: rgba(114, 148, 158, 0.5333333333);
   margin-bottom: 1vh;
   border-radius: 25px;
 }
