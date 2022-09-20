@@ -39,7 +39,7 @@ const options = {
 
 // Camera access request ----------
 function camera_access(){
-    cancelFullScreen();
+    // cancelFullScreen();
     if (!video.classList.contains('active')){
         video.classList.add('camera_on');
         if       (navigator.getUserMedia!=null) {
