@@ -83,6 +83,7 @@ body {
   height: 100vh;
   font-family: "Nunito";
   background-color: rgba(144, 183, 196, 0.6784313725);
+  overflow: hidden;
 }
 
 #container {
@@ -163,6 +164,7 @@ button {
   z-index: 0;
   margin-bottom: 5vh;
   width: 100%;
+  transition-duration: 0.5s;
 }
 
 #input {
