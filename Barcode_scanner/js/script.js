@@ -20,13 +20,8 @@ search_button.addEventListener('click', searching);
 const doc = document.documentElement;
 
 // For easy working ----------
-const Moz = navigator.userAgent.includes('Mozilla/5.0 (iPhone');
-// const Moz = true
-// const Moz = false
-// const fMode = Moz ? {exact: "user"} : {exact: "environment"};
-const fMode = {exact: "environment"};
-// console.log(navigator.userAgent)
-// alert(Moz)
+// const fMode = {exact: "environment"};
+const fMode = {exact: "user"};
 
 
 const options = {
@@ -130,20 +125,20 @@ function request(code){
 };
 
 
-function startFullScreen() {
-    if(doc.requestFullscreen) {
-        doc.requestFullscreen();
-    } else if(doc.webkitrequestFullscreen) {
-        doc.webkitRequestFullscreen();
-    } else if(doc.mozRequestFullscreen) {
-        doc.mozRequestFullScreen();
-    }
-};
+// function startFullScreen() {
+//     if(doc.requestFullscreen) {
+//         doc.requestFullscreen();
+//     } else if(doc.webkitrequestFullscreen) {
+//         doc.webkitRequestFullscreen();
+//     } else if(doc.mozRequestFullscreen) {
+//         doc.mozRequestFullScreen();
+//     }
+// };
 
 
-function cancelFullScreen() {
-    console.log('Yaaaaaaa');
-    doc.cancelFullScreen();
+// function cancelFullScreen() {
+//     console.log('Yaaaaaaa');
+//     doc.cancelFullScreen();
     // if(doc.exitFullscreen) {
     //     console.log('1');
     //     doc.exitFullscreen();
@@ -154,7 +149,7 @@ function cancelFullScreen() {
     //     console.log('3');
     //     doc.webkitExitFullscreen();
     // }
-  };
+//   };
 
 // Number filter ----------
 input.addEventListener('keydown', (event) => {
@@ -178,13 +173,13 @@ input.addEventListener('focus', () => {
     input_focus();
 });
 
-document.addEventListener('click', () => {
-    // if (!Moz){
-        if(!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement) { 
-            startFullScreen();
-        // };
-    };
-});
+// document.addEventListener('click', () => {
+//     // if (!Moz){
+//         if(!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement) { 
+//             startFullScreen();
+//         // };
+//     };
+// });
 
 
 function input_focus(){
@@ -205,34 +200,34 @@ function input_blur(){
 
 
 function stream_start(){
-    Quagga.init({
-        locate: true,
-        inputStream : {
-            name : "Live",
-            type : "LiveStream",
-            target: video,
-        },
-        frequency: 5,
-        decoder: {
-            readers: ["ean_reader"],
-            multiple: false,
-        },
-        locator: {
-            halfSample: true,
-        },
-        debug: false,
-    }, function(err) {
-        if (err) {
-            console.log(err);
-            console.log("Поломал");
-            return
-        }
-        Quagga.start();
-    });
+    // Quagga.init({
+    //     locate: true,
+    //     inputStream : {
+    //         name : "Live",
+    //         type : "LiveStream",
+    //         target: video,
+    //     },
+    //     frequency: 5,
+    //     decoder: {
+    //         readers: ["ean_reader"],
+    //         multiple: false,
+    //     },
+    //     locator: {
+    //         halfSample: true,
+    //     },
+    //     debug: false,
+    // }, function(err) {
+    //     if (err) {
+    //         console.log(err);
+    //         console.log("Поломал");
+    //         return
+    //     }
+    //     Quagga.start();
+    // });
 
-    Quagga.onDetected((result) => {
-        Quagga.pause();
-        const code = result.codeResult.code;
-        request(code);
-    });
+    // Quagga.onDetected((result) => {
+    //     Quagga.pause();
+    //     const code = result.codeResult.code;
+    //     request(code);
+    // });
 };
