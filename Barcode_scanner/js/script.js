@@ -20,8 +20,8 @@ search_button.addEventListener('click', searching);
 const doc = document.documentElement;
 
 // For easy working ----------
-// const fMode = {exact: "environment"};
-const fMode = {exact: "user"};
+const fMode = {exact: "environment"};
+// const fMode = {exact: "user"};
 
 
 const options = {
