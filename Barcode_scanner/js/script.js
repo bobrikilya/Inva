@@ -20,6 +20,7 @@ search_button.addEventListener('click', searching);
 const doc = document.documentElement;
 
 // For easy working ----------
+const Moz = navigator.userAgent.includes('Mozilla/5.0 (iPhone');
 const fMode = {exact: "environment"};
 // const fMode = {exact: "user"};
 
@@ -30,7 +31,6 @@ const options = {
     height: 1800, //width
     facingMode: fMode,
     },
-    // audio: true,
 };
 
 // Camera access request ----------
@@ -170,6 +170,10 @@ input.addEventListener('blur', () => {
 
 input.addEventListener('focus', () => {
     input_focus();
+});
+
+document.addEventListener('blur', () => {
+    video.classList.remove('active');
 });
 
 // document.addEventListener('click', () => {
