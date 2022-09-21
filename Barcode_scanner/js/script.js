@@ -30,7 +30,7 @@ const options = {
     height: 1800, //width
     facingMode: fMode,
     },
-    audio: true,
+    // audio: true,
 };
 
 // Camera access request ----------
@@ -101,12 +101,11 @@ function input_cleaning(){
     input.value = '';
     info_block.style.display = 'none';
     stream_cont.style.display = 'flex';
-    // input_blur();
 };
 
 function searching(){
     if (input.value == '1') {
-        input_blur();
+        // input_blur();
         Quagga.pause();
         info_block.style.display = 'flex';
         stream_cont.style.display = 'none';
