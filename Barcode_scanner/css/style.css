@@ -111,6 +111,7 @@ body {
 }
 
 #stream_cont {
+  display: none;
   flex-shrink: 1;
   width: 100%;
   height: 100%;
@@ -226,7 +227,6 @@ button {
   width: 100%;
   height: 100%;
   background-color: #ffffff;
-  display: none;
 }
 
 #item_name {
@@ -263,26 +263,36 @@ button {
 #item_price_cont {
   background-color: rgba(116, 253, 173, 0.2666666667);
 }
-#item_price_cont img {
-  height: 2.5rem;
-  margin-left: 0.7rem;
-}
 
 #item_discount_cont {
   background-color: rgba(250, 248, 151, 0.5568627451);
-}
-#item_discount_cont img {
-  height: 3rem;
-  margin-left: 0.4rem;
 }
 
 #item_balance_cont {
   background-color: rgba(255, 166, 225, 0.2039215686);
 }
-#item_balance_cont img {
-  height: 2rem;
-  margin-left: 0.9rem;
-  opacity: 0.8;
+
+.icon_cont {
+  width: 3rem;
+  height: 3rem;
+  margin-left: 0.7rem;
+  border-radius: 50%;
+  background-color: white;
+}
+.icon_cont i {
+  font-size: 1.8rem;
+}
+
+#icon_price i {
+  color: rgba(37, 97, 62, 0.8078431373);
+}
+
+#icon_discount i {
+  color: rgba(190, 188, 53, 0.9843137255);
+}
+
+#icon_balance i {
+  color: rgba(143, 47, 111, 0.7058823529);
 }
 
 .item_title {
@@ -297,6 +307,7 @@ button {
   width: 50%;
   margin-left: 2.2vw;
   align-items: flex-start;
+  font-size: 1.8rem;
 }
 
 .item_value_r {
@@ -309,8 +320,4 @@ button {
   width: 50%;
   margin-left: 0.5vw;
   font-size: 1.5rem;
-}
-
-.item_value_o {
-  font-size: 1.8rem;
 }
