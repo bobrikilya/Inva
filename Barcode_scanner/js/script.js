@@ -105,7 +105,7 @@ function input_cleaning(){
 
 function searching(){
     if (input.value == '1') {
-        // input_blur();
+        input_blur();
         Quagga.pause();
         info_block.style.display = 'flex';
         stream_cont.style.display = 'none';
@@ -172,9 +172,12 @@ input.addEventListener('focus', () => {
     input_focus();
 });
 
-document.addEventListener('blur', () => {
-    video.classList.remove('active');
-});
+// window.addEventListener('blur', () => {
+//     video.classList.remove('active');
+//     Quagga.pause();
+//     video.classList.remove('camera_on');
+//     scan_icon.classList.remove('camera_on');
+// });
 
 // document.addEventListener('click', () => {
 //     // if (!Moz){
