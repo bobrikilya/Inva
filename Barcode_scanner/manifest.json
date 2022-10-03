@@ -1,7 +1,7 @@
 {
   "name": "Стройпродукт: Сканер",
   "short_name": "Сканер",
-  "display": "fullscreen",
+  "display": "standalone",
   "background_color": "#90b7c4ad",
   "icons": [{
     "src": "img/logo.png",
