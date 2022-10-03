@@ -94,15 +94,8 @@ body {
   padding: 0 10px;
 }
 
-#camera_block {
-  flex-shrink: 1;
-  height: 100%;
-  width: 100%;
-  margin-top: 4vh;
-}
-
 header {
-  position: absolute;
+  position: relative;
   right: 0;
   top: 0;
   display: flex;
@@ -114,13 +107,16 @@ header {
 #menue_but {
   z-index: 4;
   font-size: 1.7rem;
-  margin-right: 1.5rem;
-  margin-top: 1.5rem;
+  margin-top: 2vh;
   color: rgba(26, 26, 26, 0.8549019608);
   cursor: pointer;
 }
-#menue_but:hover {
-  font-size: 2rem;
+
+#camera_block {
+  flex-shrink: 1;
+  height: 100%;
+  width: 100%;
+  margin-top: 1vh;
 }
 
 #bg_cont {
