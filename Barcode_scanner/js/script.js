@@ -63,15 +63,12 @@ function camera_access(){
     }else toggle_camera(); 
 };
 
-function getStream(stream){
+async function getStream(stream){
     info_block.style.display = 'none';
     stream_cont.style.display = 'flex';
+    video.srcObject = await stream;
+    video.play();
     open_camera();
-    setTimeout(() => {
-        video.srcObject = stream;
-        video.play();;
-    }, 2000);
-    
 };
 
 function noStream(){
