@@ -82,7 +82,7 @@ function noStream(){
 function open_camera(){
     video.classList.add('active');
     setTimeout(() => {stream_start();
-    }, 1000);
+    }, 2000);
     scan_icon.classList.add('camera_on');
 };
 
