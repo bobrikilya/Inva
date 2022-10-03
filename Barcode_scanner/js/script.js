@@ -81,8 +81,7 @@ function noStream(){
 
 function open_camera(){
     video.classList.add('active');
-    setTimeout(() => {stream_start();
-    }, 2000);
+    stream_start();
     scan_icon.classList.add('camera_on');
 };
 
@@ -187,7 +186,7 @@ function input_blur(){
 
 function stream_start(){
     Quagga.init({
-        locate: true,
+        // locate: true,
         inputStream : {
             name : "Live",
             type : "LiveStream",
@@ -198,11 +197,10 @@ function stream_start(){
             readers: ["ean_reader"],
             multiple: false,
         },
-        locator: {
-            halfSample: true,
-        },
+        // locator: {
+        //     halfSample: true,
+        // },
         debug: false,
-        willReadFrequently: true,
     }, function(err) {
         if (err) {
             console.log(err);
