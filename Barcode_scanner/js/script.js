@@ -66,9 +66,9 @@ function camera_access(){
 async function getStream(stream){
     info_block.style.display = 'none';
     stream_cont.style.display = 'flex';
+    open_camera();
     video.srcObject = await stream;
     video.play();
-    open_camera();
 };
 
 function noStream(){
