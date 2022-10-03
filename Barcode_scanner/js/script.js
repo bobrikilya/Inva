@@ -12,20 +12,20 @@ const info_block = document.getElementById('info_block');
 const water_tag = document.getElementById('water_tag');
 const container = document.getElementById('container');
 
-const menue_but = document.getElementById('menue_but');
+const refresh_but = document.getElementById('refresh_but');
 
 
 camera_button.addEventListener('click', camera_access);
 clear_button.addEventListener('click', input_cleaning);
 search_button.addEventListener('click', searching);
-menue_but.addEventListener('click', refresh);
+refresh_but.addEventListener('click', refresh);
 
 const doc = document.documentElement;
 
 // For easy working ----------
 const Moz = navigator.userAgent.includes('Mozilla/5.0 (iPhone');
-const fMode = {exact: "environment"};
-// const fMode = {exact: "user"};
+// const fMode = {exact: "environment"};
+const fMode = {exact: "user"};
 
 
 const options = {
@@ -81,7 +81,8 @@ function noStream(){
 
 function open_camera(){
     video.classList.add('active');
-    stream_start();
+    setTimeout(() => {stream_start();
+    }, 100);
     scan_icon.classList.add('camera_on');
 };
 
@@ -144,7 +145,7 @@ input.addEventListener('keyup', (event) => {
 
 
 input.addEventListener('blur', () => {
-    setTimeout(input_blur, 10);
+    setTimeout(input_blur, 20);
 });
 
 input.addEventListener('focus', () => {
@@ -169,7 +170,7 @@ function input_focus(){
     // container.style.justifyContent = 'flex-end';
     water_tag.style.display = 'none';
     camera_block.style.display = 'none';
-    menue_but.style.display = 'none';
+    refresh_but.style.display = 'none';
 };
 
 function input_blur(){
@@ -179,40 +180,40 @@ function input_blur(){
     };
     water_tag.style.display = 'block';
     camera_block.style.display = 'flex';
-    menue_but.style.display = 'flex';
+    refresh_but.style.display = 'flex';
     input.blur();
 };
 
 
 function stream_start(){
-    // Quagga.init({
-    //     locate: true,
-    //     inputStream : {
-    //         name : "Live",
-    //         type : "LiveStream",
-    //         target: video,
-    //     },
-    //     frequency: 5,
-    //     decoder: {
-    //         readers: ["ean_reader"],
-    //         multiple: false,
-    //     },
-    //     locator: {
-    //         halfSample: true,
-    //     },
-    //     debug: false,
-    // }, function(err) {
-    //     if (err) {
-    //         console.log(err);
-    //         console.log("Поломал");
-    //         return
-    //     }
-    //     Quagga.start();
-    // });
+    Quagga.init({
+        locate: true,
+        inputStream : {
+            name : "Live",
+            type : "LiveStream",
+            target: video,
+        },
+        frequency: 5,
+        decoder: {
+            readers: ["ean_reader"],
+            multiple: false,
+        },
+        locator: {
+            halfSample: true,
+        },
+        debug: false,
+    }, function(err) {
+        if (err) {
+            console.log(err);
+            console.log("Поломал");
+            return
+        }
+        Quagga.start();
+    });
 
-    // Quagga.onDetected((result) => {
-    //     Quagga.pause();
-    //     const code = result.codeResult.code;
-    //     request(code);
-    // });
+    Quagga.onDetected((result) => {
+        Quagga.pause();
+        const code = result.codeResult.code;
+        request(code);
+    });
 };
