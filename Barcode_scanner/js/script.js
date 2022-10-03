@@ -161,9 +161,9 @@ input.addEventListener('focus', () => {
 
 
 function input_focus(){
-    // input_block.style.marginBottom = "10vh"
-    // else input_block.style.marginBottom = '0.5vh';
-    container.style.justifyContent = 'flex-end';
+    // if (Moz) input_block.style.marginBottom = "10vh"
+    // else input_block.style.marginBottom = '50vh';
+    // container.style.justifyContent = 'flex-end';
     water_tag.style.display = 'none';
     camera_block.style.display = 'none';
     menue_but.style.display = 'none';
@@ -171,7 +171,7 @@ function input_focus(){
 
 function input_blur(){
     // input_block.style.marginBottom = '5vh';
-    container.style.justifyContent = 'center'
+    // container.style.justifyContent = 'center'
     water_tag.style.display = 'block';
     camera_block.style.display = 'flex';
     menue_but.style.display = 'flex';
