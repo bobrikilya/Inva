@@ -12,10 +12,13 @@ const info_block = document.getElementById('info_block');
 const water_tag = document.getElementById('water_tag');
 const container = document.getElementById('container');
 
+const menue_but = document.getElementById('menue_but');
+
 
 camera_button.addEventListener('click', camera_access);
 clear_button.addEventListener('click', input_cleaning);
 search_button.addEventListener('click', searching);
+menue_but.addEventListener('click', refresh);
 
 const doc = document.documentElement;
 
@@ -35,7 +38,6 @@ const options = {
 
 // Camera access request ----------
 function camera_access(){
-    // cancelFullScreen();
     if (!video.classList.contains('active')){
         video.classList.add('camera_on');
         // if       (navigator.getUserMedia!=null) {
@@ -123,32 +125,9 @@ function request(code){
     toggle_camera();
 };
 
-
-// function startFullScreen() {
-//     if(doc.requestFullscreen) {
-//         doc.requestFullscreen();
-//     } else if(doc.webkitrequestFullscreen) {
-//         doc.webkitRequestFullscreen();
-//     } else if(doc.mozRequestFullscreen) {
-//         doc.mozRequestFullScreen();
-//     }
-// };
-
-
-// function cancelFullScreen() {
-//     console.log('Yaaaaaaa');
-//     doc.cancelFullScreen();
-    // if(doc.exitFullscreen) {
-    //     console.log('1');
-    //     doc.exitFullscreen();
-    // } else if (doc.mozCancelFullScreen) {
-    //     console.log('2');
-    //     doc.mozCancelFullScreen();
-    // } else if (doc.webkitExitFullscreen) {
-    //     console.log('3');
-    //     doc.webkitExitFullscreen();
-    // }
-//   };
+function refresh(){
+    window.location.reload();
+};
 
 // Number filter ----------
 input.addEventListener('keydown', (event) => {
@@ -178,14 +157,6 @@ input.addEventListener('focus', () => {
 //     Quagga.pause();
 //     video.classList.remove('camera_on');
 //     scan_icon.classList.remove('camera_on');
-// });
-
-// document.addEventListener('click', () => {
-//     // if (!Moz){
-//         if(!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement) { 
-//             startFullScreen();
-//         // };
-//     };
 // });
 
 

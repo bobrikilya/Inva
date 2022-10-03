@@ -15,14 +15,8 @@
     <meta property="og:description" content="Онлайн сканер штрих-кодов для сотрудников">
     <!-- ссылка на изображение, которое будет публиковаться в записи -->
     <meta property="og:image" content="img/logo.png">
-    <!-- ссылка на текущую страницу -->
-    <!-- <meta property="og:url" content="https://stroypr-scanner.netlify.app/"> -->
     <!-- название сайта -->
     <meta property="og:site_name" content="Стройпродукт: Сканер">
-    <!-- открытие в полноэкранном Chrome -->
-    <!-- <meta name="mobile-web-app-capable" content="yes"> -->
-    <!-- открытие в полноэкранном Apple -->
-    <!-- <meta name="apple-mobile-web-app-capable" content="yes"> -->
     <link rel="icon" type="image/x-icon" href="img/favicon.ico">
     <script src="https://kit.fontawesome.com/4e8933053d.js" crossorigin="anonymous"></script>
     <title>Стройпродукт: Сканер</title>
@@ -30,6 +24,12 @@
 <body class="cont">
     <div id="container" class="cont">
         <div id="camera_block" class="cont">
+            <header>
+                <span id="menue_but">
+                    <!-- <i class="fa-solid fa-bars"></i> -->
+                    <i class="fa-solid fa-arrows-rotate"></i>
+                </span>
+            </header>
             <div id="bg_cont" class="cont">
                 <div id="stream_cont" class="cont">
                     <video id="video" class="camera_zone" autoplay playsinline muted></video>
@@ -41,7 +41,6 @@
                     <div id="price_cont" class="cont">
                         <div id="item_price_cont" class="item_cont cont">
                             <span id="icon_price" class="icon_cont cont">
-                                <!-- <img src="img/price.png" alt=""> -->
                                 <i class="fa-solid fa-coins"></i>
                             </span>
                             <div class="item_price_title item_title">Цена:</div>
@@ -52,7 +51,6 @@
                         </div>
                         <div id="item_discount_cont" class="item_cont cont">
                             <span id="icon_discount" class="icon_cont cont">
-                                <!-- <img src="img/discount.png" alt=""> -->
                                 <i class="fa-solid fa-tags"></i>
                             </span>
                             <div class="item_discount_title item_title">Цена на<br> акции:</div>
@@ -63,7 +61,6 @@
                         </div>
                         <div id="item_balance_cont" class="item_cont cont">
                             <span id="icon_balance" class="icon_cont cont">
-                                <!-- <img src="img/balance.png" alt=""> -->
                                 <i class="fa-solid fa-box"></i>
                             </span>
                             <div class="item_balance_title item_title">Остаток:</div>

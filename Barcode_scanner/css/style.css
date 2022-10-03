@@ -101,6 +101,28 @@ body {
   margin-top: 4vh;
 }
 
+header {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+#menue_but {
+  z-index: 4;
+  font-size: 1.7rem;
+  margin-right: 1.5rem;
+  margin-top: 1.5rem;
+  color: rgba(26, 26, 26, 0.8549019608);
+  cursor: pointer;
+}
+#menue_but:hover {
+  font-size: 2rem;
+}
+
 #bg_cont {
   flex-shrink: 1;
   height: 100%;

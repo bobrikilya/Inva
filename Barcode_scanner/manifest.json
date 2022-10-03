@@ -1,6 +1,6 @@
 {
   "name": "Стройпродукт: Сканер",
-  "short_name": "Сканер",
+  "short_name": "СтройСкан",
   "display": "fullscreen",
   "background_color": "#90b7c4ad",
   "icons": [{
@@ -10,10 +10,6 @@
   }, {
     "src": "img/logo.png",
     "sizes": "72x72",
-    "type": "image/png"
-  }, {
-    "src": "img/logo.png",
-    "sizes": "144x144",
     "type": "image/png"
   }]
 }
