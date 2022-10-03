@@ -66,10 +66,12 @@ function camera_access(){
 function getStream(stream){
     info_block.style.display = 'none';
     stream_cont.style.display = 'flex';
-    open_camera().then(() => {
+    open_camera();
+    setTimeout(() => {
         video.srcObject = stream;
-        video.play();
-    })
+        video.play();;
+    }, 2000);
+    
 };
 
 function noStream(){
