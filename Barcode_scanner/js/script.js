@@ -172,6 +172,7 @@ input.addEventListener('focus', () => {
     input_focus();
 });
 
+// Не работает
 // window.addEventListener('blur', () => {
 //     video.classList.remove('active');
 //     Quagga.pause();
