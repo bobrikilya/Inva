@@ -13,6 +13,7 @@ const water_tag = document.getElementById('water_tag');
 const container = document.getElementById('container');
 
 const refresh_but = document.getElementById('refresh_but');
+const header = document.querySelector('header');
 
 
 camera_button.addEventListener('click', camera_access);
@@ -169,7 +170,7 @@ function input_focus(){
     // container.style.justifyContent = 'flex-end';
     water_tag.style.display = 'none';
     camera_block.style.display = 'none';
-    refresh_but.style.display = 'none';
+    header.style.display = 'none';
 };
 
 function input_blur(){
@@ -179,7 +180,7 @@ function input_blur(){
     };
     water_tag.style.display = 'block';
     camera_block.style.display = 'flex';
-    refresh_but.style.display = 'flex';
+    header.style.display = 'flex';
     input.blur();
 };
 
