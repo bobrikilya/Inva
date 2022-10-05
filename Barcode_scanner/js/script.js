@@ -1,5 +1,5 @@
 
-const video = document.getElementById('video');
+const video = document.querySelector('video');
 const camera_button = document.getElementById('camera_butt');
 const search_button = document.getElementById('search_butt');
 const clear_button = document.getElementById('clear_butt');
@@ -31,8 +31,8 @@ const fMode = {exact: "environment"};
 
 const options = {
     video: {
-    width: 2255, //height
-    height: 1800, //width
+    width: {ideal: 1920}, //height
+    height: {ideal: 1080}, //width
     facingMode: fMode,
     },
 };
@@ -58,6 +58,7 @@ function camera_access(){
 
         }else () => {
             alert("Камера не найдена");
+            Quagga.pause();
             video.classList.remove('camera_on');
             scan_icon.classList.remove('camera_on');
         };
@@ -193,7 +194,7 @@ function stream_start(){
             type : "LiveStream",
             target: video,
         },
-        frequency: 5,
+        frequency: 2,
         decoder: {
             readers: ["ean_reader"],
             multiple: false,

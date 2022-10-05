@@ -106,7 +106,7 @@ header {
 
 .butt {
   z-index: 4;
-  font-size: 1.9rem;
+  font-size: 2.1rem;
   margin-top: 2vh;
   color: rgba(26, 26, 26, 0.6156862745);
   cursor: pointer;
@@ -154,7 +154,7 @@ header {
   opacity: 1;
 }
 
-#video {
+video {
   z-index: 1;
   background: url("../img/loading.png") 50% 71%/11vh no-repeat;
 }
