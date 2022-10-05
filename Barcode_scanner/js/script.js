@@ -31,7 +31,7 @@ const fMode = {exact: "environment"};
 
 const options = {
     video: {
-    width: {ideal: 1920}, //height
+    // width: {ideal: 1080}, //height
     height: {ideal: 1080}, //width
     facingMode: fMode,
     },
