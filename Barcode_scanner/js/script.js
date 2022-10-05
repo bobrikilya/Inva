@@ -1,5 +1,5 @@
 
-const video = document.querySelector('video');
+const video = document.getElementById('video');
 const camera_button = document.getElementById('camera_butt');
 const search_button = document.getElementById('search_butt');
 const clear_button = document.getElementById('clear_butt');
@@ -25,14 +25,14 @@ const doc = document.documentElement;
 
 // For easy working ----------
 const Moz = navigator.userAgent.includes('Mozilla/5.0 (iPhone');
-// const fMode = {exact: "environment"};
-const fMode = {exact: "user"};
+const fMode = {exact: "environment"};
+// const fMode = {exact: "user"};
 
 
 const options = {
     video: {
-    // width: {ideal: 1080}, //height
-    height: {ideal: 1080}, //width
+    width: 2255, //height
+    height: 1800, //width
     facingMode: fMode,
     },
 };
