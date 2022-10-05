@@ -155,6 +155,7 @@ header {
 }
 
 video {
+  width: 100%;
   z-index: 1;
   background: url("../img/loading.png") 50% 71%/11vh no-repeat;
 }
