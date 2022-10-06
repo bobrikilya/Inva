@@ -1,5 +1,5 @@
 
-const video = document.getElementById('video');
+const video = document.querySelector('video');
 const camera_button = document.getElementById('camera_butt');
 const search_button = document.getElementById('search_butt');
 const clear_button = document.getElementById('clear_butt');
@@ -11,6 +11,7 @@ const scan_icon = document.getElementById('scan_icon');
 const info_block = document.getElementById('info_block');
 const water_tag = document.getElementById('water_tag');
 const container = document.getElementById('container');
+const menue_but = document.getElementById('menue_but');
 
 const refresh_but = document.getElementById('refresh_but');
 const header = document.querySelector('header');
@@ -20,6 +21,7 @@ camera_button.addEventListener('click', camera_access);
 clear_button.addEventListener('click', input_cleaning);
 search_button.addEventListener('click', searching);
 refresh_but.addEventListener('click', refresh);
+menue_but.addEventListener('click', menue_toggle);
 
 const doc = document.documentElement;
 
@@ -131,6 +133,13 @@ function refresh(){
     window.location.reload();
 };
 
+function menue_toggle(){
+    menue_but.classList.toggle('rotate');
+    header.classList.toggle('turn_on');
+    input_block.classList.toggle('p_event');
+};
+
+
 // Number filter ----------
 input.addEventListener('keydown', (event) => {
     if (event.key == '-' || event.key == '.') event.preventDefault();
@@ -152,6 +161,7 @@ input.addEventListener('blur', () => {
 input.addEventListener('focus', () => {
     input_focus();
 });
+
 
 // Не работает
 // window.addEventListener('blur', () => {
@@ -194,7 +204,7 @@ function stream_start(){
             type : "LiveStream",
             target: video,
         },
-        frequency: 2,
+        frequency: 3,
         decoder: {
             readers: ["ean_reader"],
             multiple: false,

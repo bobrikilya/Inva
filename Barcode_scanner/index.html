@@ -25,14 +25,29 @@
 </head>
 <body class="cont">
     <div id="container" class="cont">
-        <header>
-            <span id="download_but" class="butt">
-                <i class="fa-solid fa-cloud-arrow-down"></i>
-            </span>
-            <span id="refresh_but" class="butt">
-                <!-- <i class="fa-solid fa-bars"></i> -->
+        <div id="header_cont" class="cont">
+            <span id="refresh_but" class="butt_head">
                 <i class="fa-solid fa-arrows-rotate"></i>
             </span>
+            <div id="water_tag">ООО "Торговый дом "Стройпродукт"</div>
+            <span id="menue_but" class="butt_head">
+                <i class="fa-solid fa-bars"></i>
+            </span>
+        </div>
+        <header>
+            <ul id="menue_bar" class="cont">
+                <li><a id="scanner_but" href="#">Проверка <br>цены</a></li>
+                <li><a id="mass_scanner_but" href="#">Заяка на <br>ценник</a></li>
+                <li><a id="mass_scanner_but" href="#">Инвентаризация</a></li>
+                <li id="icons_bar">
+                    <span id="download_but" class="butt">
+                        <i class="fa-solid fa-cloud-arrow-down"></i>
+                    </span>
+                    <span id="download_back_but" class="butt">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                    </span>
+                </li>
+            </ul>
         </header>
         <div id="camera_block" class="cont">
             <div id="bg_cont" class="cont">
@@ -85,7 +100,6 @@
                 <button id="search_butt">Поиск</button>
             </div>
         </div>
-        <div id="water_tag">ООО "Торговый дом "Стройпродукт"</div>
     </div>
     <script src="js/quagga.min.js"></script>
     <script src="js/script.js"></script>
