@@ -30,6 +30,11 @@ const Moz = navigator.userAgent.includes('Mozilla/5.0 (iPhone');
 const fMode = {exact: "environment"};
 // const fMode = {exact: "user"};
 
+document.addEventListener("DOMContentLoaded", () => {
+    console.log('Yep');
+    water_tag.classList.add('light');
+    setTimeout(() => {water_tag.classList.remove('light')}, 600);
+}); 
 
 const options = {
     video: {
@@ -179,7 +184,6 @@ function input_focus(){
     };
     // else input_block.style.marginBottom = '50vh';
     // container.style.justifyContent = 'flex-end';
-    water_tag.style.display = 'none';
     camera_block.style.display = 'none';
     header_cont.style.display = 'none';
 };
@@ -189,7 +193,6 @@ function input_blur(){
         input_block.style.marginBottom = "5vh";
         container.style.justifyContent = 'center';
     };
-    water_tag.style.display = 'block';
     camera_block.style.display = 'flex';
     header_cont.style.display = 'flex';
     input.blur();

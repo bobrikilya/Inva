@@ -98,6 +98,7 @@ body {
 }
 
 #header_cont {
+  margin-top: 2%;
   width: 100%;
   flex-direction: row;
   justify-content: space-between;
@@ -115,14 +116,21 @@ body {
 }
 #menue_but.rotate {
   transform: rotate(-90deg);
+  color: rgba(129, 15, 182, 0.662745098);
+  font-size: 3rem;
 }
 
 #water_tag {
-  margin-top: 1vh;
+  transition-duration: 0.5s;
   width: 100%;
   font-size: 1rem;
   text-align: center;
   color: rgba(39, 43, 61, 0.7607843137);
+}
+#water_tag.light {
+  transition-duration: 0.3s;
+  color: #1f9601;
+  text-shadow: 0 0 5px rgba(77, 168, 2, 0.5882352941);
 }
 
 header {
@@ -136,7 +144,7 @@ header {
   width: 88%;
   height: 60%;
   border-radius: 25px;
-  padding: 13vh 0 10vh 0;
+  padding: 11vh 0 9vh 0;
   box-shadow: 0px 5px 15px rgba(34, 46, 51, 0.5058823529);
 }
 header:before {
@@ -146,9 +154,9 @@ header:before {
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(144, 183, 196, 0.4039215686);
-  -webkit-backdrop-filter: blur(12px);
-          backdrop-filter: blur(12px);
+  background: rgba(146, 199, 216, 0.4039215686);
+  -webkit-backdrop-filter: blur(15px);
+          backdrop-filter: blur(15px);
   border-radius: 25px;
 }
 header.turn_on {
