@@ -31,9 +31,8 @@ const fMode = {exact: "environment"};
 // const fMode = {exact: "user"};
 
 document.addEventListener("DOMContentLoaded", () => {
-    console.log('Yep');
     water_tag.classList.add('light');
-    setTimeout(() => {water_tag.classList.remove('light')}, 600);
+    setTimeout(() => {water_tag.classList.remove('light')}, 700);
 }); 
 
 const options = {
@@ -142,6 +141,7 @@ function menue_toggle(){
     menue_but.classList.toggle('rotate');
     header.classList.toggle('turn_on');
     input_block.classList.toggle('p_event');
+    camera_block.classList.toggle('p_event');
 };
 
 

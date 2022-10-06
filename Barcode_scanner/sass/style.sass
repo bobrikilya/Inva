@@ -65,10 +65,12 @@ body
     color: #272b3dc2
     &.light
         transition-duration: 0.3s
-        color: #1f9601
-        text-shadow: 0 0 5px #4da80296
+        color: #24b400
     // border: 2px solid white
 
+.p_event
+        filter: blur(2px) brightness(0.9)
+        pointer-events: none
 
 header
     position: absolute
@@ -82,7 +84,7 @@ header
     height: 60%
     border-radius: 25px
     padding: 11vh 0 9vh 0
-    box-shadow: 0px 5px 15px #222e3381
+    box-shadow: 0px 5px 15px #222e339d
     &:before // Bg blur
         content: ''
         position: absolute
@@ -90,7 +92,7 @@ header
         bottom: 0
         left: 0
         right: 0
-        background: #92c7d867
+        background: #92c6d89c
         backdrop-filter: blur(15px)
         border-radius: 25px
     &.turn_on
@@ -110,13 +112,15 @@ header
         justify-content: center
         align-items: center
         border: 2px solid #32485044
+        background: #c8f7ff18
         // white-space: nowrap
     li:first-child
         margin-top: 0
-        background: #d7f9ff46
+        background: #c8f7ff9d
     li:last-child
         margin-top: 1%
         border: none
+        background: none
     a
         color: #18191d
         font-size: 1.7rem
@@ -148,6 +152,7 @@ header
 
 
 #camera_block
+    transition-duration: 0.3s
     flex-shrink: 1
     height: 100%
     width: 100%
@@ -217,8 +222,6 @@ button
     margin-bottom: 5vh
     width: 100%
     transition-duration: 0.3s
-    &.p_event
-        pointer-events: none
     // border: 2px solid orange
 
 #input
@@ -267,21 +270,28 @@ button
     height: 100%
     background-color: #ffffff
     display: none
+    overflow: auto
     // border: 2px solid green
 
 #item_name
     flex-shrink: 1
     width: 95%
+    // max-height: 8.1rem
     font-size: 1.8rem
-    line-height: 5vh
+    line-height: 2.1rem
     text-align: center
-    padding: 2vh 3vw
+    padding: 1rem 2.5vw
     margin-top: 2vh
     margin-bottom: 2.5vh
     border-radius: 25px
     background-color: #c4a0ffdc
     box-shadow: 0px 0px 7px #1e1729d5
     // border: 0.5px solid black
+
+@media ( max-height: 700px )
+    #item_name
+        overflow: hidden
+        min-height: 5.8rem
 
 #price_cont
     flex-shrink: 1
