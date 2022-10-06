@@ -27,8 +27,8 @@ const doc = document.documentElement;
 
 // For easy working ----------
 const Moz = navigator.userAgent.includes('Mozilla/5.0 (iPhone');
-const fMode = {exact: "environment"};
-// const fMode = {exact: "user"};
+// const fMode = {exact: "environment"};
+const fMode = {exact: "user"};
 
 
 const options = {
@@ -181,7 +181,7 @@ function input_focus(){
     // container.style.justifyContent = 'flex-end';
     water_tag.style.display = 'none';
     camera_block.style.display = 'none';
-    header.style.display = 'none';
+    header_cont.style.display = 'none';
 };
 
 function input_blur(){
@@ -191,7 +191,7 @@ function input_blur(){
     };
     water_tag.style.display = 'block';
     camera_block.style.display = 'flex';
-    header.style.display = 'flex';
+    header_cont.style.display = 'flex';
     input.blur();
 };
 
