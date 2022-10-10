@@ -12,6 +12,7 @@ const info_block = document.getElementById('info_block');
 const water_tag = document.getElementById('water_tag');
 const container = document.getElementById('container');
 const menue_but = document.getElementById('menue_but');
+const mark_but = document.getElementById('mark_but');
 
 const refresh_but = document.getElementById('refresh_but');
 const header = document.querySelector('header');
@@ -22,6 +23,7 @@ clear_button.addEventListener('click', input_cleaning);
 search_button.addEventListener('click', searching);
 refresh_but.addEventListener('click', refresh);
 menue_but.addEventListener('click', menue_toggle);
+mark_but.addEventListener('click', menue_toggle);
 
 const doc = document.documentElement;
 
@@ -140,7 +142,8 @@ function refresh(){
 function menue_toggle(){
     input_block.classList.toggle('bg_blur');
     camera_block.classList.toggle('bg_blur');
-    menue_but.classList.toggle('rotate');
+    menue_but.classList.toggle('toggle');
+    mark_but.classList.toggle('toggle');
     header.classList.toggle('turn_on');
 };
 

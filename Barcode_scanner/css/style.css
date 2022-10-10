@@ -100,7 +100,7 @@ body {
 
 #header_cont {
   position: absolute;
-  top: 1rem;
+  top: 1.3rem;
   width: 100%;
   min-width: 360px;
   flex-direction: row;
@@ -112,7 +112,7 @@ body {
 .butt_head {
   position: absolute;
   z-index: 5;
-  margin: 0 4%;
+  margin: 0 6%;
   color: rgba(26, 26, 26, 0.6156862745);
   font-size: 2.1rem;
   cursor: pointer;
@@ -122,21 +122,30 @@ body {
   left: 0;
 }
 
-#menue_but {
+.menue_but {
   right: 0;
   transition-duration: 0.1s;
 }
-#menue_but.rotate {
-  transform: rotate(-90deg);
-  color: #ee6935;
-  font-size: 3rem;
+
+#menue_but.toggle {
+  display: none;
+}
+
+#mark_but {
+  display: none;
+  color: rgba(128, 0, 0, 0.6156862745);
+  font-size: 3.5rem;
+  transform: translateY(2px);
+}
+#mark_but.toggle {
+  display: inline;
 }
 
 #session_cont {
   flex-direction: row;
   flex-shrink: 1;
   width: 100%;
-  padding: 0 12%;
+  padding: 0 17%;
   font-size: 1.2rem;
   color: rgba(39, 43, 61, 0.7607843137);
 }
@@ -145,12 +154,11 @@ body {
   display: inline;
   min-width: 40%;
   max-width: 70%;
-  font-size: 1.4rem;
   text-align: left;
   margin-left: 0.5rem;
-  padding: 4px 10px;
+  padding: 6px 10px;
   border-radius: 25px;
-  border: 1px solid rgba(26, 26, 26, 0.6156862745);
+  border: 1px solid rgba(26, 26, 26, 0.4392156863);
   cursor: pointer;
   white-space: nowrap;
 }
@@ -243,7 +251,7 @@ header.turn_on {
 }
 
 #camera_block {
-  margin-top: 4rem;
+  margin-top: 4.3rem;
   transition-duration: 0.3s;
   flex-shrink: 1;
   height: 100%;

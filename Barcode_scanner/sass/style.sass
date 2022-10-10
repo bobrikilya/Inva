@@ -36,7 +36,7 @@ body
 
 #header_cont
     position: absolute
-    top: 1rem
+    top: 1.3rem
     width: 100%
     min-width: 360px
     flex-direction: row
@@ -48,7 +48,7 @@ body
 .butt_head
     position: absolute
     z-index: 5
-    margin: 0 4%
+    margin: 0 6%
     color: #1a1a1a9d
     font-size: 2.1rem
     cursor: pointer
@@ -57,20 +57,26 @@ body
 #refresh_but
     left: 0
 
-#menue_but
+.menue_but
     right: 0
     transition-duration: 0.1s
-    &.rotate
-        transform: rotate(-90deg)
-        color: #ee6935
-        font-size: 3rem
+#menue_but
+    &.toggle
+        display: none
+#mark_but
+    display: none
+    color: #8000009d
+    font-size: 3.5rem
+    transform: translateY(2px)
+    &.toggle
+        display: inline
     // border: 2px solid blue
 
 #session_cont
     flex-direction: row
     flex-shrink: 1
     width: 100%
-    padding: 0 12%
+    padding: 0 17%
     font-size: 1.2rem
     color: #272b3dc2
     // border: 2px solid brown
@@ -80,12 +86,11 @@ body
     display: inline
     min-width: 40%
     max-width: 70%
-    font-size: 1.4rem
     text-align: left
     margin-left: 0.5rem
-    padding: 4px 10px
+    padding: 6px 10px
     border-radius: 25px
-    border: 1px solid #1a1a1a9d
+    border: 1px solid #1a1a1a70
     cursor: pointer
     white-space: nowrap
 
@@ -176,7 +181,7 @@ header
 
 
 #camera_block
-    margin-top: 4rem
+    margin-top: 4.3rem
     transition-duration: 0.3s
     flex-shrink: 1
     height: 100%
