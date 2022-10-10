@@ -18,7 +18,6 @@ body
     -webkit-user-select: none
     -ms-user-select: none
     user-select: none
-     
     max-width: 100vw
     height: 100vh
     font-family: "Nunito"
@@ -31,45 +30,70 @@ body
     max-width: 550px
     min-width: 300px
     padding: 0 10px
-    // box-shadow: 0px 0px 10px grey
+    box-shadow: 0px 0px 10px grey
 
 
 
 #header_cont
-    margin-top: 2%
+    position: absolute
+    top: 1rem
     width: 100%
+    min-width: 360px
     flex-direction: row
     justify-content: space-between
+    padding: 0 10px
+    overflow: visible
     // border: 2px solid red
     
 .butt_head
-    margin: 4% 2% 2% 2%
+    position: absolute
+    z-index: 5
+    margin: 0 4%
     color: #1a1a1a9d
     font-size: 2.1rem
     cursor: pointer
     // border: 2px solid black
 
+#refresh_but
+    left: 0
+
 #menue_but
-    transition-duration: 0.3s
+    right: 0
+    transition-duration: 0.1s
     &.rotate
         transform: rotate(-90deg)
-        color: #810fb6a9
+        color: #ee6935
         font-size: 3rem
     // border: 2px solid blue
 
-#water_tag
-    transition-duration: 0.5s
+#session_cont
+    flex-direction: row
+    flex-shrink: 1
     width: 100%
-    font-size: 1rem
-    text-align: center
+    padding: 0 12%
+    font-size: 1.2rem
     color: #272b3dc2
-    &.light
-        transition-duration: 0.3s
-        color: #24b400
-    // border: 2px solid white
+    // border: 2px solid brown
 
-.p_event
-        filter: blur(2px) brightness(0.9)
+
+#session_but
+    display: inline
+    min-width: 40%
+    max-width: 70%
+    font-size: 1.4rem
+    text-align: left
+    margin-left: 0.5rem
+    padding: 4px 10px
+    border-radius: 25px
+    border: 1px solid #1a1a1a9d
+    cursor: pointer
+    white-space: nowrap
+
+
+.bg_blur
+        transition-duration: 0s
+        filter: blur(7px)
+        opacity: 0.7
         pointer-events: none
 
 header
@@ -84,7 +108,7 @@ header
     height: 60%
     border-radius: 25px
     padding: 11vh 0 9vh 0
-    box-shadow: 0px 5px 15px #222e339d
+    box-shadow: 0px 1px 30px #222e3385
     &:before // Bg blur
         content: ''
         position: absolute
@@ -92,12 +116,12 @@ header
         bottom: 0
         left: 0
         right: 0
-        background: #92c6d89c
-        backdrop-filter: blur(15px)
+        background: #d5e7ff8a
+        backdrop-filter: blur(12px)
         border-radius: 25px
     &.turn_on
         display: flex
-    // border: 2px solid green\
+    // border: 2px solid green
 
 #menue_bar
     li
@@ -116,7 +140,7 @@ header
         // white-space: nowrap
     li:first-child
         margin-top: 0
-        background: #c8f7ff9d
+        background: #d0ffb452
     li:last-child
         margin-top: 1%
         border: none
@@ -134,7 +158,7 @@ header
         justify-content: space-around
 
 .butt
-    z-index: 5
+    z-index: 4
     font-size: 2.4rem
     color: #1a1a1a88
     cursor: pointer
@@ -142,7 +166,7 @@ header
 #my_tag
     position: absolute
     bottom: 0.5vh
-    z-index: 0
+    z-index: 6
     width: 100%
     font-size: 1.1rem
     text-align: center
@@ -152,6 +176,7 @@ header
 
 
 #camera_block
+    margin-top: 4rem
     transition-duration: 0.3s
     flex-shrink: 1
     height: 100%
@@ -197,7 +222,7 @@ video
 
 
 button
-    height: 5rem
+    height: 4.8rem
     width: 50%
     font-size: 1.7rem
     text-transform: lowercase
@@ -207,7 +232,7 @@ button
 #camera_butt
     flex-shrink: 0
     position: relative
-    z-index: 4
+    z-index: 3
     background-color: #9aabf7
     width: 100%
     transition-duration: 0.1s
@@ -219,7 +244,7 @@ button
 
 #input_block
     z-index: 0
-    margin-bottom: 5vh
+    padding-bottom: 5vh
     width: 100%
     transition-duration: 0.3s
     // border: 2px solid orange
@@ -234,7 +259,7 @@ button
     text-decoration: none
     text-align: center
     width: 100%
-    height: 5rem
+    height: 4.8rem
     font-size: 2.2rem
     color: #2e2f36
     background-color: white
@@ -260,6 +285,22 @@ button
     width: 49.5%
     &:active
         background-color: #b12f41d3
+
+#water_tag
+    display: inline-block
+    position: absolute
+    bottom: 1vh
+    z-index: 2
+    transition-duration: 0.5s
+    width: 100%
+    font-size: 0.8rem
+    text-align: center
+    color: #272b3d8a
+    &.light
+        transition-duration: 0.3s
+        color: #24b400
+    // border: 2px solid white
+
 
 
 #info_block

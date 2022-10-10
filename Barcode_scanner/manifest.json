@@ -1,6 +1,6 @@
 {
-  "name": "Стройпродукт: Сканер",
-  "short_name": "Скан",
+  "name": "СтройИнвента",
+  "short_name": "Инвента",
   "display": "fullscreen",
   "background_color": "#c2d6ddad",
   "icons": [{

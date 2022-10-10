@@ -32,7 +32,7 @@ const fMode = {exact: "environment"};
 
 document.addEventListener("DOMContentLoaded", () => {
     water_tag.classList.add('light');
-    setTimeout(() => {water_tag.classList.remove('light')}, 700);
+    setTimeout(() => {water_tag.classList.remove('light')}, 1000);
 }); 
 
 const options = {
@@ -138,10 +138,10 @@ function refresh(){
 };
 
 function menue_toggle(){
+    input_block.classList.toggle('bg_blur');
+    camera_block.classList.toggle('bg_blur');
     menue_but.classList.toggle('rotate');
     header.classList.toggle('turn_on');
-    input_block.classList.toggle('p_event');
-    camera_block.classList.toggle('p_event');
 };
 
 
@@ -179,22 +179,24 @@ input.addEventListener('focus', () => {
 
 function input_focus(){
     if (Moz) {
-        input_block.style.marginBottom = "10vh";
+        input_block.style.paddingBottom = "10vh";
         container.style.justifyContent = 'flex-end';
     };
-    // else input_block.style.marginBottom = '50vh';
+    // else input_block.style.paddingBottom = '50vh';
     // container.style.justifyContent = 'flex-end';
     camera_block.style.display = 'none';
+    water_tag.style.display = 'none';
     header_cont.style.display = 'none';
 };
 
 function input_blur(){
     if (Moz) {
-        input_block.style.marginBottom = "5vh";
+        input_block.style.paddingBottom = "5vh";
         container.style.justifyContent = 'center';
     };
     camera_block.style.display = 'flex';
     header_cont.style.display = 'flex';
+    water_tag.style.display = 'inline-block';
     input.blur();
 };
 

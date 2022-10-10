@@ -95,45 +95,70 @@ body {
   max-width: 550px;
   min-width: 300px;
   padding: 0 10px;
+  box-shadow: 0px 0px 10px grey;
 }
 
 #header_cont {
-  margin-top: 2%;
+  position: absolute;
+  top: 1rem;
   width: 100%;
+  min-width: 360px;
   flex-direction: row;
   justify-content: space-between;
+  padding: 0 10px;
+  overflow: visible;
 }
 
 .butt_head {
-  margin: 4% 2% 2% 2%;
+  position: absolute;
+  z-index: 5;
+  margin: 0 4%;
   color: rgba(26, 26, 26, 0.6156862745);
   font-size: 2.1rem;
   cursor: pointer;
 }
 
+#refresh_but {
+  left: 0;
+}
+
 #menue_but {
-  transition-duration: 0.3s;
+  right: 0;
+  transition-duration: 0.1s;
 }
 #menue_but.rotate {
   transform: rotate(-90deg);
-  color: rgba(129, 15, 182, 0.662745098);
+  color: #ee6935;
   font-size: 3rem;
 }
 
-#water_tag {
-  transition-duration: 0.5s;
+#session_cont {
+  flex-direction: row;
+  flex-shrink: 1;
   width: 100%;
-  font-size: 1rem;
-  text-align: center;
+  padding: 0 12%;
+  font-size: 1.2rem;
   color: rgba(39, 43, 61, 0.7607843137);
 }
-#water_tag.light {
-  transition-duration: 0.3s;
-  color: #24b400;
+
+#session_but {
+  display: inline;
+  min-width: 40%;
+  max-width: 70%;
+  font-size: 1.4rem;
+  text-align: left;
+  margin-left: 0.5rem;
+  padding: 4px 10px;
+  border-radius: 25px;
+  border: 1px solid rgba(26, 26, 26, 0.6156862745);
+  cursor: pointer;
+  white-space: nowrap;
 }
 
-.p_event {
-  filter: blur(2px) brightness(0.9);
+.bg_blur {
+  transition-duration: 0s;
+  filter: blur(7px);
+  opacity: 0.7;
   pointer-events: none;
 }
 
@@ -149,7 +174,7 @@ header {
   height: 60%;
   border-radius: 25px;
   padding: 11vh 0 9vh 0;
-  box-shadow: 0px 5px 15px rgba(34, 46, 51, 0.6156862745);
+  box-shadow: 0px 1px 30px rgba(34, 46, 51, 0.5215686275);
 }
 header:before {
   content: "";
@@ -158,9 +183,9 @@ header:before {
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(146, 198, 216, 0.6117647059);
-  -webkit-backdrop-filter: blur(15px);
-          backdrop-filter: blur(15px);
+  background: rgba(213, 231, 255, 0.5411764706);
+  -webkit-backdrop-filter: blur(12px);
+          backdrop-filter: blur(12px);
   border-radius: 25px;
 }
 header.turn_on {
@@ -183,7 +208,7 @@ header.turn_on {
 }
 #menue_bar li:first-child {
   margin-top: 0;
-  background: rgba(200, 247, 255, 0.6156862745);
+  background: rgba(208, 255, 180, 0.3215686275);
 }
 #menue_bar li:last-child {
   margin-top: 1%;
@@ -201,7 +226,7 @@ header.turn_on {
 }
 
 .butt {
-  z-index: 5;
+  z-index: 4;
   font-size: 2.4rem;
   color: rgba(26, 26, 26, 0.5333333333);
   cursor: pointer;
@@ -210,7 +235,7 @@ header.turn_on {
 #my_tag {
   position: absolute;
   bottom: 0.5vh;
-  z-index: 0;
+  z-index: 6;
   width: 100%;
   font-size: 1.1rem;
   text-align: center;
@@ -218,6 +243,7 @@ header.turn_on {
 }
 
 #camera_block {
+  margin-top: 4rem;
   transition-duration: 0.3s;
   flex-shrink: 1;
   height: 100%;
@@ -264,7 +290,7 @@ video {
 }
 
 button {
-  height: 5rem;
+  height: 4.8rem;
   width: 50%;
   font-size: 1.7rem;
   text-transform: lowercase;
@@ -275,7 +301,7 @@ button {
 #camera_butt {
   flex-shrink: 0;
   position: relative;
-  z-index: 4;
+  z-index: 3;
   background-color: #9aabf7;
   width: 100%;
   transition-duration: 0.1s;
@@ -285,7 +311,7 @@ button {
 
 #input_block {
   z-index: 0;
-  margin-bottom: 5vh;
+  padding-bottom: 5vh;
   width: 100%;
   transition-duration: 0.3s;
 }
@@ -300,7 +326,7 @@ button {
   text-decoration: none;
   text-align: center;
   width: 100%;
-  height: 5rem;
+  height: 4.8rem;
   font-size: 2.2rem;
   color: #2e2f36;
   background-color: white;
@@ -330,6 +356,22 @@ button {
 }
 #clear_butt:active {
   background-color: rgba(177, 47, 65, 0.8274509804);
+}
+
+#water_tag {
+  display: inline-block;
+  position: absolute;
+  bottom: 1vh;
+  z-index: 2;
+  transition-duration: 0.5s;
+  width: 100%;
+  font-size: 0.8rem;
+  text-align: center;
+  color: rgba(39, 43, 61, 0.5411764706);
+}
+#water_tag.light {
+  transition-duration: 0.3s;
+  color: #24b400;
 }
 
 #info_block {
