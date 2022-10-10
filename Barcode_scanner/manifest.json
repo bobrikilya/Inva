@@ -2,7 +2,7 @@
   "name": "СтройИнвента",
   "short_name": "Инвента",
   "display": "fullscreen",
-  "background_color": "#c2d6ddad",
+  "background_color": "#b8d6e0ad",
   "icons": [{
     "src": "img/logo.png",
     "sizes": "48x48",

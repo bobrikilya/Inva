@@ -155,7 +155,7 @@ function menue_toggle(){
 
 function check_act(){
     setTimeout(() => {check.classList.add('active');
-    setTimeout(() => {check.classList.remove('active')}, 1000);
+    setTimeout(() => {check.classList.remove('active')}, 1300);
 }, 700)};
 
 
