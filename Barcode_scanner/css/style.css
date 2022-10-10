@@ -212,11 +212,11 @@ header.turn_on {
   justify-content: center;
   align-items: center;
   border: 2px solid rgba(50, 72, 80, 0.2666666667);
-  background: rgba(148, 239, 255, 0.2941176471);
+  background: rgba(148, 239, 255, 0.2117647059);
 }
 #menue_bar li:first-child {
   margin-top: 0;
-  background: rgba(147, 238, 124, 0.8078431373);
+  background: rgba(208, 255, 180, 0.3215686275);
 }
 #menue_bar li:last-child {
   margin-top: 1%;
