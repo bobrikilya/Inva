@@ -212,7 +212,7 @@ header.turn_on {
   justify-content: center;
   align-items: center;
   border: 2px solid rgba(50, 72, 80, 0.2666666667);
-  background: rgba(200, 247, 255, 0.0941176471);
+  background: rgba(200, 247, 255, 0.2117647059);
 }
 #menue_bar li:first-child {
   margin-top: 0;
@@ -235,9 +235,20 @@ header.turn_on {
 
 .butt {
   z-index: 4;
-  font-size: 2.4rem;
-  color: rgba(26, 26, 26, 0.5333333333);
+  font-size: 2.6rem;
+  color: rgba(26, 26, 26, 0.5960784314);
   cursor: pointer;
+}
+
+#check {
+  opacity: 0;
+  font-size: 3.3rem;
+  color: #17c200;
+  transition-duration: 0.8s;
+}
+#check.active {
+  transition-duration: 0.4s;
+  opacity: 1;
 }
 
 #my_tag {

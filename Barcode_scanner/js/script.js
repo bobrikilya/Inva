@@ -14,6 +14,10 @@ const container = document.getElementById('container');
 const menue_but = document.getElementById('menue_but');
 const mark_but = document.getElementById('mark_but');
 
+const download_but = document.getElementById('download_but');
+const download_back_but = document.getElementById('download_back_but');
+const check = document.getElementById('check');
+
 const refresh_but = document.getElementById('refresh_but');
 const header = document.querySelector('header');
 
@@ -24,6 +28,8 @@ search_button.addEventListener('click', searching);
 refresh_but.addEventListener('click', refresh);
 menue_but.addEventListener('click', menue_toggle);
 mark_but.addEventListener('click', menue_toggle);
+download_but.addEventListener('click', check_act);
+download_back_but.addEventListener('click', check_act);
 
 const doc = document.documentElement;
 
@@ -146,6 +152,11 @@ function menue_toggle(){
     mark_but.classList.toggle('toggle');
     header.classList.toggle('turn_on');
 };
+
+function check_act(){
+    setTimeout(() => {check.classList.add('active');
+    setTimeout(() => {check.classList.remove('active')}, 1000);
+}, 700)};
 
 
 // Number filter ----------
