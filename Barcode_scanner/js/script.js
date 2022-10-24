@@ -13,6 +13,11 @@ const water_tag = document.getElementById('water_tag');
 const container = document.getElementById('container');
 const menue_but = document.getElementById('menue_but');
 const mark_but = document.getElementById('mark_but');
+const bg_blur = document.getElementById('bg_blur');
+
+const scanner_but = document.getElementById('scanner_but');
+const mass_scanner_but = document.getElementById('mass_scanner_but');
+const invenory_but = document.getElementById('invenory_but');
 
 const download_but = document.getElementById('download_but');
 const download_back_but = document.getElementById('download_back_but');
@@ -30,6 +35,10 @@ menue_but.addEventListener('click', menue_toggle);
 mark_but.addEventListener('click', menue_toggle);
 download_but.addEventListener('click', check_act);
 download_back_but.addEventListener('click', check_act);
+
+scanner_but.addEventListener('click', (e) => {e.preventDefault()});
+mass_scanner_but.addEventListener('click', (e) => {e.preventDefault()});
+invenory_but.addEventListener('click', (e) => {e.preventDefault()});
 
 const doc = document.documentElement;
 
@@ -146,8 +155,7 @@ function refresh(){
 };
 
 function menue_toggle(){
-    input_block.classList.toggle('bg_blur');
-    main_block.classList.toggle('bg_blur');
+    bg_blur.classList.toggle('toggle');
     menue_but.classList.toggle('toggle');
     mark_but.classList.toggle('toggle');
     header.classList.toggle('turn_on');
@@ -180,7 +188,6 @@ input.addEventListener('blur', () => {
 input.addEventListener('focus', () => {
     input_focus();
 });
-
 
 // Не работает
 // window.addEventListener('blur', () => {

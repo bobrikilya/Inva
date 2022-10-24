@@ -36,6 +36,7 @@ body
 
 
 #header_cont
+    z-index: 7
     position: absolute
     top: 1.3rem
     width: 100%
@@ -53,6 +54,9 @@ body
     color: #1a1a1a9d
     font-size: 2.1rem
     cursor: pointer
+    transition-duration: 0.2s
+    &:hover
+        color: #0012b69d
     // border: 2px solid black
 
 #refresh_but
@@ -60,7 +64,6 @@ body
 
 .menue_but
     right: 0
-    transition-duration: 0.1s
 #menue_but
     &.toggle
         display: none
@@ -96,39 +99,33 @@ body
     cursor: pointer
     white-space: nowrap
 
-
-.bg_blur
-        transition-duration: 0s
-        filter: blur(7px)
-        opacity: 0.7
-        pointer-events: none
-
 header
-    position: absolute
-    z-index: 5
+    display: flex
+    flex-direction: column
+    position: fixed
+    z-index: 6
     overflow: hidden
     display: none
     justify-content: center
     align-items: center
     flex-shrink: 0
-    width: 88%
-    height: 60%
-    border-radius: 25px
-    padding: 11vh 0 9vh 0
-    box-shadow: 0px 1px 30px #222e33a2
-    &:before // Bg blur
-        content: ''
-        position: absolute
-        top: 0
-        bottom: 0
-        left: 0
-        right: 0
-        background: #d5e7ff8a
-        backdrop-filter: blur(12px)
-        border-radius: 25px
     &.turn_on
         display: flex
     // border: 2px solid green
+
+#bg_blur
+    display: none
+    position: fixed
+    z-index: 5
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+    background: #d5e7ff93
+    backdrop-filter: blur(15px)
+    transition-duration: 0.3s
+    &.toggle
+        display: block
 
 #menue_bar
     li
@@ -143,11 +140,11 @@ header
         justify-content: center
         align-items: center
         border: 2px solid #32485044
-        background: #94efff36
+        // background: #94efff36
         // white-space: nowrap
     li:first-child
         margin-top: 0
-        background: #d0ffb452
+        background:#4fcce234
     li:last-child
         margin-top: 1%
         border: none
@@ -156,13 +153,10 @@ header
         color: #18191d
         font-size: 1.7rem
         word-spacing: nowrap
-    // span
-    //     padding: 7px
-    //     border-radius: 50%
-    //     border: 2px solid #324850ad
     #icons_bar
         display: flex
         justify-content: space-around
+        // border: 2px solid white
 
 .butt
     z-index: 4
@@ -180,9 +174,6 @@ header
         opacity: 1
 
 #my_tag
-    position: absolute
-    bottom: 0.5vh
-    z-index: 6
     width: 100%
     font-size: 1.1rem
     text-align: center
