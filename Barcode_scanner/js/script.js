@@ -5,7 +5,7 @@ const search_button = document.getElementById('search_butt');
 const clear_button = document.getElementById('clear_butt');
 const input = document.getElementById('input');
 const input_block = document.getElementById('input_block');
-const camera_block = document.getElementById('camera_block');
+const main_block = document.getElementById('main_block');
 const stream_cont = document.getElementById('stream_cont');
 const scan_icon = document.getElementById('scan_icon');
 const info_block = document.getElementById('info_block');
@@ -147,7 +147,7 @@ function refresh(){
 
 function menue_toggle(){
     input_block.classList.toggle('bg_blur');
-    camera_block.classList.toggle('bg_blur');
+    main_block.classList.toggle('bg_blur');
     menue_but.classList.toggle('toggle');
     mark_but.classList.toggle('toggle');
     header.classList.toggle('turn_on');
@@ -198,7 +198,7 @@ function input_focus(){
     };
     // else input_block.style.paddingBottom = '50vh';
     // container.style.justifyContent = 'flex-end';
-    camera_block.style.display = 'none';
+    main_block.style.display = 'none';
     water_tag.style.display = 'none';
     header_cont.style.display = 'none';
 };
@@ -208,7 +208,7 @@ function input_blur(){
         input_block.style.paddingBottom = "5vh";
         container.style.justifyContent = 'center';
     };
-    camera_block.style.display = 'flex';
+    main_block.style.display = 'flex';
     header_cont.style.display = 'flex';
     water_tag.style.display = 'inline-block';
     input.blur();
