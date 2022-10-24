@@ -24,6 +24,7 @@ const download_back_but = document.getElementById('download_back_but');
 const check = document.getElementById('check');
 
 const refresh_but = document.getElementById('refresh_but');
+const help_but = document.getElementById('help_but');
 const header = document.querySelector('header');
 
 
@@ -155,6 +156,7 @@ function refresh(){
 };
 
 function menue_toggle(){
+    help_but.classList.toggle('toggle');
     bg_blur.classList.toggle('toggle');
     menue_but.classList.toggle('toggle');
     mark_but.classList.toggle('toggle');
