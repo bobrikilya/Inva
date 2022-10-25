@@ -194,7 +194,7 @@ body {
   border-radius: 70px;
   justify-content: flex-start;
   transition-duration: 0.2s;
-  box-shadow: 0 2px 10px rgba(165, 164, 164, 0.231372549);
+  box-shadow: 0 2px 15px rgba(165, 164, 164, 0.231372549);
 }
 #all_sessions_cont.toggle {
   top: -0.5rem;
@@ -218,9 +218,9 @@ body {
 
 #sessions_blur {
   border-radius: 25px;
-  backdrop-filter: blur(53px);
-  -webkit-backdrop-filter: blur(53px);
-  background-color: rgba(236, 244, 255, 0.7882352941);
+  backdrop-filter: blur(13px);
+  -webkit-backdrop-filter: blur(13px);
+  background-color: rgba(241, 247, 255, 0.6705882353);
 }
 
 #all_sess_cont_content {
