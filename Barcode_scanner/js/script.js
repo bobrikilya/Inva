@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
     water_tag.classList.add('light');
     setTimeout(() => {water_tag.classList.remove('light')}, 1000);
 
-    // if (Moz) sessions_blur.style.backgroundColor = '#ebf4fffa';
+    if (Moz) sessions_blur.style.backgroundColor = '#ebf4fffa';
 }); 
 
 const options = {

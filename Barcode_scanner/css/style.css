@@ -241,7 +241,7 @@ body {
 
 #add_session {
   width: 6rem;
-  padding: 6px;
+  padding: 8px;
   margin-top: 1.5rem;
   margin-bottom: 1.2rem;
   font-size: 2rem;
@@ -287,9 +287,11 @@ header.turn_on {
   width: 100%;
   max-width: 280px;
   transition: 0.2s ease-out;
-  transform: translateY(-20px);
+  opacity: 0;
+  transform: translateY(-1rem);
 }
 #menue_bar.toggle {
+  opacity: 1;
   transform: translateY(0);
 }
 #menue_bar li {
