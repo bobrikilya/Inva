@@ -25,6 +25,7 @@ const check = document.getElementById('check');
 const refresh_but = document.getElementById('refresh_but');
 const help_but = document.getElementById('help_but');
 const header = document.querySelector('header');
+const menue_bar = document.getElementById('menue_bar');
 const session_but = document.getElementById('session_but');
 const all_sessions_cont = document.getElementById('all_sessions_cont');
 const all_sess_cont_content = document.getElementById('all_sess_cont_content');
@@ -164,6 +165,7 @@ function menue_toggle(){
     menue_but.classList.toggle('toggle');
     mark_but.classList.toggle('toggle');
     header.classList.toggle('turn_on');
+    setTimeout(() => {menue_bar.classList.toggle('toggle')}, 10);
 };
 
 function check_act(){
@@ -178,7 +180,7 @@ function sessions_cont_toggle(){
 
 document.addEventListener('click', (event) => {
     if (all_sessions_cont.classList.contains('toggle')){
-        
+
         const sessions_cont_inside= event.composedPath().includes(all_sessions_cont);
         const session_but_inside= event.composedPath().includes(session_but);
 

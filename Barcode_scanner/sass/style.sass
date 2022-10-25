@@ -90,7 +90,7 @@ body
 
 #session_cont
     overflow: visible
-    width: 50%
+    width: 55%
     font-size: 1.2rem
     color: #272b3dc2
     margin-top: -0.3rem
@@ -123,7 +123,7 @@ body
     // background-color:#ffffffda
     justify-content: flex-start
     transition-duration: 0.2s
-    box-shadow: 0 2px 5px #a5a4a441
+    box-shadow: 0 2px 10px #a5a4a43b
     &.toggle
         top: -0.5rem
         opacity: 1
@@ -140,11 +140,13 @@ body
     left: 0
     right: 0
     backdrop-filter: blur(15px)
+    -webkit-backdrop-filter: blur(15px)
     z-index: -1
 
 #sessions_blur
     border-radius: 25px
-    // backdrop-filter: blur(7px)
+    backdrop-filter: blur(8px)
+    -webkit-backdrop-filter: blur(8px)
     background-color: #f1f7ff85
 
 #all_sess_cont_content
@@ -195,6 +197,7 @@ header
     height: 100%
     &.turn_on
         display: flex
+
     // border: 2px solid green
 
 #body_blur
@@ -205,7 +208,11 @@ header
 #menue_bar
     width: 100%
     max-width: 280px
+    transition: 0.2s ease-out
+    transform: translateY(-20px)
     // border: 2px solid white
+    &.toggle
+        transform: translateY(0)
     li
         display: flex
         // position: relative
@@ -217,10 +224,10 @@ header
         white-space: nowrap
         align-items: center
         border-radius: 25px
-    li:first-child
+    li:nth-first-child
         margin-top: 0
         background-color:#26b1c736
-    li:last-child
+    li:nth-last-child(-n+2)
         margin-top: 8%
         margin-bottom: 4%
         border: none
