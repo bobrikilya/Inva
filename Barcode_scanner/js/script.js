@@ -13,7 +13,6 @@ const water_tag = document.getElementById('water_tag');
 const container = document.getElementById('container');
 const menue_but = document.getElementById('menue_but');
 const mark_but = document.getElementById('mark_but');
-const bg_blur = document.getElementById('bg_blur');
 
 const scanner_but = document.getElementById('scanner_but');
 const mass_scanner_but = document.getElementById('mass_scanner_but');
@@ -26,6 +25,8 @@ const check = document.getElementById('check');
 const refresh_but = document.getElementById('refresh_but');
 const help_but = document.getElementById('help_but');
 const header = document.querySelector('header');
+const session_but = document.getElementById('session_but');
+const all_sessions_cont = document.getElementById('all_sessions_cont');
 
 
 camera_button.addEventListener('click', camera_access);
@@ -36,6 +37,7 @@ menue_but.addEventListener('click', menue_toggle);
 mark_but.addEventListener('click', menue_toggle);
 download_but.addEventListener('click', check_act);
 download_back_but.addEventListener('click', check_act);
+session_but.addEventListener('click', sessions_cont_toggle);
 
 scanner_but.addEventListener('click', (e) => {e.preventDefault()});
 mass_scanner_but.addEventListener('click', (e) => {e.preventDefault()});
@@ -157,7 +159,6 @@ function refresh(){
 
 function menue_toggle(){
     help_but.classList.toggle('toggle');
-    bg_blur.classList.toggle('toggle');
     menue_but.classList.toggle('toggle');
     mark_but.classList.toggle('toggle');
     header.classList.toggle('turn_on');
@@ -168,7 +169,9 @@ function check_act(){
     setTimeout(() => {check.classList.remove('active')}, 1300);
 }, 700)};
 
-
+function sessions_cont_toggle(){
+    all_sessions_cont.classList.toggle('toggle');
+};
 // Number filter ----------
 input.addEventListener('keydown', (event) => {
     if (event.key == '-' || event.key == '.') event.preventDefault();
