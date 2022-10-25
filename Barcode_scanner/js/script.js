@@ -175,6 +175,21 @@ function sessions_cont_toggle(){
     all_sessions_cont.classList.toggle('toggle');
     all_sess_cont_content.classList.toggle('toggle');
 };
+
+document.addEventListener('click', (event) => {
+    if (all_sessions_cont.classList.contains('toggle')){
+        
+        const sessions_cont_inside= event.composedPath().includes(all_sessions_cont);
+        const session_but_inside= event.composedPath().includes(session_but);
+
+        if (!sessions_cont_inside && !session_but_inside) {
+            all_sessions_cont.classList.remove('toggle');
+            all_sess_cont_content.classList.remove('toggle');
+        };
+    };
+});
+
+
 // Number filter ----------
 input.addEventListener('keydown', (event) => {
     if (event.key == '-' || event.key == '.') event.preventDefault();

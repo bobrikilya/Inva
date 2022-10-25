@@ -192,9 +192,9 @@ body {
   opacity: 0;
   padding-top: 4.7rem;
   border-radius: 70px;
-  background-color: rgba(255, 255, 255, 0.3411764706);
   justify-content: flex-start;
   transition-duration: 0.2s;
+  box-shadow: 0 2px 5px rgba(165, 164, 164, 0.2549019608);
 }
 #all_sessions_cont.toggle {
   top: -0.5rem;
@@ -211,16 +211,14 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
+          backdrop-filter: blur(15px);
   z-index: -1;
 }
 
 #sessions_blur {
   border-radius: 25px;
-  -webkit-backdrop-filter: blur(7px);
-          backdrop-filter: blur(7px);
-  background-color: rgba(198, 214, 235, 0.2666666667);
+  background-color: rgba(241, 247, 255, 0.5215686275);
 }
 
 #all_sess_cont_content {
@@ -246,6 +244,7 @@ body {
   border-radius: 25px;
   background-color: rgba(34, 197, 61, 0.6156862745);
   text-align: center;
+  color: rgba(246, 249, 253, 0.9176470588);
 }
 
 #close_but {
