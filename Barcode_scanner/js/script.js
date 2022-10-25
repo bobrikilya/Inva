@@ -30,6 +30,7 @@ const session_but = document.getElementById('session_but');
 const all_sessions_cont = document.getElementById('all_sessions_cont');
 const all_sess_cont_content = document.getElementById('all_sess_cont_content');
 const add_session = document.getElementById('add_session');
+const sessions_blur = document.getElementById('sessions_blur');
 
 
 camera_button.addEventListener('click', camera_access);
@@ -56,6 +57,8 @@ const fMode = {exact: "environment"};
 document.addEventListener("DOMContentLoaded", () => {
     water_tag.classList.add('light');
     setTimeout(() => {water_tag.classList.remove('light')}, 1000);
+
+    // if (!Moz) sessions_blur.style.backgroundColor = '';
 }); 
 
 const options = {
