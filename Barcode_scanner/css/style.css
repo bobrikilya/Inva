@@ -162,7 +162,7 @@ body {
 
 #session_cont {
   overflow: visible;
-  width: 55%;
+  width: 50%;
   font-size: 1.2rem;
   color: rgba(39, 43, 61, 0.7607843137);
   margin-top: -0.3rem;
@@ -172,7 +172,7 @@ body {
   display: inline;
   z-index: 5;
   min-width: 40%;
-  max-width: 80%;
+  max-width: 90%;
   text-align: center;
   padding: 10px;
   border-radius: 25px;
@@ -183,22 +183,26 @@ body {
 }
 
 #all_sessions_cont {
+  flex-shrink: 1;
   position: absolute;
-  top: -0.5rem;
+  top: -1.5rem;
   width: 0;
   height: 0;
+  min-height: 0;
   opacity: 0;
   padding-top: 4.7rem;
-  border-radius: 25px;
+  border-radius: 70px;
   background-color: rgba(255, 255, 255, 0.3411764706);
   justify-content: flex-start;
-  transition: 0.2s;
+  transition-duration: 0.2s;
 }
 #all_sessions_cont.toggle {
+  top: -0.5rem;
   opacity: 1;
   width: 110%;
   height: auto;
   min-height: 10rem;
+  border-radius: 25px;
 }
 
 .blur {
@@ -213,9 +217,24 @@ body {
 }
 
 #sessions_blur {
+  border-radius: 25px;
   -webkit-backdrop-filter: blur(7px);
           backdrop-filter: blur(7px);
   background-color: rgba(198, 214, 235, 0.3568627451);
+}
+
+#all_sess_cont_content {
+  flex-shrink: 1;
+  width: 100%;
+  height: 100%;
+  transition-duration: 0.1s;
+  transform: translateY(-35px);
+  opacity: 0;
+}
+#all_sess_cont_content.toggle {
+  transition-duration: 0.35s;
+  transform: translateY(0);
+  opacity: 1;
 }
 
 #add_session {
@@ -225,7 +244,6 @@ body {
   margin-bottom: 1.2rem;
   font-size: 2rem;
   border-radius: 25px;
-  border: 1px solid rgba(26, 26, 26, 0.431372549);
   background-color: rgba(34, 197, 61, 0.6156862745);
   text-align: center;
 }

@@ -27,6 +27,8 @@ const help_but = document.getElementById('help_but');
 const header = document.querySelector('header');
 const session_but = document.getElementById('session_but');
 const all_sessions_cont = document.getElementById('all_sessions_cont');
+const all_sess_cont_content = document.getElementById('all_sess_cont_content');
+const add_session = document.getElementById('add_session');
 
 
 camera_button.addEventListener('click', camera_access);
@@ -171,6 +173,7 @@ function check_act(){
 
 function sessions_cont_toggle(){
     all_sessions_cont.classList.toggle('toggle');
+    all_sess_cont_content.classList.toggle('toggle');
 };
 // Number filter ----------
 input.addEventListener('keydown', (event) => {
