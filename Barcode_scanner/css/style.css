@@ -211,16 +211,17 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background-blend-mode: overlay;
   z-index: -1;
 }
 
 #sessions_blur {
   border-radius: 25px;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  background-color: rgba(241, 247, 255, 0.5215686275);
+  backdrop-filter: blur(13px);
+  -webkit-backdrop-filter: blur(13px);
+  background-color: rgba(241, 247, 255, 0.6509803922);
 }
 
 #all_sess_cont_content {
