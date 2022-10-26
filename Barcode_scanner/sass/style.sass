@@ -21,7 +21,7 @@ body
     max-width: 100vw
     height: 100vh
     font-family: "Nunito"
-    background-color: #b8d6e0ad
+    background: radial-gradient(circle, #b8d6e0ad 60%, #7bafc0c2 100%)
     overflow: hidden
 
 #container
@@ -91,13 +91,13 @@ body
     // border: 2px solid blue
 
 #session_cont
+    flex-direction: row
     overflow: visible
     width: 55%
     font-size: 1.2rem
     color: #272b3dc2
     margin-top: -0.3rem
     // border: 2px solid brown
-
 
 #session_but
     display: inline
@@ -107,10 +107,16 @@ body
     text-align: center
     padding: 10px
     border-radius: 25px
-    border: 1px solid #1a1a1a70
+    // border: 1px solid #1a1a1a70
+    border: 1px solid #e20303d5
+    color: #e20303d5
     cursor: pointer
     white-space: nowrap
-    transition-duration: 0.2s
+    transition-duration: 0.4s
+    &.active
+        border: 1px solid #1a1a1a70
+        color: #1a1a1a70
+
 
 #all_sessions_cont
     flex-shrink: 1
@@ -120,7 +126,7 @@ body
     height: 0
     min-height: 0
     opacity: 0
-    padding-top: 4.7rem
+    padding-top: 4.9rem
     border-radius: 70px
     // background-color:#ffffffda
     justify-content: flex-start
@@ -163,29 +169,85 @@ body
         transform: translateY(0)
         opacity: 1
 
-#add_session
+
+#session_power_but
     width: 6rem
-    padding: 8px
-    margin-top: 1.5rem
+    padding: 10px
+    margin-top: 1.2rem
     margin-bottom: 1.2rem
     font-size: 2rem
     border-radius: 25px
+    text-align: center
     background-color: #22c53d9d
-    text-align: center
     color:#f6f9fdea
+    transition-duration: 0.4s
+    &.active
+        background-color: #da144f9d
+        color:#f6f9fdea
+        i
+            transform: rotate(45deg)
 
 
-#close_but
-    position: absolute
-    right: 0.5rem
-    top: 0.5rem
-    font-size: 2rem
-    width: 3.2rem
-    height: 3.2rem
-    border-radius: 50%
+#ur_session_num_cont
+    display: none
+    position: fixed
+    z-index: 8
+    top: 50%
+    transform: translateY(-50%)
+    // height: 50%
+    width: 85%
+    border-radius: 25px
+    padding: 2rem
+    color: #1a1a1ab9
+    box-shadow: 0 2px 350px #8a8888
     text-align: center
-    line-height: 3.2rem
-    // border: 2px solid green
+    &.toggle
+        display: flex
+    h2
+        font-size: 2rem
+    #session_num_content
+        opacity: 0.5
+        transition: 0.2s ease-out
+        transform: translateY(-1rem)
+        &.toggle
+            opacity: 1
+            transform: translateY(0)
+    #num_cont
+        margin: 1rem 0
+        width: 100%
+        flex-direction: row
+        align-items: flex-end
+        // border: 2px solid green
+    p
+        font-size: 2.7rem
+        margin-bottom: 0.4rem
+        margin-right: 0.4rem
+        // border: 2px solid green
+    #session_num
+        font-size: 5rem
+        // border: 2px solid brown
+    h3
+        font-size: 1.7rem
+    #session_num_but_cont
+        margin-top: 1rem
+        flex-direction: row
+        width: 100%
+        // border: 2px solid green
+        button
+            margin: 0 3px
+            font-size: 1.2
+        #give_name_but
+            background-color: #13c6e644
+        #next_but
+            background-color: #36e61350
+
+
+#session_num_blur
+    border-radius: 25px
+    backdrop-filter: blur(25px)
+    -webkit-backdrop-filter: blur(25px)
+    background-color: #f0fbffc9
+
 
 header
     display: none
@@ -202,7 +264,7 @@ header
 
     // border: 2px solid green
 
-#body_blur
+#menue_blur
     position: fixed
     // z-index: -1
     background-color: #c6d6eb93
@@ -211,7 +273,7 @@ header
     width: 100%
     max-width: 280px
     transition: 0.2s ease-out
-    opacity: 0
+    opacity: 0.5
     transform: translateY(-1rem)
     // border: 2px solid white
     &.toggle
@@ -424,7 +486,7 @@ button
     line-height: 2rem
     text-align: center
     padding: 1rem 5%
-    margin-top: 1.4vh
+    margin-top: 2vh
     margin-bottom: 2.5vh
     border-radius: 25px
     background-color: #c4a0ffb6

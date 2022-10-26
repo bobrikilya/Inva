@@ -1,19 +1,31 @@
 
-const video = document.querySelector('video');
-const camera_button = document.getElementById('camera_butt');
-const search_button = document.getElementById('search_butt');
-const clear_button = document.getElementById('clear_butt');
-const input = document.getElementById('input');
-const input_block = document.getElementById('input_block');
-const main_block = document.getElementById('main_block');
-const stream_cont = document.getElementById('stream_cont');
-const scan_icon = document.getElementById('scan_icon');
-const info_block = document.getElementById('info_block');
-const water_tag = document.getElementById('water_tag');
 const container = document.getElementById('container');
+
+//--------------
+const ur_session_num_cont = document.getElementById('ur_session_num_cont');
+const session_num_content = document.getElementById('session_num_content');
+const next_but = document.getElementById('next_but');
+const give_name_but = document.getElementById('give_name_but');
+
+//--------------
+
+const header_cont = document.getElementById('header_cont');
+const refresh_but = document.getElementById('refresh_but');
+const session_but = document.getElementById('session_but');
+const all_sessions_cont = document.getElementById('all_sessions_cont');
+const all_sess_cont_content = document.getElementById('all_sess_cont_content');
+const session_power_but = document.getElementById('session_power_but');
+const sessions_blur = document.getElementById('sessions_blur');
+
+const help_but = document.getElementById('help_but');
+
 const menue_but = document.getElementById('menue_but');
 const mark_but = document.getElementById('mark_but');
 
+//--------------
+
+const header = document.querySelector('header');
+const menue_bar = document.getElementById('menue_bar');
 const scanner_but = document.getElementById('scanner_but');
 const mass_scanner_but = document.getElementById('mass_scanner_but');
 const invenory_but = document.getElementById('invenory_but');
@@ -22,15 +34,25 @@ const download_but = document.getElementById('download_but');
 const download_back_but = document.getElementById('download_back_but');
 const check = document.getElementById('check');
 
-const refresh_but = document.getElementById('refresh_but');
-const help_but = document.getElementById('help_but');
-const header = document.querySelector('header');
-const menue_bar = document.getElementById('menue_bar');
-const session_but = document.getElementById('session_but');
-const all_sessions_cont = document.getElementById('all_sessions_cont');
-const all_sess_cont_content = document.getElementById('all_sess_cont_content');
-const add_session = document.getElementById('add_session');
-const sessions_blur = document.getElementById('sessions_blur');
+//--------------
+
+const main_block = document.getElementById('main_block');
+const stream_cont = document.getElementById('stream_cont');
+const video = main_block.querySelector('video');
+const scan_icon = document.getElementById('scan_icon');
+const info_block = document.getElementById('info_block');
+const camera_button = document.getElementById('camera_butt');
+
+//--------------
+
+const input_block = document.getElementById('input_block');
+const input = document.getElementById('input');
+const clear_button = document.getElementById('clear_butt');
+const search_button = document.getElementById('search_butt');
+
+//--------------
+const water_tag = document.getElementById('water_tag');
+
 
 
 camera_button.addEventListener('click', camera_access);
@@ -42,12 +64,15 @@ mark_but.addEventListener('click', menue_toggle);
 download_but.addEventListener('click', check_act);
 download_back_but.addEventListener('click', check_act);
 session_but.addEventListener('click', sessions_cont_toggle);
+session_power_but.addEventListener('click', giving_sess_num);
+next_but.addEventListener('click', sess_num_confirm);
 
 scanner_but.addEventListener('click', (e) => {e.preventDefault()});
 mass_scanner_but.addEventListener('click', (e) => {e.preventDefault()});
 invenory_but.addEventListener('click', (e) => {e.preventDefault()});
 
 const doc = document.documentElement;
+let session_power = false;
 
 // For easy working ----------
 const Moz = navigator.userAgent.includes('Mozilla/5.0 (iPhone');
@@ -179,6 +204,35 @@ function check_act(){
 function sessions_cont_toggle(){
     all_sessions_cont.classList.toggle('toggle');
     all_sess_cont_content.classList.toggle('toggle');
+};
+
+function giving_sess_num(){
+    if(!session_power){
+        ur_session_num_cont.classList.toggle('toggle');
+        setTimeout(() => {session_num_content.classList.toggle('toggle')}, 10);
+    }else {
+
+        session_but.classList.remove('active');
+        session_power_but.classList.remove('active');
+        session_power = false;
+        session_but.innerText = 'Нет сессии';
+    };
+};
+
+function sess_num_confirm(){
+    ur_session_num_cont.classList.remove('toggle');
+    session_num_content.classList.remove('toggle');
+
+    
+    today = new Date().toLocaleDateString();
+    sess_num = session_num.innerText;
+    // console.log(today);
+    let session_name = `${today}-${sess_num}`
+    session_but.innerText = session_name;
+    
+    session_but.classList.add('active');
+    session_power_but.classList.add('active');
+    session_power = true;
 };
 
 document.addEventListener('click', (event) => {
