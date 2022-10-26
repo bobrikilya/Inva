@@ -4,6 +4,8 @@ const container = document.getElementById('container');
 //--------------
 const ur_session_num_cont = document.getElementById('ur_session_num_cont');
 const session_num_content = document.getElementById('session_num_content');
+const sess_input = document.getElementById('sess_input');
+const session_num_but_cont = document.getElementById('session_num_but_cont');
 const next_but = document.getElementById('next_but');
 const give_name_but = document.getElementById('give_name_but');
 
@@ -14,6 +16,7 @@ const refresh_but = document.getElementById('refresh_but');
 const session_but = document.getElementById('session_but');
 const all_sessions_cont = document.getElementById('all_sessions_cont');
 const all_sess_cont_content = document.getElementById('all_sess_cont_content');
+const session_text = document.getElementById('session_text');
 const session_power_but = document.getElementById('session_power_but');
 const sessions_blur = document.getElementById('sessions_blur');
 
@@ -64,8 +67,9 @@ mark_but.addEventListener('click', menue_toggle);
 download_but.addEventListener('click', check_act);
 download_back_but.addEventListener('click', check_act);
 session_but.addEventListener('click', sessions_cont_toggle);
-session_power_but.addEventListener('click', giving_sess_num);
+session_power_but.addEventListener('click', sess_start_stop);
 next_but.addEventListener('click', sess_num_confirm);
+give_name_but.addEventListener('click', sess_input_act);
 
 scanner_but.addEventListener('click', (e) => {e.preventDefault()});
 mass_scanner_but.addEventListener('click', (e) => {e.preventDefault()});
@@ -73,6 +77,10 @@ invenory_but.addEventListener('click', (e) => {e.preventDefault()});
 
 const doc = document.documentElement;
 let session_power = false;
+
+let today = new Date().toLocaleDateString();
+let session_name;
+let sess_num;
 
 // For easy working ----------
 const Moz = navigator.userAgent.includes('Mozilla/5.0 (iPhone');
@@ -206,38 +214,60 @@ function sessions_cont_toggle(){
     all_sess_cont_content.classList.toggle('toggle');
 };
 
-function giving_sess_num(){
+function sess_start_stop(){
     if(!session_power){
         ur_session_num_cont.classList.toggle('toggle');
         setTimeout(() => {session_num_content.classList.toggle('toggle')}, 10);
-    }else {
+        sessions_cont_toggle();
 
+        sess_num = session_num.innerText;
+        session_name = `${today}-${sess_num}`;
+        sess_input.setAttribute("placeholder", session_name);
+    }else {
         session_but.classList.remove('active');
         session_power_but.classList.remove('active');
         session_power = false;
         session_but.innerText = 'Нет сессии';
+        session_text.innerText = 'Подключиться к сессии';
     };
 };
 
 function sess_num_confirm(){
     ur_session_num_cont.classList.remove('toggle');
     session_num_content.classList.remove('toggle');
+    
+    if (sess_input.value == 0){
+        session_but.innerText = session_name;
+        // console.log(today);
+    }else {
+        session_but.innerText = `${sess_input.value}-${sess_num}`;
+    };
 
-    
-    today = new Date().toLocaleDateString();
-    sess_num = session_num.innerText;
-    // console.log(today);
-    let session_name = `${today}-${sess_num}`
-    session_but.innerText = session_name;
-    
     session_but.classList.add('active');
     session_power_but.classList.add('active');
+    session_text.innerText = 'Отключиться от сессии';
     session_power = true;
+
+};
+
+function sess_input_act(){
+    sess_input.value = '';
+    if (!sess_input.classList.contains('active')){
+        session_num_but_cont.style.marginTop = '6rem';
+        sess_input.style.display = 'inline-block';
+        setTimeout(() => {sess_input.classList.add('active'), 10});
+        sess_input.focus();
+    }else {
+        session_num_but_cont.style.marginTop = '1rem';
+        sess_input.classList.remove('active');
+        setTimeout(() => {sess_input.style.display = 'inline-block'}, 200);
+        sess_input.blur();
+    };
 };
 
 document.addEventListener('click', (event) => {
     if (all_sessions_cont.classList.contains('toggle')){
-
+        
         const sessions_cont_inside= event.composedPath().includes(all_sessions_cont);
         const session_but_inside= event.composedPath().includes(session_but);
 
@@ -259,7 +289,7 @@ input.addEventListener('keydown', (event) => {
 });
 
 input.addEventListener('keyup', (event) => {
-    if (event.key == 'Enter') searching();
+    if (input.classList.contains('active') && event.key == 'Enter') searching();
 });
 
 

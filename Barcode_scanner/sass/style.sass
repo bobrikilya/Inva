@@ -124,7 +124,6 @@ body
     top: -1.5rem
     width: 0
     height: 0
-    min-height: 0
     opacity: 0
     padding-top: 4.9rem
     border-radius: 70px
@@ -136,8 +135,7 @@ body
         top: -0.5rem
         opacity: 1
         width: 110%
-        height: auto
-        min-height: 10rem
+        height: 13rem
         border-radius: 25px
 
 
@@ -181,6 +179,7 @@ body
     background-color: #22c53d9d
     color:#f6f9fdea
     transition-duration: 0.4s
+    cursor: pointer
     &.active
         background-color: #da144f9d
         color:#f6f9fdea
@@ -190,7 +189,7 @@ body
 
 #ur_session_num_cont
     display: none
-    position: fixed
+    position: absolute
     z-index: 8
     top: 50%
     transform: translateY(-50%)
@@ -201,11 +200,14 @@ body
     color: #1a1a1ab9
     box-shadow: 0 2px 350px #8a8888
     text-align: center
+    flex-shrink: 1
+    transition: 0.2s ease-out
     &.toggle
         display: flex
     h2
         font-size: 2rem
     #session_num_content
+        flex-shrink: 1
         opacity: 0.5
         transition: 0.2s ease-out
         transform: translateY(-1rem)
@@ -213,7 +215,7 @@ body
             opacity: 1
             transform: translateY(0)
     #num_cont
-        margin: 1rem 0
+        margin: 1.5rem 0
         width: 100%
         flex-direction: row
         align-items: flex-end
@@ -228,7 +230,25 @@ body
         // border: 2px solid brown
     h3
         font-size: 1.7rem
+    #sess_input
+        display: none
+        position: absolute
+        // z-index: -1
+        top: 13.8rem
+        transform: translateY(2rem)
+        width: 97%
+        font-size: 1.7rem
+        margin-top: 1rem
+        opacity: 0
+        transition-duration: 0.1s
+        height: 0
+        &.active
+            height: 4rem
+            transition-duration: 0.3s
+            transform: translateY(0)
+            opacity: 1
     #session_num_but_cont
+        transition-duration: 0.2s
         margin-top: 1rem
         flex-direction: row
         width: 100%
@@ -275,7 +295,7 @@ header
     transition: 0.2s ease-out
     opacity: 0.5
     transform: translateY(-1rem)
-    // border: 2px solid white
+    // border: 2px solid brown
     &.toggle
         opacity: 1
         transform: translateY(0)
@@ -414,7 +434,7 @@ button
     transition-duration: 0.3s
     // border: 2px solid orange
 
-#input
+input
     overflow: hidden
     position: relative
     z-index: 2
@@ -423,14 +443,17 @@ button
     background: none
     text-decoration: none
     text-align: center
-    width: 100%
-    height: 4.7rem
-    font-size: 2rem
     color: #2e2f36
     background-color: white
-    letter-spacing: 4px
     border-radius: 25px
+    width: 100%
+    
+
+#input
+    height: 4.7rem
+    font-size: 2rem
     margin: 1vh 0
+    letter-spacing: 4px
 
 #clear_search_cont
     flex-direction: row
