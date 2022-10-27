@@ -36,10 +36,12 @@
                     <span id="session_num">4</span>
                 </div>
                 <h3>Задать имя сессии?</h3>
-                <input id="sess_input" type="text" maxlength="15" minlength="4">
-                <div id="session_num_but_cont" class="cont">
-                    <button id="give_name_but" class="button">Задать</button>
-                    <button id="next_but" class="button">Далее</button>
+                <div id="sess_input_cont" class="cont">
+                    <input id="sess_input" type="text" maxlength="15" minlength="4">
+                    <div id="session_num_but_cont" class="cont">
+                        <button id="give_name_but" class="button">Задать</button>
+                        <button id="next_but" class="button">Далее</button>
+                    </div>
                 </div>
             </div>
             <div id="session_num_blur" class="blur"></div>
@@ -54,9 +56,11 @@
                     <div id="all_sess_cont_content" class="cont">
                         <span id="session_text">Подключиться к сессии</span>
                         <div id="other_sessions_cont" class="cont"></div>
-                        <span id="session_power_but">
-                            <i class="fa-solid fa-plus"></i>
-                        </span>
+                        <button id="session_power_but">
+                            <span>
+                                <i class="fa-solid fa-plus"></i>
+                            </span>
+                        </button>
                     </div>
                     <div id="sessions_blur" class="blur"></div>
                 </div>

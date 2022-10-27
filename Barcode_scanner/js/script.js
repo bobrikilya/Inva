@@ -76,11 +76,13 @@ mass_scanner_but.addEventListener('click', (e) => {e.preventDefault()});
 invenory_but.addEventListener('click', (e) => {e.preventDefault()});
 
 const doc = document.documentElement;
-let session_power = false;
 
 let today = new Date().toLocaleDateString();
-let session_name;
+let session_name = false;
 let sess_num;
+
+session_name = localStorage.getItem('session_name');
+if (session_name) session_record();
 
 // For easy working ----------
 const Moz = navigator.userAgent.includes('Mozilla/5.0 (iPhone');
@@ -215,7 +217,7 @@ function sessions_cont_toggle(){
 };
 
 function sess_start_stop(){
-    if(!session_power){
+    if(!session_name){
         ur_session_num_cont.classList.toggle('toggle');
         setTimeout(() => {session_num_content.classList.toggle('toggle')}, 10);
         sessions_cont_toggle();
@@ -224,11 +226,13 @@ function sess_start_stop(){
         session_name = `${today}-${sess_num}`;
         sess_input.setAttribute("placeholder", session_name);
     }else {
+        // sessions_cont_toggle();
         session_but.classList.remove('active');
         session_power_but.classList.remove('active');
-        session_power = false;
+        session_name = false;
         session_but.innerText = 'Нет сессии';
         session_text.innerText = 'Подключиться к сессии';
+        localStorage.removeItem('session_name');
     };
 };
 
@@ -236,18 +240,25 @@ function sess_num_confirm(){
     ur_session_num_cont.classList.remove('toggle');
     session_num_content.classList.remove('toggle');
     
-    if (sess_input.value == 0){
-        session_but.innerText = session_name;
-        // console.log(today);
-    }else {
-        session_but.innerText = `${sess_input.value}-${sess_num}`;
+    if (sess_input.value != 0){
+        session_name = `${sess_input.value}-${sess_num}`;
+        // console.log(session_name);
     };
+    
+    session_record();
 
+    session_num_but_cont.style.marginTop = '1rem';
+    sess_input.classList.remove('active');
+    setTimeout(() => {sess_input.style.display = 'inline-block'}, 200);
+    sess_input.blur();
+};
+
+function session_record(){
+    session_but.innerText = session_name;
     session_but.classList.add('active');
     session_power_but.classList.add('active');
     session_text.innerText = 'Отключиться от сессии';
-    session_power = true;
-
+    localStorage.setItem('session_name', session_name);
 };
 
 function sess_input_act(){

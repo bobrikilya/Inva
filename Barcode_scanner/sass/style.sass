@@ -169,7 +169,7 @@ body
 
 
 #session_power_but
-    width: 6rem
+    width: 7rem
     padding: 10px
     margin-top: 1.2rem
     margin-bottom: 1.2rem
@@ -180,10 +180,13 @@ body
     color:#f6f9fdea
     transition-duration: 0.4s
     cursor: pointer
+    span
+        display: inline-block
+        transition-duration: 0.2s
     &.active
         background-color: #da144f9d
         color:#f6f9fdea
-        i
+        span
             transform: rotate(45deg)
 
 
@@ -230,11 +233,13 @@ body
         // border: 2px solid brown
     h3
         font-size: 1.7rem
+    #sess_input_cont
+        width: 100%
+        // border: 2px solid red
     #sess_input
         display: none
         position: absolute
-        // z-index: -1
-        top: 13.8rem
+        top: 0
         transform: translateY(2rem)
         width: 97%
         font-size: 1.7rem
