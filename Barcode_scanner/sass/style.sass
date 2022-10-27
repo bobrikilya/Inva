@@ -194,11 +194,6 @@ body
     display: none
     position: absolute
     z-index: 8
-    top: 50%
-    transform: translateY(-50%)
-    // height: 50%
-    width: 85%
-    border-radius: 25px
     padding: 2rem
     color: #1a1a1ab9
     box-shadow: 0 2px 350px #8a8888
@@ -232,6 +227,7 @@ body
         font-size: 5rem
         // border: 2px solid brown
     h3
+        margin-top: 1rem
         font-size: 1.7rem
     #sess_input_cont
         width: 100%
@@ -268,9 +264,12 @@ body
 
 
 #session_num_blur
-    border-radius: 25px
-    backdrop-filter: blur(25px)
-    -webkit-backdrop-filter: blur(25px)
+    position: fixed
+    // width: 100%
+    // height: 100%
+    // border-radius: 25px
+    backdrop-filter: blur(15px)
+    -webkit-backdrop-filter: blur(15px)
     background-color: #f0fbffc9
 
 

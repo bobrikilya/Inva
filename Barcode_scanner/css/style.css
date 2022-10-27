@@ -272,10 +272,6 @@ body {
   display: none;
   position: absolute;
   z-index: 8;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 85%;
-  border-radius: 25px;
   padding: 2rem;
   color: rgba(26, 26, 26, 0.7254901961);
   box-shadow: 0 2px 350px #8a8888;
@@ -314,6 +310,7 @@ body {
   font-size: 5rem;
 }
 #ur_session_num_cont h3 {
+  margin-top: 1rem;
   font-size: 1.7rem;
 }
 #ur_session_num_cont #sess_input_cont {
@@ -355,9 +352,9 @@ body {
 }
 
 #session_num_blur {
-  border-radius: 25px;
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
+  position: fixed;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
   background-color: rgba(240, 251, 255, 0.7882352941);
 }
 

@@ -304,15 +304,22 @@ input.addEventListener('keyup', (event) => {
     if (input.classList.contains('active') && event.key == 'Enter') searching();
 });
 
+input.addEventListener('focus', () => {
+    input_focus();
+});
 
 input.addEventListener('blur', () => {
     setTimeout(input_blur, 20);
 });
 
-input.addEventListener('focus', () => {
-    input_focus();
+
+sess_input.addEventListener('focus', () => {
+    ur_session_num_cont.style.bottom = '5.8vh';
 });
 
+sess_input.addEventListener('blur', () => {
+    ur_session_num_cont.style.bottom = 'auto';
+});
 // Не работает
 // window.addEventListener('blur', () => {
 //     video.classList.remove('active');
