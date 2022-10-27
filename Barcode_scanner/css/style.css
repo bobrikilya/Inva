@@ -217,16 +217,14 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  background-color: rgba(221, 234, 250, 0.3764705882);
   z-index: -1;
 }
 
 #sessions_blur {
   border-radius: 25px;
-  backdrop-filter: blur(13px);
-  -webkit-backdrop-filter: blur(13px);
-  background-color: rgba(241, 247, 255, 0.6705882353);
 }
 
 #all_sess_cont_content {
@@ -278,6 +276,7 @@ body {
   text-align: center;
   flex-shrink: 1;
   transition: 0.2s ease-out;
+  bottom: auto;
 }
 #ur_session_num_cont.toggle {
   display: flex;
@@ -353,9 +352,8 @@ body {
 
 #session_num_blur {
   position: fixed;
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  background-color: rgba(240, 251, 255, 0.7882352941);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 
 header {
@@ -375,7 +373,6 @@ header.turn_on {
 
 #menue_blur {
   position: fixed;
-  background-color: rgba(198, 214, 235, 0.5764705882);
 }
 
 #menue_bar {

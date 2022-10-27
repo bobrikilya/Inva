@@ -65,7 +65,7 @@ refresh_but.addEventListener('click', refresh);
 menue_but.addEventListener('click', menue_toggle);
 mark_but.addEventListener('click', menue_toggle);
 download_but.addEventListener('click', check_act);
-download_back_but.addEventListener('click', check_act);
+download_back_but.addEventListener('click', downloading_back);
 session_but.addEventListener('click', sessions_cont_toggle);
 session_power_but.addEventListener('click', sess_start_stop);
 next_but.addEventListener('click', sess_num_confirm);
@@ -81,8 +81,6 @@ let today = new Date().toLocaleDateString();
 let session_name = false;
 let sess_num;
 
-session_name = localStorage.getItem('session_name');
-if (session_name) session_record();
 
 // For easy working ----------
 const Moz = navigator.userAgent.includes('Mozilla/5.0 (iPhone');
@@ -90,10 +88,14 @@ const fMode = {exact: "environment"};
 // const fMode = {exact: "user"};
 
 document.addEventListener("DOMContentLoaded", () => {
-    water_tag.classList.add('light');
-    setTimeout(() => {water_tag.classList.remove('light')}, 1000);
+    session_name = localStorage.getItem('session_name');
+    if (session_name) session_record();
 
     if (Moz) sessions_blur.style.backgroundColor = '#ebf4fffa';
+    // if (Moz) sessions_blur.style.backgroundColor = '#ebf4fffa';
+
+    water_tag.classList.add('light');
+    setTimeout(() => {water_tag.classList.remove('light')}, 1000);
 }); 
 
 const options = {
@@ -277,16 +279,31 @@ function sess_input_act(){
     };
 };
 
+function downloading_back(){
+    
+    if (!session_name){
+        setTimeout(() => {
+            sessions_cont_toggle();
+            // all_sessions_cont.classList.toggle('toggle');
+            // all_sess_cont_content.classList.toggle('toggle');
+        }, 10);
+        // console.log('dgsd');
+    }else {
+        check_act();
+    };
+};
+
 document.addEventListener('click', (event) => {
     if (all_sessions_cont.classList.contains('toggle')){
         
         const sessions_cont_inside= event.composedPath().includes(all_sessions_cont);
         const session_but_inside= event.composedPath().includes(session_but);
 
-        if (!sessions_cont_inside && !session_but_inside) {
-            all_sessions_cont.classList.remove('toggle');
-            all_sess_cont_content.classList.remove('toggle');
-        };
+            if (!sessions_cont_inside && !session_but_inside) {
+                all_sessions_cont.classList.remove('toggle');
+                all_sess_cont_content.classList.remove('toggle');
+            };
+        
     };
 });
 
@@ -301,7 +318,7 @@ input.addEventListener('keydown', (event) => {
 });
 
 input.addEventListener('keyup', (event) => {
-    if (input.classList.contains('active') && event.key == 'Enter') searching();
+    if (event.key == 'Enter') searching();
 });
 
 input.addEventListener('focus', () => {
@@ -315,11 +332,13 @@ input.addEventListener('blur', () => {
 
 sess_input.addEventListener('focus', () => {
     ur_session_num_cont.style.bottom = '5.8vh';
+    window.scrollTo(0, document.body.scrollHeight);
 });
 
 sess_input.addEventListener('blur', () => {
-    ur_session_num_cont.style.bottom = 'auto';
+    setTimeout(() => {ur_session_num_cont.style.bottom = 'auto'}, 20);
 });
+
 // Не работает
 // window.addEventListener('blur', () => {
 //     video.classList.remove('active');
@@ -331,8 +350,8 @@ sess_input.addEventListener('blur', () => {
 
 function input_focus(){
     // if (Moz) {
-        input_block.style.paddingBottom = "10vh";
-        container.style.justifyContent = 'flex-end';
+    input_block.style.paddingBottom = "10vh";
+    container.style.justifyContent = 'flex-end';
     // };
     // else input_block.style.paddingBottom = '50vh';
     // container.style.justifyContent = 'flex-end';
@@ -344,8 +363,8 @@ function input_focus(){
 
 function input_blur(){
     // if (Moz) {
-        input_block.style.paddingBottom = "5vh";
-        container.style.justifyContent = 'center';
+    input_block.style.paddingBottom = "5vh";
+    container.style.justifyContent = 'center';
     // };
     main_block.style.display = 'flex';
     header_cont.style.display = 'flex';
@@ -361,6 +380,12 @@ function stream_start(){
             name : "Live",
             type : "LiveStream",
             target: video,
+            area: {
+                top: '10%',
+                right: '10%',
+                bottom: '10%',
+                left: '10%',
+            },
         },
         frequency: 3,
         decoder: {
