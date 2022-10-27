@@ -280,14 +280,10 @@ function sess_input_act(){
 };
 
 function downloading_back(){
-    
     if (!session_name){
         setTimeout(() => {
             sessions_cont_toggle();
-            // all_sessions_cont.classList.toggle('toggle');
-            // all_sess_cont_content.classList.toggle('toggle');
         }, 10);
-        // console.log('dgsd');
     }else {
         check_act();
     };

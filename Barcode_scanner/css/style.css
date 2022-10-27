@@ -268,7 +268,7 @@ body {
 
 #ur_session_num_cont {
   display: none;
-  position: absolute;
+  position: fixed;
   z-index: 8;
   padding: 2rem;
   color: rgba(26, 26, 26, 0.7254901961);
