@@ -268,6 +268,7 @@ function sess_input_act(){
         sess_input.style.display = 'inline-block';
         setTimeout(() => {sess_input.classList.add('active'), 10});
         sess_input.focus();
+        window.scrollTo(0, document.body.scrollHeight);
     }else {
         session_num_but_cont.style.marginTop = '1rem';
         sess_input.classList.remove('active');
@@ -322,22 +323,23 @@ input.addEventListener('focus', () => {
 
 
 function input_focus(){
-    if (Moz) {
+    // if (Moz) {
         input_block.style.paddingBottom = "10vh";
         container.style.justifyContent = 'flex-end';
-    };
+    // };
     // else input_block.style.paddingBottom = '50vh';
     // container.style.justifyContent = 'flex-end';
     main_block.style.display = 'none';
     water_tag.style.display = 'none';
     header_cont.style.display = 'none';
+    window.scrollTo(0, document.body.scrollHeight);
 };
 
 function input_blur(){
-    if (Moz) {
+    // if (Moz) {
         input_block.style.paddingBottom = "5vh";
         container.style.justifyContent = 'center';
-    };
+    // };
     main_block.style.display = 'flex';
     header_cont.style.display = 'flex';
     water_tag.style.display = 'inline-block';
