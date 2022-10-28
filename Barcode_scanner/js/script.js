@@ -376,12 +376,12 @@ function stream_start(){
             name : "Live",
             type : "LiveStream",
             target: video,
-            area: {
-                top: '10%',
-                right: '10%',
-                bottom: '10%',
-                left: '10%',
-            },
+            // area: {
+            //     top: '10%',
+            //     right: '10%',
+            //     bottom: '10%',
+            //     left: '10%',
+            // },
         },
         frequency: 3,
         decoder: {
