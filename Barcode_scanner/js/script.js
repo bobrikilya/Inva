@@ -72,7 +72,7 @@ next_but.addEventListener('click', sess_num_confirm);
 give_name_but.addEventListener('click', sess_input_act);
 
 scanner_but.addEventListener('click', (e) => {e.preventDefault()});
-mass_scanner_but.addEventListener('click', (e) => {e.preventDefault()});
+// mass_scanner_but.addEventListener('click', (e) => {e.preventDefault()});
 invenory_but.addEventListener('click', (e) => {e.preventDefault()});
 
 const doc = document.documentElement;
