@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
 const options = {
     video: {
     width: 1255, //height
-    height: 800, //width
+    height: 1000, //width
     facingMode: fMode,
     },
 };
