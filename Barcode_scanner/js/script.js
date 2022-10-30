@@ -29,9 +29,12 @@ const mark_but = document.getElementById('mark_but');
 
 const header = document.querySelector('header');
 const menue_bar = document.getElementById('menue_bar');
-const scanner_but = document.getElementById('scanner_but');
-const mass_scanner_but = document.getElementById('mass_scanner_but');
-const invenory_but = document.getElementById('invenory_but');
+const docs_cont_content = document.getElementById('docs_cont_content');
+const docs_info = document.getElementById('docs_info');
+const expand_but = document.getElementById('expand_but');
+// const scanner_but = document.getElementById('scanner_but');
+// const mass_scanner_but = document.getElementById('mass_scanner_but');
+// const invenory_but = document.getElementById('invenory_but');
 
 const download_but = document.getElementById('download_but');
 const download_back_but = document.getElementById('download_back_but');
@@ -71,9 +74,9 @@ session_power_but.addEventListener('click', sess_start_stop);
 next_but.addEventListener('click', sess_num_confirm);
 give_name_but.addEventListener('click', sess_input_act);
 
-scanner_but.addEventListener('click', (e) => {e.preventDefault()});
+// scanner_but.addEventListener('click', (e) => {e.preventDefault()});
 // mass_scanner_but.addEventListener('click', (e) => {e.preventDefault()});
-invenory_but.addEventListener('click', (e) => {e.preventDefault()});
+// invenory_but.addEventListener('click', (e) => {e.preventDefault()});
 
 const doc = document.documentElement;
 
@@ -215,7 +218,7 @@ function check_act(){
 
 function sessions_cont_toggle(){
     all_sessions_cont.classList.toggle('toggle');
-    all_sess_cont_content.classList.toggle('toggle');
+    setTimeout(() => {all_sess_cont_content.classList.toggle('toggle')}, 10);
 };
 
 function sess_start_stop(){
@@ -241,6 +244,10 @@ function sess_start_stop(){
 function sess_num_confirm(){
     ur_session_num_cont.classList.remove('toggle');
     session_num_content.classList.remove('toggle');
+
+    // session_num_but_cont.style.marginTop = '1rem';
+    // sess_input.classList.remove('active');
+    // sess_input.style.display = 'none';
     
     if (sess_input.value != 0){
         session_name = `${sess_input.value}-${sess_num}`;
@@ -248,11 +255,10 @@ function sess_num_confirm(){
     };
     
     session_record();
-
+    
     session_num_but_cont.style.marginTop = '1rem';
     sess_input.classList.remove('active');
-    setTimeout(() => {sess_input.style.display = 'inline-block'}, 200);
-    sess_input.blur();
+    setTimeout(() => {sess_input.style.display = 'none'}, 100);
 };
 
 function session_record(){
@@ -274,8 +280,7 @@ function sess_input_act(){
     }else {
         session_num_but_cont.style.marginTop = '1rem';
         sess_input.classList.remove('active');
-        setTimeout(() => {sess_input.style.display = 'inline-block'}, 200);
-        sess_input.blur();
+        setTimeout(() => {sess_input.style.display = 'none'}, 100);
     };
 };
 
@@ -332,8 +337,13 @@ sess_input.addEventListener('focus', () => {
 });
 
 sess_input.addEventListener('blur', () => {
-    setTimeout(() => {ur_session_num_cont.style.bottom = 'auto'}, 20);
+    setTimeout(() => {ur_session_num_cont.style.bottom = 'auto'}, 110);
 });
+
+docs_cont_content.addEventListener('scroll', function() {
+    if (this.scrollTop != 0) docs_info.classList.add('hiden')
+    else docs_info.classList.remove('hiden');
+  });
 
 // Не работает
 // window.addEventListener('blur', () => {
