@@ -214,8 +214,8 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
   background-color: rgba(221, 234, 250, 0.3764705882);
   z-index: -1;
 }
@@ -377,7 +377,7 @@ header.turn_on {
   width: 100%;
   height: 100%;
   justify-content: flex-start;
-  max-width: 280px;
+  max-width: 320px;
   transition: 0.2s ease-out;
   opacity: 0.5;
   transform: translateY(-1rem);
@@ -459,6 +459,7 @@ header.turn_on {
 }
 #menue_bar #menue_sec_cont {
   margin-top: 2vh;
+  width: 80%;
 }
 #menue_bar #menue_sec_cont.active {
   display: none;
