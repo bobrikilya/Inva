@@ -303,6 +303,7 @@ function downloading_back(){
 function docs_cont_toggle(){
     docs_cont.classList.toggle('active');
     menue_sec_cont.classList.toggle('active');
+    expand_but.classList.toggle('active');
 };
 
 document.addEventListener('click', (event) => {

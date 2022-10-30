@@ -183,9 +183,10 @@ body {
   color: rgba(226, 3, 3, 0.8352941176);
   cursor: pointer;
   white-space: nowrap;
-  transition-duration: 0.4s;
+  transition-duration: 0.5s;
 }
 #session_but.active {
+  transition-duration: 0s;
   border: 1px solid rgba(26, 26, 26, 0.4392156863);
   color: rgba(26, 26, 26, 0.4392156863);
 }
@@ -412,6 +413,10 @@ header.turn_on {
   color: rgba(24, 25, 29, 0.5607843137);
   text-align: center;
   font-size: 3rem;
+  transition-duration: 0.3s;
+}
+#menue_bar #docs_cont #expand_but.active {
+  transform: rotate(180deg);
 }
 #menue_bar #docs_cont #docs_info {
   position: absolute;
