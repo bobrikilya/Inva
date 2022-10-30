@@ -29,9 +29,13 @@ const mark_but = document.getElementById('mark_but');
 
 const header = document.querySelector('header');
 const menue_bar = document.getElementById('menue_bar');
+const docs_cont = document.getElementById('docs_cont');
 const docs_cont_content = document.getElementById('docs_cont_content');
 const docs_info = document.getElementById('docs_info');
 const expand_but = document.getElementById('expand_but');
+const menue_sec_cont = document.getElementById('menue_sec_cont');
+const new_doc_but = document.getElementById('new_doc_but');
+const icons_bar = document.getElementById('icons_bar');
 // const scanner_but = document.getElementById('scanner_but');
 // const mass_scanner_but = document.getElementById('mass_scanner_but');
 // const invenory_but = document.getElementById('invenory_but');
@@ -67,6 +71,7 @@ search_button.addEventListener('click', searching);
 refresh_but.addEventListener('click', refresh);
 menue_but.addEventListener('click', menue_toggle);
 mark_but.addEventListener('click', menue_toggle);
+expand_but.addEventListener('click', docs_cont_toggle);
 download_but.addEventListener('click', check_act);
 download_back_but.addEventListener('click', downloading_back);
 session_but.addEventListener('click', sessions_cont_toggle);
@@ -255,7 +260,8 @@ function sess_num_confirm(){
     };
     
     session_record();
-    
+
+    sess_input.value = '';
     session_num_but_cont.style.marginTop = '1rem';
     sess_input.classList.remove('active');
     setTimeout(() => {sess_input.style.display = 'none'}, 100);
@@ -294,11 +300,16 @@ function downloading_back(){
     };
 };
 
+function docs_cont_toggle(){
+    docs_cont.classList.toggle('active');
+    menue_sec_cont.classList.toggle('active');
+};
+
 document.addEventListener('click', (event) => {
     if (all_sessions_cont.classList.contains('toggle')){
         
-        const sessions_cont_inside= event.composedPath().includes(all_sessions_cont);
-        const session_but_inside= event.composedPath().includes(session_but);
+        const sessions_cont_inside = event.composedPath().includes(all_sessions_cont);
+        const session_but_inside = event.composedPath().includes(session_but);
 
             if (!sessions_cont_inside && !session_but_inside) {
                 all_sessions_cont.classList.remove('toggle');
@@ -332,7 +343,7 @@ input.addEventListener('blur', () => {
 
 
 sess_input.addEventListener('focus', () => {
-    ur_session_num_cont.style.bottom = '5.8vh';
+    ur_session_num_cont.style.bottom = '0';
     window.scrollTo(0, document.body.scrollHeight);
 });
 
@@ -340,8 +351,9 @@ sess_input.addEventListener('blur', () => {
     setTimeout(() => {ur_session_num_cont.style.bottom = 'auto'}, 110);
 });
 
-docs_cont_content.addEventListener('scroll', function() {
-    if (this.scrollTop != 0) docs_info.classList.add('hiden')
+docs_cont_content.addEventListener('scroll', () => {
+    // console.log(docs_cont_content.scrollTop);
+    if (docs_cont_content.scrollTop != 0) docs_info.classList.add('hiden')
     else docs_info.classList.remove('hiden');
   });
 
