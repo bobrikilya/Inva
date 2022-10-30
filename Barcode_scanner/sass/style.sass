@@ -301,9 +301,9 @@ header
         transform: translateY(0)
     #docs_cont
         width: 100%
+        min-height: 6rem
         max-height: 55%
         border-radius: 25px
-        margin-bottom: 13%
         overflow: visible
         font-size: 1.5rem
         justify-content: flex-start
@@ -311,22 +311,6 @@ header
         transition-duration: 0.2s
         &.active
             max-height: 87%
-        #expand_but
-            position: absolute
-            bottom: -3.5rem
-            border-radius: 50%
-            height: 4rem
-            width: 4rem
-            display: flex
-            justify-content: center
-            align-items: center
-            // background-color: #ffffff57
-            color: #18191d8f
-            text-align: center
-            font-size: 3rem
-            transition-duration: 0.3s
-            &.active
-                transform: rotate(180deg)
         #docs_info
             position: absolute
             top: 0.7rem
@@ -349,9 +333,10 @@ header
             li
                 display: flex
                 justify-content: center
-                padding: 16px
-                margin-top: 1rem
+                padding: 10px
+                margin-top: 0.6rem
                 width: 90%
+                min-height: 4.5rem
                 background-color:#ffffff57
                 white-space: nowrap
                 align-items: center
@@ -360,7 +345,24 @@ header
                 margin-top: 2.5rem
             li:last-child
                 margin-bottom: 0.8rem
+    #expand_but
+        border-radius: 50%
+        height: 4rem
+        width: 4rem
+        margin-top: -0.7rem
+        display: flex
+        justify-content: center
+        align-items: center
+        // background-color: #ffffff57
+        color: #18191d8f
+        text-align: center
+        font-size: 3rem
+        transition-duration: 0.3s
+        &.active
+            transform: rotate(180deg)
     #menue_sec_cont
+        margin-top: 2vh
+        // border: 2px solid black
         &.active
             display: none
     #new_doc_but
@@ -368,7 +370,6 @@ header
         justify-content: center
         align-items: center
         padding: 3vh 5%
-        margin-top: 3vh
         width: 100%
         min-width: 17rem
         min-height: 4.5rem
