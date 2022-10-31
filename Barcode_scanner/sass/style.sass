@@ -154,10 +154,10 @@ body
     width: 100%
     height: 100%
     // transition-duration: 0.1s
-    transform: translateY(-25px)
+    transform: translateY(-20px)
     opacity: 0
     &.toggle
-        transition-duration: 0.3s
+        transition: 0.25s ease-out
         transform: translateY(0)
         opacity: 1
 
@@ -190,7 +190,6 @@ body
     z-index: 8
     padding: 2rem
     color: #1a1a1ab9
-    box-shadow: 0 2px 350px #8a8888
     text-align: center
     flex-shrink: 1
     transition: 0.2s ease-out
@@ -277,11 +276,75 @@ header
     align-items: center
     width: 100%
     height: 100%
-    padding: 5.5rem 0 4vh 0
     // flex-shrink: 1
     &.turn_on
         display: flex
     // border: 2px solid green
+
+li
+    position: relative
+    background-color:#ffffff57
+    white-space: nowrap
+    border-radius: 25px
+    a
+        display: flex
+        align-items: center
+        position: relative
+        height: 100%
+        width: 100%
+        border-radius: 25px
+
+#doc_types_cont
+    display: none
+    position: fixed
+    z-index: 9
+    height: 100%
+    width: 100%
+    // border: 2px solid yellow
+    &.toggle
+            display: flex
+    #doc_types_content
+        max-width: 300px
+        margin-top: 1rem
+        height: 85%
+        width: 100%
+        overflow: auto
+        transition: 0.2s ease-out
+        opacity: 0
+        transform: translateY(-1.5rem)
+        // border: 2px solid red
+        &.toggle
+            opacity: 1
+            transform: translateY(0)
+        li
+            min-height: 5.5rem
+            width: 100%
+            justify-content: flex-start
+            font-size: 1.6rem
+            margin-top: 0.7rem
+            // border: 2px solid orange
+            a
+                padding: 15px 30px
+                // border: 2px solid blue
+            span
+                margin-right: 25px
+                color: #18191d96
+                // border: 2px solid black
+            p
+                text-align: start
+                width: 100%
+                color: #18191d
+                // border: 2px solid red
+        #cancel_but
+            margin-top: 1.5rem
+            cursor: pointer
+            border-radius: 50% 
+            color: #f5596eee
+            font-size: 4rem
+            transform: translateY(2px)
+            width: 8.5rem
+            height: 4.5rem
+
 
 #menue_blur
     position: fixed
@@ -289,12 +352,13 @@ header
 #menue_bar
     width: 100%
     height: 100%
-    justify-content: flex-start
+    // justify-content: flex-start
     max-width: 320px
     transition: 0.2s ease-out
     opacity: 0.5
     transform: translateY(-1rem)
     overflow: visible
+    padding: 5.5rem 0 4vh 0
     // border: 2px solid brown
     &.toggle
         opacity: 1
@@ -302,15 +366,17 @@ header
     #docs_cont
         width: 100%
         min-height: 6rem
-        max-height: 55%
+        max-height: 50%
+        margin-top: -1rem
         border-radius: 25px
-        overflow: visible
+        // overflow: visible
         font-size: 1.5rem
         justify-content: flex-start
         border: 2px solid #ffffff36
         transition-duration: 0.2s
         &.active
             max-height: 87%
+            margin-top: 10rem
         #docs_info
             position: absolute
             top: 0.7rem
@@ -332,15 +398,13 @@ header
                 width: 0
             li
                 display: flex
+                align-items: center
                 justify-content: center
-                padding: 10px
                 margin-top: 0.6rem
                 width: 90%
                 min-height: 4.5rem
-                background-color:#ffffff57
-                white-space: nowrap
-                align-items: center
-                border-radius: 25px
+                a
+                    padding: 10px
             li:first-child
                 margin-top: 2.5rem
             li:last-child
@@ -349,23 +413,34 @@ header
         border-radius: 50%
         height: 4rem
         width: 4rem
-        margin-top: -0.7rem
+        margin-top: -0.5rem
         display: flex
         justify-content: center
         align-items: center
         // background-color: #ffffff57
         color: #18191d8f
         text-align: center
-        font-size: 3rem
+        font-size: 3.5rem
         transition-duration: 0.3s
         &.active
             transform: rotate(180deg)
     #menue_sec_cont
-        margin-top: 2vh
         width: 80%
         // border: 2px solid black
+        opacity: 1
+        pointer-events: auto
+        transition-duration: 0.2s
         &.active
-            display: none
+            opacity: 0
+            pointer-events: none
+    #icons_bar
+        display: flex
+        justify-content: space-around
+        margin-top: 2vh
+        width: 100%
+        span
+            font-size: 3.25rem
+        // border: 2px solid white
     #new_doc_but
         display: flex
         justify-content: center
@@ -379,17 +454,11 @@ header
         border-radius: 25px
         white-space: nowrap
         font-size: 1.55rem
-        span
-            margin-right: 0.5rem
-            color: #18191db0
-    #icons_bar
-        display: flex
-        justify-content: space-around
-        width: 100%
         margin: 3vh 0 2vh 0
         span
-            font-size: 3.25rem
-        // border: 2px solid white
+            font-size: 1.3rem
+            margin-right: 0.4rem
+            color: #18191db0
 
 #check
     opacity: 0

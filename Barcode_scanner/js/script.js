@@ -36,13 +36,21 @@ const expand_but = document.getElementById('expand_but');
 const menue_sec_cont = document.getElementById('menue_sec_cont');
 const new_doc_but = document.getElementById('new_doc_but');
 const icons_bar = document.getElementById('icons_bar');
-// const scanner_but = document.getElementById('scanner_but');
-// const mass_scanner_but = document.getElementById('mass_scanner_but');
-// const invenory_but = document.getElementById('invenory_but');
 
 const download_but = document.getElementById('download_but');
 const download_back_but = document.getElementById('download_back_but');
 const check = document.getElementById('check');
+
+//--------------
+
+const doc_types_cont = document.getElementById('doc_types_cont');
+const doc_types_content = document.getElementById('doc_types_content');
+const cancel_but = document.getElementById('cancel_but');
+const invenory_but = document.getElementById('invenory_but');
+const price_request_but = document.getElementById('price_request_but');
+const prod_taking_but = document.getElementById('prod_taking_but');
+const prod_removing_but = document.getElementById('prod_removing_but');
+const scanner_but = document.getElementById('scanner_but');
 
 //--------------
 
@@ -72,6 +80,8 @@ refresh_but.addEventListener('click', refresh);
 menue_but.addEventListener('click', menue_toggle);
 mark_but.addEventListener('click', menue_toggle);
 expand_but.addEventListener('click', docs_cont_toggle);
+new_doc_but.addEventListener('click', docs_types_toggle);
+cancel_but.addEventListener('click', docs_types_toggle);
 download_but.addEventListener('click', check_act);
 download_back_but.addEventListener('click', downloading_back);
 session_but.addEventListener('click', sessions_cont_toggle);
@@ -79,9 +89,11 @@ session_power_but.addEventListener('click', sess_start_stop);
 next_but.addEventListener('click', sess_num_confirm);
 give_name_but.addEventListener('click', sess_input_act);
 
-// scanner_but.addEventListener('click', (e) => {e.preventDefault()});
-// mass_scanner_but.addEventListener('click', (e) => {e.preventDefault()});
-// invenory_but.addEventListener('click', (e) => {e.preventDefault()});
+invenory_but.addEventListener('click', (e) => {e.preventDefault()});
+price_request_but.addEventListener('click', (e) => {e.preventDefault()});
+prod_taking_but.addEventListener('click', (e) => {e.preventDefault()});
+prod_removing_but.addEventListener('click', (e) => {e.preventDefault()});
+scanner_but.addEventListener('click', (e) => {e.preventDefault()});
 
 const doc = document.documentElement;
 
@@ -306,6 +318,13 @@ function docs_cont_toggle(){
     expand_but.classList.toggle('active');
 };
 
+function docs_types_toggle(e){
+    e.preventDefault();
+    doc_types_cont.classList.toggle('toggle');
+    setTimeout(() => {doc_types_content.classList.toggle('toggle')}, 10);
+};
+
+
 document.addEventListener('click', (event) => {
     if (all_sessions_cont.classList.contains('toggle')){
         
@@ -399,14 +418,14 @@ function stream_start(){
             name : "Live",
             type : "LiveStream",
             target: video,
-            // area: {
-            //     top: '10%',
-            //     right: '10%',
-            //     bottom: '10%',
-            //     left: '10%',
-            // },
+            area: {
+                top: '10%',
+                right: '10%',
+                bottom: '10%',
+                left: '10%',
+            },
         },
-        frequency: 3,
+        frequency: 4,
         decoder: {
             readers: ["ean_reader"],
             multiple: false,

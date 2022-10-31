@@ -72,6 +72,44 @@
                 <i class="fa-solid fa-xmark"></i>
             </span>
         </div>
+        <div id="doc_types_cont" class="cont">
+            <ul id="doc_types_content" class="cont">
+                <li><a id="invenory_but" href="#">
+                    <span>
+                        <i class="fa-solid fa-cart-flatbed"></i>
+                    </span>
+                    <p>Инвентаризация</p>
+                </a></li>
+                <li><a id="price_request_but" href="#">
+                <span>
+                    <i class="fa-solid fa-money-check"></i>
+                </span>
+                <p>Заяка на ценник</p>
+            </a></li>
+            <li><a id="prod_taking_but" href="#">
+                <span>
+                    <i class="fa-solid fa-handshake-angle"></i>
+                </span>
+                <p>Приёмка</p>
+            </a></li>
+            <li><a id="prod_removing_but" href="#">
+                <span>
+                    <i class="fa-solid fa-folder-minus"></i>
+                </span>
+                <p>Списание</p>
+            </a></li>
+            <li><a id="scanner_but" href="#">
+                <span>
+                    <i class="fa-solid fa-money-check-dollar"></i>
+                </span>
+                <p>Проверка цены</p>
+            </a></li>
+            <span id="cancel_but" class="cont">
+                <i class="fa-solid fa-xmark"></i>
+            </span>
+            </ul>
+            <div id="doc_types_blur" class="blur"></div>
+        </div>
         <header>
             <ul id="menue_bar" class="cont">
                 <div id="docs_cont" class="cont">
@@ -95,31 +133,7 @@
                 <span id="expand_but" class="butt expand_but">
                     <i class="fa-solid fa-angle-down"></i>
                 </span>
-                <!-- <li><a id="mass_scanner_but" href="#">
-                    <span class="menue_icon">
-                        <i class="fa-solid fa-money-check"></i>
-                    </span>
-                    <span>Заяка на ценник</span>
-                </a></li>
-                <li><a id="invenory_but" href="#">
-                    <span class="menue_icon">
-                        <i class="fa-solid fa-cart-flatbed"></i>
-                    </span>
-                    <span>Инвентаризация</span>
-                </a></li> -->
-                <!-- <li><a id="scanner_but" href="#">
-                    <span class="menue_icon">
-                        <i class="fa-solid fa-money-check-dollar"></i>
-                    </span>
-                    <span>Проверка цены</span>
-                </a></li> -->
                 <div id="menue_sec_cont" class="cont">
-                    <a id="new_doc_but" href="#">
-                        <span class="menue_icon">
-                            <i class="fa-solid fa-plus"></i>
-                        </span>
-                        <p>Новый документ</p>
-                    </a>
                     <div id="icons_bar">
                         <span id="download_but" class="butt">
                             <i class="fa-solid fa-cloud-arrow-down"></i>
@@ -131,6 +145,12 @@
                             <i class="fa-solid fa-cloud-arrow-up"></i>
                         </span>
                     </div>
+                    <a id="new_doc_but" href="#">
+                        <span class="menue_icon">
+                            <i class="fa-solid fa-plus"></i>
+                        </span>
+                        <p>Новый документ</p>
+                    </a>
                     <div id="my_tag">bobrikilya</div>
                 </div>
             </ul>
