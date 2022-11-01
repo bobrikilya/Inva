@@ -369,7 +369,7 @@ header.turn_on {
 
 li {
   position: relative;
-  background-color: rgba(255, 255, 255, 0.3411764706);
+  background-color: rgba(255, 255, 255, 0.4235294118);
   white-space: nowrap;
   border-radius: 25px;
 }
@@ -380,6 +380,26 @@ li a {
   height: 100%;
   width: 100%;
   border-radius: 25px;
+}
+
+.inv {
+  background-color: rgba(118, 218, 126, 0.8);
+}
+
+.req {
+  background-color: rgba(17, 198, 204, 0.5019607843);
+}
+
+.take {
+  background-color: rgba(107, 121, 185, 0.6784313725);
+}
+
+.rem {
+  background-color: rgba(151, 102, 180, 0.5568627451);
+}
+
+.scan {
+  background-color: rgba(204, 109, 165, 0.768627451);
 }
 
 #doc_types_cont {
@@ -401,6 +421,7 @@ li a {
   transition: 0.2s ease-out;
   opacity: 0;
   transform: translateY(-1.5rem);
+  scroll-behavior: smooth;
 }
 #doc_types_cont #doc_types_content.toggle {
   opacity: 1;
@@ -460,7 +481,6 @@ li a {
   max-height: 50%;
   margin-top: -1rem;
   border-radius: 25px;
-  font-size: 1.5rem;
   justify-content: flex-start;
   border: 2px solid rgba(255, 255, 255, 0.2117647059);
   transition-duration: 0.2s;
@@ -487,20 +507,40 @@ li a {
   overflow: auto;
   height: 100%;
   width: 100%;
+  scroll-behavior: smooth;
 }
 #menue_bar #docs_cont #docs_cont_content::-webkit-scrollbar {
   width: 0;
 }
 #menue_bar #docs_cont #docs_cont_content li {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   margin-top: 0.6rem;
   width: 90%;
-  min-height: 4.5rem;
+  min-height: 4.8rem;
 }
 #menue_bar #docs_cont #docs_cont_content li a {
-  padding: 10px;
+  width: 78%;
+  color: rgba(26, 26, 26, 0.8901960784);
+  justify-content: flex-start;
+  overflow: hidden;
+  padding: 10px 18px 10px 30px;
+  font-size: 1.4rem;
+  cursor: auto;
+}
+#menue_bar #docs_cont #docs_cont_content li span {
+  position: absolute;
+  z-index: 5;
+  right: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 5rem;
+  font-size: 1.5rem;
+  border-radius: 25px;
+  cursor: pointer;
+  color: rgba(29, 24, 26, 0.5882352941);
+  background-color: rgba(124, 124, 124, 0.0941176471);
 }
 #menue_bar #docs_cont #docs_cont_content li:first-child {
   margin-top: 2.5rem;
@@ -552,7 +592,7 @@ li a {
   min-width: 17rem;
   min-height: 4.5rem;
   color: #18191d;
-  background-color: rgba(255, 255, 255, 0.3411764706);
+  background-color: rgba(0, 153, 255, 0.2196078431);
   border-radius: 25px;
   white-space: nowrap;
   font-size: 1.55rem;

@@ -283,7 +283,7 @@ header
 
 li
     position: relative
-    background-color:#ffffff57
+    background-color:#ffffff6c
     white-space: nowrap
     border-radius: 25px
     a
@@ -293,6 +293,16 @@ li
         height: 100%
         width: 100%
         border-radius: 25px
+.inv
+    background-color: #76da7ecc
+.req
+    background-color: #11c6cc80
+.take
+    background-color: #6b79b9ad
+.rem
+    background-color: #9766b48e
+.scan
+    background-color: #cc6da5c4
 
 #doc_types_cont
     display: none
@@ -312,6 +322,7 @@ li
         transition: 0.2s ease-out
         opacity: 0
         transform: translateY(-1.5rem)
+        scroll-behavior: smooth
         // border: 2px solid red
         &.toggle
             opacity: 1
@@ -370,7 +381,6 @@ li
         margin-top: -1rem
         border-radius: 25px
         // overflow: visible
-        font-size: 1.5rem
         justify-content: flex-start
         border: 2px solid #ffffff36
         transition-duration: 0.2s
@@ -393,18 +403,42 @@ li
             overflow: auto
             height: 100%
             width: 100%
+            scroll-behavior: smooth
             // border: 2px solid red
             &::-webkit-scrollbar
                 width: 0
             li
-                display: flex
-                align-items: center
-                justify-content: center
                 margin-top: 0.6rem
                 width: 90%
-                min-height: 4.5rem
+                min-height: 4.8rem
+                // border: 2px solid green
                 a
-                    padding: 10px
+                    width: 78%
+                    color: #1a1a1ae3
+                    // text-shadow: 0 0 5px #11111133
+                    justify-content: flex-start
+                    overflow: hidden
+                    padding: 10px 18px 10px 30px
+                    font-size: 1.4rem
+                    cursor: auto
+                    // border: 2px solid orange
+                span
+                    position: absolute
+                    z-index: 5
+                    right: 0
+                    top: 0
+                    display: flex
+                    justify-content: center
+                    align-items: center
+                    height: 100%
+                    width: 5rem
+                    font-size: 1.5rem
+                    border-radius: 25px 
+                    cursor: pointer
+                    // color: #be000096
+                    color: #1d181a96
+                    background-color: #7c7c7c18
+                    // border: 2px solid #a2d5ff59
             li:first-child
                 margin-top: 2.5rem
             li:last-child
@@ -450,7 +484,8 @@ li
         min-width: 17rem
         min-height: 4.5rem
         color: #18191d
-        background-color:#ffffff57
+        // background-color:#ffffff57
+        background-color:#0099ff38
         border-radius: 25px
         white-space: nowrap
         font-size: 1.55rem
