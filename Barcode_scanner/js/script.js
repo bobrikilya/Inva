@@ -33,7 +33,7 @@ const menue_bar = document.getElementById('menue_bar');
 const docs_cont = document.getElementById('docs_cont');
 const docs_cont_content = document.getElementById('docs_cont_content');
 const inv_1 = document.getElementById('inv_1');
-const eye = document.querySelector('#inv_1 span');
+// const eye = document.querySelector('#inv_1 span');
 const docs_info = document.getElementById('docs_info');
 const expand_but = document.getElementById('expand_but');
 
@@ -85,8 +85,10 @@ refresh_but.addEventListener('click', refresh);
 menue_but.addEventListener('click', menue_toggle);
 mark_but.addEventListener('click', menue_toggle);
 mark_but.addEventListener('click', menue_toggle);
-// inv_1.addEventListener('click', () => {if console.log('Большая')});
-// eye.addEventListener('click', () => {console.log('Маленькая')});
+// inv_1.addEventListener('click', () => {console.log('Большая')});
+// eye.addEventListener('click', (e) => {
+//     e.stopPropagation();
+//     console.log('Маленькая')});
 expand_but.addEventListener('click', docs_cont_toggle);
 
 new_doc_but.addEventListener('click', docs_types_toggle);
@@ -334,30 +336,19 @@ function docs_types_toggle(e){
     setTimeout(() => {doc_types_content.classList.toggle('toggle')}, 10);
 };
 
-// function doc_hold(e, f, t, g){
-//     let holder;
-//     e.addEventListener("mousedown", function(r){
-//           holder = setTimeout(function(){
-//                 f.call(e, r);
-//                 holder = true;
-//           }, t || 2000)
-//     });
-//     document.addEventListener("mouseup", function(r){
-//            holder === true ? g && g.call(e, r) 
-//              : clearTimeout(holder);
-//     });
-//  }
- 
-//  doc_hold(
-//    document.body,  //Целевой элемент
-//    function(){  //Функция, выполняющаяся при удержании (единожды)
-//      this.classList.add("active");  
-//    }, 
-//    3000,  //Время, через которое сработает «Удержание»
-//    function(){  //Функция, которая сработает после удержания
-//       this.classList.remove("active");
-//    }
-//  );
+function doc_hold(e, f, t, g){
+    let holder;
+    e.addEventListener("mousedown", function(r){
+          holder = setTimeout(function(){
+                f.call(e, r);
+                holder = true;
+          }, t || 2000)
+    });
+    document.addEventListener("mouseup", function(r){
+           holder === true ? g && g.call(e, r) 
+             : clearTimeout(holder);
+    });
+ }
 
 document.addEventListener('click', (event) => {
     if (all_sessions_cont.classList.contains('toggle')){
@@ -406,10 +397,39 @@ sess_input.addEventListener('blur', () => {
 });
 
 docs_cont_content.addEventListener('scroll', () => {
-    // console.log(docs_cont_content.scrollTop);
     if (docs_cont_content.scrollTop != 0) docs_info.classList.add('hiden')
     else docs_info.classList.remove('hiden');
   });
+
+docs_cont_content.addEventListener('mousedown', (e) => {
+    const id = e.target.getAttribute('id');
+    if (!id || id == 'docs_cont_content') return;  // preventEvent
+    // e.stopPropagation();
+    
+    console.log(id);
+    // holder = false;
+    let timer = setTimeout(() => {alert('удержание')}, 1000)
+    e.target.addEventListener("mouseup", function(r){
+        clearTimeout(timer);
+        console.log('очистка')
+        // if (holder == true) console.log('удержание');
+    });
+    // e.target.addEventListener('click', (event) => {
+    //     const id_2 = event.target.getAttribute('id');
+    //     console.log(id_2);
+    // });
+    // doc_hold(
+    //     inv_1,  //Целевой элемент
+    //     function(){  //Функция, выполняющаяся при удержании (единожды)
+    //         console.log(`Нажатие`);
+    //       },
+    //     1000, 
+    //     function(){  //Функция, которая сработает после удержания
+    //        console.log(`Удержание`);
+    //     }
+    //   );
+});
+
 
 // Не работает
 // window.addEventListener('blur', () => {

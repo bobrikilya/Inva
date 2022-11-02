@@ -539,7 +539,7 @@ header li {
   border-radius: 25px;
   cursor: pointer;
   color: rgba(29, 24, 26, 0.6431372549);
-  background-color: rgba(124, 124, 124, 0.0941176471);
+  background-color: rgba(124, 124, 124, 0.1019607843);
 }
 #menue_bar #docs_cont #docs_cont_content li.active_doc span {
   color: #000000;
