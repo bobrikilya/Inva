@@ -336,19 +336,15 @@ function docs_types_toggle(e){
     setTimeout(() => {doc_types_content.classList.toggle('toggle')}, 10);
 };
 
-function doc_hold(e, f, t, g){
-    let holder;
-    e.addEventListener("mousedown", function(r){
-          holder = setTimeout(function(){
-                f.call(e, r);
-                holder = true;
-          }, t || 2000)
-    });
-    document.addEventListener("mouseup", function(r){
-           holder === true ? g && g.call(e, r) 
-             : clearTimeout(holder);
-    });
- }
+function doc_open(doc_id){
+    // console.log(`Click on the ${doc_id}`);
+    alert(`Click on the ${doc_id}`);
+};
+
+function doc_hold(doc_id){
+    // console.log(`Holding the ${doc_id}`);
+    alert(`Holding the ${doc_id}`);
+}
 
 document.addEventListener('click', (event) => {
     if (all_sessions_cont.classList.contains('toggle')){
@@ -406,28 +402,18 @@ docs_cont_content.addEventListener('touchstart', (e) => {
     if (!id || id == 'docs_cont_content') return;  // preventEvent
     // e.stopPropagation();
     
-    console.log(id);
-    // holder = false;
-    let timer = setTimeout(() => {alert('удержание')}, 1000)
-    e.target.addEventListener("touchend", function(r){
+    // console.log(id);
+
+    holder = false;
+    let timer = setTimeout(() => {
+        holder = true;
+        doc_hold(id);
+    }, 1000);
+    e.target.addEventListener("touchend", () => {
         clearTimeout(timer);
-        console.log('очистка')
-        // if (holder == true) console.log('удержание');
+        if (!holder) doc_open(id);
+        holder = false;
     });
-    // e.target.addEventListener('click', (event) => {
-    //     const id_2 = event.target.getAttribute('id');
-    //     console.log(id_2);
-    // });
-    // doc_hold(
-    //     inv_1,  //Целевой элемент
-    //     function(){  //Функция, выполняющаяся при удержании (единожды)
-    //         console.log(`Нажатие`);
-    //       },
-    //     1000, 
-    //     function(){  //Функция, которая сработает после удержания
-    //        console.log(`Удержание`);
-    //     }
-    //   );
 });
 
 
