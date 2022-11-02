@@ -383,23 +383,23 @@ li a {
 }
 
 .inv {
-  background-color: rgba(118, 218, 126, 0.8);
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.4235294118) 0%, rgba(174, 255, 181, 0.4392156863) 100%);
 }
 
 .req {
-  background-color: rgba(17, 198, 204, 0.5019607843);
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.4235294118) 0%, rgba(180, 252, 255, 0.5764705882) 100%);
 }
 
 .take {
-  background-color: rgba(107, 121, 185, 0.6784313725);
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.4235294118) 0%, rgba(85, 116, 255, 0.2549019608) 100%);
 }
 
 .rem {
-  background-color: rgba(151, 102, 180, 0.5568627451);
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.4235294118) 0%, rgba(195, 92, 255, 0.2039215686) 100%);
 }
 
 .scan {
-  background-color: rgba(204, 109, 165, 0.768627451);
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.4235294118) 0%, rgba(255, 32, 62, 0.1843137255) 100%);
 }
 
 #doc_types_cont {
@@ -522,7 +522,7 @@ li a {
   color: rgba(26, 26, 26, 0.8901960784);
   justify-content: flex-start;
   overflow: hidden;
-  padding: 10px 18px 10px 30px;
+  padding: 10px 18px 10px 20px;
   font-size: 1.4rem;
   cursor: auto;
 }
@@ -539,7 +539,7 @@ li a {
   font-size: 1.5rem;
   border-radius: 25px;
   cursor: pointer;
-  color: rgba(29, 24, 26, 0.5882352941);
+  color: rgba(29, 24, 26, 0.6431372549);
   background-color: rgba(124, 124, 124, 0.0941176471);
 }
 #menue_bar #docs_cont #docs_cont_content li:first-child {
@@ -592,7 +592,8 @@ li a {
   min-width: 17rem;
   min-height: 4.5rem;
   color: #18191d;
-  background-color: rgba(0, 153, 255, 0.2196078431);
+  background-color: rgba(255, 255, 255, 0.3411764706);
+  background: linear-gradient(0deg, rgba(199, 233, 255, 0.5058823529) 0%, rgba(0, 153, 255, 0.1764705882) 100%);
   border-radius: 25px;
   white-space: nowrap;
   font-size: 1.55rem;
