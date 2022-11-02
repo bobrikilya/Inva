@@ -401,7 +401,7 @@ docs_cont_content.addEventListener('scroll', () => {
     else docs_info.classList.remove('hiden');
   });
 
-docs_cont_content.addEventListener('mousedown', (e) => {
+docs_cont_content.addEventListener('touchstart', (e) => {
     const id = e.target.getAttribute('id');
     if (!id || id == 'docs_cont_content') return;  // preventEvent
     // e.stopPropagation();
@@ -409,7 +409,7 @@ docs_cont_content.addEventListener('mousedown', (e) => {
     console.log(id);
     // holder = false;
     let timer = setTimeout(() => {alert('удержание')}, 1000)
-    e.target.addEventListener("mouseup", function(r){
+    e.target.addEventListener("touchend", function(r){
         clearTimeout(timer);
         console.log('очистка')
         // if (holder == true) console.log('удержание');
