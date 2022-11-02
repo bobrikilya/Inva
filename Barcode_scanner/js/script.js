@@ -29,10 +29,14 @@ const mark_but = document.getElementById('mark_but');
 
 const header = document.querySelector('header');
 const menue_bar = document.getElementById('menue_bar');
+
 const docs_cont = document.getElementById('docs_cont');
 const docs_cont_content = document.getElementById('docs_cont_content');
+const inv_1 = document.getElementById('inv_1');
+const eye = document.querySelector('#inv_1 span');
 const docs_info = document.getElementById('docs_info');
 const expand_but = document.getElementById('expand_but');
+
 const menue_sec_cont = document.getElementById('menue_sec_cont');
 const new_doc_but = document.getElementById('new_doc_but');
 const icons_bar = document.getElementById('icons_bar');
@@ -77,13 +81,19 @@ camera_button.addEventListener('click', camera_access);
 clear_button.addEventListener('click', input_cleaning);
 search_button.addEventListener('click', searching);
 refresh_but.addEventListener('click', refresh);
+
 menue_but.addEventListener('click', menue_toggle);
 mark_but.addEventListener('click', menue_toggle);
+mark_but.addEventListener('click', menue_toggle);
+// inv_1.addEventListener('click', () => {if console.log('Большая')});
+// eye.addEventListener('click', () => {console.log('Маленькая')});
 expand_but.addEventListener('click', docs_cont_toggle);
+
 new_doc_but.addEventListener('click', docs_types_toggle);
 cancel_but.addEventListener('click', docs_types_toggle);
 download_but.addEventListener('click', check_act);
 download_back_but.addEventListener('click', downloading_back);
+
 session_but.addEventListener('click', sessions_cont_toggle);
 session_power_but.addEventListener('click', sess_start_stop);
 next_but.addEventListener('click', sess_num_confirm);
@@ -324,6 +334,30 @@ function docs_types_toggle(e){
     setTimeout(() => {doc_types_content.classList.toggle('toggle')}, 10);
 };
 
+// function doc_hold(e, f, t, g){
+//     let holder;
+//     e.addEventListener("mousedown", function(r){
+//           holder = setTimeout(function(){
+//                 f.call(e, r);
+//                 holder = true;
+//           }, t || 2000)
+//     });
+//     document.addEventListener("mouseup", function(r){
+//            holder === true ? g && g.call(e, r) 
+//              : clearTimeout(holder);
+//     });
+//  }
+ 
+//  doc_hold(
+//    document.body,  //Целевой элемент
+//    function(){  //Функция, выполняющаяся при удержании (единожды)
+//      this.classList.add("active");  
+//    }, 
+//    3000,  //Время, через которое сработает «Удержание»
+//    function(){  //Функция, которая сработает после удержания
+//       this.classList.remove("active");
+//    }
+//  );
 
 document.addEventListener('click', (event) => {
     if (all_sessions_cont.classList.contains('toggle')){

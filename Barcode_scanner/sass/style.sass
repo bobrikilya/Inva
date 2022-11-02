@@ -280,34 +280,26 @@ header
     &.turn_on
         display: flex
     // border: 2px solid green
-
-li
-    position: relative
-    background-color:#ffffff6c
-    white-space: nowrap
-    border-radius: 25px
-    a
-        display: flex
-        align-items: center
+    li
         position: relative
-        height: 100%
-        width: 100%
+        // background-color:#ffffff6c
+        white-space: nowrap
         border-radius: 25px
+        justify-content: flex-start
+
 .inv
-    // background-color: #76da7ecc
-    background: linear-gradient(150deg, #ffffff6c 0%, #aeffb570 100%)
+    background-color: #00ff152c
 .req
-    // background-color: #11c6cc80
-    background: linear-gradient(150deg, #ffffff6c 0%, #b4fcff93 100%)
+    background-color: #09c4ca3a
 .take
-    // background-color: #6b79b9ad
-    background: linear-gradient(150deg, #ffffff6c 0%, #5574ff41 100%)
+    background-color: #1e3eca49
 .rem
-    // background-color: #9766b48e
-    background: linear-gradient(150deg, #ffffff6c 0%, #c35cff34 100%)
+    background-color: #8100cc3f
 .scan
-    // background-color: #cc6da5c4
-    background: linear-gradient(150deg, #ffffff6c 0%, #ff203e2f 100%)
+    background-color: #f5008f41
+
+#doc_types_blur
+    background-color:#ffffff42
 
 #doc_types_cont
     display: none
@@ -317,7 +309,7 @@ li
     width: 100%
     // border: 2px solid yellow
     &.toggle
-            display: flex
+        display: flex
     #doc_types_content
         max-width: 300px
         margin-top: 1rem
@@ -335,11 +327,16 @@ li
         li
             min-height: 5.5rem
             width: 100%
-            justify-content: flex-start
             font-size: 1.6rem
             margin-top: 0.7rem
             // border: 2px solid orange
             a
+                display: flex
+                align-items: center
+                position: relative
+                height: 100%
+                width: 100%
+                border-radius: 25px
                 padding: 15px 30px
                 // border: 2px solid blue
             span
@@ -388,10 +385,11 @@ li
         // overflow: visible
         justify-content: flex-start
         border: 2px solid #ffffff36
-        transition-duration: 0.2s
+        background-color: #ffffff7a
+        transition-duration: 0.25s
         &.active
-            max-height: 87%
             margin-top: 10rem
+            max-height: 87%
         #docs_info
             position: absolute
             top: 0.7rem
@@ -413,20 +411,16 @@ li
             &::-webkit-scrollbar
                 width: 0
             li
+                display: flex
                 margin-top: 0.6rem
-                width: 90%
-                min-height: 4.8rem
-                // border: 2px solid green
-                a
-                    width: 78%
-                    color: #1a1a1ae3
-                    // text-shadow: 0 0 5px #11111133
-                    justify-content: flex-start
-                    overflow: hidden
-                    padding: 10px 18px 10px 20px
-                    font-size: 1.4rem
-                    cursor: auto
-                    // border: 2px solid orange
+                width: 94%
+                min-height: 4.5rem
+                color: #1a1a1ae3
+                align-items: center
+                overflow: hidden
+                padding: 10px 18px 10px 20px
+                font-size: 1.4rem
+                cursor: pointer
                 span
                     position: absolute
                     z-index: 5
@@ -440,10 +434,13 @@ li
                     font-size: 1.5rem
                     border-radius: 25px 
                     cursor: pointer
-                    // color: #be000096
                     color: #1d181aa4
                     background-color: #7c7c7c18
                     // border: 2px solid #a2d5ff59
+                &.active_doc
+                    span
+                        color: #000000
+                        border: 2px solid #00000085
             li:first-child
                 margin-top: 2.5rem
             li:last-child
@@ -489,9 +486,7 @@ li
         min-width: 17rem
         min-height: 4.5rem
         color: #18191d
-        background-color:#ffffff57
-        background: linear-gradient(0deg, #c7e9ff81 0%, #0099ff2d 100%)
-        // background-color:#0099ff38
+        background-color:#88c9ff96
         border-radius: 25px
         white-space: nowrap
         font-size: 1.55rem
@@ -500,7 +495,7 @@ li
             font-size: 1.3rem
             margin-right: 0.4rem
             color: #18191db0
-
+ 
 #check
     opacity: 0
     font-size: 3.3rem
