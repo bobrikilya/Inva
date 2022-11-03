@@ -401,16 +401,46 @@ docs_cont_content.addEventListener('touchstart', (e) => {
     if (!id || id == 'docs_cont_content') return;  // preventEvent
     // e.stopPropagation();
 
-    // move = false;
-    // if (!move) {
-    //     e.target.addEventListener("touchmove", (event) => {
-    //         console.log(event); 
-    //         move = true;
-    //         // event.preventDefault();
-    //         // event. stopPropagation()
-    //         // return;
-    //     });
-    // };
+
+    let posX;
+    e.target.addEventListener('touchstart', (e) => {
+        posX = e.changedTouches[0].clientX;
+    });
+
+    e.target.addEventListener('touchend', (e) => {
+        e.changedTouches[0].clientX - posX < -30 && swipeLeft();
+    });
+    e.target.addEventListener('touchend', e => {
+        e.changedTouches[0].clientX - posX > 30 && swipeRight();
+    });
+
+    function swipeLeft(){
+        console.log('swipe left');
+        e.target.style.width = '80%';
+    }
+
+    function swipeRight(){
+        console.log('swipe right');
+        e.target.style.width = '100%';
+    }
+
+    // let pos_list = new Set();
+    // docs_cont_content.addEventListener('touchmove', (event) => {
+    //     // posX = parseInt(event.changedTouches[0].pageX);
+    //     // console.log(posX_1 + ' , ' + posX_2);
+    //     pos_list.add(event.target);
+    //     if (pos_list.length >= 2){
+    //         console.log(pos_list)
+    //         // if ( pos_list.at(1) >= (pos_list.at(-1) + 30) ) {
+    //         //     console.log('Swipe left');
+    //         // }else if ( pos_list.at(-1) >= (pos_list.at(1) - 30) ){
+    //         //     console.log('Swipe right');
+    //         // };
+    //         pos_list = [];
+    //     };
+    // });
+    
+
 
     // let timer = setTimeout(() => {
     //     doc_hold(id);

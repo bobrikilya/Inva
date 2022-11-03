@@ -487,7 +487,7 @@ header li {
 }
 #menue_bar #docs_cont.active {
   margin-top: 10rem;
-  max-height: 87%;
+  max-height: 84%;
 }
 #menue_bar #docs_cont #docs_info {
   position: absolute;
@@ -588,6 +588,7 @@ header li {
   transition-duration: 0.3s;
 }
 #menue_bar #expand_but.active {
+  margin-top: 0.5rem;
   transform: rotate(180deg);
 }
 #menue_bar #menue_sec_cont {
