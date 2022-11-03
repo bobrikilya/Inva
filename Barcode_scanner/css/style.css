@@ -374,11 +374,11 @@ header li {
 }
 
 .inv {
-  background-color: rgba(0, 255, 21, 0.1725490196);
+  background-color: rgba(251, 255, 0, 0.3294117647);
 }
 
 .req {
-  background-color: rgba(9, 196, 202, 0.2274509804);
+  background-color: rgba(0, 243, 12, 0.2549019608);
 }
 
 .take {
@@ -386,11 +386,11 @@ header li {
 }
 
 .rem {
-  background-color: rgba(129, 0, 204, 0.2470588235);
+  background-color: rgba(129, 0, 204, 0.2745098039);
 }
 
 .scan {
-  background-color: rgba(245, 0, 143, 0.2549019608);
+  background-color: rgba(245, 0, 143, 0.2823529412);
 }
 
 #doc_types_blur {
@@ -497,14 +497,16 @@ header li {
   color: rgba(26, 26, 26, 0.7882352941);
   transform: translateY(0);
   opacity: 1;
-  transition-duration: 0.1s;
+  transition: 0.1s ease-out;
 }
 #menue_bar #docs_cont #docs_info.hiden {
-  transform: translateY(0.7rem);
+  transform: translateY(0.5rem);
   opacity: 0;
 }
 #menue_bar #docs_cont #docs_cont_content {
   justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0 3%;
   overflow: auto;
   height: 100%;
   width: 100%;
@@ -516,7 +518,7 @@ header li {
 #menue_bar #docs_cont #docs_cont_content li {
   display: flex;
   margin-top: 0.6rem;
-  width: 94%;
+  width: 100%;
   min-height: 4.5rem;
   color: rgba(26, 26, 26, 0.8901960784);
   align-items: center;
@@ -543,14 +545,27 @@ header li {
   background-color: rgba(124, 124, 124, 0.1019607843);
 }
 #menue_bar #docs_cont #docs_cont_content li.active_doc span {
-  color: #000000;
   border: 2px solid rgba(0, 0, 0, 0.5215686275);
+  color: #000000;
 }
 #menue_bar #docs_cont #docs_cont_content li:active {
   box-shadow: inset 0 0 15px rgba(20, 20, 20, 0.2470588235);
 }
 #menue_bar #docs_cont #docs_cont_content li:first-child {
-  margin-top: 2.5rem;
+  margin-top: 2.7rem;
+  margin-bottom: 1.8rem;
+  overflow: visible;
+}
+#menue_bar #docs_cont #docs_cont_content li:first-child::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -1.2rem;
+  width: 5rem;
+  height: 2px;
+  background-color: rgba(29, 24, 26, 0.6431372549);
+  border-radius: 25px;
 }
 #menue_bar #docs_cont #docs_cont_content li:last-child {
   margin-bottom: 0.8rem;

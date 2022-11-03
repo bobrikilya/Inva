@@ -337,13 +337,11 @@ function docs_types_toggle(e){
 };
 
 function doc_open(doc_id){
-    // console.log(`Click on the ${doc_id}`);
-    alert(`Click on the ${doc_id}`);
+    console.log(`Click on the ${doc_id}`);
 };
 
 function doc_hold(doc_id){
-    // console.log(`Holding the ${doc_id}`);
-    alert(`Holding the ${doc_id}`);
+    console.log(`Holding the ${doc_id}`);
 }
 
 document.addEventListener('click', (event) => {
@@ -398,22 +396,33 @@ docs_cont_content.addEventListener('scroll', () => {
   });
 
 docs_cont_content.addEventListener('touchstart', (e) => {
+    e.preventDefault();
     const id = e.target.getAttribute('id');
     if (!id || id == 'docs_cont_content') return;  // preventEvent
     // e.stopPropagation();
-    
-    // console.log(id);
 
-    holder = false;
-    let timer = setTimeout(() => {
-        holder = true;
-        doc_hold(id);
-    }, 1000);
-    e.target.addEventListener("touchend", () => {
-        clearTimeout(timer);
-        if (!holder) doc_open(id);
-        holder = false;
-    });
+    // move = false;
+    // if (!move) {
+    //     e.target.addEventListener("touchmove", (event) => {
+    //         console.log(event); 
+    //         move = true;
+    //         // event.preventDefault();
+    //         // event. stopPropagation()
+    //         // return;
+    //     });
+    // };
+
+    // let timer = setTimeout(() => {
+    //     doc_hold(id);
+    //     e.stopPropagation();
+    // }, 1000);
+    // e.target.addEventListener("touchend", (event) => {
+    //     e.preventDefault();
+    //     e.stopPropagation();
+    //     clearTimeout(timer);
+    //     doc_open(id);
+    //     return false;
+    // });
 });
 
 

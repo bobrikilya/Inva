@@ -288,15 +288,15 @@ header
         justify-content: flex-start
 
 .inv
-    background-color: #00ff152c
+    background-color: #fbff0054
 .req
-    background-color: #09c4ca3a
+    background-color: #00f30c41
 .take
     background-color: #1e3eca49
 .rem
-    background-color: #8100cc3f
+    background-color: #8100cc46
 .scan
-    background-color: #f5008f41
+    background-color: #f5008f48
 
 #doc_types_blur
     background-color:#ffffff42
@@ -397,12 +397,14 @@ header
             color: #1a1a1ac9
             transform: translateY(0)
             opacity: 1
-            transition-duration: 0.1s
+            transition: 0.1s ease-out
             &.hiden
-                transform: translateY(0.7rem)
+                transform: translateY(0.5rem)
                 opacity: 0
         #docs_cont_content
             justify-content: flex-start
+            align-items: flex-start
+            padding: 0 3%
             overflow: auto
             height: 100%
             width: 100%
@@ -413,7 +415,7 @@ header
             li
                 display: flex
                 margin-top: 0.6rem
-                width: 94%
+                width: 100%
                 min-height: 4.5rem
                 color: #1a1a1ae3
                 align-items: center
@@ -440,12 +442,24 @@ header
                     // border: 2px solid #a2d5ff59
                 &.active_doc
                     span
-                        color: #000000
                         border: 2px solid #00000085
+                        color: #000000
                 &:active
                     box-shadow: inset 0 0 15px #1414143f 
             li:first-child
-                margin-top: 2.5rem
+                margin-top: 2.7rem
+                margin-bottom: 1.8rem
+                overflow: visible
+                &::after
+                    content: ''
+                    position: absolute
+                    left: 50%
+                    transform: translateX(-50%)
+                    bottom: -1.2rem
+                    width: 5rem
+                    height: 2px
+                    background-color: #1d181aa4
+                    border-radius: 25px
             li:last-child
                 margin-bottom: 0.8rem
     #expand_but
