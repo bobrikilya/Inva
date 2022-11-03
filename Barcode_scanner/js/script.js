@@ -402,7 +402,7 @@ docs_cont_content.addEventListener('scroll', () => {
     
     // Swiping doc
     let posX = e.changedTouches[0].clientX;
-    let swipe = 50;
+    let swipe = 100;
     if (e.target.previousElementSibling != null) {
         e.target.addEventListener('touchmove', (e) => {
             e.changedTouches[0].clientX - posX < -swipe && swipeLeft();
