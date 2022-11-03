@@ -542,6 +542,9 @@ header li {
   cursor: pointer;
   color: rgba(29, 24, 26, 0.6431372549);
   background-color: rgba(124, 124, 124, 0.1019607843);
+  opacity: 1;
+  pointer-events: auto;
+  transition-duration: 0.15s;
 }
 #menue_bar #docs_cont #docs_cont_content li span:active {
   box-shadow: inset 0 0 15px rgba(20, 20, 20, 0.1764705882);
@@ -564,6 +567,16 @@ header li {
   height: 2px;
   background-color: rgba(29, 24, 26, 0.6431372549);
   border-radius: 25px;
+}
+#menue_bar #docs_cont #docs_cont_content li.del_toggle {
+  width: 80%;
+}
+#menue_bar #docs_cont #docs_cont_content li.del_toggle span {
+  right: 1rem;
+  width: 0;
+  opacity: 0;
+  pointer-events: none;
+  font-size: 0;
 }
 #menue_bar #docs_cont #docs_cont_content li:active {
   box-shadow: inset 0 0 15px rgba(20, 20, 20, 0.1764705882);

@@ -396,63 +396,28 @@ docs_cont_content.addEventListener('scroll', () => {
   });
 
 docs_cont_content.addEventListener('touchstart', (e) => {
-    // e.preventDefault();
     const id = e.target.getAttribute('id');
     if (!id || id == 'docs_cont_content') return;  // preventEvent
-    // e.stopPropagation();
 
-
-    let posX;
-    e.target.addEventListener('touchstart', (e) => {
-        posX = e.changedTouches[0].clientX;
+    // Swiping doc
+    let posX = e.changedTouches[0].clientX;
+    let swipe = 50;
+    e.target.addEventListener('touchmove', (e) => {
+        e.changedTouches[0].clientX - posX < -swipe && swipeLeft();
     });
-
-    e.target.addEventListener('touchend', (e) => {
-        e.changedTouches[0].clientX - posX < -30 && swipeLeft();
-    });
-    e.target.addEventListener('touchend', e => {
-        e.changedTouches[0].clientX - posX > 30 && swipeRight();
+    e.target.addEventListener('touchmove', e => {
+        e.changedTouches[0].clientX - posX > swipe && swipeRight();
     });
 
     function swipeLeft(){
-        console.log('swipe left');
-        e.target.style.width = '80%';
+        // console.log('swipe left');
+        e.target.classList.add('del_toggle');
     }
 
     function swipeRight(){
-        console.log('swipe right');
-        e.target.style.width = '100%';
+        // console.log('swipe right');
+        e.target.classList.remove('del_toggle');
     }
-
-    // let pos_list = new Set();
-    // docs_cont_content.addEventListener('touchmove', (event) => {
-    //     // posX = parseInt(event.changedTouches[0].pageX);
-    //     // console.log(posX_1 + ' , ' + posX_2);
-    //     pos_list.add(event.target);
-    //     if (pos_list.length >= 2){
-    //         console.log(pos_list)
-    //         // if ( pos_list.at(1) >= (pos_list.at(-1) + 30) ) {
-    //         //     console.log('Swipe left');
-    //         // }else if ( pos_list.at(-1) >= (pos_list.at(1) - 30) ){
-    //         //     console.log('Swipe right');
-    //         // };
-    //         pos_list = [];
-    //     };
-    // });
-    
-
-
-    // let timer = setTimeout(() => {
-    //     doc_hold(id);
-    //     e.stopPropagation();
-    // }, 1000);
-    // e.target.addEventListener("touchend", (event) => {
-    //     e.preventDefault();
-    //     e.stopPropagation();
-    //     clearTimeout(timer);
-    //     doc_open(id);
-    //     return false;
-    // });
 });
 
 
