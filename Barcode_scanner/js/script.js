@@ -396,7 +396,7 @@ docs_cont_content.addEventListener('scroll', () => {
   });
 
 docs_cont_content.addEventListener('touchstart', (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     const id = e.target.getAttribute('id');
     if (!id || id == 'docs_cont_content') return;  // preventEvent
     // e.stopPropagation();

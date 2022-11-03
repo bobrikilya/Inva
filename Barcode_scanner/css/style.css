@@ -554,7 +554,7 @@ header li {
   border: 2px solid rgba(0, 0, 0, 0.5215686275);
   color: #000000;
 }
-#menue_bar #docs_cont #docs_cont_content li.active_doc::after {
+#menue_bar #docs_cont #docs_cont_content li.active_doc::before {
   content: "";
   position: absolute;
   left: 50%;
