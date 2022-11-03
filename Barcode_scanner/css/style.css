@@ -504,7 +504,7 @@ header li {
 }
 #menue_bar #docs_cont #docs_cont_content {
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: flex-end;
   padding: 0 3%;
   overflow: auto;
   height: 100%;
@@ -521,13 +521,12 @@ header li {
   min-height: 4.5rem;
   color: rgba(26, 26, 26, 0.8901960784);
   align-items: center;
-  overflow: hidden;
   padding: 10px 18px 10px 20px;
   font-size: 1.4rem;
   cursor: pointer;
   transition-duration: 0.2s;
 }
-#menue_bar #docs_cont #docs_cont_content li span {
+#menue_bar #docs_cont #docs_cont_content li a {
   position: absolute;
   z-index: 5;
   right: 0;
@@ -545,19 +544,52 @@ header li {
   opacity: 1;
   pointer-events: auto;
   transition-duration: 0.15s;
+  transform: scale(1);
 }
-#menue_bar #docs_cont #docs_cont_content li span:active {
+#menue_bar #docs_cont #docs_cont_content li a:active {
   box-shadow: inset 0 0 15px rgba(20, 20, 20, 0.1764705882);
 }
-#menue_bar #docs_cont #docs_cont_content li.active_doc {
+#menue_bar #docs_cont #docs_cont_content li button {
+  position: absolute;
+  left: -4.5rem;
+  background-color: rgba(255, 103, 103, 0.1764705882);
+  width: 4rem;
+  height: 4rem;
+  color: #a30101;
+  transition-duration: 0.2s;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0);
+}
+#menue_bar #docs_cont #docs_cont_content li.del_toggle {
+  width: 80%;
+  word-wrap: wrap;
+  justify-content: center;
+}
+#menue_bar #docs_cont #docs_cont_content li.del_toggle a {
+  right: -2rem;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0);
+}
+#menue_bar #docs_cont #docs_cont_content li.del_toggle button {
+  pointer-events: auto;
+  opacity: 1;
+  transform: scale(1);
+}
+#menue_bar #docs_cont #docs_cont_content li:active {
+  box-shadow: inset 0 0 15px rgba(20, 20, 20, 0.1764705882);
+}
+#menue_bar #docs_cont #docs_cont_content li:first-child {
+  margin-top: 2.7rem;
   overflow: visible;
   margin-bottom: 1.8rem;
 }
-#menue_bar #docs_cont #docs_cont_content li.active_doc span {
+#menue_bar #docs_cont #docs_cont_content li:first-child a {
   border: 2px solid rgba(0, 0, 0, 0.5215686275);
   color: #000000;
 }
-#menue_bar #docs_cont #docs_cont_content li.active_doc::before {
+#menue_bar #docs_cont #docs_cont_content li:first-child::before {
   content: "";
   position: absolute;
   left: 50%;
@@ -567,22 +599,6 @@ header li {
   height: 2px;
   background-color: rgba(29, 24, 26, 0.6431372549);
   border-radius: 25px;
-}
-#menue_bar #docs_cont #docs_cont_content li.del_toggle {
-  width: 80%;
-}
-#menue_bar #docs_cont #docs_cont_content li.del_toggle span {
-  right: 1rem;
-  width: 0;
-  opacity: 0;
-  pointer-events: none;
-  font-size: 0;
-}
-#menue_bar #docs_cont #docs_cont_content li:active {
-  box-shadow: inset 0 0 15px rgba(20, 20, 20, 0.1764705882);
-}
-#menue_bar #docs_cont #docs_cont_content li:first-child {
-  margin-top: 2.7rem;
 }
 #menue_bar #docs_cont #docs_cont_content li:last-child {
   margin-bottom: 0.8rem;

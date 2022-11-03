@@ -395,29 +395,34 @@ docs_cont_content.addEventListener('scroll', () => {
     else docs_info.classList.remove('hiden');
   });
 
-docs_cont_content.addEventListener('touchstart', (e) => {
+  docs_cont_content.addEventListener('touchstart', (e) => {
     const id = e.target.getAttribute('id');
     if (!id || id == 'docs_cont_content') return;  // preventEvent
-
+    // console.log(e.target.previousElementSibling);
+    
     // Swiping doc
     let posX = e.changedTouches[0].clientX;
     let swipe = 50;
-    e.target.addEventListener('touchmove', (e) => {
-        e.changedTouches[0].clientX - posX < -swipe && swipeLeft();
-    });
-    e.target.addEventListener('touchmove', e => {
-        e.changedTouches[0].clientX - posX > swipe && swipeRight();
-    });
-
-    function swipeLeft(){
-        // console.log('swipe left');
-        e.target.classList.add('del_toggle');
-    }
-
+    if (e.target.previousElementSibling != null) {
+        e.target.addEventListener('touchmove', (e) => {
+            e.changedTouches[0].clientX - posX < -swipe && swipeLeft();
+        });
+        e.target.addEventListener('touchmove', e => {
+            e.changedTouches[0].clientX - posX > swipe && swipeRight();
+        });
+    };
+    
     function swipeRight(){
-        // console.log('swipe right');
+        console.log('swipe right');
+        e.target.classList.add('del_toggle');
+        setTimeout(swipeLeft, 1400);
+    }
+    
+    function swipeLeft(){
+        console.log('swipe left');
         e.target.classList.remove('del_toggle');
     }
+    
 });
 
 
