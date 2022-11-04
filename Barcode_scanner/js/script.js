@@ -398,42 +398,27 @@ docs_cont_content.addEventListener('scroll', () => {
   docs_cont_content.addEventListener('touchstart', (e) => {
     const id = e.target.getAttribute('id');
     if (!id || id == 'docs_cont_content') return;  // preventEvent
-    // console.log(e.target.previousElementSibling);
     
     // Swiping doc
     let posX = e.changedTouches[0].clientX;
     let swipe = 150;
-    let timeout = setTimeout(() => {
-        e.target.classList.remove('del_toggle');
-        console.log('close');
-    }, 1400);
-
-    const all_docs = document.querySelectorAll('#docs_cont_content li');
-    // console.log(all_docs);
+    
+    let timeout
     if (e.target.previousElementSibling != null) {
-        e.target.addEventListener('touchmove', (e) => {
-            e.changedTouches[0].clientX - posX < -swipe && swipeLeft();
-        });
-        e.target.addEventListener('touchmove', e => {
-            e.changedTouches[0].clientX - posX > swipe && swipeRight();
+        e.target.addEventListener('touchmove', (event) => {
+            event.changedTouches[0].clientX - posX > swipe && swipeRight();
         });
     };
     
     function swipeRight(){
-        all_docs.forEach( (el) => {
-            el.classList.remove('del_toggle');
-            // console.log('close_all');
-        });
-        // console.log('swipe right');
+        if (timeout) clearTimeout(timeout);
+        console.log('swipe right');
         e.target.classList.add('del_toggle');
+        timeout = setTimeout(() => {
+            console.log('close');
+            e.target.classList.remove('del_toggle');
+        }, 1300);
     };
-    
-    function swipeLeft(){
-        // console.log('swipe left');
-        e.target.classList.remove('del_toggle');
-        clearTimeout(timeout);
-    }
-    
 });
 
 
