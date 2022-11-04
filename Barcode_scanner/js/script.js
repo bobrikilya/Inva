@@ -401,7 +401,7 @@ docs_cont_content.addEventListener('scroll', () => {
     
     // Swiping doc
     let posX = e.changedTouches[0].clientX;
-    let swipe = 150;
+    let swipe = 180;
     
     let timeout
     if (e.target.previousElementSibling != null) {
