@@ -438,43 +438,43 @@ docs_cont_content.addEventListener('touchstart', (e) => {
     // console.log(id);
 
     // Holding doc
-    let timer
-    let timeout = setTimeout(hold, 700);
-    e.target.addEventListener("touchend", (event) => {
-        // event.target
-        clearTimeout(timeout);
-        console.log('del');
-    });
+    // let timer
+    // let timeout = setTimeout(hold, 700);
+    // e.target.addEventListener("touchend", (event) => {
+    //     // event.target
+    //     clearTimeout(timeout);
+    //     console.log('del');
+    // });
 
-    function hold(){
-        if (timer) clearTimeout(timer);
-        console.log('hold');
-        e.target.classList.add('del_toggle');
-        timer = setTimeout(() => {
-            console.log('close');
-            e.target.classList.remove('del_toggle');
-        }, 1300);
-    };
-    // Swiping doc
-    // let posX = e.changedTouches[0].clientX;
-    // let swipe = 170;
-    
-    // let timeout
-    // if (e.target.previousElementSibling != null) {
-    //     e.target.addEventListener('touchmove', (event) => {
-    //         event.changedTouches[0].clientX - posX > swipe && swipeRight();
-    //     });
-    // };
-    
-    // function swipeRight(){
-    //     if (timeout) clearTimeout(timeout);
-    //     // console.log('swipe right');
+    // function hold(){
+    //     if (timer) clearTimeout(timer);
+    //     console.log('hold');
     //     e.target.classList.add('del_toggle');
-    //     timeout = setTimeout(() => {
-    //         // console.log('close');
+    //     timer = setTimeout(() => {
+    //         console.log('close');
     //         e.target.classList.remove('del_toggle');
     //     }, 1300);
     // };
+    // Swiping doc
+    let posX = e.changedTouches[0].clientX;
+    let swipe = 170;
+    
+    let timeout
+    if (e.target.previousElementSibling != null) {
+        e.target.addEventListener('touchmove', (event) => {
+            event.changedTouches[0].clientX - posX > swipe && swipeRight();
+        });
+    };
+    
+    function swipeRight(){
+        if (timeout) clearTimeout(timeout);
+        // console.log('swipe right');
+        e.target.classList.add('del_toggle');
+        timeout = setTimeout(() => {
+            // console.log('close');
+            e.target.classList.remove('del_toggle');
+        }, 1300);
+    };
 });
 
 store_adress_content.addEventListener('click', (e) => {
