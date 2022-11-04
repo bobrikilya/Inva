@@ -15,14 +15,14 @@ const store_adress_cont = document.getElementById('store_adress_cont');
 const store_adress_content = document.getElementById('store_adress_content');
 const cancel_but_adress = document.getElementById('cancel_but_adress');
 
-const Krasnoe = document.getElementById('Krasnoe');
-const Polock = document.getElementById('Polock');
-const Glubokoe = document.getElementById('Glubokoe');
-const Radoshk = document.getElementById('Radoshk');
-const Sputnik = document.getElementById('Sputnik');
-const Belmash = document.getElementById('Belmash');
-const Libavo = document.getElementById('Libavo');
-const Turly = document.getElementById('Turly');
+// const Krasnoe = document.getElementById('Krasnoe');
+// const Polock = document.getElementById('Polock');
+// const Glubokoe = document.getElementById('Glubokoe');
+// const Radoshk = document.getElementById('Radoshk');
+// const Sputnik = document.getElementById('Sputnik');
+// const Belmash = document.getElementById('Belmash');
+// const Libavo = document.getElementById('Libavo');
+// const Turly = document.getElementById('Turly');
 
 //--------------
 const header_cont = document.getElementById('header_cont');
@@ -115,14 +115,14 @@ session_but.addEventListener('click', sessions_cont_toggle);
 session_power_but.addEventListener('click', adress_chose_toggle);
 cancel_but_adress.addEventListener('click', adress_chose_toggle);
 
-Krasnoe.addEventListener('click', sess_start_stop);
-Polock.addEventListener('click', sess_start_stop);
-Glubokoe.addEventListener('click', sess_start_stop);
-Radoshk.addEventListener('click', sess_start_stop);
-Sputnik.addEventListener('click', sess_start_stop);
-Belmash.addEventListener('click', sess_start_stop);
-Libavo.addEventListener('click', sess_start_stop);
-Turly.addEventListener('click', sess_start_stop);
+// Krasnoe.addEventListener('click', sess_start_stop);
+// Polock.addEventListener('click', sess_start_stop);
+// Glubokoe.addEventListener('click', sess_start_stop);
+// Radoshk.addEventListener('click', sess_start_stop);
+// Sputnik.addEventListener('click', sess_start_stop);
+// Belmash.addEventListener('click', sess_start_stop);
+// Libavo.addEventListener('click', sess_start_stop);
+// Turly.addEventListener('click', sess_start_stop);
 
 next_but.addEventListener('click', sess_num_confirm);
 give_name_but.addEventListener('click', sess_input_act);
@@ -432,32 +432,57 @@ docs_cont_content.addEventListener('scroll', () => {
     else docs_info.classList.remove('hiden');
   });
 
-  docs_cont_content.addEventListener('touchstart', (e) => {
+docs_cont_content.addEventListener('touchstart', (e) => {
     const id = e.target.getAttribute('id');
     if (!id || id == 'docs_cont_content') return;  // preventEvent
-    
-    // Swiping doc
-    let posX = e.changedTouches[0].clientX;
-    let swipe = 170;
-    
-    let timeout
-    if (e.target.previousElementSibling != null) {
-        e.target.addEventListener('touchmove', (event) => {
-            event.changedTouches[0].clientX - posX > swipe && swipeRight();
-        });
-    };
-    
-    function swipeRight(){
-        if (timeout) clearTimeout(timeout);
-        // console.log('swipe right');
+    // console.log(id);
+
+    // Holding doc
+    let timer
+    let timeout = setTimeout(hold, 700);
+    e.target.addEventListener("touchend", (event) => {
+        // event.target
+        clearTimeout(timeout);
+        console.log('del');
+    });
+
+    function hold(){
+        if (timer) clearTimeout(timer);
+        console.log('hold');
         e.target.classList.add('del_toggle');
-        timeout = setTimeout(() => {
-            // console.log('close');
+        timer = setTimeout(() => {
+            console.log('close');
             e.target.classList.remove('del_toggle');
         }, 1300);
     };
+    // Swiping doc
+    // let posX = e.changedTouches[0].clientX;
+    // let swipe = 170;
+    
+    // let timeout
+    // if (e.target.previousElementSibling != null) {
+    //     e.target.addEventListener('touchmove', (event) => {
+    //         event.changedTouches[0].clientX - posX > swipe && swipeRight();
+    //     });
+    // };
+    
+    // function swipeRight(){
+    //     if (timeout) clearTimeout(timeout);
+    //     // console.log('swipe right');
+    //     e.target.classList.add('del_toggle');
+    //     timeout = setTimeout(() => {
+    //         // console.log('close');
+    //         e.target.classList.remove('del_toggle');
+    //     }, 1300);
+    // };
 });
 
+store_adress_content.addEventListener('click', (e) => {
+    const id = e.target.getAttribute('id');
+    const tag = e.target.tagName;
+    // console.log(tag);
+    if (tag == 'A') sess_start_stop();
+});
 
 // Не работает
 // window.addEventListener('blur', () => {
