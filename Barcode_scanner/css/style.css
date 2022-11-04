@@ -518,7 +518,7 @@ header li {
   display: flex;
   margin-top: 0.6rem;
   width: 100%;
-  min-height: 4.5rem;
+  min-height: 4.8rem;
   color: rgba(26, 26, 26, 0.8901960784);
   align-items: center;
   padding: 10px 18px 10px 20px;
@@ -586,6 +586,8 @@ header li {
   margin-bottom: 1.8rem;
 }
 #menue_bar #docs_cont #docs_cont_content li:first-child a {
+  width: 5.5rem;
+  font-size: 1.6rem;
   border: 2px solid rgba(0, 0, 0, 0.5215686275);
   color: #000000;
 }

@@ -292,7 +292,7 @@ function sess_num_confirm(){
 };
 
 function session_record(){
-    session_but.innerText = session_name;
+    session_but.innerText = session_name.replace(' ', '_');
     session_but.classList.add('active');
     session_power_but.classList.add('active');
     session_text.innerText = 'Отключиться от сессии';
@@ -350,10 +350,10 @@ document.addEventListener('click', (event) => {
         const sessions_cont_inside = event.composedPath().includes(all_sessions_cont);
         const session_but_inside = event.composedPath().includes(session_but);
 
-            if (!sessions_cont_inside && !session_but_inside) { 
-                all_sessions_cont.classList.remove('toggle');
-                all_sess_cont_content.classList.remove('toggle');
-            };
+        if (!sessions_cont_inside && !session_but_inside) { 
+            all_sessions_cont.classList.remove('toggle');
+            all_sess_cont_content.classList.remove('toggle');
+        };
         
     };
 });
@@ -402,7 +402,14 @@ docs_cont_content.addEventListener('scroll', () => {
     
     // Swiping doc
     let posX = e.changedTouches[0].clientX;
-    let swipe = 100;
+    let swipe = 150;
+    let timeout = setTimeout(() => {
+        e.target.classList.remove('del_toggle');
+        console.log('close');
+    }, 1400);
+
+    const all_docs = document.querySelectorAll('#docs_cont_content li');
+    // console.log(all_docs);
     if (e.target.previousElementSibling != null) {
         e.target.addEventListener('touchmove', (e) => {
             e.changedTouches[0].clientX - posX < -swipe && swipeLeft();
@@ -413,14 +420,18 @@ docs_cont_content.addEventListener('scroll', () => {
     };
     
     function swipeRight(){
-        console.log('swipe right');
+        all_docs.forEach( (el) => {
+            el.classList.remove('del_toggle');
+            // console.log('close_all');
+        });
+        // console.log('swipe right');
         e.target.classList.add('del_toggle');
-        setTimeout(swipeLeft, 1400);
-    }
+    };
     
     function swipeLeft(){
-        console.log('swipe left');
+        // console.log('swipe left');
         e.target.classList.remove('del_toggle');
+        clearTimeout(timeout);
     }
     
 });
