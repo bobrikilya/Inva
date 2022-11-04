@@ -298,6 +298,49 @@ header
 .scan
     background-color: #f5008f48
 
+.chose_list
+    max-width: 300px
+    margin-top: 1rem
+    height: 85%
+    width: 100%
+    overflow: auto
+    transition: 0.2s ease-out
+    opacity: 0
+    transform: translateY(-1.5rem)
+    scroll-behavior: smooth
+    // border: 2px solid red
+    &.toggle
+        opacity: 1
+        transform: translateY(0)
+    li
+        position: relative
+        width: 100%
+        border-radius: 25px
+        // border: 2px solid orange
+        a
+            display: flex
+            align-items: center
+            justify-content: center
+            position: relative
+            height: 100%
+            width: 100%
+            border-radius: 25px
+            // border: 2px solid blue
+        p
+            width: 100%
+            color: #18191d
+            // border: 2px solid red
+    .cancel_but
+        margin-top: 1.2rem
+        cursor: pointer
+        border-radius: 50% 
+        color: #f5596eee
+        font-size: 4rem
+        transform: translateY(2px)
+        width: 8.5rem
+        height: 4.5rem
+
+
 #doc_types_blur
     background-color:#ffffff42
 
@@ -311,52 +354,57 @@ header
     &.toggle
         display: flex
     #doc_types_content
-        max-width: 300px
-        margin-top: 1rem
-        height: 85%
-        width: 100%
-        overflow: auto
-        transition: 0.2s ease-out
-        opacity: 0
-        transform: translateY(-1.5rem)
-        scroll-behavior: smooth
-        // border: 2px solid red
-        &.toggle
-            opacity: 1
-            transform: translateY(0)
         li
-            min-height: 5.5rem
-            width: 100%
-            font-size: 1.6rem
             margin-top: 0.7rem
+            min-height: 5.5rem
+            font-size: 1.6rem
             // border: 2px solid orange
-            a
-                display: flex
-                align-items: center
-                position: relative
-                height: 100%
-                width: 100%
-                border-radius: 25px
-                padding: 15px 30px
-                // border: 2px solid blue
             span
                 margin-right: 25px
                 color: #18191d96
                 // border: 2px solid black
+            a
+                padding: 15px 30px
             p
                 text-align: start
-                width: 100%
-                color: #18191d
+
+#store_adress_cont
+    display: none
+    position: fixed
+    z-index: 10
+    height: 100%
+    width: 100%
+    // border: 2px solid yellow
+    &.toggle
+        display: flex
+    #store_adress_content
+        max-width: 350px
+        opacity: 1
+        overflow: hidden
+        // border: 2px solid red
+        #main_col
+            width: 100%
+            flex-direction: row
+        .col
+            width: 45%
+            margin: 0 5px
+            // border: 2px solid black
+        li
+            min-height: 5rem
+            display: flex
+            align-items: center
+            justify-content: center
+            min-height: 5.5rem
+            font-size: 1.5rem
+            background-color: #ffffff49
+            margin-top: 1rem
+            // border: 2px solid orange
+            a
+                height: 5rem
+                padding: 10px 10px
+            p
+                text-align: center
                 // border: 2px solid red
-        #cancel_but
-            margin-top: 1.5rem
-            cursor: pointer
-            border-radius: 50% 
-            color: #f5596eee
-            font-size: 4rem
-            transform: translateY(2px)
-            width: 8.5rem
-            height: 4.5rem
 
 
 #menue_blur
@@ -456,7 +504,6 @@ header
                     pointer-events: none
                     opacity: 0
                     transform: scale(0)
-
                 &.del_toggle
                     width: 80%
                     word-wrap: wrap

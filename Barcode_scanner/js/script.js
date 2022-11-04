@@ -11,6 +11,20 @@ const give_name_but = document.getElementById('give_name_but');
 
 //--------------
 
+const store_adress_cont = document.getElementById('store_adress_cont');
+const store_adress_content = document.getElementById('store_adress_content');
+const cancel_but_adress = document.getElementById('cancel_but_adress');
+
+const Krasnoe = document.getElementById('Krasnoe');
+const Polock = document.getElementById('Polock');
+const Glubokoe = document.getElementById('Glubokoe');
+const Radoshk = document.getElementById('Radoshk');
+const Sputnik = document.getElementById('Sputnik');
+const Belmash = document.getElementById('Belmash');
+const Libavo = document.getElementById('Libavo');
+const Turly = document.getElementById('Turly');
+
+//--------------
 const header_cont = document.getElementById('header_cont');
 const refresh_but = document.getElementById('refresh_but');
 const session_but = document.getElementById('session_but');
@@ -49,7 +63,7 @@ const check = document.getElementById('check');
 
 const doc_types_cont = document.getElementById('doc_types_cont');
 const doc_types_content = document.getElementById('doc_types_content');
-const cancel_but = document.getElementById('cancel_but');
+const cancel_but_doc_types = document.getElementById('cancel_but_doc_types');
 const invenory_but = document.getElementById('invenory_but');
 const price_request_but = document.getElementById('price_request_but');
 const prod_taking_but = document.getElementById('prod_taking_but');
@@ -92,12 +106,24 @@ mark_but.addEventListener('click', menue_toggle);
 expand_but.addEventListener('click', docs_cont_toggle);
 
 new_doc_but.addEventListener('click', docs_types_toggle);
-cancel_but.addEventListener('click', docs_types_toggle);
+cancel_but_doc_types.addEventListener('click', docs_types_toggle);
 download_but.addEventListener('click', check_act);
 download_back_but.addEventListener('click', downloading_back);
 
 session_but.addEventListener('click', sessions_cont_toggle);
-session_power_but.addEventListener('click', sess_start_stop);
+
+session_power_but.addEventListener('click', adress_chose_toggle);
+cancel_but_adress.addEventListener('click', adress_chose_toggle);
+
+Krasnoe.addEventListener('click', sess_start_stop);
+Polock.addEventListener('click', sess_start_stop);
+Glubokoe.addEventListener('click', sess_start_stop);
+Radoshk.addEventListener('click', sess_start_stop);
+Sputnik.addEventListener('click', sess_start_stop);
+Belmash.addEventListener('click', sess_start_stop);
+Libavo.addEventListener('click', sess_start_stop);
+Turly.addEventListener('click', sess_start_stop);
+
 next_but.addEventListener('click', sess_num_confirm);
 give_name_but.addEventListener('click', sess_input_act);
 
@@ -250,10 +276,21 @@ function sessions_cont_toggle(){
     setTimeout(() => {all_sess_cont_content.classList.toggle('toggle')}, 10);
 };
 
+
+function adress_chose_toggle(){
+    if(!session_name){
+        store_adress_cont.classList.toggle('toggle');
+        setTimeout(() => {store_adress_content.classList.toggle('toggle')}, 10);
+    }else {
+        sess_start_stop()
+    };
+};
+
 function sess_start_stop(){
     if(!session_name){
-        ur_session_num_cont.classList.toggle('toggle');
-        setTimeout(() => {session_num_content.classList.toggle('toggle')}, 10);
+        adress_chose_toggle();
+        ur_session_num_cont.classList.add('toggle');
+        setTimeout(() => {session_num_content.classList.add('toggle')}, 10);
         sessions_cont_toggle();
 
         sess_num = session_num.innerText;
@@ -401,7 +438,7 @@ docs_cont_content.addEventListener('scroll', () => {
     
     // Swiping doc
     let posX = e.changedTouches[0].clientX;
-    let swipe = 180;
+    let swipe = 170;
     
     let timeout
     if (e.target.previousElementSibling != null) {
@@ -412,10 +449,10 @@ docs_cont_content.addEventListener('scroll', () => {
     
     function swipeRight(){
         if (timeout) clearTimeout(timeout);
-        console.log('swipe right');
+        // console.log('swipe right');
         e.target.classList.add('del_toggle');
         timeout = setTimeout(() => {
-            console.log('close');
+            // console.log('close');
             e.target.classList.remove('del_toggle');
         }, 1300);
     };
