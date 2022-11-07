@@ -49,6 +49,7 @@ const docs_cont_content = document.getElementById('docs_cont_content');
 const inv_1 = document.getElementById('inv_1');
 // const eye = document.querySelector('#inv_1 span');
 const docs_info = document.getElementById('docs_info');
+const docs_not_found = document.getElementById('docs_not_found');
 const expand_but = document.getElementById('expand_but');
 
 const menue_sec_cont = document.getElementById('menue_sec_cont');
@@ -271,8 +272,10 @@ function menue_toggle(){
 
 function docs_cont_expand_off(){
     first_el = docs_cont_content.querySelector('li:first-child');
-    first_el.classList.add('select');
-    setTimeout(() => {first_el.classList.remove('select')}, 10);
+    if (first_el) {
+        first_el.classList.add('select');
+        setTimeout(() => {first_el.classList.remove('select')}, 10);
+    };
 
     docs_cont_content.scrollTo({top: 0, behavior: "smooth"});
     docs_cont.classList.remove('active');
@@ -436,7 +439,7 @@ docs_cont_content.addEventListener('scroll', () => {
 docs_cont_content.addEventListener('touchstart', (e) => {
     const id = e.target.getAttribute('id');
     if (!id || id == 'docs_cont_content') return;  // preventEvent
-    console.log(id);
+    // console.log(id);
 
     // Swiping doc
     let posX = e.changedTouches[0].clientX;
@@ -496,12 +499,24 @@ doc_types_content.addEventListener('click', (e) => {
 docs_cont_content.addEventListener('DOMNodeInserted', (e) =>{
     const docs_count = docs_cont_content.getElementsByTagName('li').length;
     // console.log(docs_count);
-    if (docs_count <= 3) {
-        docs_cont_content.style.overflow = 'hidden';
-        expand_but.style.display = 'none';
-    }else {
+    if (docs_count == 0) {
+        // console.log('0');
+        docs_not_found.classList.remove('no_active');
+        docs_cont_content.style.justifyContent = 'center';
+        docs_cont.style.justifyContent = 'center';
+    }else if (docs_count > 3){
+        // console.log('>3: '+ docs_count);
+        docs_cont_content.style.justifyContent = 'flex-start';
+        docs_cont.style.justifyContent = 'flex-start';
         docs_cont_content.style.overflow = 'auto';
         expand_but.style.display = 'flex';
+    }else if (docs_count > 0) {
+        // console.log('>0');
+        docs_cont_content.style.justifyContent = 'center';
+        docs_cont.style.justifyContent = 'center';
+        docs_not_found.classList.add('no_active');
+        docs_cont_content.style.overflow = 'hidden';
+        expand_but.style.display = 'none';
     };
 });
 
