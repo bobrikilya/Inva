@@ -140,6 +140,8 @@ let today = new Date().toLocaleDateString();
 let session_name = false;
 let sess_num;
 
+let docs_count = 0;
+
 
 // For easy working ----------
 const Moz = navigator.userAgent.includes('Mozilla/5.0 (iPhone');
@@ -365,12 +367,17 @@ function sess_input_act(){
 };
 
 function downloading_back(){
-    if (!session_name){
-        setTimeout(() => {
-            sessions_cont_toggle();
-        }, 10);
+    if (docs_count != 0) {
+        if (!session_name){
+            setTimeout(() => {
+                sessions_cont_toggle();
+            }, 10);
+        }else {
+            check_act();
+        };
     }else {
-        check_act();
+        docs_not_found.classList.add('select');
+        setTimeout(() => {docs_not_found.classList.remove('select')}, 700);
     };
 };
 
@@ -443,7 +450,7 @@ docs_cont_content.addEventListener('touchstart', (e) => {
 
     // Swiping doc
     let posX = e.changedTouches[0].clientX;
-    let swipe = 230;
+    let swipe = 220;
     
     let timeout
     if (e.target.previousElementSibling != null) {
@@ -497,7 +504,7 @@ doc_types_content.addEventListener('click', (e) => {
 });
 
 docs_cont_content.addEventListener('DOMNodeInserted', (e) =>{
-    const docs_count = docs_cont_content.getElementsByTagName('li').length;
+    docs_count = docs_cont_content.getElementsByTagName('li').length;
     // console.log(docs_count);
     if (docs_count == 0) {
         // console.log('0');
