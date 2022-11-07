@@ -264,12 +264,20 @@ function menue_toggle(){
     mark_but.classList.toggle('toggle');
     header.classList.toggle('turn_on');
 
+    docs_cont_expand_off();
+
+    setTimeout(() => {menue_bar.classList.toggle('toggle')}, 10);
+};
+
+function docs_cont_expand_off(){
+    first_el = docs_cont_content.querySelector('li:first-child');
+    first_el.classList.add('select');
+    setTimeout(() => {first_el.classList.remove('select')}, 10);
+
     docs_cont_content.scrollTo({top: 0, behavior: "smooth"});
     docs_cont.classList.remove('active');
     menue_sec_cont.classList.remove('active');
     expand_but.classList.remove('active');
-
-    setTimeout(() => {menue_bar.classList.toggle('toggle')}, 10);
 };
 
 function check_act(){
@@ -316,10 +324,6 @@ function sess_start_stop(){
 function sess_num_confirm(){
     ur_session_num_cont.classList.remove('toggle');
     session_num_content.classList.remove('toggle');
-
-    // session_num_but_cont.style.marginTop = '1rem';
-    // sess_input.classList.remove('active');
-    // sess_input.style.display = 'none';
     
     if (sess_input.value != 0){
         session_name = `${sess_input.value}-${sess_num}`;
@@ -373,8 +377,7 @@ function docs_cont_toggle(){
     expand_but.classList.toggle('active');
 };
 
-function docs_types_toggle(e){
-    e.preventDefault();
+function docs_types_toggle(){
     doc_types_cont.classList.toggle('toggle');
     setTimeout(() => {doc_types_content.classList.toggle('toggle')}, 10);
 };
@@ -433,11 +436,11 @@ docs_cont_content.addEventListener('scroll', () => {
 docs_cont_content.addEventListener('touchstart', (e) => {
     const id = e.target.getAttribute('id');
     if (!id || id == 'docs_cont_content') return;  // preventEvent
-    // console.log(id);
+    console.log(id);
 
     // Swiping doc
     let posX = e.changedTouches[0].clientX;
-    let swipe = 200;
+    let swipe = 230;
     
     let timeout
     if (e.target.previousElementSibling != null) {
@@ -462,6 +465,44 @@ store_adress_content.addEventListener('click', (e) => {
     const tag = e.target.tagName;
     // console.log(tag);
     if (tag == 'A') sess_start_stop();
+});
+
+doc_types_content.addEventListener('click', (e) => {
+    // const id = e.target.getAttribute('id');
+    const class_name = e.target.classList[0];
+    const text_name = e.target.innerText;
+    const tag = e.target.tagName;
+    // console.log(class_name, text_name, tag);
+
+    if(tag == 'A'){
+        docs_cont_content.insertAdjacentHTML('afterbegin', `
+            <li id="scan_1" class="${class_name}">${text_name}
+                <a>
+                    <i class="fa-solid fa-eye"></i>
+                </a>
+                <button>
+                    <i class="fa-solid fa-trash-can"></i>
+                </button>
+            </li>
+        `);
+
+        docs_cont_expand_off();
+
+        docs_types_toggle();
+    };
+
+});
+
+docs_cont_content.addEventListener('DOMNodeInserted', (e) =>{
+    const docs_count = docs_cont_content.getElementsByTagName('li').length;
+    // console.log(docs_count);
+    if (docs_count <= 3) {
+        docs_cont_content.style.overflow = 'hidden';
+        expand_but.style.display = 'none';
+    }else {
+        docs_cont_content.style.overflow = 'auto';
+        expand_but.style.display = 'flex';
+    };
 });
 
 // Не работает
