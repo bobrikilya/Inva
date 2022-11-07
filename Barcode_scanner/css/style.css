@@ -79,6 +79,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 body {
+  position: fixed;
   -moz-user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;
@@ -476,8 +477,8 @@ header li {
   display: flex;
 }
 #store_adress_cont #store_adress_content {
-  padding-top: 6rem;
-  padding-bottom: 0.5rem;
+  padding-top: 4rem;
+  padding-bottom: 2.5rem;
   max-width: 350px;
   opacity: 1;
   overflow: hidden;

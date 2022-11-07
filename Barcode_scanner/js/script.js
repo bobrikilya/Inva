@@ -263,6 +263,12 @@ function menue_toggle(){
     menue_but.classList.toggle('toggle');
     mark_but.classList.toggle('toggle');
     header.classList.toggle('turn_on');
+
+    docs_cont_content.scrollTo({top: 0, behavior: "smooth"});
+    docs_cont.classList.remove('active');
+    menue_sec_cont.classList.remove('active');
+    expand_but.classList.remove('active');
+
     setTimeout(() => {menue_bar.classList.toggle('toggle')}, 10);
 };
 
@@ -373,14 +379,6 @@ function docs_types_toggle(e){
     setTimeout(() => {doc_types_content.classList.toggle('toggle')}, 10);
 };
 
-function doc_open(doc_id){
-    console.log(`Click on the ${doc_id}`);
-};
-
-function doc_hold(doc_id){
-    console.log(`Holding the ${doc_id}`);
-}
-
 document.addEventListener('click', (event) => {
     if (all_sessions_cont.classList.contains('toggle')){
         
@@ -437,27 +435,9 @@ docs_cont_content.addEventListener('touchstart', (e) => {
     if (!id || id == 'docs_cont_content') return;  // preventEvent
     // console.log(id);
 
-    // Holding doc
-    // let timer
-    // let timeout = setTimeout(hold, 700);
-    // e.target.addEventListener("touchend", (event) => {
-    //     // event.target
-    //     clearTimeout(timeout);
-    //     console.log('del');
-    // });
-
-    // function hold(){
-    //     if (timer) clearTimeout(timer);
-    //     console.log('hold');
-    //     e.target.classList.add('del_toggle');
-    //     timer = setTimeout(() => {
-    //         console.log('close');
-    //         e.target.classList.remove('del_toggle');
-    //     }, 1300);
-    // };
     // Swiping doc
     let posX = e.changedTouches[0].clientX;
-    let swipe = 170;
+    let swipe = 200;
     
     let timeout
     if (e.target.previousElementSibling != null) {
