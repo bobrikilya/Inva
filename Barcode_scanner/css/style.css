@@ -557,7 +557,7 @@ header li {
   transition-duration: 0.3s;
 }
 #menue_bar #docs_cont #docs_not_found.select {
-  font-size: 2rem;
+  transform: scale(1.1);
   color: red;
 }
 #menue_bar #docs_cont #docs_not_found.no_active {
