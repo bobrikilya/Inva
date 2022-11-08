@@ -138,6 +138,7 @@ const doc = document.documentElement;
 
 let today = new Date().toLocaleDateString();
 let session_name = false;
+let docs_list = [];
 let sess_num;
 
 let docs_count = 0;
@@ -150,7 +151,18 @@ const fMode = {exact: "environment"};
 
 document.addEventListener("DOMContentLoaded", () => {
     session_name = localStorage.getItem('session_name');
+    // console.log(session_name);
     if (session_name) session_record();
+    
+    localStorage.removeItem('docs_list');
+    // console.log(docs_list);
+    if (localStorage.getItem('docs_list')) {
+        console.log('Парс');
+        docs_list = JSON.parse(localStorage.getItem('docs_list'));
+        // docs_list.forEach(el => {
+        //     add_doc(el);
+        // });
+    };
 
     if (Moz) sessions_blur.style.backgroundColor = '#ebf4fffa';
     // if (Moz) sessions_blur.style.backgroundColor = '#ebf4fffa';
@@ -392,6 +404,19 @@ function docs_types_toggle(){
     setTimeout(() => {doc_types_content.classList.toggle('toggle')}, 10);
 };
 
+function add_doc(new_el){
+    docs_cont_content.insertAdjacentHTML('afterbegin', `
+            <li id="scan_1" class="${new_el['class_name']}">${new_el['text_name']}
+                <a>
+                    <i class="fa-solid fa-eye"></i>
+                </a>
+                <button>
+                    <i class="fa-solid fa-trash-can"></i>
+                </button>
+            </li>
+        `);
+};
+
 document.addEventListener('click', (event) => {
     if (all_sessions_cont.classList.contains('toggle')){
         
@@ -482,20 +507,31 @@ doc_types_content.addEventListener('click', (e) => {
     const class_name = e.target.classList[0];
     const text_name = e.target.innerText;
     const tag = e.target.tagName;
+    let new_text_name = false;
     // console.log(class_name, text_name, tag);
 
     if(tag == 'A'){
-        docs_cont_content.insertAdjacentHTML('afterbegin', `
-            <li id="scan_1" class="${class_name}">${text_name}
-                <a>
-                    <i class="fa-solid fa-eye"></i>
-                </a>
-                <button>
-                    <i class="fa-solid fa-trash-can"></i>
-                </button>
-            </li>
-        `);
+        let new_el = {"class_name": class_name, "text_name": text_name + '-1'};
+        let max_count = [];
+        if (localStorage.getItem('docs_list')){
+            // console.log(docs_list);
+            docs_list.forEach(el => {
+                // el['text_name'].
+                if (el['class_name'] == new_el['class_name']){
+                    max_count.push(parseInt(el['text_name'].split('-')[1]));
+                };
+            });
+            if (max_count.length > 0) {
+                const max_num = parseInt(Math.max.apply(null, max_count)) + 1;
+                new_text_name = text_name + `-${max_num}`;
+                new_el["text_name"] = new_text_name;
+            };
+        };
+        // docs_list = [];
+        docs_list.push(new_el);
+        localStorage.setItem('docs_list', JSON.stringify(docs_list));
 
+        add_doc(new_el);
         docs_cont_expand_off();
 
         docs_types_toggle();
@@ -503,27 +539,30 @@ doc_types_content.addEventListener('click', (e) => {
 
 });
 
+// Docs_cont handling
 docs_cont_content.addEventListener('DOMNodeInserted', (e) =>{
     docs_count = docs_cont_content.getElementsByTagName('li').length;
     // console.log(docs_count);
     if (docs_count == 0) {
         // console.log('0');
         docs_not_found.classList.remove('no_active');
+    }else if (docs_count == 1) {
+        // console.log('1');
+        docs_not_found.classList.add('no_active');
+        docs_cont_content.classList.add('first_off');
+    }else if (docs_count > 1 && docs_count < 3) {
+        // console.log('0 > docs_count < 3');
+        docs_cont_content.classList.remove('first_off');
         docs_cont_content.style.justifyContent = 'center';
         docs_cont.style.justifyContent = 'center';
+        docs_cont_content.style.overflow = 'hidden';
+        expand_but.style.display = 'none';
     }else if (docs_count > 3){
-        // console.log('>3: '+ docs_count);
+        // console.log('> 3');
         docs_cont_content.style.justifyContent = 'flex-start';
         docs_cont.style.justifyContent = 'flex-start';
         docs_cont_content.style.overflow = 'auto';
         expand_but.style.display = 'flex';
-    }else if (docs_count > 0) {
-        // console.log('>0');
-        docs_cont_content.style.justifyContent = 'center';
-        docs_cont.style.justifyContent = 'center';
-        docs_not_found.classList.add('no_active');
-        docs_cont_content.style.overflow = 'hidden';
-        expand_but.style.display = 'none';
     };
 });
 
