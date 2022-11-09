@@ -508,11 +508,12 @@ docs_cont_content.addEventListener('touchstart', (e) => {
         docs_list.forEach((el) =>{
             if (el.id == e_id) {
                 num_of_el = docs_list.indexOf(el);
+                docs_list.splice(num_of_el, 1)
+                localStorage.setItem('docs_list', JSON.stringify(docs_list));
+                return
             };
         });
-
-        docs_list.splice(num_of_el, 1)
-        localStorage.setItem('docs_list', JSON.stringify(docs_list));
+        // console.log(num_of_el);
     });
 });
 
