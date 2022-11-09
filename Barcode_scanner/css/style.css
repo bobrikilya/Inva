@@ -640,6 +640,12 @@ header li {
 #menue_bar #docs_cont #docs_cont_content li:active {
   box-shadow: inset 0 0 15px rgba(20, 20, 20, 0.1764705882);
 }
+#menue_bar #docs_cont #docs_cont_content li.deleting {
+  transition-duration: 0.4s;
+  transform: translateX(5rem);
+  width: 2rem;
+  opacity: 0;
+}
 #menue_bar #docs_cont #docs_cont_content li:first-child {
   margin-top: 2.7rem;
   overflow: visible;

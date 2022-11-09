@@ -46,8 +46,6 @@ const menue_bar = document.getElementById('menue_bar');
 
 const docs_cont = document.getElementById('docs_cont');
 const docs_cont_content = document.getElementById('docs_cont_content');
-const inv_1 = document.getElementById('inv_1');
-// const eye = document.querySelector('#inv_1 span');
 const docs_info = document.getElementById('docs_info');
 const docs_not_found = document.getElementById('docs_not_found');
 const expand_but = document.getElementById('expand_but');
@@ -100,10 +98,7 @@ refresh_but.addEventListener('click', refresh);
 menue_but.addEventListener('click', menue_toggle);
 mark_but.addEventListener('click', menue_toggle);
 mark_but.addEventListener('click', menue_toggle);
-// inv_1.addEventListener('click', () => {console.log('Большая')});
-// eye.addEventListener('click', (e) => {
-//     e.stopPropagation();
-//     console.log('Маленькая')});
+
 expand_but.addEventListener('click', docs_cont_toggle);
 
 new_doc_but.addEventListener('click', docs_types_toggle);
@@ -150,18 +145,19 @@ const fMode = {exact: "environment"};
 // const fMode = {exact: "user"};
 
 document.addEventListener("DOMContentLoaded", () => {
-    session_name = localStorage.getItem('session_name');
-    // console.log(session_name);
-    if (session_name) session_record();
+    if (localStorage.getItem('session_name')){
+        session_name = localStorage.getItem('session_name');
+        // console.log(session_name);
+        session_record();
+    };
     
-    localStorage.removeItem('docs_list');
-    // console.log(docs_list);
+    // localStorage.removeItem('docs_list');
     if (localStorage.getItem('docs_list')) {
-        console.log('Парс');
+        // console.log(docs_list);
         docs_list = JSON.parse(localStorage.getItem('docs_list'));
-        // docs_list.forEach(el => {
-        //     add_doc(el);
-        // });
+        docs_list.forEach(el => {
+            add_doc(el);
+        });
     };
 
     if (Moz) sessions_blur.style.backgroundColor = '#ebf4fffa';
@@ -406,7 +402,7 @@ function docs_types_toggle(){
 
 function add_doc(new_el){
     docs_cont_content.insertAdjacentHTML('afterbegin', `
-            <li id="scan_1" class="${new_el['class_name']}">${new_el['text_name']}
+            <li id="${new_el['id']}" class="${new_el['class_name']}">${new_el['text_name']}
                 <a>
                     <i class="fa-solid fa-eye"></i>
                 </a>
@@ -469,9 +465,9 @@ docs_cont_content.addEventListener('scroll', () => {
   });
 
 docs_cont_content.addEventListener('touchstart', (e) => {
-    const id = e.target.getAttribute('id');
-    if (!id || id == 'docs_cont_content') return;  // preventEvent
-    // console.log(id);
+    const e_id = e.target.getAttribute('id');
+    if (!e_id || e_id == 'docs_cont_content') return;  // preventEvent
+    console.log(e_id);
 
     // Swiping doc
     let posX = e.changedTouches[0].clientX;
@@ -493,10 +489,28 @@ docs_cont_content.addEventListener('touchstart', (e) => {
             e.target.classList.remove('del_toggle');
         }, 1300);
     };
+
+    const trash = e.target.querySelector('button');
+    // const watch = e.target.querySelector('a');
+
+    trash.addEventListener('click', (event) => {
+        event.stopPropagation();
+        e.target.classList.add('deleting');
+        setTimeout(() => {e.target.remove()}, 400);
+
+        docs_list.forEach((el) =>{
+            if (el.id == e_id) {
+                num_of_el = docs_list.indexOf(el);
+            };
+        });
+
+        docs_list.splice(num_of_el, 1)
+        localStorage.setItem('docs_list', JSON.stringify(docs_list));
+    });
 });
 
 store_adress_content.addEventListener('click', (e) => {
-    const id = e.target.getAttribute('id');
+    // const id = e.target.getAttribute('id');
     const tag = e.target.tagName;
     // console.log(tag);
     if (tag == 'A') sess_start_stop();
@@ -507,27 +521,32 @@ doc_types_content.addEventListener('click', (e) => {
     const class_name = e.target.classList[0];
     const text_name = e.target.innerText;
     const tag = e.target.tagName;
-    let new_text_name = false;
+    // let new_text_name = false;
     // console.log(class_name, text_name, tag);
 
     if(tag == 'A'){
-        let new_el = {"class_name": class_name, "text_name": text_name + '-1'};
-        let max_count = [];
+
+        // Docs counter
+        let new_el = {"id": class_name + '_1', "class_name": class_name, "text_name": text_name + '-1'};
+        let max_count_list = [];
         if (localStorage.getItem('docs_list')){
             // console.log(docs_list);
             docs_list.forEach(el => {
                 // el['text_name'].
                 if (el['class_name'] == new_el['class_name']){
-                    max_count.push(parseInt(el['text_name'].split('-')[1]));
+                    max_count_list.push(parseInt(el['id'].split('_')[1]));
                 };
             });
-            if (max_count.length > 0) {
-                const max_num = parseInt(Math.max.apply(null, max_count)) + 1;
-                new_text_name = text_name + `-${max_num}`;
+            if (max_count_list.length > 0) {
+                const max_num = parseInt(Math.max.apply(null, max_count_list)) + 1;
+                new_id = `${class_name}_${max_num}`;
+                new_text_name = `${text_name}-${max_num}`;
+                // console.log(new_id)
+                new_el["id"] = new_id;
                 new_el["text_name"] = new_text_name;
             };
         };
-        // docs_list = [];
+
         docs_list.push(new_el);
         localStorage.setItem('docs_list', JSON.stringify(docs_list));
 
@@ -540,7 +559,7 @@ doc_types_content.addEventListener('click', (e) => {
 });
 
 // Docs_cont handling
-docs_cont_content.addEventListener('DOMNodeInserted', (e) =>{
+docs_cont_content.addEventListener('DOMSubtreeModified', (e) =>{
     docs_count = docs_cont_content.getElementsByTagName('li').length;
     // console.log(docs_count);
     if (docs_count == 0) {
@@ -550,7 +569,7 @@ docs_cont_content.addEventListener('DOMNodeInserted', (e) =>{
         // console.log('1');
         docs_not_found.classList.add('no_active');
         docs_cont_content.classList.add('first_off');
-    }else if (docs_count > 1 && docs_count < 3) {
+    }else if (docs_count > 1 && docs_count <= 3) {
         // console.log('0 > docs_count < 3');
         docs_cont_content.classList.remove('first_off');
         docs_cont_content.style.justifyContent = 'center';
