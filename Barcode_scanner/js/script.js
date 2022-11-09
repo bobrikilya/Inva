@@ -123,6 +123,8 @@ cancel_but_adress.addEventListener('click', adress_chose_toggle);
 next_but.addEventListener('click', sess_num_confirm);
 give_name_but.addEventListener('click', sess_input_act);
 
+help_but.addEventListener('click', full_reset);
+
 invenory_but.addEventListener('click', (e) => {e.preventDefault()});
 price_request_but.addEventListener('click', (e) => {e.preventDefault()});
 prod_taking_but.addEventListener('click', (e) => {e.preventDefault()});
@@ -266,6 +268,11 @@ function request(code){
 };
 
 function refresh(){
+    window.location.reload();
+};
+
+function full_reset(){
+    localStorage.clear();
     window.location.reload();
 };
 
