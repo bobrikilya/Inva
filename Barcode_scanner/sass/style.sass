@@ -66,22 +66,36 @@ body
 #refresh_but
     left: 0
 
-#help_but
+#home_but
     display: none
     position: absolute
     z-index: 7
-    font-size: 2.6rem
-    left: 0
-    bottom: 1.5rem
+    font-size: 2.7rem
+    // left: -0.6rem
+    bottom: 1rem
+    height: 4rem
+    width: 4rem
+    justify-content: center
+    align-items: center
+    // border: 2px solid black
     &.toggle
-        display: inline-block 
+        display: flex
 
 .menue_but
     right: 0
+    display: flex
+    justify-content: center
+    align-items: center
+    width: 4rem
+    height: 4rem
+    right: -0.8rem
+    top: -0.9rem
+    // border: 2px solid black
 #menue_but
     &.toggle
         display: none
 #mark_but
+    right: -1.2rem
     display: none
     color: #f5596eee
     font-size: 4.5rem
@@ -383,7 +397,8 @@ header
     #store_adress_content
         padding-top: 4rem
         padding-bottom: 2.5rem
-        max-width: 350px
+        max-width: 93%
+        max-height: 43rem
         opacity: 1
         overflow: hidden
         flex-wrap: wrap
@@ -434,7 +449,7 @@ header
         // overflow: visible
         justify-content: center
         // border: 2px solid #ffffff36
-        background-color: #ffffff7a
+        background-color: #ffffff44
         transition-duration: 0.25s
         &.active
             margin-top: 10rem
@@ -461,7 +476,7 @@ header
                 height: 1rem
                 text-align: center
                 color: #1a1a1a8a
-                margin-top: 1.5rem
+                margin-top: 1.7rem
                 &::after
                         content: ''
                         position: absolute
@@ -622,6 +637,10 @@ header
         span
             font-size: 3.25rem
         // border: 2px solid white
+        // p
+        //     color: #18191da2
+        //     margin-top: 0.1rem
+        //     font-size: 0.9rem
     #new_doc_but
         display: flex
         justify-content: center
@@ -651,6 +670,7 @@ header
         opacity: 1
 
 #my_tag
+    margin-top: 0.5rem
     width: 100%
     font-size: 1.1rem
     text-align: center

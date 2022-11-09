@@ -132,20 +132,30 @@ body {
   left: 0;
 }
 
-#help_but {
+#home_but {
   display: none;
   position: absolute;
   z-index: 7;
-  font-size: 2.6rem;
-  left: 0;
-  bottom: 1.5rem;
+  font-size: 2.7rem;
+  bottom: 1rem;
+  height: 4rem;
+  width: 4rem;
+  justify-content: center;
+  align-items: center;
 }
-#help_but.toggle {
-  display: inline-block;
+#home_but.toggle {
+  display: flex;
 }
 
 .menue_but {
   right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 4rem;
+  height: 4rem;
+  right: -0.8rem;
+  top: -0.9rem;
 }
 
 #menue_but.toggle {
@@ -153,6 +163,7 @@ body {
 }
 
 #mark_but {
+  right: -1.2rem;
   display: none;
   color: rgba(245, 89, 110, 0.9333333333);
   font-size: 4.5rem;
@@ -481,7 +492,8 @@ header li {
 #store_adress_cont #store_adress_content {
   padding-top: 4rem;
   padding-bottom: 2.5rem;
-  max-width: 350px;
+  max-width: 93%;
+  max-height: 43rem;
   opacity: 1;
   overflow: hidden;
   flex-wrap: wrap;
@@ -528,7 +540,7 @@ header li {
   margin-top: -1rem;
   border-radius: 25px;
   justify-content: center;
-  background-color: rgba(255, 255, 255, 0.4784313725);
+  background-color: rgba(255, 255, 255, 0.2666666667);
   transition-duration: 0.25s;
 }
 #menue_bar #docs_cont.active {
@@ -560,7 +572,7 @@ header li {
   height: 1rem;
   text-align: center;
   color: rgba(26, 26, 26, 0.5411764706);
-  margin-top: 1.5rem;
+  margin-top: 1.7rem;
 }
 #menue_bar #docs_cont #docs_not_found div::after {
   content: "";
@@ -773,6 +785,7 @@ header li {
 }
 
 #my_tag {
+  margin-top: 0.5rem;
   width: 100%;
   font-size: 1.1rem;
   text-align: center;

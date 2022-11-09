@@ -34,7 +34,7 @@ const session_text = document.getElementById('session_text');
 const session_power_but = document.getElementById('session_power_but');
 const sessions_blur = document.getElementById('sessions_blur');
 
-const help_but = document.getElementById('help_but');
+const home_but = document.getElementById('home_but');
 
 const menue_but = document.getElementById('menue_but');
 const mark_but = document.getElementById('mark_but');
@@ -123,7 +123,7 @@ cancel_but_adress.addEventListener('click', adress_chose_toggle);
 next_but.addEventListener('click', sess_num_confirm);
 give_name_but.addEventListener('click', sess_input_act);
 
-help_but.addEventListener('click', full_reset);
+home_but.addEventListener('click', full_reset);
 
 invenory_but.addEventListener('click', (e) => {e.preventDefault()});
 price_request_but.addEventListener('click', (e) => {e.preventDefault()});
@@ -277,7 +277,7 @@ function full_reset(){
 };
 
 function menue_toggle(){
-    help_but.classList.toggle('toggle');
+    home_but.classList.toggle('toggle');
     menue_but.classList.toggle('toggle');
     mark_but.classList.toggle('toggle');
     header.classList.toggle('turn_on');
