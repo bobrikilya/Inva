@@ -584,6 +584,10 @@ docs_cont_content.addEventListener('DOMSubtreeModified', (e) =>{
         docs_cont.style.justifyContent = 'center';
         docs_cont_content.style.overflow = 'hidden';
         expand_but.style.display = 'none';
+        
+        docs_cont.classList.remove('active');
+        menue_sec_cont.classList.remove('active');
+        expand_but.classList.remove('active');
     }else if (docs_count > 3){
         // console.log('> 3');
         docs_cont_content.style.justifyContent = 'flex-start';
