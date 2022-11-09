@@ -474,7 +474,7 @@ docs_cont_content.addEventListener('scroll', () => {
 docs_cont_content.addEventListener('touchstart', (e) => {
     const e_id = e.target.getAttribute('id');
     if (!e_id || e_id == 'docs_cont_content') return;  // preventEvent
-    console.log(e_id);
+    // console.log(e_id);
 
     // Swiping doc
     let posX = e.changedTouches[0].clientX;
