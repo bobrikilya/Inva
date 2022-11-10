@@ -410,12 +410,15 @@ function docs_types_toggle(){
 function add_doc(new_el){
     docs_cont_content.insertAdjacentHTML('afterbegin', `
             <li id="${new_el['id']}" class="${new_el['class_name']}">${new_el['text_name']}
-                <a>
-                    <i class="fa-solid fa-eye"></i>
-                </a>
                 <button>
                     <i class="fa-solid fa-trash-can"></i>
                 </button>
+                <span>
+                    <i class="fa-regular fa-file-lines"></i>
+                </span>
+                <a>
+                    <i class="fa-solid fa-eye"></i>
+                </a>
             </li>
         `);
 };

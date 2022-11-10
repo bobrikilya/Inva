@@ -611,11 +611,20 @@ header li {
   width: 93%;
   min-height: 4.8rem;
   color: rgba(26, 26, 26, 0.8901960784);
+  justify-content: flex-start;
   align-items: center;
   padding: 10px 18px 10px 20px;
   font-size: 1.3rem;
   cursor: pointer;
   transition-duration: 0.2s;
+  padding-left: 3.2rem;
+}
+#menue_bar #docs_cont #docs_cont_content li span {
+  position: absolute;
+  left: 1rem;
+  font-size: 1.5rem;
+  color: rgba(26, 26, 26, 0.6352941176);
+  transition-duration: 0.1s;
 }
 #menue_bar #docs_cont #docs_cont_content li a {
   position: absolute;
@@ -631,7 +640,7 @@ header li {
   border-radius: 25px;
   cursor: pointer;
   color: rgba(29, 24, 26, 0.6431372549);
-  background-color: rgba(124, 124, 124, 0.1019607843);
+  background-color: rgba(124, 124, 124, 0.1176470588);
   opacity: 1;
   pointer-events: auto;
   transition-duration: 0.15s;
@@ -657,6 +666,10 @@ header li {
   margin-right: -4.5rem;
   word-wrap: wrap;
   justify-content: center;
+  padding-left: 1rem;
+}
+#menue_bar #docs_cont #docs_cont_content li.del_toggle span {
+  opacity: 0;
 }
 #menue_bar #docs_cont #docs_cont_content li.del_toggle a {
   right: -2rem;
@@ -687,6 +700,7 @@ header li {
   box-shadow: 0 2px 5px rgba(104, 104, 104, 0.1294117647);
 }
 #menue_bar #docs_cont #docs_cont_content li:first-child a {
+  width: 5.5rem;
   font-size: 1.6rem;
   color: #000000;
 }
