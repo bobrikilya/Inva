@@ -123,7 +123,8 @@ cancel_but_adress.addEventListener('click', adress_chose_toggle);
 next_but.addEventListener('click', sess_num_confirm);
 give_name_but.addEventListener('click', sess_input_act);
 
-home_but.addEventListener('click', full_reset);
+// home_but.addEventListener('click', full_reset);
+home_but.addEventListener('click', installing);
 
 invenory_but.addEventListener('click', (e) => {e.preventDefault()});
 price_request_but.addEventListener('click', (e) => {e.preventDefault()});
@@ -414,7 +415,7 @@ function add_doc(new_el){
                     <i class="fa-solid fa-trash-can"></i>
                 </button>
                 <span>
-                    <i class="fa-regular fa-file-lines"></i>
+                    <i class="fa-solid fa-file"></i>
                 </span>
                 <a>
                     <i class="fa-solid fa-eye"></i>
@@ -608,6 +609,37 @@ docs_cont_content.addEventListener('DOMSubtreeModified', (e) =>{
 //     scan_icon.classList.remove('camera_on');
 // });
 
+
+// Label installing for Android
+let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  // Prevent the mini-infobar from appearing on mobile
+  e.preventDefault();
+  // Stash the event so it can be triggered later.
+  deferredPrompt = e;
+  // Update UI notify the user they can install the PWA
+  showInstallPromotion();
+  // Optionally, send analytics event that PWA install promo was shown.
+  console.log(`'beforeinstallprompt' event was fired.`);
+});
+
+function showInstallPromotion(){
+    install_notif = document.getElementById('install_notif');
+    install_notif.classList.add('active');
+    setTimeout(() => {install_but.classList.remove('active'), 500});
+};
+
+async function installing (){
+  // Show the install prompt
+  deferredPrompt.prompt();
+  // Wait for the user to respond to the prompt
+  const { outcome } = await deferredPrompt.userChoice;
+  // Optionally, send analytics event with outcome of user choice
+  console.log(`User response to the install prompt: ${outcome}`);
+  // We've used the prompt, and can't use it again, throw it away
+  deferredPrompt = null;
+};
 
 function input_focus(){
     // if (Moz) {

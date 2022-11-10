@@ -32,6 +32,20 @@ body
     padding: 0 10px
     // box-shadow: 0px 0px 10px grey
 
+#install_notif
+    position: fixed
+    display: flex
+    justify-content: center
+    align-items: center
+    background-color: #fff
+    border-radius: 25px
+    width: 90%
+    height: 30%
+    opacity: 0
+    pointer-events: 0
+    &.active
+        opacity: 1
+        pointer-events: 0
 
 
 #header_cont
@@ -77,6 +91,7 @@ body
     width: 4rem
     justify-content: center
     align-items: center
+    border-radius: 25px
     // border: 2px solid black
     &.toggle
         display: flex
@@ -90,6 +105,7 @@ body
     height: 4rem
     right: -0.8rem
     top: -0.9rem
+    border-radius: 25px
     // border: 2px solid black
 #menue_but
     &.toggle
@@ -303,14 +319,24 @@ header
 
 .inv
     background-color: #fbff0054
+    span
+        color: #aeb1018a
 .req
     background-color: #00f30c41
+    span
+        color: #05a00d73
 .take
     background-color: #1e3eca49
+    span
+        color: #1a34a771
 .rem
     background-color: #8100cc46
+    span
+        color: #660a9b5d
 .scan
     background-color: #f5008f48
+    span
+        color: #af03675e
 
 .chose_list
     max-width: 300px
@@ -430,7 +456,7 @@ header
     width: 100%
     height: 100%
     // justify-content: flex-start
-    max-width: 320px
+    max-width: 325px
     transition: 0.2s ease-out
     opacity: 0.5
     transform: translateY(-1rem)
@@ -448,9 +474,9 @@ header
         border-radius: 25px
         // overflow: visible
         justify-content: center
-        // border: 2px solid #ffffff36
-        background-color: #ffffff44
+        background-color: #ffffff46
         transition-duration: 0.25s
+        // border: 2px solid #ffffff36
         &.active
             margin-top: 10rem
             max-height: 84%
@@ -516,14 +542,22 @@ header
                 font-size: 1.3rem
                 cursor: pointer
                 transition-duration: 0.2s
-                padding-left: 3.2rem
+                padding-left: 3.9rem
                 // border: 2px solid blue
                 span
+                    display: flex
+                    justify-content: center
+                    align-items: center
                     position: absolute
-                    left: 1rem
+                    left: 0.7rem
                     font-size: 1.5rem
-                    color: #1a1a1aa2
-                    transition-duration: 0.1s
+                    // color: #1a1a1aa2
+                    transition-duration: 0.3s
+                    width: 2.5rem
+                    height: 2.5rem
+                    background-color: #ffffff86
+                    border-radius: 25px
+                    // border: 2px solid blue
                 a
                     position: absolute
                     z-index: 5
@@ -535,7 +569,7 @@ header
                     height: 100%
                     width: 5rem
                     font-size: 1.5rem
-                    border-radius: 25px 
+                    border-radius: 25px
                     cursor: pointer
                     color: #1d181aa4
                     background-color: #7c7c7c1e
@@ -565,6 +599,7 @@ header
                     padding-left: 1rem
                     span
                         opacity: 0
+                        transition-duration: 0.1s
                     a
                         right: -2rem
                         opacity: 0
@@ -587,7 +622,13 @@ header
                 overflow: visible
                 margin-bottom: 1.8rem
                 transition: box-shadow 0.5s ease-in
-                box-shadow: 0 2px 5px #68686821
+                box-shadow: 0 2px 10px #6868682a
+                padding-left: 4.2rem
+                // border: 1px solid green
+                span
+                    width: 2.7rem
+                    height: 2.7rem
+                    background-color: #ffffffad
                 a
                     width: 5.5rem
                     font-size: 1.6rem

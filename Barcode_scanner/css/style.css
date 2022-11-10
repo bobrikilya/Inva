@@ -97,6 +97,23 @@ body {
   padding: 0 10px;
 }
 
+#install_notif {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 25px;
+  width: 90%;
+  height: 30%;
+  opacity: 0;
+  pointer-events: 0;
+}
+#install_notif.active {
+  opacity: 1;
+  pointer-events: 0;
+}
+
 #header_cont {
   z-index: 7;
   position: absolute;
@@ -143,6 +160,7 @@ body {
   width: 4rem;
   justify-content: center;
   align-items: center;
+  border-radius: 25px;
 }
 #home_but.toggle {
   display: flex;
@@ -157,6 +175,7 @@ body {
   height: 4rem;
   right: -0.8rem;
   top: -0.9rem;
+  border-radius: 25px;
 }
 
 #menue_but.toggle {
@@ -388,21 +407,36 @@ header li {
 .inv {
   background-color: rgba(251, 255, 0, 0.3294117647);
 }
+.inv span {
+  color: rgba(174, 177, 1, 0.5411764706);
+}
 
 .req {
   background-color: rgba(0, 243, 12, 0.2549019608);
+}
+.req span {
+  color: rgba(5, 160, 13, 0.4509803922);
 }
 
 .take {
   background-color: rgba(30, 62, 202, 0.2862745098);
 }
+.take span {
+  color: rgba(26, 52, 167, 0.4431372549);
+}
 
 .rem {
   background-color: rgba(129, 0, 204, 0.2745098039);
 }
+.rem span {
+  color: rgba(102, 10, 155, 0.3647058824);
+}
 
 .scan {
   background-color: rgba(245, 0, 143, 0.2823529412);
+}
+.scan span {
+  color: rgba(175, 3, 103, 0.368627451);
 }
 
 .chose_list {
@@ -524,7 +558,7 @@ header li {
 #menue_bar {
   width: 100%;
   height: 100%;
-  max-width: 320px;
+  max-width: 325px;
   transition: 0.2s ease-out;
   opacity: 0.5;
   transform: translateY(-1rem);
@@ -541,7 +575,7 @@ header li {
   margin-top: -1rem;
   border-radius: 25px;
   justify-content: center;
-  background-color: rgba(255, 255, 255, 0.2666666667);
+  background-color: rgba(255, 255, 255, 0.2745098039);
   transition-duration: 0.25s;
 }
 #menue_bar #docs_cont.active {
@@ -617,14 +651,20 @@ header li {
   font-size: 1.3rem;
   cursor: pointer;
   transition-duration: 0.2s;
-  padding-left: 3.2rem;
+  padding-left: 3.9rem;
 }
 #menue_bar #docs_cont #docs_cont_content li span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
-  left: 1rem;
+  left: 0.7rem;
   font-size: 1.5rem;
-  color: rgba(26, 26, 26, 0.6352941176);
-  transition-duration: 0.1s;
+  transition-duration: 0.3s;
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: rgba(255, 255, 255, 0.5254901961);
+  border-radius: 25px;
 }
 #menue_bar #docs_cont #docs_cont_content li a {
   position: absolute;
@@ -670,6 +710,7 @@ header li {
 }
 #menue_bar #docs_cont #docs_cont_content li.del_toggle span {
   opacity: 0;
+  transition-duration: 0.1s;
 }
 #menue_bar #docs_cont #docs_cont_content li.del_toggle a {
   right: -2rem;
@@ -697,7 +738,13 @@ header li {
   overflow: visible;
   margin-bottom: 1.8rem;
   transition: box-shadow 0.5s ease-in;
-  box-shadow: 0 2px 5px rgba(104, 104, 104, 0.1294117647);
+  box-shadow: 0 2px 10px rgba(104, 104, 104, 0.1647058824);
+  padding-left: 4.2rem;
+}
+#menue_bar #docs_cont #docs_cont_content li:first-child span {
+  width: 2.7rem;
+  height: 2.7rem;
+  background-color: rgba(255, 255, 255, 0.6784313725);
 }
 #menue_bar #docs_cont #docs_cont_content li:first-child a {
   width: 5.5rem;
