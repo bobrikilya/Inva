@@ -123,8 +123,8 @@ cancel_but_adress.addEventListener('click', adress_chose_toggle);
 next_but.addEventListener('click', sess_num_confirm);
 give_name_but.addEventListener('click', sess_input_act);
 
-// home_but.addEventListener('click', full_reset);
-home_but.addEventListener('click', installing);
+home_but.addEventListener('click', full_reset);
+// home_but.addEventListener('click', installing);
 
 invenory_but.addEventListener('click', (e) => {e.preventDefault()});
 price_request_but.addEventListener('click', (e) => {e.preventDefault()});
