@@ -84,7 +84,7 @@ body
     border-radius: 50%
     // border: 2px solid red
 
-#refresh_but
+#reload_but
     left: -0.6rem
     display: flex
     justify-content: center
@@ -92,6 +92,9 @@ body
     height: 4rem
     width: 4rem
     border-radius: 50%
+    &.light
+        transition-duration: 0.3s
+        color: #3cbe1c
     // border: 2px solid red
 
 #home_but
@@ -124,15 +127,14 @@ body
     &.toggle
         display: none
 #mark_but
+    top: -1.1rem
     display: none
     width: 5rem
     height: 5rem
-    right: -1.5rem
     color: #f5596eee
     font-size: 4.5rem
-    transform: translateY(2px)
     &.toggle
-        display: inline
+        display: flex
     // border: 2px solid blue
 
 #session_cont
@@ -871,9 +873,6 @@ input
     font-size: 0.8rem
     text-align: center
     color: #272b3d8a
-    &.light
-        transition-duration: 0.3s
-        color: #2cdd00
     // border: 2px solid white
 
 

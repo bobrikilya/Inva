@@ -26,7 +26,7 @@ const cancel_but_adress = document.getElementById('cancel_but_adress');
 
 //--------------
 const header_cont = document.getElementById('header_cont');
-const refresh_but = document.getElementById('refresh_but');
+const reload_but = document.getElementById('reload_but');
 const session_but = document.getElementById('session_but');
 const all_sessions_cont = document.getElementById('all_sessions_cont');
 const all_sess_cont_content = document.getElementById('all_sess_cont_content');
@@ -93,7 +93,7 @@ const water_tag = document.getElementById('water_tag');
 camera_button.addEventListener('click', camera_access);
 clear_button.addEventListener('click', input_cleaning);
 search_button.addEventListener('click', searching);
-refresh_but.addEventListener('click', refresh);
+reload_but.addEventListener('click', refresh);
 
 menue_but.addEventListener('click', menue_toggle);
 mark_but.addEventListener('click', menue_toggle);
@@ -166,8 +166,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (Moz) sessions_blur.style.backgroundColor = '#ebf4fffa';
     // if (Moz) sessions_blur.style.backgroundColor = '#ebf4fffa';
 
-    water_tag.classList.add('light');
-    setTimeout(() => {water_tag.classList.remove('light')}, 1000);
+    reload_but.classList.add('light');
+    setTimeout(() => {reload_but.classList.remove('light')}, 1000);
 }); 
 
 const options = {
