@@ -476,13 +476,15 @@ header
     max-width: 325px
     transition: 0.2s ease-out
     opacity: 0.5
-    transform: translateY(-1rem)
+    // transform: translateY(-1rem)
+    margin-top: -1rem
     // overflow: visible
     padding: 5.5rem 0 4vh 0
     // border: 2px solid brown
     &.toggle
+        margin-top: 0
         opacity: 1
-        transform: translateY(0)
+        // transform: translateY(0)
     #docs_cont
         width: 100%
         min-height: 13em
@@ -501,7 +503,7 @@ header
             opacity: 1
             transition: 0.1s ease-out
             &.hiden
-                transform: translateY(0.5rem)
+                transform: translateY(0.3rem)
                 opacity: 0
         #docs_not_found
             position: absolute

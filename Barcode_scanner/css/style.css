@@ -577,12 +577,12 @@ header li {
   max-width: 325px;
   transition: 0.2s ease-out;
   opacity: 0.5;
-  transform: translateY(-1rem);
+  margin-top: -1rem;
   padding: 5.5rem 0 4vh 0;
 }
 #menue_bar.toggle {
+  margin-top: 0;
   opacity: 1;
-  transform: translateY(0);
 }
 #menue_bar #docs_cont {
   width: 100%;
@@ -603,7 +603,7 @@ header li {
   transition: 0.1s ease-out;
 }
 #menue_bar #docs_cont #docs_info.hiden {
-  transform: translateY(0.5rem);
+  transform: translateY(0.3rem);
   opacity: 0;
 }
 #menue_bar #docs_cont #docs_not_found {
