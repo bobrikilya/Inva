@@ -11,18 +11,9 @@ const give_name_but = document.getElementById('give_name_but');
 
 //--------------
 
-const store_adress_cont = document.getElementById('store_adress_cont');
-const store_adress_content = document.getElementById('store_adress_content');
-const cancel_but_adress = document.getElementById('cancel_but_adress');
-
-// const Krasnoe = document.getElementById('Krasnoe');
-// const Polock = document.getElementById('Polock');
-// const Glubokoe = document.getElementById('Glubokoe');
-// const Radoshk = document.getElementById('Radoshk');
-// const Sputnik = document.getElementById('Sputnik');
-// const Belmash = document.getElementById('Belmash');
-// const Libavo = document.getElementById('Libavo');
-// const Turly = document.getElementById('Turly');
+const store_address_cont = document.getElementById('store_address_cont');
+const store_address_content = document.getElementById('store_address_content');
+const cancel_but_address = document.getElementById('cancel_but_address');
 
 //--------------
 const header_cont = document.getElementById('header_cont');
@@ -99,36 +90,24 @@ mark_but.addEventListener('click', menue_toggle);
 mark_but.addEventListener('click', menue_toggle);
 
 
-new_doc_but.addEventListener('click', docs_types_toggle);
+new_doc_but.addEventListener('click', (e) => {
+    e.preventDefault();
+    docs_types_toggle();
+});
 cancel_but_doc_types.addEventListener('click', docs_types_toggle);
 download_but.addEventListener('click', check_act);
 download_back_but.addEventListener('click', downloading_back);
 
 session_but.addEventListener('click', sessions_cont_toggle);
 
-session_power_but.addEventListener('click', adress_chose_toggle);
-cancel_but_adress.addEventListener('click', adress_chose_toggle);
-
-// Krasnoe.addEventListener('click', sess_start_stop);
-// Polock.addEventListener('click', sess_start_stop);
-// Glubokoe.addEventListener('click', sess_start_stop);
-// Radoshk.addEventListener('click', sess_start_stop);
-// Sputnik.addEventListener('click', sess_start_stop);
-// Belmash.addEventListener('click', sess_start_stop);
-// Libavo.addEventListener('click', sess_start_stop);
-// Turly.addEventListener('click', sess_start_stop);
+session_power_but.addEventListener('click', address_chose_toggle);
+cancel_but_address.addEventListener('click', address_chose_toggle);
 
 next_but.addEventListener('click', sess_num_confirm);
 give_name_but.addEventListener('click', sess_input_act);
 
 home_but.addEventListener('click', full_reset);
 // home_but.addEventListener('click', installing);
-
-invenory_but.addEventListener('click', (e) => {e.preventDefault()});
-price_request_but.addEventListener('click', (e) => {e.preventDefault()});
-prod_taking_but.addEventListener('click', (e) => {e.preventDefault()});
-prod_removing_but.addEventListener('click', (e) => {e.preventDefault()});
-scanner_but.addEventListener('click', (e) => {e.preventDefault()});
 
 const doc = document.documentElement;
 
@@ -309,10 +288,10 @@ function sessions_cont_toggle(){
 };
 
 
-function adress_chose_toggle(){
+function address_chose_toggle(){
     if(!session_name){
-        store_adress_cont.classList.toggle('toggle');
-        setTimeout(() => {store_adress_content.classList.toggle('toggle')}, 10);
+        store_address_cont.classList.toggle('toggle');
+        setTimeout(() => {store_address_content.classList.toggle('toggle')}, 10);
     }else {
         sess_start_stop()
     };
@@ -320,7 +299,7 @@ function adress_chose_toggle(){
 
 function sess_start_stop(){
     if(!session_name){
-        adress_chose_toggle();
+        address_chose_toggle();
         ur_session_num_cont.classList.add('toggle');
         setTimeout(() => {session_num_content.classList.add('toggle')}, 10);
         sessions_cont_toggle();
@@ -512,7 +491,8 @@ docs_cont_content.addEventListener('touchstart', (e) => {
     });
 });
 
-store_adress_content.addEventListener('click', (e) => {
+store_address_content.addEventListener('click', (e) => {
+    e.preventDefault();
     // const id = e.target.getAttribute('id');
     const tag = e.target.tagName;
     // console.log(tag);
@@ -520,6 +500,7 @@ store_adress_content.addEventListener('click', (e) => {
 });
 
 doc_types_content.addEventListener('click', (e) => {
+    e.preventDefault();
     // const id = e.target.getAttribute('id');
     const class_name = e.target.classList[0];
     const text_name = e.target.innerText;

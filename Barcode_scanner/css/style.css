@@ -442,10 +442,10 @@ header li {
   color: rgba(26, 52, 167, 0.3882352941);
 }
 
-.rem {
+.nocash {
   background-color: rgba(129, 0, 204, 0.2745098039);
 }
-.rem span {
+.nocash span {
   color: rgba(102, 10, 155, 0.3647058824);
 }
 
@@ -530,17 +530,17 @@ header li {
   color: #18191d;
 }
 
-#store_adress_cont {
+#store_address_cont {
   display: none;
   position: fixed;
   z-index: 10;
   height: 100%;
   width: 100%;
 }
-#store_adress_cont.toggle {
+#store_address_cont.toggle {
   display: flex;
 }
-#store_adress_cont #store_adress_content {
+#store_address_cont #store_address_content {
   padding-top: 4rem;
   padding-bottom: 2.5rem;
   max-width: 330px;
@@ -551,7 +551,7 @@ header li {
   flex-basis: 0 1;
   flex-direction: row;
 }
-#store_adress_cont #store_adress_content li {
+#store_address_cont #store_address_content li {
   margin: 0 5px;
   width: 45%;
   display: flex;
@@ -561,7 +561,7 @@ header li {
   font-size: 1.5rem;
   background-color: rgba(255, 255, 255, 0.2862745098);
 }
-#store_adress_cont #store_adress_content li a {
+#store_address_cont #store_address_content li a {
   height: 5rem;
   padding: 10px 10px;
   color: #18191d;
@@ -577,12 +577,12 @@ header li {
   max-width: 325px;
   transition: 0.2s ease-out;
   opacity: 0.5;
-  margin-top: -1rem;
+  transform: translateY(-1rem);
   padding: 5.5rem 0 4vh 0;
 }
 #menue_bar.toggle {
-  margin-top: 0;
   opacity: 1;
+  transform: translateY(0);
 }
 #menue_bar #docs_cont {
   width: 100%;

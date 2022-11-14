@@ -346,7 +346,7 @@ header
     background-color: #1e3eca49
     span
         color: #1a34a763
-.rem
+.nocash
     background-color: #8100cc46
     span
         color: #660a9b5d
@@ -427,7 +427,7 @@ header
                 color: #18191d
                 // border: 2px solid red
 
-#store_adress_cont
+#store_address_cont
     display: none
     position: fixed
     z-index: 10
@@ -436,7 +436,7 @@ header
     // border: 2px solid yellow
     &.toggle
         display: flex
-    #store_adress_content
+    #store_address_content
         padding-top: 4rem
         padding-bottom: 2.5rem
         // max-width: 93%
@@ -476,15 +476,12 @@ header
     max-width: 325px
     transition: 0.2s ease-out
     opacity: 0.5
-    // transform: translateY(-1rem)
-    margin-top: -1rem
-    // overflow: visible
+    transform: translateY(-1rem)
     padding: 5.5rem 0 4vh 0
     // border: 2px solid brown
     &.toggle
-        margin-top: 0
         opacity: 1
-        // transform: translateY(0)
+        transform: translateY(0)
     #docs_cont
         width: 100%
         min-height: 13em
