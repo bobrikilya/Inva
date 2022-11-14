@@ -25,10 +25,10 @@ const session_text = document.getElementById('session_text');
 const session_power_but = document.getElementById('session_power_but');
 const sessions_blur = document.getElementById('sessions_blur');
 
-const home_but = document.getElementById('home_but');
+const fire_but = document.getElementById('fire_but');
 
 const menue_but = document.getElementById('menue_but');
-const mark_but = document.getElementById('mark_but');
+const setting_but = document.getElementById('setting_but');
 
 //--------------
 
@@ -86,9 +86,7 @@ search_button.addEventListener('click', searching);
 reload_but.addEventListener('click', refresh);
 
 menue_but.addEventListener('click', menue_toggle);
-mark_but.addEventListener('click', menue_toggle);
-mark_but.addEventListener('click', menue_toggle);
-
+// setting_but.addEventListener('click', menue_toggle);
 
 new_doc_but.addEventListener('click', (e) => {
     e.preventDefault();
@@ -106,8 +104,8 @@ cancel_but_address.addEventListener('click', address_chose_toggle);
 next_but.addEventListener('click', sess_num_confirm);
 give_name_but.addEventListener('click', sess_input_act);
 
-home_but.addEventListener('click', full_reset);
-// home_but.addEventListener('click', installing);
+fire_but.addEventListener('click', full_reset);
+// fire_but.addEventListener('click', installing);
 
 const doc = document.documentElement;
 
@@ -255,26 +253,14 @@ function full_reset(){
 };
 
 function menue_toggle(){
-    home_but.classList.toggle('toggle');
+    fire_but.classList.toggle('toggle');
     menue_but.classList.toggle('toggle');
-    mark_but.classList.toggle('toggle');
-    header.classList.toggle('turn_on');
+    setting_but.classList.toggle('toggle');
+    header.classList.toggle('turn_off');
 
-    docs_cont_expand_off();
+    doc_toggle();
 
     setTimeout(() => {menue_bar.classList.toggle('toggle')}, 10);
-};
-
-function docs_cont_expand_off(){
-    first_el = docs_cont_content.querySelector('li:first-child');
-    if (first_el) {
-        first_el.classList.add('select');
-        setTimeout(() => {first_el.classList.remove('select')}, 10);
-    };
-
-    docs_cont_content.scrollTo({top: 0, behavior: "smooth"});
-    docs_cont.classList.remove('active');
-    menue_sec_cont.classList.remove('active');
 };
 
 function check_act(){
@@ -378,6 +364,11 @@ function docs_types_toggle(){
     setTimeout(() => {doc_types_content.classList.toggle('toggle')}, 10);
 };
 
+function doc_toggle(){
+    main_block.classList.toggle('toggle');
+    input_block.classList.toggle('toggle');
+};
+
 function add_doc(new_el){
     docs_cont_content.insertAdjacentHTML('afterbegin', `
             <li id="${new_el['id']}" class="${new_el['class_name']}">${new_el['text_name']}
@@ -472,7 +463,6 @@ docs_cont_content.addEventListener('touchstart', (e) => {
     };
 
     const trash = e.target.querySelector('button');
-    // const watch = e.target.querySelector('a');
 
     trash.addEventListener('click', (event) => {
         event.stopPropagation();
@@ -489,6 +479,20 @@ docs_cont_content.addEventListener('touchstart', (e) => {
         });
         // console.log(num_of_el);
     });
+});
+
+docs_cont_content.addEventListener('click', (e) => {
+    const tag = e.target.tagName;
+    if (tag == 'LI') menue_toggle();
+    // console.log(tag);
+    // e.target.addEventListener('click', (event) => {
+    // });
+});
+
+
+docs_cont_content.addEventListener('click', (e) => {
+    const tag = e.target.tagName;
+    if (tag == 'I') console.log(tag);
 });
 
 store_address_content.addEventListener('click', (e) => {
@@ -535,8 +539,8 @@ doc_types_content.addEventListener('click', (e) => {
         localStorage.setItem('docs_list', JSON.stringify(docs_list));
 
         add_doc(new_el);
-        docs_cont_expand_off();
 
+        menue_toggle();
         docs_types_toggle();
     };
 
@@ -552,10 +556,8 @@ docs_cont_content.addEventListener('DOMSubtreeModified', (e) =>{
     }else if (docs_count == 1) {
         // console.log('1');
         docs_not_found.classList.add('no_active');
-        docs_cont_content.classList.add('first_off');
     }else if (docs_count > 1 && docs_count <= 3) {
         // console.log('0 > docs_count < 3');
-        docs_cont_content.classList.remove('first_off');
         docs_cont_content.style.justifyContent = 'center';
         docs_cont.style.justifyContent = 'center';
         docs_cont_content.style.overflow = 'hidden';
@@ -596,16 +598,16 @@ function showInstallPromotion(){
     setTimeout(() => {install_but.classList.remove('active'), 500});
 };
 
-async function installing (){
-  // Show the install prompt
-  deferredPrompt.prompt();
-  // Wait for the user to respond to the prompt
-  const { outcome } = await deferredPrompt.userChoice;
-  // Optionally, send analytics event with outcome of user choice
-  console.log(`User response to the install prompt: ${outcome}`);
-  // We've used the prompt, and can't use it again, throw it away
-  deferredPrompt = null;
-};
+// async function installing (){
+//   // Show the install prompt
+//   deferredPrompt.prompt();
+//   // Wait for the user to respond to the prompt
+//   const { outcome } = await deferredPrompt.userChoice;
+//   // Optionally, send analytics event with outcome of user choice
+//   console.log(`User response to the install prompt: ${outcome}`);
+//   // We've used the prompt, and can't use it again, throw it away
+//   deferredPrompt = null;
+// };
 
 function input_focus(){
     // if (Moz) {
