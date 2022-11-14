@@ -48,7 +48,6 @@ const docs_cont = document.getElementById('docs_cont');
 const docs_cont_content = document.getElementById('docs_cont_content');
 const docs_info = document.getElementById('docs_info');
 const docs_not_found = document.getElementById('docs_not_found');
-const expand_but = document.getElementById('expand_but');
 
 const menue_sec_cont = document.getElementById('menue_sec_cont');
 const new_doc_but = document.getElementById('new_doc_but');
@@ -99,7 +98,6 @@ menue_but.addEventListener('click', menue_toggle);
 mark_but.addEventListener('click', menue_toggle);
 mark_but.addEventListener('click', menue_toggle);
 
-expand_but.addEventListener('click', docs_cont_toggle);
 
 new_doc_but.addEventListener('click', docs_types_toggle);
 cancel_but_doc_types.addEventListener('click', docs_types_toggle);
@@ -298,7 +296,6 @@ function docs_cont_expand_off(){
     docs_cont_content.scrollTo({top: 0, behavior: "smooth"});
     docs_cont.classList.remove('active');
     menue_sec_cont.classList.remove('active');
-    expand_but.classList.remove('active');
 };
 
 function check_act(){
@@ -395,12 +392,6 @@ function downloading_back(){
         docs_not_found.classList.add('select');
         setTimeout(() => {docs_not_found.classList.remove('select')}, 700);
     };
-};
-
-function docs_cont_toggle(){
-    docs_cont.classList.toggle('active');
-    menue_sec_cont.classList.toggle('active');
-    expand_but.classList.toggle('active');
 };
 
 function docs_types_toggle(){
@@ -587,17 +578,11 @@ docs_cont_content.addEventListener('DOMSubtreeModified', (e) =>{
         docs_cont_content.style.justifyContent = 'center';
         docs_cont.style.justifyContent = 'center';
         docs_cont_content.style.overflow = 'hidden';
-        expand_but.style.display = 'none';
-        
-        docs_cont.classList.remove('active');
-        menue_sec_cont.classList.remove('active');
-        expand_but.classList.remove('active');
     }else if (docs_count > 3){
         // console.log('> 3');
         docs_cont_content.style.justifyContent = 'flex-start';
         docs_cont.style.justifyContent = 'flex-start';
         docs_cont_content.style.overflow = 'auto';
-        expand_but.style.display = 'flex';
     };
 });
 

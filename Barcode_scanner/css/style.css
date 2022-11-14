@@ -486,12 +486,11 @@ header li {
   border-radius: 25px;
 }
 .chose_list .cancel_but {
-  margin-top: 1.2rem;
+  margin-top: 1.25rem;
   cursor: pointer;
   border-radius: 50%;
   color: rgba(245, 89, 110, 0.9333333333);
   font-size: 4rem;
-  transform: translateY(2px);
   width: 8.5rem;
   height: 4.5rem;
 }
@@ -588,16 +587,11 @@ header li {
 #menue_bar #docs_cont {
   width: 100%;
   min-height: 13em;
-  max-height: 20.7rem;
-  margin-top: -1rem;
+  max-height: 55%;
   border-radius: 25px;
   justify-content: center;
   background-color: rgba(255, 255, 255, 0.2745098039);
   transition-duration: 0.25s;
-}
-#menue_bar #docs_cont.active {
-  margin-top: 10rem;
-  max-height: 84%;
 }
 #menue_bar #docs_cont #docs_info {
   position: absolute;
@@ -792,33 +786,11 @@ header li {
   margin-top: 1.4rem;
   box-shadow: none;
 }
-#menue_bar #expand_but {
-  border-radius: 50%;
-  height: 4rem;
-  width: 4rem;
-  margin-top: -0.5rem;
-  margin-bottom: -3.5vh;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  color: rgba(24, 25, 29, 0.5607843137);
-  text-align: center;
-  font-size: 3.5rem;
-  transition-duration: 0.3s;
-}
-#menue_bar #expand_but.active {
-  margin-top: 0.5rem;
-  transform: rotate(180deg);
-}
 #menue_bar #menue_sec_cont {
   width: 80%;
   opacity: 1;
   pointer-events: auto;
   transition-duration: 0.2s;
-}
-#menue_bar #menue_sec_cont.active {
-  opacity: 0;
-  pointer-events: none;
 }
 #menue_bar #icons_bar {
   display: flex;
