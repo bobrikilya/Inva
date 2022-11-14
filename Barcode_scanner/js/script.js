@@ -482,7 +482,7 @@ docs_cont_content.addEventListener('touchstart', (e) => {
 
     // Swiping doc
     let posX = e.changedTouches[0].clientX;
-    let swipe = 220;
+    let swipe = 200;
     
     let timeout
     if (e.target.previousElementSibling != null) {
