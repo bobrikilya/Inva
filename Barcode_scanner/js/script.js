@@ -39,6 +39,7 @@ const docs_cont = document.getElementById('docs_cont');
 const docs_cont_content = document.getElementById('docs_cont_content');
 const docs_info = document.getElementById('docs_info');
 const docs_not_found = document.getElementById('docs_not_found');
+const expand_ic = document.getElementById('expand_ic');
 
 const menue_sec_cont = document.getElementById('menue_sec_cont');
 const new_doc_but = document.getElementById('new_doc_but');
@@ -257,6 +258,7 @@ function menue_toggle(){
     menue_but.classList.toggle('toggle');
     setting_but.classList.toggle('toggle');
     header.classList.toggle('turn_off');
+    water_tag.classList.toggle('turn_on');
 
     // input_blur();
     main_block.classList.toggle('toggle');
@@ -270,10 +272,12 @@ function check_act(){
         check.classList.add('active');
         docs_cont_content.classList.add('check_blur');
         docs_info.classList.add('hiden');
+        expand_ic.classList.remove('turn_on');
         setTimeout(() => {
             check.classList.remove('active')
             docs_cont_content.classList.remove('check_blur')
             docs_info.classList.remove('hiden');
+            expand_ic.classList.add('turn_on');
         }, 1300);
     }, 700);
 };
@@ -439,7 +443,13 @@ sess_input.addEventListener('blur', () => {
 docs_cont_content.addEventListener('scroll', () => {
     if (docs_cont_content.scrollTop != 0) docs_info.classList.add('hiden')
     else docs_info.classList.remove('hiden');
-  });
+
+    const scrollBottom = docs_cont_content.scrollHeight - docs_cont_content.scrollTop - docs_cont_content.clientHeight
+    // console.log(scrollBottom);
+    if (scrollBottom > 1) {
+        expand_ic.classList.add('turn_on');
+    }else expand_ic.classList.remove('turn_on');
+});
 
 docs_cont_content.addEventListener('touchstart', (e) => {
     const e_id = e.target.getAttribute('id');
@@ -564,11 +574,13 @@ docs_cont_content.addEventListener('DOMSubtreeModified', (e) =>{
         docs_cont_content.style.justifyContent = 'center';
         docs_cont.style.justifyContent = 'center';
         docs_cont_content.style.overflow = 'hidden';
+        expand_ic.classList.remove('turn_on');
     }else if (docs_count > 2){
         // console.log('> 3');
         docs_cont_content.style.justifyContent = 'flex-start';
         docs_cont.style.justifyContent = 'flex-start';
         docs_cont_content.style.overflow = 'auto';
+        expand_ic.classList.add('turn_on');
     };
 });
 
