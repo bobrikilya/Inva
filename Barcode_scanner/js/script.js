@@ -120,8 +120,8 @@ let docs_count = 0;
 
 // For easy working ----------
 const Moz = navigator.userAgent.includes('Mozilla/5.0 (iPhone');
-// const fMode = {exact: "environment"};
-const fMode = {exact: "user"};
+const fMode = {exact: "environment"};
+// const fMode = {exact: "user"};
 
 document.addEventListener("DOMContentLoaded", () => {
     if (localStorage.getItem('session_name')){
