@@ -117,6 +117,14 @@ let sess_num;
 
 let docs_count = 0;
 
+let audio_on = true;
+
+let pick = new Audio('../audio/pick.mp3');
+let success = new Audio('../audio/success.mp3');
+let warning = new Audio('../audio/warning.mp3');
+// let error = new Audio('../audio/error.mp3');
+
+
 
 // For easy working ----------
 const Moz = navigator.userAgent.includes('Mozilla/5.0 (iPhone');
@@ -273,12 +281,13 @@ function check_act(){
         docs_cont_content.classList.add('check_blur');
         docs_info.classList.add('hiden');
         expand_ic.classList.remove('turn_on');
+        success.play();
         setTimeout(() => {
             check.classList.remove('active')
             docs_cont_content.classList.remove('check_blur')
             docs_info.classList.remove('hiden');
             if (docs_cont_content.clientHeight + 25 < docs_cont_content.scrollHeight) expand_ic.classList.add('turn_on');
-        }, 1300);
+        }, 1400);
     }, 700);
 };
 
@@ -362,14 +371,16 @@ function downloading_back(){
     if (docs_count != 0) {
         if (!session_name){
             setTimeout(() => {
+                warning.play();
                 sessions_cont_toggle();
             }, 10);
         }else {
             check_act();
         };
     }else {
+        warning.play();
         docs_not_found.classList.add('select');
-        setTimeout(() => {docs_not_found.classList.remove('select')}, 700);
+        setTimeout(() => {docs_not_found.classList.remove('select')}, 900);
     };
 };
 
@@ -684,8 +695,7 @@ function stream_start(){
     });
 
     Quagga.onDetected((result) => {
-        let audio = new Audio('../audio/pick.mp3');
-        audio.play();
+        if (audio_on) pick.play();
         Quagga.pause();
         const code = result.codeResult.code;
         request(code);
