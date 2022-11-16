@@ -120,8 +120,8 @@ let docs_count = 0;
 
 // For easy working ----------
 const Moz = navigator.userAgent.includes('Mozilla/5.0 (iPhone');
-const fMode = {exact: "environment"};
-// const fMode = {exact: "user"};
+// const fMode = {exact: "environment"};
+const fMode = {exact: "user"};
 
 document.addEventListener("DOMContentLoaded", () => {
     if (localStorage.getItem('session_name')){
@@ -277,7 +277,7 @@ function check_act(){
             check.classList.remove('active')
             docs_cont_content.classList.remove('check_blur')
             docs_info.classList.remove('hiden');
-            expand_ic.classList.add('turn_on');
+            if (docs_cont_content.clientHeight + 25 < docs_cont_content.scrollHeight) expand_ic.classList.add('turn_on');
         }, 1300);
     }, 700);
 };
@@ -580,8 +580,8 @@ docs_cont_content.addEventListener('DOMSubtreeModified', (e) =>{
         docs_cont_content.style.justifyContent = 'flex-start';
         docs_cont.style.justifyContent = 'flex-start';
         docs_cont_content.style.overflow = 'auto';
-        console.log(docs_cont_content.clientHeight);
-        console.log(docs_cont_content.scrollHeight);
+        // console.log(docs_cont_content.clientHeight);
+        // console.log(docs_cont_content.scrollHeight);
         if (docs_cont_content.clientHeight + 25 < docs_cont_content.scrollHeight) expand_ic.classList.add('turn_on');
     };
 });
@@ -684,6 +684,8 @@ function stream_start(){
     });
 
     Quagga.onDetected((result) => {
+        let audio = new Audio('../audio/pick.mp3');
+        audio.play();
         Quagga.pause();
         const code = result.codeResult.code;
         request(code);
