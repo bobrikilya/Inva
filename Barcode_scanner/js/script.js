@@ -580,7 +580,9 @@ docs_cont_content.addEventListener('DOMSubtreeModified', (e) =>{
         docs_cont_content.style.justifyContent = 'flex-start';
         docs_cont.style.justifyContent = 'flex-start';
         docs_cont_content.style.overflow = 'auto';
-        expand_ic.classList.add('turn_on');
+        console.log(docs_cont_content.clientHeight);
+        console.log(docs_cont_content.scrollHeight);
+        if (docs_cont_content.clientHeight + 25 < docs_cont_content.scrollHeight) expand_ic.classList.add('turn_on');
     };
 });
 
