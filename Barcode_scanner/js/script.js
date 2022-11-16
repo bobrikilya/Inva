@@ -258,15 +258,25 @@ function menue_toggle(){
     setting_but.classList.toggle('toggle');
     header.classList.toggle('turn_off');
 
-    doc_toggle();
+    // input_blur();
+    main_block.classList.toggle('toggle');
+    input_block.classList.toggle('toggle');
 
     setTimeout(() => {menue_bar.classList.toggle('toggle')}, 10);
 };
 
 function check_act(){
-    setTimeout(() => {check.classList.add('active');
-    setTimeout(() => {check.classList.remove('active')}, 1300);
-}, 700)};
+    setTimeout(() => {
+        check.classList.add('active');
+        docs_cont_content.classList.add('check_blur');
+        docs_info.classList.add('hiden');
+        setTimeout(() => {
+            check.classList.remove('active')
+            docs_cont_content.classList.remove('check_blur')
+            docs_info.classList.remove('hiden');
+        }, 1300);
+    }, 700);
+};
 
 function sessions_cont_toggle(){
     all_sessions_cont.classList.toggle('toggle');
@@ -364,11 +374,6 @@ function docs_types_toggle(){
     setTimeout(() => {doc_types_content.classList.toggle('toggle')}, 10);
 };
 
-function doc_toggle(){
-    main_block.classList.toggle('toggle');
-    input_block.classList.toggle('toggle');
-};
-
 function add_doc(new_el){
     docs_cont_content.insertAdjacentHTML('afterbegin', `
             <li id="${new_el['id']}" class="${new_el['class_name']}">${new_el['text_name']}
@@ -446,11 +451,9 @@ docs_cont_content.addEventListener('touchstart', (e) => {
     let swipe = 200;
     
     let timeout
-    if (e.target.previousElementSibling != null) {
-        e.target.addEventListener('touchmove', (event) => {
-            event.changedTouches[0].clientX - posX > swipe && swipeRight();
-        });
-    };
+    e.target.addEventListener('touchmove', (event) => {
+        event.changedTouches[0].clientX - posX > swipe && swipeRight();
+    });
     
     function swipeRight(){
         if (timeout) clearTimeout(timeout);
@@ -556,12 +559,12 @@ docs_cont_content.addEventListener('DOMSubtreeModified', (e) =>{
     }else if (docs_count == 1) {
         // console.log('1');
         docs_not_found.classList.add('no_active');
-    }else if (docs_count > 1 && docs_count <= 3) {
+    }else if (docs_count > 1 && docs_count <= 2) {
         // console.log('0 > docs_count < 3');
         docs_cont_content.style.justifyContent = 'center';
         docs_cont.style.justifyContent = 'center';
         docs_cont_content.style.overflow = 'hidden';
-    }else if (docs_count > 3){
+    }else if (docs_count > 2){
         // console.log('> 3');
         docs_cont_content.style.justifyContent = 'flex-start';
         docs_cont.style.justifyContent = 'flex-start';
