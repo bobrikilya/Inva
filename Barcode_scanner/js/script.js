@@ -291,7 +291,7 @@ function menue_toggle(){
 };
 
 function doc_name_insert(doc_name){
-    session_but.innerText = doc_name;
+    session_but.innerText = doc_name.replace(' -', '-');
     session_but.classList.add('no_active');
 };
 
@@ -650,8 +650,8 @@ doc_types_content.addEventListener('click', (e) => {
                 const max_num = parseInt(Math.max.apply(null, max_count_list)) + 1;
                 new_id = `${class_name}_${max_num}`;
                 new_text_name = `${text_name}-${max_num}`;
-                // console.log(new_id)
                 new_el["id"] = new_id;
+                console.log(new_text_name.replace(' -', '-'))
                 new_el["text_name"] = new_text_name.replace(' -', '-');
             };
         };
