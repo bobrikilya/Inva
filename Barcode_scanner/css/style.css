@@ -219,12 +219,17 @@ body {
   color: rgba(226, 3, 3, 0.8352941176);
   cursor: pointer;
   white-space: nowrap;
-  transition-duration: 0.5s;
+  transition-duration: 0.2s;
 }
 #session_but.active {
-  transition-duration: 0s;
+  transition-duration: 0.2s;
   border: 1px solid rgba(26, 26, 26, 0.4392156863);
   color: rgba(26, 26, 26, 0.4392156863);
+}
+#session_but.no_active {
+  border: 1px solid rgba(26, 26, 26, 0.4392156863);
+  color: rgba(26, 26, 26, 0.4392156863);
+  pointer-events: none;
 }
 
 #all_sessions_cont {
@@ -633,6 +638,8 @@ header li {
   font-size: 1.7rem;
   color: rgba(26, 26, 26, 0.8901960784);
   transition-duration: 0.3s;
+  pointer-events: none;
+  opacity: 1;
 }
 #menue_bar #docs_cont #docs_cont_content #docs_not_found div {
   width: 100%;
@@ -657,7 +664,7 @@ header li {
   color: red;
 }
 #menue_bar #docs_cont #docs_cont_content #docs_not_found.no_active {
-  display: none;
+  opacity: 0;
 }
 #menue_bar #docs_cont #docs_cont_content #docs_info {
   position: absolute;
@@ -718,6 +725,10 @@ header li {
 #menue_bar #docs_cont #docs_cont_content li #d_info .doc_lit_info p {
   margin-left: 0.4rem;
 }
+#menue_bar #docs_cont #docs_cont_content li #d_info .doc_lit_info span {
+  color: rgba(26, 26, 26, 0.4392156863);
+  margin-left: 0.15rem;
+}
 #menue_bar #docs_cont #docs_cont_content li a {
   position: absolute;
   z-index: 5;
@@ -741,6 +752,9 @@ header li {
 #menue_bar #docs_cont #docs_cont_content li a:active {
   box-shadow: inset 0 0 15px rgba(20, 20, 20, 0.3098039216);
 }
+#menue_bar #docs_cont #docs_cont_content li a i {
+  pointer-events: none;
+}
 #menue_bar #docs_cont #docs_cont_content li button {
   position: absolute;
   left: -4.5rem;
@@ -752,6 +766,9 @@ header li {
   pointer-events: none;
   opacity: 0;
   transform: scale(0);
+}
+#menue_bar #docs_cont #docs_cont_content li button i {
+  pointer-events: none;
 }
 #menue_bar #docs_cont #docs_cont_content li.del_toggle {
   width: 80%;

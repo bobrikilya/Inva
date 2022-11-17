@@ -270,6 +270,17 @@ function menue_toggle(){
 
     if (!header.classList.contains('turn_off')){
         docs_cont_content.scrollTo({top: 0, behavior: "smooth"});
+        session_but.classList.remove('no_active');
+        if (session_name) {
+            session_record();
+        }else {
+            session_but.classList.remove('active');
+            session_power_but.classList.remove('active');
+            session_name = false;
+            session_but.innerText = 'Нет сессии';
+            session_text.innerText = 'Подключиться к сессии';
+            localStorage.removeItem('session_name');
+        };
     };
 
     // input_blur();
@@ -277,6 +288,11 @@ function menue_toggle(){
     input_block.classList.toggle('toggle');
 
     setTimeout(() => {menue_bar.classList.toggle('toggle')}, 10);
+};
+
+function doc_name_insert(doc_name){
+    session_but.innerText = doc_name;
+    session_but.classList.add('no_active');
 };
 
 function return_to_doc(){
@@ -452,10 +468,12 @@ function add_doc(new_el){
                 <div id="d_info" class="cont">
                     <h2>${new_el['text_name']}</h2>
                     <span id="doc_sum" class="doc_lit_info">Сумма:
-                        <p>0р</p>
+                        <p>0</p>
+                        <span>руб.</span>
                     </span>
                     <span id="doc_count" class="doc_lit_info">Колич.:
-                        <p>0эл.</p>
+                        <p>0</p>
+                        <span>эл.</span>
                     </span>
                 </div>
                 <a>
@@ -548,13 +566,38 @@ docs_cont_content.addEventListener('touchstart', (e) => {
             e.target.classList.remove('del_toggle');
         }, 1300);
     };
+});
 
-    const trash = e.target.querySelector('button');
+docs_cont_content.addEventListener('click', (e) => {
+    e.stopPropagation();
+    let full_doc;
+    const tag = e.target.tagName;
 
-    trash.addEventListener('click', (event) => {
-        event.stopPropagation();
-        e.target.classList.add('deleting');
-        setTimeout(() => {e.target.remove()}, 400);
+    if (tag == 'LI') {
+        menue_toggle();
+        doc_up_moving(e.target);
+        doc_name = e.target.querySelector('h2').innerText;
+        // console.log(doc_name);
+        doc_name_insert(doc_name);
+    };
+
+    // Doc check
+    if (tag == 'A') {
+        full_doc = e.target.parentNode;
+
+        doc_up_moving(full_doc);
+        doc_name = full_doc.querySelector('h2').innerText;
+        console.log(doc_name);
+        doc_name_insert(doc_name);
+    };
+
+    // Trash
+    if (tag == 'BUTTON'){
+        full_doc = e.target.parentNode;
+        const e_id = full_doc.getAttribute('id');
+
+        full_doc.classList.add('deleting');
+        setTimeout(() => {full_doc.remove()}, 400);
 
         docs_list.forEach((el) =>{
             if (el.id == e_id) {
@@ -565,23 +608,14 @@ docs_cont_content.addEventListener('touchstart', (e) => {
             };
         });
         // console.log(num_of_el);
-    });
-});
-
-docs_cont_content.addEventListener('click', (e) => {
-    const tag = e.target.tagName;
-    if (tag == 'LI') menue_toggle();
-    doc_up_moving(e.target);
-    // console.log(tag);
-    // e.target.addEventListener('click', (event) => {
-    // });
+    };
 });
 
 
-docs_cont_content.addEventListener('click', (e) => {
-    const tag = e.target.tagName;
-    if (tag == 'I') console.log(tag);
-});
+// docs_cont_content.addEventListener('click', (e) => {
+//     const tag = e.target.tagName;
+//     if (tag == 'I') console.log(tag);
+// });
 
 store_address_content.addEventListener('click', (e) => {
     e.preventDefault();
@@ -608,7 +642,6 @@ doc_types_content.addEventListener('click', (e) => {
         if (localStorage.getItem('docs_list')){
             // console.log(docs_list);
             docs_list.forEach(el => {
-                // el['text_name'].
                 if (el['class_name'] == new_el['class_name']){
                     max_count_list.push(parseInt(el['id'].split('_')[1]));
                 };
@@ -622,11 +655,12 @@ doc_types_content.addEventListener('click', (e) => {
                 new_el["text_name"] = new_text_name;
             };
         };
-
         docs_list.push(new_el);
         localStorage.setItem('docs_list', JSON.stringify(docs_list));
-
+        
         add_doc(new_el);
+        
+        doc_name_insert(new_el['text_name']);
 
         menue_toggle();
         docs_types_toggle();
@@ -642,6 +676,7 @@ docs_cont_content.addEventListener('DOMSubtreeModified', (e) =>{
         // console.log('0');
         back_but.classList.remove('active');
         docs_not_found.classList.remove('no_active');
+        localStorage.removeItem('docs_list');
     }else if (docs_count == 1) {
         // console.log('1');
         back_but.classList.add('active');
