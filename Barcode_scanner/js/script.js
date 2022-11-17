@@ -279,16 +279,40 @@ function check_act(){
     setTimeout(() => {
         check.classList.add('active');
         docs_cont_content.classList.add('check_blur');
-        docs_info.classList.add('hiden');
         expand_ic.classList.remove('turn_on');
         success.play();
+
+        // Docs removing
+        li_list = docs_cont_content.querySelectorAll('li')
+
+        win_height = docs_cont.clientHeight;
+        // console.log(win_height);
+        docs_cont.style.minHeight = `${win_height}px`;
+        docs_cont.style.maxHeight = `${win_height}px`;
+        // docs_cont.style.justifyContent = 'center';
+
+        li_list.forEach((el) =>{
+            el.classList.add('deleting');
+            setTimeout(() => {el.remove()}, 400);
+        });
+
+        docs_list = [];
+        localStorage.removeItem('docs_list');
+
+
         setTimeout(() => {
             check.classList.remove('active')
             docs_cont_content.classList.remove('check_blur')
-            docs_info.classList.remove('hiden');
-            if (docs_cont_content.clientHeight + 25 < docs_cont_content.scrollHeight) expand_ic.classList.add('turn_on');
         }, 1400);
     }, 700);
+    setTimeout(() => {
+        docs_cont.classList.add('download_height');
+        setTimeout(() => {
+            docs_cont.style.minHeight = `14rem`;
+            docs_cont.style.maxHeight = `55%`;
+            docs_cont.classList.remove('download_height');
+        },460);
+    }, 2200);
 };
 
 function sessions_cont_toggle(){
@@ -452,7 +476,7 @@ sess_input.addEventListener('blur', () => {
 });
 
 docs_cont_content.addEventListener('scroll', () => {
-    if (docs_cont_content.scrollTop != 0) docs_info.classList.add('hiden')
+    if (docs_cont_content.scrollTop > 1) docs_info.classList.add('hiden')
     else docs_info.classList.remove('hiden');
 
     const scrollBottom = docs_cont_content.scrollHeight - docs_cont_content.scrollTop - docs_cont_content.clientHeight
