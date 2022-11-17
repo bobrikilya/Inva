@@ -156,7 +156,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const options = {
     video: {
-    width: 1255, //height
+    width: 1455, //height
     height: 1000, //width
     facingMode: fMode,
     },
@@ -582,14 +582,14 @@ docs_cont_content.addEventListener('click', (e) => {
     };
 
     // Doc check
-    if (tag == 'A') {
-        full_doc = e.target.parentNode;
+    // if (tag == 'A') {
+    //     full_doc = e.target.parentNode;
 
-        doc_up_moving(full_doc);
-        doc_name = full_doc.querySelector('h2').innerText;
-        console.log(doc_name);
-        doc_name_insert(doc_name);
-    };
+    //     doc_up_moving(full_doc);
+    //     doc_name = full_doc.querySelector('h2').innerText;
+    //     console.log(doc_name);
+    //     doc_name_insert(doc_name);
+    // };
 
     // Trash
     if (tag == 'BUTTON'){
@@ -652,7 +652,7 @@ doc_types_content.addEventListener('click', (e) => {
                 new_text_name = `${text_name}-${max_num}`;
                 // console.log(new_id)
                 new_el["id"] = new_id;
-                new_el["text_name"] = new_text_name;
+                new_el["text_name"] = new_text_name.replace(' -', '-');
             };
         };
         docs_list.push(new_el);
