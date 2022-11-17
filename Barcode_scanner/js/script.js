@@ -28,7 +28,7 @@ const sessions_blur = document.getElementById('sessions_blur');
 const fire_but = document.getElementById('fire_but');
 
 const menue_but = document.getElementById('menue_but');
-const setting_but = document.getElementById('setting_but');
+const back_but = document.getElementById('back_but');
 
 //--------------
 
@@ -87,7 +87,7 @@ search_button.addEventListener('click', searching);
 reload_but.addEventListener('click', refresh);
 
 menue_but.addEventListener('click', menue_toggle);
-// setting_but.addEventListener('click', menue_toggle);
+back_but.addEventListener('click', return_to_doc);
 
 new_doc_but.addEventListener('click', (e) => {
     e.preventDefault();
@@ -264,17 +264,43 @@ function full_reset(){
 function menue_toggle(){
     fire_but.classList.toggle('toggle');
     menue_but.classList.toggle('toggle');
-    setting_but.classList.toggle('toggle');
+    back_but.classList.toggle('toggle');
     header.classList.toggle('turn_off');
     water_tag.classList.toggle('turn_on');
 
-    docs_cont_content.scrollTo({top: 0, behavior: "smooth"});
+    if (!header.classList.contains('turn_off')){
+        docs_cont_content.scrollTo({top: 0, behavior: "smooth"});
+    };
 
     // input_blur();
     main_block.classList.toggle('toggle');
     input_block.classList.toggle('toggle');
 
     setTimeout(() => {menue_bar.classList.toggle('toggle')}, 10);
+};
+
+function return_to_doc(){
+    const first_doc = docs_cont_content.querySelector('li');
+    if (first_doc) first_doc.click();
+};
+
+function doc_up_moving(elem){
+    const first_doc = docs_cont_content.querySelector('li');
+    if (elem.getAttribute('id') != first_doc.getAttribute('id')) {
+        // Moving in container
+        elem.remove();
+        docs_cont_content.insertBefore(elem, first_doc);
+
+        // Moving in local storage
+        docs_list.forEach(el => {
+            if (el['id'] == elem.getAttribute('id')){
+                const old_el_num = docs_list.indexOf(el);
+                docs_list.push(el);
+                docs_list.splice(old_el_num, 1)
+            };
+        });
+        localStorage.setItem('docs_list', JSON.stringify(docs_list));
+    };
 };
 
 function check_act(){
@@ -285,7 +311,7 @@ function check_act(){
         success.play();
 
         // Docs removing
-        li_list = docs_cont_content.querySelectorAll('li')
+        li_list = docs_cont_content.querySelectorAll('li');
         
         win_height = docs_cont.clientHeight;
         // console.log(win_height);
@@ -426,10 +452,10 @@ function add_doc(new_el){
                 <div id="d_info" class="cont">
                     <h2>${new_el['text_name']}</h2>
                     <span id="doc_sum" class="doc_lit_info">Сумма:
-                        <p>500р</p>
+                        <p>0р</p>
                     </span>
                     <span id="doc_count" class="doc_lit_info">Колич.:
-                        <p>121эл.</p>
+                        <p>0эл.</p>
                     </span>
                 </div>
                 <a>
@@ -532,7 +558,7 @@ docs_cont_content.addEventListener('touchstart', (e) => {
 
         docs_list.forEach((el) =>{
             if (el.id == e_id) {
-                num_of_el = docs_list.indexOf(el);
+                const num_of_el = docs_list.indexOf(el);
                 docs_list.splice(num_of_el, 1)
                 localStorage.setItem('docs_list', JSON.stringify(docs_list));
                 return
@@ -545,6 +571,7 @@ docs_cont_content.addEventListener('touchstart', (e) => {
 docs_cont_content.addEventListener('click', (e) => {
     const tag = e.target.tagName;
     if (tag == 'LI') menue_toggle();
+    doc_up_moving(e.target);
     // console.log(tag);
     // e.target.addEventListener('click', (event) => {
     // });
@@ -613,9 +640,11 @@ docs_cont_content.addEventListener('DOMSubtreeModified', (e) =>{
     // console.log(docs_count);
     if (docs_count == 0) {
         // console.log('0');
+        back_but.classList.remove('active');
         docs_not_found.classList.remove('no_active');
     }else if (docs_count == 1) {
         // console.log('1');
+        back_but.classList.add('active');
         docs_not_found.classList.add('no_active');
     }else if (docs_count > 1 && docs_count <= 2) {
         // console.log('0 > docs_count < 3');

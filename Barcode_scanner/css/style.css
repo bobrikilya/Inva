@@ -183,11 +183,19 @@ body {
   display: flex;
 }
 
-#setting_but {
+#back_but {
   display: flex;
+  font-size: 2.9rem;
+  transition-duration: 0.3s;
+  opacity: 0.5;
+  pointer-events: none;
 }
-#setting_but.toggle {
+#back_but.toggle {
   display: none;
+}
+#back_but.active {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 #session_cont {
@@ -408,10 +416,10 @@ header li {
   color: rgba(174, 177, 1, 0.4666666667);
 }
 
-.req {
+.new {
   background-color: rgba(0, 243, 12, 0.2549019608);
 }
-.req span {
+.new span {
   color: rgba(3, 126, 9, 0.3490196078);
 }
 
@@ -748,11 +756,13 @@ header li {
 #menue_bar #docs_cont #docs_cont_content li.del_toggle {
   width: 80%;
   margin-right: -4.5rem;
-  word-wrap: wrap;
   justify-content: center;
-  padding-left: 1rem;
 }
-#menue_bar #docs_cont #docs_cont_content li.del_toggle span {
+#menue_bar #docs_cont #docs_cont_content li.del_toggle #d_info {
+  margin-left: 0;
+  width: auto;
+}
+#menue_bar #docs_cont #docs_cont_content li.del_toggle #doc_icon {
   opacity: 0;
   transition-duration: 0.1s;
 }

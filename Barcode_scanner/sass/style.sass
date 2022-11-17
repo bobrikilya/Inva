@@ -114,10 +114,17 @@ body
 #menue_but
     &.toggle
         display: flex
-#setting_but
+#back_but
     display: flex
+    font-size: 2.9rem
+    transition-duration: 0.3s
+    opacity: 0.5
+    pointer-events: none
     &.toggle
         display: none
+    &.active
+        opacity: 1
+        pointer-events: auto
     // border: 2px solid blue
 
 #session_cont
@@ -320,7 +327,7 @@ header
     background-color: #fbff0054
     span
         color: #aeb10177
-.req
+.new
     background-color: #00f30c41
     span
         color: #037e0959
@@ -599,8 +606,6 @@ header
                         // border: 2px solid blue
                         p
                             margin-left: 0.4rem
-                    #doc_sum
-                    #doc_count
                 a
                     position: absolute
                     z-index: 5
@@ -636,11 +641,12 @@ header
                     transform: scale(0)
                 &.del_toggle
                     width: 80%
-                    margin-right: -4.5rem 
-                    word-wrap: wrap
+                    margin-right: -4.5rem
                     justify-content: center
-                    padding-left: 1rem
-                    span
+                    #d_info
+                        margin-left: 0
+                        width: auto
+                    #doc_icon
                         opacity: 0
                         transition-duration: 0.1s
                     a
