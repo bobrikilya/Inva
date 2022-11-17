@@ -268,6 +268,8 @@ function menue_toggle(){
     header.classList.toggle('turn_off');
     water_tag.classList.toggle('turn_on');
 
+    docs_cont_content.scrollTo({top: 0, behavior: "smooth"});
+
     // input_blur();
     main_block.classList.toggle('toggle');
     input_block.classList.toggle('toggle');
@@ -284,20 +286,22 @@ function check_act(){
 
         // Docs removing
         li_list = docs_cont_content.querySelectorAll('li')
-
+        
         win_height = docs_cont.clientHeight;
         // console.log(win_height);
         docs_cont.style.minHeight = `${win_height}px`;
         docs_cont.style.maxHeight = `${win_height}px`;
         // docs_cont.style.justifyContent = 'center';
-
-        li_list.forEach((el) =>{
-            el.classList.add('deleting');
-            setTimeout(() => {el.remove()}, 400);
-        });
-
-        docs_list = [];
-        localStorage.removeItem('docs_list');
+        
+        setTimeout(() => {
+            li_list.forEach((el) =>{
+                    el.classList.add('opac');
+                    setTimeout(() => {el.remove()}, 500);
+                });
+            docs_list = [];
+            localStorage.removeItem('docs_list');
+        }, 300);
+        
 
 
         setTimeout(() => {
@@ -415,18 +419,27 @@ function docs_types_toggle(){
 
 function add_doc(new_el){
     docs_cont_content.insertAdjacentHTML('afterbegin', `
-            <li id="${new_el['id']}" class="${new_el['class_name']}">${new_el['text_name']}
-                <button>
-                    <i class="fa-solid fa-trash-can"></i>
-                </button>
-                <span>
+            <li id="${new_el['id']}" class="${new_el['class_name']}">
+                <span id="doc_icon">
                     <i class="fa-solid fa-file"></i>
                 </span>
+                <div id="d_info" class="cont">
+                    <h2>${new_el['text_name']}</h2>
+                    <span id="doc_sum" class="doc_lit_info">Сумма:
+                        <p>500р</p>
+                    </span>
+                    <span id="doc_count" class="doc_lit_info">Колич.:
+                        <p>121эл.</p>
+                    </span>
+                </div>
                 <a>
                     <i class="fa-solid fa-eye"></i>
                 </a>
+                <button>
+                    <i class="fa-solid fa-trash-can"></i>
+                </button>
             </li>
-        `);
+    `);
 };
 
 document.addEventListener('click', (event) => {
