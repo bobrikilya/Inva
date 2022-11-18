@@ -561,9 +561,9 @@ header li {
 }
 
 #menue_bar {
-  width: 100%;
+  width: 90%;
   height: 100%;
-  max-width: 330px;
+  max-width: 500px;
   transition: 0.2s ease-out;
   opacity: 1;
   transform: translateY(0);
@@ -812,7 +812,6 @@ header li {
 }
 #menue_bar #expand_ic {
   margin-top: -0.8rem;
-  margin-bottom: -2.3rem;
   color: rgba(24, 25, 29, 0.0941176471);
   font-size: 3.5rem;
   pointer-events: none;
@@ -833,7 +832,6 @@ header li {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 2.8vh;
   width: 85%;
 }
 #menue_bar #icons_bar .download_butt {
@@ -855,6 +853,7 @@ header li {
 }
 #menue_bar #new_doc_but {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 3.5vh 5%;
@@ -866,12 +865,8 @@ header li {
   border-radius: 25px;
   white-space: nowrap;
   font-size: 1.55rem;
-  margin: 1.8vh 0 2vh 0;
-}
-#menue_bar #new_doc_but span {
-  font-size: 1.3rem;
-  margin-right: 0.4rem;
-  color: rgba(24, 25, 29, 0.6901960784);
+  margin-top: 2.5vh;
+  margin-bottom: 2vh;
 }
 
 #my_tag {
@@ -937,7 +932,6 @@ button {
   height: 4.7rem;
   width: 50%;
   font-size: 1.6rem;
-  text-transform: lowercase;
   color: #18191d;
   border-radius: 25px;
 }

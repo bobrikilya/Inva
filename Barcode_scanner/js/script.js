@@ -291,7 +291,7 @@ function menue_toggle(){
 };
 
 function doc_name_insert(doc_name){
-    session_but.innerText = doc_name;
+    session_but.innerText = doc_name; ///lowercase 
     session_but.classList.add('no_active');
 };
 
@@ -662,7 +662,7 @@ doc_types_content.addEventListener('click', (e) => {
     if(tag == 'A'){
 
         // Docs counter
-        let new_el = {"id": class_name + '_1', "class_name": class_name, "text_name": text_name + '-1'};
+        let new_el = {"id": class_name + '_1', "class_name": class_name, "text_name": text_name + ' 1'};
         let max_count_list = [];
         if (localStorage.getItem('docs_list')){
             // console.log(docs_list);
@@ -674,7 +674,7 @@ doc_types_content.addEventListener('click', (e) => {
             if (max_count_list.length > 0) {
                 const max_num = parseInt(Math.max.apply(null, max_count_list)) + 1;
                 new_id = `${class_name}_${max_num}`;
-                new_text_name = `${text_name}-${max_num}`;
+                new_text_name = `${text_name} ${max_num}`;
                 new_el["id"] = new_id;
                 // console.log(new_text_name.replace(' -', '-'))
                 new_el["text_name"] = new_text_name;
