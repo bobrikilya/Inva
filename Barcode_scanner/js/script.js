@@ -156,7 +156,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const options = {
     video: {
-    width: 1455, //height
+    width: 1355, //height
     height: 1000, //width
     facingMode: fMode,
     },
@@ -291,33 +291,32 @@ function menue_toggle(){
 };
 
 function doc_name_insert(doc_name){
-    session_but.innerText = doc_name.replace(' -', '-');
+    session_but.innerText = doc_name;
     session_but.classList.add('no_active');
 };
 
 function return_to_doc(){
-    const first_doc = docs_cont_content.querySelector('li');
-    if (first_doc) first_doc.click();
+    docs_opening(JSON.parse(localStorage.getItem('last_opened_doc')));
 };
 
-function doc_up_moving(elem){
-    const first_doc = docs_cont_content.querySelector('li');
-    if (elem.getAttribute('id') != first_doc.getAttribute('id')) {
-        // Moving in container
-        elem.remove();
-        docs_cont_content.insertBefore(elem, first_doc);
+// function doc_up_moving(elem){
+//     const first_doc = docs_cont_content.querySelector('li');
+//     if (elem.getAttribute('id') != first_doc.getAttribute('id')) {
+//         // Moving in container
+//         elem.remove();
+//         docs_cont_content.insertBefore(elem, first_doc);
 
-        // Moving in local storage
-        docs_list.forEach(el => {
-            if (el['id'] == elem.getAttribute('id')){
-                const old_el_num = docs_list.indexOf(el);
-                docs_list.push(el);
-                docs_list.splice(old_el_num, 1)
-            };
-        });
-        localStorage.setItem('docs_list', JSON.stringify(docs_list));
-    };
-};
+//         // Moving in local storage
+//         docs_list.forEach(el => {
+//             if (el['id'] == elem.getAttribute('id')){
+//                 const old_el_num = docs_list.indexOf(el);
+//                 docs_list.push(el);
+//                 docs_list.splice(old_el_num, 1)
+//             };
+//         });
+//         localStorage.setItem('docs_list', JSON.stringify(docs_list));
+//     };
+// };
 
 function check_act(){
     setTimeout(() => {
@@ -486,6 +485,18 @@ function add_doc(new_el){
     `);
 };
 
+function docs_opening(doc_data){
+    // console.log(doc_data['text_name']);
+    doc_name_insert(doc_data['text_name']);
+    localStorage.setItem('last_opened_doc', JSON.stringify(doc_data));
+    back_but.classList.add('active');
+    menue_toggle();
+    // docs_list.forEach(el => {
+    //     if (doc_id == el['id']) {
+    //     };
+    // });
+};
+
 document.addEventListener('click', (event) => {
     if (all_sessions_cont.classList.contains('toggle')){
         
@@ -574,18 +585,17 @@ docs_cont_content.addEventListener('click', (e) => {
     const tag = e.target.tagName;
 
     if (tag == 'LI') {
-        menue_toggle();
-        doc_up_moving(e.target);
-        doc_name = e.target.querySelector('h2').innerText;
-        // console.log(doc_name);
-        doc_name_insert(doc_name);
+        // console.log(e.target);
+        docs_list.forEach(el=> {
+            if (el['id'] == e.target.getAttribute('id')) docs_opening(el);
+        });
     };
 
     // Doc check
     // if (tag == 'A') {
     //     full_doc = e.target.parentNode;
 
-    //     doc_up_moving(full_doc);
+    //     // doc_up_moving(full_doc);
     //     doc_name = full_doc.querySelector('h2').innerText;
     //     console.log(doc_name);
     //     doc_name_insert(doc_name);
@@ -596,9 +606,16 @@ docs_cont_content.addEventListener('click', (e) => {
         full_doc = e.target.parentNode;
         const e_id = full_doc.getAttribute('id');
 
+        if (localStorage.getItem('last_opened_doc')) {
+            if (e_id == JSON.parse(localStorage.getItem('last_opened_doc'))['id']){
+                back_but.classList.remove('active');
+                localStorage.removeItem('last_opened_doc');
+            };
+        };
+
         full_doc.classList.add('deleting');
         setTimeout(() => {full_doc.remove()}, 400);
-
+        
         docs_list.forEach((el) =>{
             if (el.id == e_id) {
                 const num_of_el = docs_list.indexOf(el);
@@ -651,18 +668,15 @@ doc_types_content.addEventListener('click', (e) => {
                 new_id = `${class_name}_${max_num}`;
                 new_text_name = `${text_name}-${max_num}`;
                 new_el["id"] = new_id;
-                console.log(new_text_name.replace(' -', '-'))
-                new_el["text_name"] = new_text_name.replace(' -', '-');
+                // console.log(new_text_name.replace(' -', '-'))
+                new_el["text_name"] = new_text_name;
             };
         };
         docs_list.push(new_el);
         localStorage.setItem('docs_list', JSON.stringify(docs_list));
-        
-        add_doc(new_el);
-        
-        doc_name_insert(new_el['text_name']);
 
-        menue_toggle();
+        add_doc(new_el);
+        docs_opening(new_el);
         docs_types_toggle();
     };
 
@@ -674,12 +688,10 @@ docs_cont_content.addEventListener('DOMSubtreeModified', (e) =>{
     // console.log(docs_count);
     if (docs_count == 0) {
         // console.log('0');
-        back_but.classList.remove('active');
         docs_not_found.classList.remove('no_active');
         localStorage.removeItem('docs_list');
     }else if (docs_count == 1) {
         // console.log('1');
-        back_but.classList.add('active');
         docs_not_found.classList.add('no_active');
     }else if (docs_count > 1 && docs_count <= 2) {
         // console.log('0 > docs_count < 3');
@@ -698,6 +710,7 @@ docs_cont_content.addEventListener('DOMSubtreeModified', (e) =>{
     };
 });
 
+////////////////////////////////////////////////////////////////////////////////
 // Не работает
 // window.addEventListener('blur', () => {
 //     video.classList.remove('active');
@@ -705,27 +718,27 @@ docs_cont_content.addEventListener('DOMSubtreeModified', (e) =>{
 //     video.classList.remove('camera_on');
 //     scan_icon.classList.remove('camera_on');
 // });
-
+////////////////////////////////////////////////////////////////////////////
 
 // Label installing for Android
-let deferredPrompt;
+// let deferredPrompt;
 
-window.addEventListener('beforeinstallprompt', (e) => {
-  // Prevent the mini-infobar from appearing on mobile
-  e.preventDefault();
-  // Stash the event so it can be triggered later.
-  deferredPrompt = e;
-  // Update UI notify the user they can install the PWA
-  showInstallPromotion();
-  // Optionally, send analytics event that PWA install promo was shown.
-  console.log(`'beforeinstallprompt' event was fired.`);
-});
+// window.addEventListener('beforeinstallprompt', (e) => {
+//   // Prevent the mini-infobar from appearing on mobile
+//   e.preventDefault();
+//   // Stash the event so it can be triggered later.
+//   deferredPrompt = e;
+//   // Update UI notify the user they can install the PWA
+//   showInstallPromotion();
+//   // Optionally, send analytics event that PWA install promo was shown.
+//   console.log(`'beforeinstallprompt' event was fired.`);
+// });
 
-function showInstallPromotion(){
-    install_notif = document.getElementById('install_notif');
-    install_notif.classList.add('active');
-    setTimeout(() => {install_but.classList.remove('active'), 500});
-};
+// function showInstallPromotion(){
+//     install_notif = document.getElementById('install_notif');
+//     install_notif.classList.add('active');
+//     setTimeout(() => {install_but.classList.remove('active'), 500});
+// };
 
 // async function installing (){
 //   // Show the install prompt
