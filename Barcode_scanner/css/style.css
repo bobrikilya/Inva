@@ -223,8 +223,8 @@ body {
 }
 #session_but.active {
   transition-duration: 0.2s;
-  border: 1px solid rgba(26, 26, 26, 0.4392156863);
-  color: rgba(26, 26, 26, 0.4392156863);
+  border: 1px solid #009b08;
+  color: #009b08;
 }
 #session_but.no_active {
   border: 1px solid rgba(26, 26, 26, 0.4392156863);

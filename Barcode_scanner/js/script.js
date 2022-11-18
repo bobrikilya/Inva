@@ -94,8 +94,8 @@ new_doc_but.addEventListener('click', (e) => {
     docs_types_toggle();
 });
 cancel_but_doc_types.addEventListener('click', docs_types_toggle);
-download_but.addEventListener('click', check_act);
-download_back_but.addEventListener('click', downloading_back);
+download_but.addEventListener('click', data_downloading);
+download_back_but.addEventListener('click', downloading_back_act);
 
 session_but.addEventListener('click', sessions_cont_toggle);
 
@@ -318,38 +318,63 @@ function return_to_doc(){
 //     };
 // };
 
-function check_act(){
+function check_activ(){
+    check.classList.add('active');
+    docs_cont_content.classList.add('check_blur');
+    success.play();
     setTimeout(() => {
-        check.classList.add('active');
-        docs_cont_content.classList.add('check_blur');
-        expand_ic.classList.remove('turn_on');
-        success.play();
+        check.classList.remove('active')
+        docs_cont_content.classList.remove('check_blur')
+    }, 1600);
+};
 
-        // Docs removing
-        li_list = docs_cont_content.querySelectorAll('li');
-        
-        win_height = docs_cont.clientHeight;
-        // console.log(win_height);
-        docs_cont.style.minHeight = `${win_height}px`;
-        docs_cont.style.maxHeight = `${win_height}px`;
-        // docs_cont.style.justifyContent = 'center';
-        
-        setTimeout(() => {
-            li_list.forEach((el) =>{
-                    el.classList.add('opac');
-                    setTimeout(() => {el.remove()}, 500);
-                });
-            docs_list = [];
-            localStorage.removeItem('docs_list');
-        }, 300);
-        
+function data_downloading(){
+    check.querySelector('span').innerHTML = 'Данные <br>загружены <br>с сервера';
+    check_activ();
+};
 
+function downloading_back_act(){
+    if (docs_count != 0) {
+        if (!session_name){
+            setTimeout(() => {
+                warning.play();
+                sessions_cont_toggle();
+            }, 10);
+        }else {
+            data_downloading_back();
+        };
+    }else {
+        warning.play();
+        docs_not_found.classList.add('select');
+        setTimeout(() => {docs_not_found.classList.remove('select')}, 900);
+    };
+};
 
-        setTimeout(() => {
-            check.classList.remove('active')
-            docs_cont_content.classList.remove('check_blur')
-        }, 1400);
-    }, 700);
+function data_downloading_back(){
+    check.querySelector('span').innerHTML = 'Данные <br>выгружены <br>на сервер';
+    check_activ();
+    expand_ic.classList.remove('turn_on');
+    back_but.classList.remove('active');
+    localStorage.removeItem('last_opened_doc');
+
+    // Docs removing
+    li_list = docs_cont_content.querySelectorAll('li');
+    
+    win_height = docs_cont.clientHeight;
+    // console.log(win_height);
+    docs_cont.style.minHeight = `${win_height}px`;
+    docs_cont.style.maxHeight = `${win_height}px`;
+    // docs_cont.style.justifyContent = 'center';
+    
+    setTimeout(() => {
+        li_list.forEach((el) =>{
+                el.classList.add('opac');
+                setTimeout(() => {el.remove()}, 500);
+            });
+        docs_list = [];
+        localStorage.removeItem('docs_list');
+    }, 300);
+
     setTimeout(() => {
         docs_cont.classList.add('download_height');
         setTimeout(() => {
@@ -357,7 +382,7 @@ function check_act(){
             docs_cont.style.maxHeight = `55%`;
             docs_cont.classList.remove('download_height');
         },460);
-    }, 2200);
+    }, 1600);
 };
 
 function sessions_cont_toggle(){
@@ -433,23 +458,6 @@ function sess_input_act(){
         session_num_but_cont.style.marginTop = '1rem';
         sess_input.classList.remove('active');
         setTimeout(() => {sess_input.style.display = 'none'}, 100);
-    };
-};
-
-function downloading_back(){
-    if (docs_count != 0) {
-        if (!session_name){
-            setTimeout(() => {
-                warning.play();
-                sessions_cont_toggle();
-            }, 10);
-        }else {
-            check_act();
-        };
-    }else {
-        warning.play();
-        docs_not_found.classList.add('select');
-        setTimeout(() => {docs_not_found.classList.remove('select')}, 900);
     };
 };
 
