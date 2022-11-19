@@ -72,19 +72,27 @@ body
         color: #001affb7
     // border: 2px solid black
 
-
-#reload_but
-    left: -0.6rem
+.reload_eye
     display: flex
     justify-content: center
     align-items: center 
     height: 4rem
     width: 4rem
     border-radius: 50%
+    // border: 2px solid red
+#reload_but
+    left: -0.6rem
     &.light
         transition-duration: 0.3s
         color: #3cbe1c
-    // border: 2px solid red
+    &.toggle
+        display: none
+#big_eye_but
+    display: none
+    left: -0.3rem
+    &.toggle
+        display: flex
+
 
 #fire_but
     display: flex
@@ -318,7 +326,7 @@ body
         display: flex
     #are_u_sure_content
         width: 90%
-        max-width: 500px
+        max-width: 420px
         padding: 1.5rem 20px
         margin-bottom: -3rem
         transition: 0.2s ease-out
@@ -330,16 +338,40 @@ body
             opacity: 1
             transform: translateY(0)
         // border: 2px solid green
+        #icons_cont
+            width: 230px
+            justify-content: space-between
+            overflow: visible
+            flex-direction: row
+            // border: 2px solid green
+            i
+                display: flex
+                justify-content: center
+                align-items: center
+                width: 4rem
+                height: 4rem
+                // border: 2px solid green
+                &.fa-cloud
+                    font-size: 5rem
+                    color: #70b7c4be
+                &.fa-angles-right
+                    font-size: 3rem
+                    color: #406f9b67
+                &.fa-mobile-screen-button
+                    font-size: 5rem
+                    color: #000b479f
         #are_u_sure_text
-            width: 100%
+            margin-top: 3rem
+            width: 280px
             text-align: center
             font-size: 2.2rem
-            line-height: 2.5rem 
+            line-height: 2.5rem
             color: #1a1a1ab9
+            // border: 2px solid green
         #questions_cont
             flex-direction: row
             width: 100%
-            margin-top: 4rem
+            margin-top: 3rem
             button
                 height: 6rem
                 width: 49.5%
@@ -629,6 +661,35 @@ header
                 cursor: pointer
                 transition-duration: 0.2s
                 // border: 2px solid blue
+                &.del_toggle
+                    width: 75%
+                    margin-right: -6.5rem
+                    justify-content: center
+                    #d_info
+                        margin-left: 0
+                        width: auto
+                    #doc_icon
+                        opacity: 0
+                        transition-duration: 0.1s
+                    a
+                        right: -2rem
+                        opacity: 0
+                        pointer-events: none
+                        transform: scale(0)
+                    button
+                        pointer-events: auto
+                        opacity: 1
+                        transform: scale(1)
+                &:active
+                    box-shadow: inset 0 0 15px #1414142d
+                &.deleting
+                    transition-duration: 0.4s
+                    transform: translateX(10rem)
+                    width: 2rem
+                    opacity: 0
+                &.opac
+                    transition-duration: 0.5s
+                    opacity: 0
                 #doc_icon
                     display: flex
                     justify-content: center
@@ -691,10 +752,10 @@ header
                         pointer-events: none
                 button //trash
                     position: absolute
-                    left: -4.5rem
+                    left: -5.8rem
                     background-color: #ff67672d
-                    width: 4rem
-                    height: 4rem
+                    width: 5rem
+                    height: 5rem
                     color: #a30101
                     transition-duration: 0.2s
                     pointer-events: none
@@ -702,35 +763,6 @@ header
                     transform: scale(0)
                     i
                         pointer-events: none
-                &.del_toggle
-                    width: 80%
-                    margin-right: -4.5rem
-                    justify-content: center
-                    #d_info
-                        margin-left: 0
-                        width: auto
-                    #doc_icon
-                        opacity: 0
-                        transition-duration: 0.1s
-                    a
-                        right: -2rem
-                        opacity: 0
-                        pointer-events: none
-                        transform: scale(0)
-                    button
-                        pointer-events: auto
-                        opacity: 1
-                        transform: scale(1)
-                &:active
-                    box-shadow: inset 0 0 15px #1414142d
-                &.deleting
-                    transition-duration: 0.4s
-                    transform: translateX(10rem)
-                    width: 2rem
-                    opacity: 0
-                &.opac
-                    transition-duration: 0.5s
-                    opacity: 0
             li:first-child
                 margin-top: 2.2rem
             // li:last-child

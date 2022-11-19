@@ -18,6 +18,7 @@ const cancel_but_address = document.getElementById('cancel_but_address');
 //--------------
 const header_cont = document.getElementById('header_cont');
 const reload_but = document.getElementById('reload_but');
+const big_eye_but = document.getElementById('big_eye_but');
 const session_but = document.getElementById('session_but');
 const all_sessions_cont = document.getElementById('all_sessions_cont');
 const all_sess_cont_content = document.getElementById('all_sess_cont_content');
@@ -103,11 +104,13 @@ let download = false;
 
 cancel_but_doc_types.addEventListener('click', docs_types_toggle);
 download_but.addEventListener('click', () =>{
+    are_u_sure_content.querySelector('#icons_cont').style.flexDirection = "row";
     are_u_sure_content.querySelector('#are_u_sure_text').innerText = 'Загрузить данные с сервера?';
     download = 'download';
     are_u_sure_toggle();
 });
 download_back_but.addEventListener('click', () =>{
+    are_u_sure_content.querySelector('#icons_cont').style.flexDirection = "row-reverse";
     are_u_sure_content.querySelector('#are_u_sure_text').innerText = 'Выгрузить данные на сервер?';
     download = 'download_back';
     are_u_sure_toggle();
@@ -294,6 +297,8 @@ function menue_toggle(){
     fire_but.classList.toggle('toggle');
     menue_but.classList.toggle('toggle');
     back_but.classList.toggle('toggle');
+    reload_but.classList.toggle('toggle');
+    big_eye_but.classList.toggle('toggle');
     header.classList.toggle('turn_off');
     water_tag.classList.toggle('turn_on');
 
