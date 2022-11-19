@@ -25,6 +25,10 @@ body
     // background-color: #b8d6e0ad
     overflow: hidden
 
+button, a, i
+    &:active
+        opacity: 0.7
+
 #container
     height: 100vh
     width: 100vw
@@ -68,8 +72,6 @@ body
     font-size: 2.7rem
     cursor: pointer
     transition-duration: 0.2s
-    &:active
-        color: #001affb7
     // border: 2px solid black
 
 .reload_eye
@@ -328,7 +330,7 @@ body
         width: 90%
         max-width: 420px
         padding: 1.5rem 20px
-        margin-bottom: -3rem
+        margin-bottom: -1rem
         transition: 0.2s ease-out
         opacity: 0
         transform: translateY(-1.5rem)
@@ -339,8 +341,8 @@ body
             transform: translateY(0)
         // border: 2px solid green
         #icons_cont
-            width: 230px
             justify-content: space-between
+            width: 260px
             overflow: visible
             flex-direction: row
             // border: 2px solid green
@@ -352,16 +354,16 @@ body
                 height: 4rem
                 // border: 2px solid green
                 &.fa-cloud
-                    font-size: 5rem
+                    font-size: 6.5rem
                     color: #70b7c4be
                 &.fa-angles-right
                     font-size: 3rem
                     color: #406f9b67
                 &.fa-mobile-screen-button
-                    font-size: 5rem
+                    font-size: 6.5rem
                     color: #000b479f
         #are_u_sure_text
-            margin-top: 3rem
+            margin-top: 7rem
             width: 280px
             text-align: center
             font-size: 2.2rem
@@ -378,13 +380,9 @@ body
             #no_but
                 margin-right: 5px
                 background-color: #e95b6e
-                &:active
-                    background-color: #b12f41d3
             #yes_but
                 margin-left: 5px
                 background-color: #4ff1a0
-                &:active
-                    background-color: #44c987
 
 
 header
@@ -585,7 +583,7 @@ header
             i
                 margin-right: -1rem
                 font-size: 4.7rem
-                color: #17c200d3
+                color: #17c20086
             span
                 margin-top: 1.1rem
                 font-size: 1.5rem
@@ -945,15 +943,11 @@ input
 #search_butt
     background-color: #4ff1a0
     width: 49.5%
-    &:active
-        background-color: #44c987
 
 #clear_butt
     position: relative
     background-color: #e95b6e
     width: 49.5%
-    &:active
-        background-color: #b12f41d3
 
 #water_tag
     display: none
