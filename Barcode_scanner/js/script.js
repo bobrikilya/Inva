@@ -41,6 +41,11 @@ const docs_info = document.getElementById('docs_info');
 const docs_not_found = document.getElementById('docs_not_found');
 const expand_ic = document.getElementById('expand_ic');
 
+const are_u_sure_cont = document.getElementById('are_u_sure_cont');
+const are_u_sure_content = document.getElementById('are_u_sure_content');
+const no_but = are_u_sure_cont.querySelector('#no_but');
+const yes_but = are_u_sure_cont.querySelector('#yes_but');
+
 const menue_sec_cont = document.getElementById('menue_sec_cont');
 const new_doc_but = document.getElementById('new_doc_but');
 const icons_bar = document.getElementById('icons_bar');
@@ -93,9 +98,20 @@ new_doc_but.addEventListener('click', (e) => {
     e.preventDefault();
     docs_types_toggle();
 });
+
+let download = false;
+
 cancel_but_doc_types.addEventListener('click', docs_types_toggle);
-download_but.addEventListener('click', data_downloading);
-download_back_but.addEventListener('click', downloading_back_act);
+download_but.addEventListener('click', () =>{
+    are_u_sure_content.querySelector('#are_u_sure_text').innerText = 'Загрузить данные с сервера?';
+    download = 'download';
+    are_u_sure_toggle();
+});
+download_back_but.addEventListener('click', () =>{
+    are_u_sure_content.querySelector('#are_u_sure_text').innerText = 'Выгрузить данные на сервер?';
+    download = 'download_back';
+    are_u_sure_toggle();
+});
 
 session_but.addEventListener('click', sessions_cont_toggle);
 
@@ -107,6 +123,19 @@ give_name_but.addEventListener('click', sess_input_act);
 
 fire_but.addEventListener('click', full_reset);
 // fire_but.addEventListener('click', installing);
+
+no_but.addEventListener('click', () =>{
+    are_u_sure_toggle();
+});
+yes_but.addEventListener('click', () =>{
+    if (download == 'download') {
+        are_u_sure_toggle();
+        data_downloading();
+    }else if (download == 'download_back') {
+        are_u_sure_toggle();
+        downloading_back_act();
+    }else are_u_sure_toggle();
+});
 
 const doc = document.documentElement;
 
@@ -291,7 +320,7 @@ function menue_toggle(){
 };
 
 function doc_name_insert(doc_name){
-    session_but.innerText = doc_name; ///lowercase 
+    session_but.innerText = doc_name;
     session_but.classList.add('no_active');
 };
 
@@ -328,9 +357,16 @@ function check_activ(){
     }, 1600);
 };
 
+function are_u_sure_toggle(){
+    are_u_sure_cont.classList.toggle('toggle');
+    setTimeout(() => {are_u_sure_content.classList.toggle('toggle')}, 10);
+};
+
 function data_downloading(){
     check.querySelector('span').innerHTML = 'Данные <br>загружены <br>с сервера';
     check_activ();
+    expand_ic.classList.add('turn_off');
+    setTimeout(() => {expand_ic.classList.remove('turn_off')}, 1900);
 };
 
 function downloading_back_act(){

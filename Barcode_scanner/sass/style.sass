@@ -308,6 +308,53 @@ body
     -webkit-backdrop-filter: blur(20px)
 
 
+#are_u_sure_cont
+    position: fixed
+    z-index: 9
+    height: 100%
+    width: 100%
+    display: none
+    &.toggle
+        display: flex
+    #are_u_sure_content
+        width: 90%
+        max-width: 500px
+        padding: 1.5rem 20px
+        margin-bottom: -4rem
+        transition: 0.2s ease-out
+        opacity: 0
+        transform: translateY(-1.5rem)
+        scroll-behavior: smooth
+        // border: 2px solid red
+        &.toggle
+            opacity: 1
+            transform: translateY(0)
+        // border: 2px solid green
+        #are_u_sure_text
+            width: 100%
+            text-align: center
+            font-size: 2.2rem
+            line-height: 2.5rem 
+            color: #1a1a1ab9
+        #questions_cont
+            flex-direction: row
+            width: 100%
+            margin-top: 4rem
+            button
+                height: 5rem
+                width: 49.5%
+            #no_but
+                margin-right: 5px
+                background-color: #e95b6e
+                &:active
+                    background-color: #b12f41d3
+            #yes_but
+                margin-left: 5px
+                background-color: #4ff1a0
+                &:active
+                    background-color: #44c987
+
+
 header
     display: flex
     flex-direction: column
@@ -496,7 +543,7 @@ header
             width: 100%
             height: 100%
             text-align: center
-            border-radius: 25px 
+            border-radius: 25px
             pointer-events: none
             transition-duration: 0.8s
             // border: 2px solid yellow
@@ -510,7 +557,7 @@ header
                 margin-top: 1.1rem
                 font-size: 1.5rem
                 color: #18191d
-                line-height: 1.6rem 
+                line-height: 1.6rem
                 // border: 2px solid yellow
         #docs_cont_content
             justify-content: center
@@ -626,7 +673,7 @@ header
                     justify-content: center
                     align-items: center
                     height: 100%
-                    width: 5rem
+                    width: 6rem
                     font-size: 1.5rem
                     border-radius: 25px
                     cursor: pointer
@@ -698,6 +745,8 @@ header
         // border: 2px solid black
         &.turn_on
             opacity: 1
+        &.turn_off
+            opacity: 0
     #menue_sec_cont
         width: 80%
         opacity: 1
