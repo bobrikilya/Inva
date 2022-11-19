@@ -660,7 +660,8 @@ header li {
   opacity: 1;
 }
 #menue_bar #docs_cont #check i {
-  font-size: 5.3rem;
+  margin-right: -1rem;
+  font-size: 4.7rem;
   color: rgba(23, 194, 0, 0.8274509804);
 }
 #menue_bar #docs_cont #check span {
@@ -682,7 +683,7 @@ header li {
 }
 #menue_bar #docs_cont #docs_cont_content.check_blur {
   filter: blur(50px);
-  background-color: #fff;
+  background-color: rgba(196, 255, 255, 0.2039215686);
 }
 #menue_bar #docs_cont #docs_cont_content::-webkit-scrollbar {
   width: 0;
