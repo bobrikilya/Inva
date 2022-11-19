@@ -130,10 +130,10 @@ no_but.addEventListener('click', () =>{
 yes_but.addEventListener('click', () =>{
     if (download == 'download') {
         are_u_sure_toggle();
-        data_downloading();
+        setTimeout(data_downloading, 300);
     }else if (download == 'download_back') {
         are_u_sure_toggle();
-        downloading_back_act();
+        setTimeout(downloading_back_act, 300);
     }else are_u_sure_toggle();
 });
 
