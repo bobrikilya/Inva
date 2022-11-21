@@ -38,7 +38,6 @@ const menue_bar = document.getElementById('menue_bar');
 
 const docs_cont = document.getElementById('docs_cont');
 const docs_cont_content = document.getElementById('docs_cont_content');
-const docs_info = document.getElementById('docs_info');
 const docs_not_found = document.getElementById('docs_not_found');
 const expand_ic = document.getElementById('expand_ic');
 
@@ -591,12 +590,9 @@ sess_input.addEventListener('blur', () => {
 });
 
 docs_cont_content.addEventListener('scroll', () => {
-    if (docs_cont_content.scrollTop > 1) docs_info.classList.add('hiden')
-    else docs_info.classList.remove('hiden');
-
     const scrollBottom = docs_cont_content.scrollHeight - docs_cont_content.scrollTop - docs_cont_content.clientHeight
     // console.log(scrollBottom);
-    if (scrollBottom > 1) {
+    if (scrollBottom > 60) {
         expand_ic.classList.add('turn_on');
     }else expand_ic.classList.remove('turn_on');
 });
@@ -662,6 +658,13 @@ docs_cont_content.addEventListener('click', (e) => {
 
         full_doc.classList.add('deleting');
         setTimeout(() => {full_doc.remove()}, 400);
+
+        
+        setTimeout(() => {
+            if (docs_cont_content.clientHeight + 60 > docs_cont_content.scrollHeight) {
+                expand_ic.classList.remove('turn_on');
+            };
+        }, 500);
         
         docs_list.forEach((el) =>{
             if (el.id == e_id) {
@@ -746,14 +749,16 @@ docs_cont_content.addEventListener('DOMSubtreeModified', (e) =>{
         docs_cont.style.justifyContent = 'center';
         docs_cont_content.style.overflow = 'hidden';
         expand_ic.classList.remove('turn_on');
-    }else if (docs_count > 2){
+    }else if (docs_count > 3){
         // console.log('> 3');
         docs_cont_content.style.justifyContent = 'flex-start';
         docs_cont.style.justifyContent = 'flex-start';
         docs_cont_content.style.overflow = 'auto';
-        // console.log(docs_cont_content.clientHeight);
-        // console.log(docs_cont_content.scrollHeight);
-        if (docs_cont_content.clientHeight + 25 < docs_cont_content.scrollHeight) expand_ic.classList.add('turn_on');
+        // console.log('clientHeight ' + docs_cont_content.clientHeight);
+        // console.log('scrollHeight ' + docs_cont_content.scrollHeight);
+        if (docs_cont_content.clientHeight + 60 < docs_cont_content.scrollHeight) {
+        expand_ic.classList.add('turn_on');
+        }else expand_ic.classList.remove('turn_on');
     };
 });
 

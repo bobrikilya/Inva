@@ -678,7 +678,7 @@ header li {
 #menue_bar #docs_cont {
   width: 100%;
   min-height: 15rem;
-  max-height: 56%;
+  max-height: 59%;
   margin-top: -1rem;
   border-radius: 25px;
   justify-content: center;
@@ -724,7 +724,7 @@ header li {
 }
 #menue_bar #docs_cont #check span {
   margin-top: 2.5rem;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   color: #18191d;
   line-height: 1.6rem;
 }
@@ -748,7 +748,7 @@ header li {
 }
 #menue_bar #docs_cont #docs_cont_content #docs_not_found {
   position: absolute;
-  margin-top: -2rem;
+  margin-top: -1.4rem;
   font-size: 1.7rem;
   color: rgba(26, 26, 26, 0.8901960784);
   transition-duration: 0.3s;
@@ -929,7 +929,7 @@ header li {
   color: rgba(24, 25, 29, 0.0941176471);
   font-size: 3.5rem;
   pointer-events: none;
-  transition-duration: 0.3s;
+  transition-duration: 0.6s;
   opacity: 0;
   height: 3rem;
 }
@@ -940,6 +940,7 @@ header li {
   opacity: 0;
 }
 #menue_bar #menue_sec_cont {
+  margin-top: -0.7rem;
   width: 80%;
   opacity: 1;
   pointer-events: auto;
