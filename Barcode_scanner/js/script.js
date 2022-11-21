@@ -368,7 +368,7 @@ function are_u_sure_toggle(){
 };
 
 function data_downloading(){
-    check.querySelector('span').innerHTML = 'Данные <br>загружены <br>с сервера';
+    check.querySelector('span').innerHTML = 'Данные загружены <br>с сервера';
     check_activ();
     expand_ic.classList.add('turn_off');
     setTimeout(() => {expand_ic.classList.remove('turn_off')}, 1900);
@@ -392,7 +392,7 @@ function downloading_back_act(){
 };
 
 function data_downloading_back(){
-    check.querySelector('span').innerHTML = 'Данные <br>выгружены <br>на сервер';
+    check.querySelector('span').innerHTML = 'Данные выгружены <br>на сервер';
     check_activ();
     expand_ic.classList.remove('turn_on');
     back_but.classList.remove('active');
@@ -535,15 +535,13 @@ function add_doc(new_el){
 };
 
 function docs_opening(doc_data){
-    // console.log(doc_data['text_name']);
-    doc_name_insert(doc_data['text_name']);
-    localStorage.setItem('last_opened_doc', JSON.stringify(doc_data));
-    back_but.classList.add('active');
-    menue_toggle();
-    // docs_list.forEach(el => {
-    //     if (doc_id == el['id']) {
-    //     };
-    // });
+    // console.log(doc_data['class_name']);
+    if (doc_data['class_name'] == 'scan'){
+        doc_name_insert(doc_data['text_name']);
+        localStorage.setItem('last_opened_doc', JSON.stringify(doc_data));
+        back_but.classList.add('active');
+        menue_toggle();
+    };
 };
 
 document.addEventListener('click', (event) => {
