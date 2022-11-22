@@ -252,12 +252,14 @@ button, a, i
     h2
         font-size: 1.9rem
     #session_num_content
+        width: 90%
+        max-width: 350px
+        min-width: 310px
         flex-shrink: 1
         opacity: 0.5
         transition: 0.2s ease-out
         transform: translateY(-1rem)
-        padding: 1rem
-        // border: 3px solid #1a1a1a71
+        // border: 3px solid black
         &.toggle
             opacity: 1
             transform: translateY(0)
@@ -297,24 +299,25 @@ button, a, i
             overflow: visible
             // border: 2px solid red
             &.focus
+                margin-top: 0
                 position: fixed
         #sess_input
             display: none
             width: 100%
             font-size: 1.6rem
-            height: 5rem
+            height: 4.7rem
             margin-bottom: 1rem
             &.active
                 display: flex
         #session_num_but_cont
             transition-duration: 0.2s
             flex-direction: row
+            justify-content: space-between
             width: 100%
             // border: 2px solid green
             button
-                width: 10rem
-                height: 6rem
-                margin: 0 3px
+                width: 49%
+                height: 5.5rem
                 font-size: 1.5rem
             #give_name_but
                 background-color: #13c6e644
@@ -397,7 +400,7 @@ button, a, i
             margin-top: 4rem
             button
                 width: 10rem
-                height: 6rem
+                height: 5.5rem
             #no_but
                 margin-right: 5px
                 background-color: #e95b6e

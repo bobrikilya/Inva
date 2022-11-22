@@ -336,11 +336,13 @@ button:active, a:active, i:active {
   font-size: 1.9rem;
 }
 #ur_session_num_cont #session_num_content {
+  width: 90%;
+  max-width: 350px;
+  min-width: 310px;
   flex-shrink: 1;
   opacity: 0.5;
   transition: 0.2s ease-out;
   transform: translateY(-1rem);
-  padding: 1rem;
 }
 #ur_session_num_cont #session_num_content.toggle {
   opacity: 1;
@@ -385,13 +387,14 @@ button:active, a:active, i:active {
   overflow: visible;
 }
 #ur_session_num_cont #session_num_content #sess_input_cont.focus {
+  margin-top: 0;
   position: fixed;
 }
 #ur_session_num_cont #session_num_content #sess_input {
   display: none;
   width: 100%;
   font-size: 1.6rem;
-  height: 5rem;
+  height: 4.7rem;
   margin-bottom: 1rem;
 }
 #ur_session_num_cont #session_num_content #sess_input.active {
@@ -400,12 +403,12 @@ button:active, a:active, i:active {
 #ur_session_num_cont #session_num_content #session_num_but_cont {
   transition-duration: 0.2s;
   flex-direction: row;
+  justify-content: space-between;
   width: 100%;
 }
 #ur_session_num_cont #session_num_content #session_num_but_cont button {
-  width: 10rem;
-  height: 6rem;
-  margin: 0 3px;
+  width: 49%;
+  height: 5.5rem;
   font-size: 1.5rem;
 }
 #ur_session_num_cont #session_num_content #session_num_but_cont #give_name_but {
@@ -497,7 +500,7 @@ button:active, a:active, i:active {
 }
 #are_u_sure_cont #are_u_sure_content #questions_cont button {
   width: 10rem;
-  height: 6rem;
+  height: 5.5rem;
 }
 #are_u_sure_cont #are_u_sure_content #questions_cont #no_but {
   margin-right: 5px;
