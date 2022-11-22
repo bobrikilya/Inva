@@ -367,7 +367,7 @@ button:active, a:active, i:active {
 }
 #ur_session_num_cont #session_num_content #sess_info_cont h3 {
   position: relative;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   font-size: 1.8rem;
 }
 #ur_session_num_cont #session_num_content #sess_info_cont h3::after {
@@ -375,7 +375,7 @@ button:active, a:active, i:active {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  bottom: -1.7rem;
+  bottom: -1.5rem;
   width: 8rem;
   height: 2px;
   background-color: rgba(0, 28, 122, 0.0941176471);
@@ -383,11 +383,11 @@ button:active, a:active, i:active {
 }
 #ur_session_num_cont #session_num_content #sess_input_cont {
   width: 100%;
-  margin-top: 3rem;
+  margin-top: 2.8rem;
   overflow: visible;
 }
 #ur_session_num_cont #session_num_content #sess_input_cont.focus {
-  margin-top: 0;
+  margin-top: -1rem;
   position: fixed;
 }
 #ur_session_num_cont #session_num_content #sess_input {
@@ -395,7 +395,7 @@ button:active, a:active, i:active {
   width: 100%;
   font-size: 1.6rem;
   height: 4.7rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 #ur_session_num_cont #session_num_content #sess_input.active {
   display: flex;
@@ -487,7 +487,7 @@ button:active, a:active, i:active {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  bottom: -2rem;
+  bottom: -1.5rem;
   width: 8rem;
   height: 2px;
   background-color: rgba(0, 28, 122, 0.0941176471);
@@ -496,7 +496,7 @@ button:active, a:active, i:active {
 #are_u_sure_cont #are_u_sure_content #questions_cont {
   flex-direction: row;
   width: 100%;
-  margin-top: 4rem;
+  margin-top: 3rem;
 }
 #are_u_sure_cont #are_u_sure_content #questions_cont button {
   width: 10rem;
@@ -658,27 +658,28 @@ header li {
 #store_address_cont #store_address_content {
   padding-top: 4rem;
   padding-bottom: 2.5rem;
-  width: 90%;
+  width: 85%;
   max-width: 350px;
-  max-height: 43rem;
-  opacity: 1;
-  overflow: hidden;
-  flex-wrap: wrap;
-  flex-basis: 0 1;
-  flex-direction: row;
 }
-#store_address_cont #store_address_content li {
-  margin: 0 5px;
-  width: 45%;
+#store_address_cont #store_address_content div {
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
+}
+#store_address_cont #store_address_content div span {
+  width: 48%;
+  margin: 0 3px;
+}
+#store_address_cont #store_address_content div span li {
+  margin: 3px;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 5.7rem;
   font-size: 1.4rem;
-  background-color: rgba(134, 144, 235, 0.4941176471);
+  background-color: rgba(115, 145, 209, 0.5019607843);
 }
-#store_address_cont #store_address_content li a {
-  height: 5rem;
+#store_address_cont #store_address_content div span li a {
+  height: 6rem;
   padding: 10px 10px;
   color: #18191d;
 }
@@ -715,13 +716,13 @@ header li {
 #menue_bar #docs_cont #check {
   position: absolute;
   z-index: 10;
-  opacity: 0;
   width: 100%;
   height: 100%;
   text-align: center;
   border-radius: 25px;
   pointer-events: none;
   transition-duration: 0.8s;
+  opacity: 0;
 }
 #menue_bar #docs_cont #check.active {
   transition-duration: 0.6s;
@@ -737,8 +738,8 @@ header li {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  bottom: -1.2rem;
-  width: 8rem;
+  bottom: -1.6rem;
+  width: 6rem;
   height: 2px;
   background-color: rgba(29, 24, 26, 0.1764705882);
   border-radius: 25px;
@@ -766,6 +767,19 @@ header li {
 }
 #menue_bar #docs_cont #docs_cont_content::-webkit-scrollbar {
   width: 0;
+}
+#menue_bar #docs_cont #docs_cont_content #docs_info {
+  position: absolute;
+  top: 0.7rem;
+  font-size: 1.2rem;
+  color: rgba(26, 26, 26, 0.568627451);
+  transform: translateY(0);
+  opacity: 1;
+  transition: 0.1s ease-out;
+}
+#menue_bar #docs_cont #docs_cont_content #docs_info.hiden {
+  transform: translateY(0.8rem);
+  opacity: 0;
 }
 #menue_bar #docs_cont #docs_cont_content #docs_not_found {
   position: absolute;
@@ -800,19 +814,6 @@ header li {
 }
 #menue_bar #docs_cont #docs_cont_content #docs_not_found.no_active {
   transition-duration: 0s;
-  opacity: 0;
-}
-#menue_bar #docs_cont #docs_cont_content #docs_info {
-  position: absolute;
-  top: 0.7rem;
-  font-size: 1.2rem;
-  color: rgba(26, 26, 26, 0.568627451);
-  transform: translateY(0);
-  opacity: 1;
-  transition: 0.1s ease-out;
-}
-#menue_bar #docs_cont #docs_cont_content #docs_info.hiden {
-  transform: translateY(0.8rem);
   opacity: 0;
 }
 #menue_bar #docs_cont #docs_cont_content li {

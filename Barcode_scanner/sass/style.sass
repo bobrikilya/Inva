@@ -281,32 +281,32 @@ button, a, i
                 // border: 2px solid brown
             h3
                 position: relative
-                margin-top: 1rem
+                margin-top: 1.5rem
                 font-size: 1.8rem
                 &::after
                     content: ''
                     position: absolute
                     left: 50%
                     transform: translateX(-50%)
-                    bottom: -1.7rem
+                    bottom: -1.5rem
                     width: 8rem
                     height: 2px
                     background-color: #001c7a18
                     border-radius: 25px
         #sess_input_cont
             width: 100%
-            margin-top: 3rem
+            margin-top: 2.8rem
             overflow: visible
             // border: 2px solid red
             &.focus
-                margin-top: 0
+                margin-top: -1rem
                 position: fixed
         #sess_input
             display: none
             width: 100%
             font-size: 1.6rem
             height: 4.7rem
-            margin-bottom: 1rem
+            margin-bottom: 0.5rem
             &.active
                 display: flex
         #session_num_but_cont
@@ -389,7 +389,7 @@ button, a, i
                 position: absolute
                 left: 50%
                 transform: translateX(-50%)
-                bottom: -2rem
+                bottom: -1.5rem
                 width: 8rem
                 height: 2px
                 background-color: #001c7a18
@@ -397,7 +397,7 @@ button, a, i
         #questions_cont
             flex-direction: row
             width: 100%
-            margin-top: 4rem
+            margin-top: 3rem
             button
                 width: 10rem
                 height: 5.5rem
@@ -538,30 +538,31 @@ header
     #store_address_content
         padding-top: 4rem
         padding-bottom: 2.5rem
-        width: 90%
+        width: 85%
         max-width: 350px
-        max-height: 43rem
-        opacity: 1
-        overflow: hidden
-        flex-wrap: wrap
-        flex-basis: 0 1
-        flex-direction: row
         // border: 2px solid red
-        li
-            margin: 0 5px
-            width: 45%
-            display: flex
-            align-items: center
-            justify-content: center
-            min-height: 5.7rem
-            font-size: 1.4rem
-            background-color: #8690eb7e
-            // border: 2px solid orange
-            a
-                height: 5rem
-                padding: 10px 10px
-                color: #18191d
-                // border: 2px solid red
+        div
+            flex-direction: row
+            width: 100%
+            justify-content: space-around
+            // border: 2px solid white
+            span
+                width: 48%
+                margin: 0 3px
+                // border: 2px solid orange
+                li
+                    margin: 3px
+                    display: flex
+                    align-items: center
+                    justify-content: center
+                    font-size: 1.4rem
+                    background-color: #7391d180
+                    // border: 2px solid orange
+                    a
+                        height: 6rem
+                        padding: 10px 10px
+                        color: #18191d
+                        // border: 2px solid red
 
 
 #menue_bar
@@ -595,13 +596,13 @@ header
         #check
             position: absolute
             z-index: 10
-            opacity: 0
             width: 100%
             height: 100%
             text-align: center
             border-radius: 25px
             pointer-events: none
             transition-duration: 0.8s
+            opacity: 0
             // border: 2px solid yellow
             &.active
                 transition-duration: 0.6s
@@ -615,8 +616,8 @@ header
                     position: absolute
                     left: 50%
                     transform: translateX(-50%)
-                    bottom: -1.2rem
-                    width: 8rem
+                    bottom: -1.6rem
+                    width: 6rem
                     height: 2px
                     background-color: #1d181a2d
                     border-radius: 25px
@@ -642,6 +643,17 @@ header
                 background-color: #c4ffff34
             &::-webkit-scrollbar
                 width: 0
+            #docs_info
+                position: absolute
+                top: 0.7rem
+                font-size: 1.2rem
+                color: #1a1a1a91
+                transform: translateY(0)
+                opacity: 1
+                transition: 0.1s ease-out
+                &.hiden
+                    transform: translateY(0.8rem)
+                    opacity: 0
             #docs_not_found
                 position: absolute
                 margin-top: -1.4rem
@@ -672,17 +684,6 @@ header
                     color: red
                 &.no_active
                     transition-duration: 0s
-                    opacity: 0
-            #docs_info
-                position: absolute
-                top: 0.7rem
-                font-size: 1.2rem
-                color: #1a1a1a91
-                transform: translateY(0)
-                opacity: 1
-                transition: 0.1s ease-out
-                &.hiden
-                    transform: translateY(0.8rem)
                     opacity: 0
             li
                 display: flex

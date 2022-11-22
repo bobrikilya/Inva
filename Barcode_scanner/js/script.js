@@ -689,6 +689,7 @@ docs_cont_content.addEventListener('click', (e) => {
 
 store_address_content.addEventListener('click', (e) => {
     e.preventDefault();
+    e.stopPropagation();
     // const id = e.target.getAttribute('id');
     const tag = e.target.tagName;
     // console.log(tag);
