@@ -1,5 +1,5 @@
 
-const container = document.getElementById('container');
+const main_container = document.getElementById('main_container');
 
 //--------------
 const ur_session_num_cont = document.getElementById('ur_session_num_cont');
@@ -18,7 +18,7 @@ const store_address_content = document.getElementById('store_address_content');
 const cancel_but_address = document.getElementById('cancel_but_address');
 
 //--------------
-const header_cont = document.getElementById('header_cont');
+const head_cont = document.getElementById('head_cont');
 const reload_but = document.getElementById('reload_but');
 const big_eye_but = document.getElementById('big_eye_but');
 const session_but = document.getElementById('session_but');
@@ -36,7 +36,7 @@ const back_but = document.getElementById('back_but');
 //--------------
 
 const header = document.querySelector('header');
-const menue_bar = document.getElementById('menue_bar');
+const menue_cont = document.getElementById('menue_cont');
 
 const docs_cont = document.getElementById('docs_cont');
 const docs_cont_content = document.getElementById('docs_cont_content');
@@ -321,7 +321,7 @@ function menue_toggle(){
     main_block.classList.toggle('toggle');
     input_block.classList.toggle('toggle');
 
-    setTimeout(() => {menue_bar.classList.toggle('toggle')}, 10);
+    setTimeout(() => {menue_cont.classList.toggle('toggle')}, 10);
 };
 
 function doc_name_insert(doc_name){
@@ -336,7 +336,7 @@ function return_to_doc(){
 // function doc_up_moving(elem){
 //     const first_doc = docs_cont_content.querySelector('li');
 //     if (elem.getAttribute('id') != first_doc.getAttribute('id')) {
-//         // Moving in container
+//         // Moving in main_container
 //         elem.remove();
 //         docs_cont_content.insertBefore(elem, first_doc);
 
@@ -538,11 +538,14 @@ function docs_opening(doc_data){
 
 document.addEventListener('click', (event) => {
     if (all_sessions_cont.classList.contains('toggle')){
-        
         const sessions_cont_inside = event.composedPath().includes(all_sessions_cont);
         const session_but_inside = event.composedPath().includes(session_but);
+        // const docs_cont_inside = event.composedPath().includes(docs_cont);
+        // console.log(sessions_cont_inside);
+        // console.log(session_but_inside);
+        // console.log(docs_cont_inside);
 
-        if (!sessions_cont_inside && !session_but_inside) { 
+        if (!sessions_cont_inside && !session_but_inside ) { 
             all_sessions_cont.classList.remove('toggle');
             all_sess_cont_content.classList.remove('toggle');
         };
@@ -812,23 +815,23 @@ docs_cont_content.addEventListener('DOMSubtreeModified', (e) =>{
 
 function input_focus(){
     // input_block.style.paddingBottom = "10vh";
-    // container.style.justifyContent = 'flex-end';
+    // main_container.style.justifyContent = 'flex-end';
 
     // else input_block.style.paddingBottom = '50vh';
-    // container.style.justifyContent = 'flex-end';
+    // main_container.style.justifyContent = 'flex-end';
     main_block.style.display = 'none';
     water_tag.style.display = 'none';
-    header_cont.style.display = 'none';
+    head_cont.style.display = 'none';
     window.scrollTo(0, document.body.scrollHeight);
 };
 
 function input_blur(){
 
     // input_block.style.paddingBottom = "5vh";
-    // container.style.justifyContent = 'center';
+    // main_container.style.justifyContent = 'center';
 
     main_block.style.display = 'flex';
-    header_cont.style.display = 'flex';
+    head_cont.style.display = 'flex';
     water_tag.style.display = 'inline-block';
     input.blur();
 };
