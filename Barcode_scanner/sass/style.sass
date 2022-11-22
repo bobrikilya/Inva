@@ -246,17 +246,17 @@ button, a, i
     flex-shrink: 1
     transition: 0.2s ease-out
     bottom: auto
+    // border: 3px solid #1a1a1a71
     &.toggle
         display: flex
     h2
-        font-size: 2rem
+        font-size: 1.9rem
     #session_num_content
         flex-shrink: 1
         opacity: 0.5
         transition: 0.2s ease-out
         transform: translateY(-1rem)
-        padding: 3rem
-        // border-radius: 25px
+        padding: 1rem
         // border: 3px solid #1a1a1a71
         &.toggle
             opacity: 1
@@ -276,10 +276,22 @@ button, a, i
         font-size: 5rem
         // border: 2px solid brown
     h3
+        position: relative
         margin-top: 1rem
-        font-size: 1.7rem
+        font-size: 1.8rem
+        &::after
+            content: ''
+            position: absolute
+            left: 50%
+            transform: translateX(-50%)
+            bottom: -1.7rem
+            width: 8rem
+            height: 2px
+            background-color: #001c7a18
+            border-radius: 25px
     #sess_input_cont
         width: 100%
+        margin-top: 2rem
         // border: 2px solid red
     #sess_input
         display: none
@@ -304,8 +316,9 @@ button, a, i
         width: 100%
         // border: 2px solid green
         button
+            width: 9rem
             margin: 0 3px
-            font-size: 1.2
+            font-size: 1.5rem
         #give_name_but
             background-color: #13c6e644
         #next_but
@@ -362,13 +375,12 @@ button, a, i
                 &.fa-mobile-screen-button
                     font-size: 6.5rem
                     color: #000b479f
-
         #are_u_sure_text
             position: relative
             margin-top: 5rem
             width: 280px
             text-align: center
-            font-size: 2.2rem
+            font-size: 1.8rem
             line-height: 2.5rem
             color: #1a1a1ab9
             // border: 2px solid green
@@ -490,6 +502,9 @@ header
     &.toggle
         display: flex
     #doc_types_content
+        width: 80%
+        max-width: 350px
+        // border: 2px solid orange
         li
             margin-top: 0.7rem
             min-height: 5.5rem
@@ -523,8 +538,7 @@ header
     #store_address_content
         padding-top: 4rem
         padding-bottom: 2.5rem
-        // max-width: 93%
-        max-width: 330px
+        max-width: 345px
         max-height: 43rem
         opacity: 1
         overflow: hidden
@@ -539,9 +553,8 @@ header
             align-items: center
             justify-content: center
             min-height: 5.7rem
-            font-size: 1.5rem
-            background-color: #ffffff49
-            // margin-top: -5.5rem
+            font-size: 1.4rem
+            background-color: #8690eb7e
             // border: 2px solid orange
             a
                 height: 5rem
@@ -657,6 +670,7 @@ header
                     transform: scale(1.1)
                     color: red
                 &.no_active
+                    transition-duration: 0s
                     opacity: 0
             #docs_info
                 position: absolute
@@ -801,11 +815,8 @@ header
         &.turn_off
             opacity: 0
     #menue_sec_cont
-        margin-top: -0.7rem
+        margin-top: -0.9rem
         width: 80%
-        opacity: 1
-        pointer-events: auto
-        transition-duration: 0.2s
         // border: 2px solid black
     #icons_bar
         display: flex
@@ -820,7 +831,7 @@ header
             cursor: pointer
             display: flex
             justify-content: center
-            align-items: center 
+            align-items: center
             height: 5rem
             width: 5rem
             border-radius: 50%
@@ -845,14 +856,13 @@ header
         font-size: 1.55rem
         margin-top: 2.5vh
         margin-bottom: 2vh
-
-#my_tag
-    margin-top: 0.5rem
-    width: 100%
-    font-size: 1.1rem
-    text-align: center
-    color: #272b3d88
-    // border: 2px solid white
+    #my_tag
+        margin-top: 0.5rem
+        width: 100%
+        font-size: 1.1rem
+        text-align: center
+        color: #272b3d88
+        // border: 2px solid white
 
 
 

@@ -46,7 +46,6 @@ const are_u_sure_content = document.getElementById('are_u_sure_content');
 const no_but = are_u_sure_cont.querySelector('#no_but');
 const yes_but = are_u_sure_cont.querySelector('#yes_but');
 
-const menue_sec_cont = document.getElementById('menue_sec_cont');
 const new_doc_but = document.getElementById('new_doc_but');
 const icons_bar = document.getElementById('icons_bar');
 
@@ -427,7 +426,7 @@ function data_downloading_back(){
 
 function sessions_cont_toggle(){
     all_sessions_cont.classList.toggle('toggle');
-    setTimeout(() => {all_sess_cont_content.classList.toggle('toggle')}, 10);
+    setTimeout(() => {all_sess_cont_content.classList.toggle('toggle')}, 20);
 };
 
 

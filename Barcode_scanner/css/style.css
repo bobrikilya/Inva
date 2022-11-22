@@ -333,14 +333,14 @@ button:active, a:active, i:active {
   display: flex;
 }
 #ur_session_num_cont h2 {
-  font-size: 2rem;
+  font-size: 1.9rem;
 }
 #ur_session_num_cont #session_num_content {
   flex-shrink: 1;
   opacity: 0.5;
   transition: 0.2s ease-out;
   transform: translateY(-1rem);
-  padding: 3rem;
+  padding: 1rem;
 }
 #ur_session_num_cont #session_num_content.toggle {
   opacity: 1;
@@ -361,11 +361,24 @@ button:active, a:active, i:active {
   font-size: 5rem;
 }
 #ur_session_num_cont h3 {
+  position: relative;
   margin-top: 1rem;
-  font-size: 1.7rem;
+  font-size: 1.8rem;
+}
+#ur_session_num_cont h3::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -1.7rem;
+  width: 8rem;
+  height: 2px;
+  background-color: rgba(0, 28, 122, 0.0941176471);
+  border-radius: 25px;
 }
 #ur_session_num_cont #sess_input_cont {
   width: 100%;
+  margin-top: 2rem;
 }
 #ur_session_num_cont #sess_input {
   display: none;
@@ -392,8 +405,9 @@ button:active, a:active, i:active {
   width: 100%;
 }
 #ur_session_num_cont #session_num_but_cont button {
+  width: 9rem;
   margin: 0 3px;
-  font-size: 1.2;
+  font-size: 1.5rem;
 }
 #ur_session_num_cont #session_num_but_cont #give_name_but {
   background-color: rgba(19, 198, 230, 0.2666666667);
@@ -462,7 +476,7 @@ button:active, a:active, i:active {
   margin-top: 5rem;
   width: 280px;
   text-align: center;
-  font-size: 2.2rem;
+  font-size: 1.8rem;
   line-height: 2.5rem;
   color: rgba(26, 26, 26, 0.7254901961);
 }
@@ -604,6 +618,10 @@ header li {
 #doc_types_cont.toggle {
   display: flex;
 }
+#doc_types_cont #doc_types_content {
+  width: 80%;
+  max-width: 350px;
+}
 #doc_types_cont #doc_types_content li {
   margin-top: 0.7rem;
   min-height: 5.5rem;
@@ -638,7 +656,7 @@ header li {
 #store_address_cont #store_address_content {
   padding-top: 4rem;
   padding-bottom: 2.5rem;
-  max-width: 330px;
+  max-width: 345px;
   max-height: 43rem;
   opacity: 1;
   overflow: hidden;
@@ -653,8 +671,8 @@ header li {
   align-items: center;
   justify-content: center;
   min-height: 5.7rem;
-  font-size: 1.5rem;
-  background-color: rgba(255, 255, 255, 0.2862745098);
+  font-size: 1.4rem;
+  background-color: rgba(134, 144, 235, 0.4941176471);
 }
 #store_address_cont #store_address_content li a {
   height: 5rem;
@@ -778,6 +796,7 @@ header li {
   color: red;
 }
 #menue_bar #docs_cont #docs_cont_content #docs_not_found.no_active {
+  transition-duration: 0s;
   opacity: 0;
 }
 #menue_bar #docs_cont #docs_cont_content #docs_info {
@@ -940,11 +959,8 @@ header li {
   opacity: 0;
 }
 #menue_bar #menue_sec_cont {
-  margin-top: -0.7rem;
+  margin-top: -0.9rem;
   width: 80%;
-  opacity: 1;
-  pointer-events: auto;
-  transition-duration: 0.2s;
 }
 #menue_bar #icons_bar {
   display: flex;
@@ -986,8 +1002,7 @@ header li {
   margin-top: 2.5vh;
   margin-bottom: 2vh;
 }
-
-#my_tag {
+#menue_bar #my_tag {
   margin-top: 0.5rem;
   width: 100%;
   font-size: 1.1rem;
