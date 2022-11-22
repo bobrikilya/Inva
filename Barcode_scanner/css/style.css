@@ -405,7 +405,8 @@ button:active, a:active, i:active {
   width: 100%;
 }
 #ur_session_num_cont #session_num_but_cont button {
-  width: 9rem;
+  width: 10rem;
+  height: 6rem;
   margin: 0 3px;
   font-size: 1.5rem;
 }
@@ -497,8 +498,8 @@ button:active, a:active, i:active {
   margin-top: 4rem;
 }
 #are_u_sure_cont #are_u_sure_content #questions_cont button {
+  width: 10rem;
   height: 6rem;
-  width: 49.5%;
 }
 #are_u_sure_cont #are_u_sure_content #questions_cont #no_but {
   margin-right: 5px;
@@ -656,7 +657,8 @@ header li {
 #store_address_cont #store_address_content {
   padding-top: 4rem;
   padding-bottom: 2.5rem;
-  max-width: 345px;
+  width: 90%;
+  max-width: 350px;
   max-height: 43rem;
   opacity: 1;
   overflow: hidden;
@@ -696,7 +698,7 @@ header li {
 #menue_bar #docs_cont {
   width: 100%;
   min-height: 15rem;
-  max-height: 59%;
+  max-height: 61%;
   margin-top: -1rem;
   border-radius: 25px;
   justify-content: center;

@@ -580,7 +580,7 @@ input.addEventListener('blur', () => {
 
 
 sess_input.addEventListener('focus', () => {
-    ur_session_num_cont.style.bottom = '0';
+    ur_session_num_cont.style.bottom = '30%';
     window.scrollTo(0, document.body.scrollHeight);
 });
 
@@ -591,7 +591,7 @@ sess_input.addEventListener('blur', () => {
 docs_cont_content.addEventListener('scroll', () => {
     const scrollBottom = docs_cont_content.scrollHeight - docs_cont_content.scrollTop - docs_cont_content.clientHeight
     // console.log(scrollBottom);
-    if (scrollBottom > 60) {
+    if (scrollBottom > 30) {
         expand_ic.classList.add('turn_on');
     }else expand_ic.classList.remove('turn_on');
 });
@@ -658,10 +658,13 @@ docs_cont_content.addEventListener('click', (e) => {
         full_doc.classList.add('deleting');
         setTimeout(() => {full_doc.remove()}, 400);
 
-        
+        // console.log('clientHeight ' + docs_cont_content.clientHeight);
+        // console.log('scrollHeight ' + docs_cont_content.scrollHeight);
+
         setTimeout(() => {
-            if (docs_cont_content.clientHeight + 60 > docs_cont_content.scrollHeight) {
+            if (docs_cont_content.clientHeight + 30 > docs_cont_content.scrollHeight) {
                 expand_ic.classList.remove('turn_on');
+                docs_cont_content.style.overflow = 'hidden';
             };
         }, 500);
         
@@ -750,14 +753,17 @@ docs_cont_content.addEventListener('DOMSubtreeModified', (e) =>{
         expand_ic.classList.remove('turn_on');
     }else if (docs_count > 3){
         // console.log('> 3');
-        docs_cont_content.style.justifyContent = 'flex-start';
         docs_cont.style.justifyContent = 'flex-start';
-        docs_cont_content.style.overflow = 'auto';
+        docs_cont_content.style.justifyContent = 'flex-start';
         // console.log('clientHeight ' + docs_cont_content.clientHeight);
         // console.log('scrollHeight ' + docs_cont_content.scrollHeight);
-        if (docs_cont_content.clientHeight + 60 < docs_cont_content.scrollHeight) {
-        expand_ic.classList.add('turn_on');
-        }else expand_ic.classList.remove('turn_on');
+        if (docs_cont_content.clientHeight + 30 < docs_cont_content.scrollHeight) {
+            expand_ic.classList.add('turn_on');
+            docs_cont_content.style.overflow = 'auto';
+        }else {
+            expand_ic.classList.remove('turn_on');
+            docs_cont_content.style.overflow = 'hidden';
+        };
     };
 });
 
@@ -803,10 +809,9 @@ docs_cont_content.addEventListener('DOMSubtreeModified', (e) =>{
 // };
 
 function input_focus(){
-    // if (Moz) {
-    input_block.style.paddingBottom = "10vh";
-    container.style.justifyContent = 'flex-end';
-    // };
+    // input_block.style.paddingBottom = "10vh";
+    // container.style.justifyContent = 'flex-end';
+
     // else input_block.style.paddingBottom = '50vh';
     // container.style.justifyContent = 'flex-end';
     main_block.style.display = 'none';
@@ -816,10 +821,10 @@ function input_focus(){
 };
 
 function input_blur(){
-    // if (Moz) {
-    input_block.style.paddingBottom = "5vh";
-    container.style.justifyContent = 'center';
-    // };
+
+    // input_block.style.paddingBottom = "5vh";
+    // container.style.justifyContent = 'center';
+
     main_block.style.display = 'flex';
     header_cont.style.display = 'flex';
     water_tag.style.display = 'inline-block';
