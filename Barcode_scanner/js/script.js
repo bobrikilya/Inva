@@ -472,11 +472,6 @@ function sess_num_confirm(){
     };
     
     session_record();
-
-    sess_input.value = '';
-    session_num_but_cont.style.marginTop = '1rem';
-    sess_input.classList.remove('active');
-    setTimeout(() => {sess_input.style.display = 'none'}, 100);
 };
 
 function session_record(){
@@ -490,15 +485,12 @@ function session_record(){
 function sess_input_act(){
     sess_input.value = '';
     if (!sess_input.classList.contains('active')){
-        session_num_but_cont.style.marginTop = '6rem';
-        sess_input.style.display = 'inline-block';
-        setTimeout(() => {sess_input.classList.add('active'), 10});
+        sess_input.classList.add('active');
         sess_input.focus();
         window.scrollTo(0, document.body.scrollHeight);
     }else {
-        session_num_but_cont.style.marginTop = '1rem';
-        sess_input.classList.remove('active');
-        setTimeout(() => {sess_input.style.display = 'none'}, 100);
+        // sess_input.blur();
+        // sess_input.classList.remove('active');
     };
 };
 
@@ -582,16 +574,19 @@ input.addEventListener('blur', () => {
 
 
 sess_input.addEventListener('focus', () => {
-    sess_input_cont.classList.add('focus');
+    give_name_but.innerText = 'отмена';
     sess_info_cont.style.opacity = '0';
+    sess_input_cont.classList.add('focus');
     window.scrollTo(0, document.body.scrollHeight);
 });
 
 sess_input.addEventListener('blur', () => {
     setTimeout(() => {
-        sess_input_cont.classList.remove('focus');
+        give_name_but.innerText = 'задать';
         sess_info_cont.style.opacity = '1';
-    }, 110);
+        sess_input_cont.classList.remove('focus');
+        sess_input.classList.remove('active');
+    }, 10);
 });
 
 docs_cont_content.addEventListener('scroll', () => {
