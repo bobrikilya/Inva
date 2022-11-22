@@ -4,6 +4,8 @@ const container = document.getElementById('container');
 //--------------
 const ur_session_num_cont = document.getElementById('ur_session_num_cont');
 const session_num_content = document.getElementById('session_num_content');
+const sess_info_cont = document.getElementById('sess_info_cont');
+const sess_input_cont = document.getElementById('sess_input_cont');
 const sess_input = document.getElementById('sess_input');
 const session_num_but_cont = document.getElementById('session_num_but_cont');
 const next_but = document.getElementById('next_but');
@@ -580,12 +582,16 @@ input.addEventListener('blur', () => {
 
 
 sess_input.addEventListener('focus', () => {
-    ur_session_num_cont.style.bottom = '30%';
+    sess_input_cont.classList.add('focus');
+    sess_info_cont.style.opacity = '0';
     window.scrollTo(0, document.body.scrollHeight);
 });
 
 sess_input.addEventListener('blur', () => {
-    setTimeout(() => {ur_session_num_cont.style.bottom = 'auto'}, 110);
+    setTimeout(() => {
+        sess_input_cont.classList.remove('focus');
+        sess_info_cont.style.opacity = '1';
+    }, 110);
 });
 
 docs_cont_content.addEventListener('scroll', () => {
