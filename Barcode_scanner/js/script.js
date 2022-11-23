@@ -580,7 +580,8 @@ sess_input.addEventListener('focus', () => {
     sess_info_cont.style.opacity = '0';
     // sess_input_cont.classList.add('focus');
     // window.scrollTo({bottom: 0, behavior: "smooth"});
-    sess_input_cont.scrollTo({bottom: 0, behavior: "smooth"});
+    // sess_input_cont.scrollTo({bottom: 0, behavior: "smooth"});
+    sess_input_cont.scrollIntoView(false, {behavior: "smooth"});
 });
 
 sess_input.addEventListener('blur', () => {
