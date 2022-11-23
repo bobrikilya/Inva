@@ -578,7 +578,7 @@ input.addEventListener('blur', () => {
 sess_input.addEventListener('focus', () => {
     give_name_but.innerText = 'отмена';
     sess_info_cont.style.opacity = '0';
-    sess_input_cont.classList.add('focus');
+    // sess_input_cont.classList.add('focus');
     // window.scrollTo({bottom: 0, behavior: "smooth"});
     sess_input_cont.scrollTo({bottom: 0, behavior: "smooth"});
 });
@@ -587,7 +587,7 @@ sess_input.addEventListener('blur', () => {
     setTimeout(() => {
         give_name_but.innerText = 'задать';
         sess_info_cont.style.opacity = '1';
-        sess_input_cont.classList.remove('focus');
+        // sess_input_cont.classList.remove('focus');
         sess_input.classList.remove('active');
     }, 10);
 });
