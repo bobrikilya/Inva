@@ -93,6 +93,14 @@ button:active, a:active, i:active {
   opacity: 0.7;
 }
 
+button {
+  height: 4.7rem;
+  width: 50%;
+  font-size: 1.6rem;
+  color: #18191d;
+  border-radius: 25px;
+}
+
 #main_container {
   height: 100vh;
   width: 100vw;
@@ -135,7 +143,7 @@ button:active, a:active, i:active {
 #head_cont {
   z-index: 7;
   position: absolute;
-  bottom: 1.5rem;
+  bottom: 2.5rem;
   width: 100%;
   min-width: 360px;
   flex-direction: row;
@@ -146,7 +154,7 @@ button:active, a:active, i:active {
 .but_head {
   position: absolute;
   z-index: 5;
-  margin: 0 6%;
+  margin: 0 8%;
   color: rgba(26, 26, 26, 0.6156862745);
   font-size: 2.7rem;
   cursor: pointer;
@@ -227,57 +235,6 @@ button:active, a:active, i:active {
   pointer-events: auto;
 }
 
-#session_cont {
-  flex-direction: row;
-  overflow: visible;
-  width: 55%;
-  font-size: 1.2rem;
-  color: rgba(39, 43, 61, 0.7607843137);
-  margin-top: -0.3rem;
-}
-
-#session_but {
-  display: inline;
-  z-index: 5;
-  min-width: 40%;
-  max-width: 90%;
-  text-align: center;
-  padding: 10px;
-  border-radius: 25px;
-  border: 1px solid rgba(226, 3, 3, 0.8352941176);
-  color: rgba(226, 3, 3, 0.8352941176);
-  cursor: pointer;
-  white-space: nowrap;
-  transition-duration: 0.2s;
-}
-#session_but.active {
-  transition-duration: 0.2s;
-  border: 1px solid #009b08;
-  color: #009b08;
-}
-#session_but.no_active {
-  border: 1px solid rgba(26, 26, 26, 0.4392156863);
-  color: rgba(26, 26, 26, 0.4392156863);
-  pointer-events: none;
-}
-
-#all_sessions_cont {
-  flex-shrink: 1;
-  position: absolute;
-  bottom: -0.5rem;
-  width: 110%;
-  height: 15rem;
-  padding-bottom: 4.9rem;
-  justify-content: flex-end;
-  transition-duration: 0.2s;
-  box-shadow: 0 2px 15px rgba(165, 164, 164, 0.231372549);
-  display: none;
-  border-radius: 40px;
-}
-#all_sessions_cont.toggle {
-  display: flex;
-}
-
 .blur {
   position: absolute;
   top: 0;
@@ -294,22 +251,68 @@ button:active, a:active, i:active {
   border-radius: 40px;
 }
 
-#all_sess_cont_content {
+#session_cont {
+  flex-direction: row;
+  overflow: visible;
+  width: 55%;
+  font-size: 1.2rem;
+  color: rgba(39, 43, 61, 0.7607843137);
+}
+#session_cont #session_but {
+  display: inline;
+  z-index: 5;
+  min-width: 40%;
+  max-width: 90%;
+  text-align: center;
+  padding: 10px;
+  border-radius: 25px;
+  border: 1px solid rgba(226, 3, 3, 0.8352941176);
+  color: rgba(226, 3, 3, 0.8352941176);
+  cursor: pointer;
+  white-space: nowrap;
+  transition-duration: 0.2s;
+}
+#session_cont #session_but.active {
+  transition-duration: 0.2s;
+  border: 1px solid #009b08;
+  color: #009b08;
+}
+#session_cont #session_but.no_active {
+  border: 1px solid rgba(26, 26, 26, 0.4392156863);
+  color: rgba(26, 26, 26, 0.4392156863);
+  pointer-events: none;
+}
+#session_cont #all_sessions_cont {
+  flex-shrink: 1;
+  position: absolute;
+  bottom: -0.5rem;
+  width: 100%;
+  height: 15rem;
+  padding-bottom: 4.9rem;
+  justify-content: flex-end;
+  transition-duration: 0.2s;
+  box-shadow: 0 2px 15px rgba(165, 164, 164, 0.231372549);
+  display: none;
+  border-radius: 40px;
+}
+#session_cont #all_sessions_cont.toggle {
+  display: flex;
+}
+#session_cont #all_sessions_cont #all_sess_cont_content {
   flex-shrink: 1;
   width: 100%;
   height: 100%;
   transform: translateY(20px);
   opacity: 0;
 }
-#all_sess_cont_content.toggle {
+#session_cont #all_sessions_cont #all_sess_cont_content.toggle {
   transition: 0.25s ease-out;
   transform: translateY(0);
   opacity: 1;
 }
-#all_sess_cont_content #session_power_but {
-  width: 7rem;
-  padding: 10px;
-  margin-top: 1.2rem;
+#session_cont #all_sessions_cont #all_sess_cont_content #session_power_but {
+  width: 8rem;
+  margin-top: 1.5rem;
   margin-bottom: 1.7rem;
   font-size: 2rem;
   border-radius: 25px;
@@ -319,16 +322,19 @@ button:active, a:active, i:active {
   transition-duration: 0.4s;
   cursor: pointer;
 }
-#all_sess_cont_content #session_power_but span {
+#session_cont #all_sessions_cont #all_sess_cont_content #session_power_but span {
   display: inline-block;
   transition-duration: 0.2s;
 }
-#all_sess_cont_content #session_power_but.active {
+#session_cont #all_sessions_cont #all_sess_cont_content #session_power_but.active {
   background-color: rgba(218, 20, 79, 0.6156862745);
   color: rgba(246, 249, 253, 0.9176470588);
 }
-#all_sess_cont_content #session_power_but.active span {
+#session_cont #all_sessions_cont #all_sess_cont_content #session_power_but.active span {
   transform: rotate(45deg);
+}
+#session_cont #all_sessions_cont #all_sess_cont_content #session_text {
+  text-align: center;
 }
 
 #ur_session_num_cont {
@@ -1055,14 +1061,6 @@ video {
   top: 0;
   z-index: 2;
   background: url("../img/scan_icon_big.png") center 52%/cover no-repeat;
-}
-
-button {
-  height: 4.7rem;
-  width: 50%;
-  font-size: 1.6rem;
-  color: #18191d;
-  border-radius: 25px;
 }
 
 #camera_butt {

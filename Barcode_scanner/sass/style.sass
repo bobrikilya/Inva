@@ -29,6 +29,14 @@ button, a, i
     &:active
         opacity: 0.7
 
+button
+    height: 4.7rem
+    width: 50%
+    font-size: 1.6rem
+    color: #18191d
+    border-radius: 25px
+    // border: 2px solid red
+
 #main_container
     height: 100vh
     width: 100vw
@@ -70,7 +78,7 @@ button, a, i
 #head_cont
     z-index: 7
     position: absolute
-    bottom: 1.5rem
+    bottom: 2.5rem
     width: 100%
     min-width: 360px
     flex-direction: row
@@ -81,7 +89,7 @@ button, a, i
 .but_head
     position: absolute
     z-index: 5
-    margin: 0 6%
+    margin: 0 8%
     color: #1a1a1a9d
     font-size: 2.7rem
     cursor: pointer
@@ -151,56 +159,6 @@ button, a, i
         pointer-events: auto
     // border: 2px solid blue
 
-#session_cont
-    flex-direction: row
-    overflow: visible
-    width: 55%
-    font-size: 1.2rem
-    color: #272b3dc2
-    margin-top: -0.3rem
-    // border: 2px solid brown
-
-#session_but
-    display: inline
-    z-index: 5
-    min-width: 40%
-    max-width: 90%
-    text-align: center
-    padding: 10px
-    border-radius: 25px
-    border: 1px solid #e20303d5
-    color: #e20303d5
-    cursor: pointer
-    white-space: nowrap
-    transition-duration: 0.2s
-    &.active
-        transition-duration: 0.2s
-        // border: 1px solid #1a1a1a70
-        // color: #1a1a1a70
-        border: 1px solid #009b08
-        color: #009b08
-    &.no_active
-        border: 1px solid #1a1a1a70
-        color: #1a1a1a70
-        pointer-events: none
-
-
-#all_sessions_cont
-    flex-shrink: 1
-    position: absolute
-    bottom: -0.5rem
-    width: 110%
-    height: 15rem
-    padding-bottom: 4.9rem
-    justify-content: flex-end
-    transition-duration: 0.2s
-    box-shadow: 0 2px 15px #a5a4a43b
-    display: none
-    border-radius: 40px
-    &.toggle
-        display: flex
-
-
 .blur
     position: absolute
     top: 0
@@ -215,36 +173,83 @@ button, a, i
 #sessions_blur
     border-radius: 40px
 
-#all_sess_cont_content
-    flex-shrink: 1
-    width: 100%
-    height: 100%
-    transform: translateY(20px)
-    opacity: 0
-    &.toggle
-        transition: 0.25s ease-out
-        transform: translateY(0)
-        opacity: 1
-    #session_power_but
-        width: 7rem
-        padding: 10px
-        margin-top: 1.2rem
-        margin-bottom: 1.7rem
-        font-size: 2rem
-        border-radius: 25px
+#session_cont
+    flex-direction: row
+    overflow: visible
+    width: 55%
+    font-size: 1.2rem
+    color: #272b3dc2
+    // border: 2px solid brown
+    #session_but
+        display: inline
+        z-index: 5
+        min-width: 40%
+        max-width: 90%
         text-align: center
-        background-color: #22c53d9d
-        color:#f6f9fdea
-        transition-duration: 0.4s
+        padding: 10px
+        border-radius: 25px
+        border: 1px solid #e20303d5
+        color: #e20303d5
         cursor: pointer
-        span
-            display: inline-block
-            transition-duration: 0.2s
+        white-space: nowrap
+        transition-duration: 0.2s
         &.active
-            background-color: #da144f9d
-            color:#f6f9fdea
-            span
-                transform: rotate(45deg)
+            transition-duration: 0.2s
+            // border: 1px solid #1a1a1a70
+            // color: #1a1a1a70
+            border: 1px solid #009b08
+            color: #009b08
+        &.no_active
+            border: 1px solid #1a1a1a70
+            color: #1a1a1a70
+            pointer-events: none
+    #all_sessions_cont
+        flex-shrink: 1
+        position: absolute
+        bottom: -0.5rem
+        width: 100%
+        height: 15rem
+        padding-bottom: 4.9rem
+        justify-content: flex-end
+        transition-duration: 0.2s
+        box-shadow: 0 2px 15px #a5a4a43b
+        display: none
+        border-radius: 40px
+        &.toggle
+            display: flex
+        #all_sess_cont_content
+            flex-shrink: 1
+            width: 100%
+            height: 100%
+            transform: translateY(20px)
+            opacity: 0
+            &.toggle
+                transition: 0.25s ease-out
+                transform: translateY(0)
+                opacity: 1
+            #session_power_but
+                width: 8rem
+                // height: 12rem
+                // padding: 15px
+                margin-top: 1.5rem
+                margin-bottom: 1.7rem
+                font-size: 2rem
+                border-radius: 25px
+                text-align: center
+                background-color: #22c53d9d
+                color:#f6f9fdea
+                transition-duration: 0.4s
+                cursor: pointer
+                span
+                    display: inline-block
+                    transition-duration: 0.2s
+                &.active
+                    background-color: #da144f9d
+                    color:#f6f9fdea
+                    span
+                        transform: rotate(45deg)
+            #session_text
+                text-align: center
 
 
 #ur_session_num_cont
@@ -905,14 +910,6 @@ video
     z-index: 2
     background: url("../img/scan_icon_big.png") center 52% / cover no-repeat
 
-
-button
-    height: 4.7rem
-    width: 50%
-    font-size: 1.6rem
-    color: #18191d
-    border-radius: 25px
-    // border: 2px solid red
 
 #camera_butt
     flex-shrink: 0

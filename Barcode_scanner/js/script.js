@@ -308,12 +308,7 @@ function menue_toggle(){
         if (session_name) {
             session_record();
         }else {
-            session_but.classList.remove('active');
-            session_power_but.classList.remove('active');
-            session_name = false;
-            session_but.innerText = 'Нет сессии';
-            session_text.innerText = 'Подключиться к сессии';
-            localStorage.removeItem('session_name');
+            no_session_acr();
         };
     };
 
@@ -322,6 +317,15 @@ function menue_toggle(){
     input_block.classList.toggle('toggle');
 
     setTimeout(() => {menue_cont.classList.toggle('toggle')}, 10);
+};
+
+function no_session_acr(){
+    session_but.classList.remove('active');
+    session_power_but.classList.remove('active');
+    session_name = false;
+    session_but.innerText = 'Нет сессии';
+    session_text.innerHTML= 'Подключиться<br> к сессии';
+    localStorage.removeItem('session_name');
 };
 
 function doc_name_insert(doc_name){
@@ -368,10 +372,17 @@ function are_u_sure_toggle(){
 };
 
 function data_downloading(){
-    check.querySelector('span').innerHTML = 'Данные загружены <br>с сервера';
-    check_activ();
-    expand_ic.classList.add('turn_off');
-    setTimeout(() => {expand_ic.classList.remove('turn_off')}, 1900);
+    if (!session_name){
+        setTimeout(() => {
+            warning.play();
+            sessions_cont_toggle();
+        }, 10);
+    }else {
+        check.querySelector('span').innerHTML = 'Данные загружены <br>с сервера';
+        check_activ();
+        expand_ic.classList.add('turn_off');
+        setTimeout(() => {expand_ic.classList.remove('turn_off')}, 1900);
+    };
 };
 
 function downloading_back_act(){
@@ -452,13 +463,7 @@ function sess_start_stop(){
         session_name = `${today}-${sess_num}`;
         sess_input.setAttribute("placeholder", session_name);
     }else {
-        // sessions_cont_toggle();
-        session_but.classList.remove('active');
-        session_power_but.classList.remove('active');
-        session_name = false;
-        session_but.innerText = 'Нет сессии';
-        session_text.innerText = 'Подключиться к сессии';
-        localStorage.removeItem('session_name');
+        no_session_acr();
     };
 };
 
@@ -478,7 +483,7 @@ function session_record(){
     session_but.innerText = session_name.replace(' ', '_');
     session_but.classList.add('active');
     session_power_but.classList.add('active');
-    session_text.innerText = 'Отключиться от сессии';
+    session_text.innerHTML = 'Отключиться<br> от сессии';
     localStorage.setItem('session_name', session_name);
 };
 
@@ -576,7 +581,7 @@ input.addEventListener('blur', () => {
 sess_input.addEventListener('focus', () => {
     give_name_but.innerText = 'отмена';
     sess_info_cont.style.opacity = '0';
-    // sess_input_cont.classList.add('focus');
+    sess_input_cont.classList.add('focus');
     // window.scrollTo({bottom: 0, behavior: "smooth"});
     // sess_input_cont.scrollTo({bottom: 0, behavior: "smooth"});
     sess_input_cont.scrollIntoView(false, {behavior: "smooth"});
@@ -586,7 +591,7 @@ sess_input.addEventListener('blur', () => {
     setTimeout(() => {
         give_name_but.innerText = 'задать';
         sess_info_cont.style.opacity = '1';
-        // sess_input_cont.classList.remove('focus');
+        sess_input_cont.classList.remove('focus');
         sess_input.classList.remove('active');
     }, 10);
 });
