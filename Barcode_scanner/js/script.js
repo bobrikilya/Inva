@@ -487,7 +487,6 @@ function sess_input_act(){
     if (!sess_input.classList.contains('active')){
         sess_input.classList.add('active');
         sess_input.focus();
-        window.scrollTo(0, document.body.scrollHeight);
     }else {
         // sess_input.blur();
         // sess_input.classList.remove('active');
@@ -580,7 +579,8 @@ sess_input.addEventListener('focus', () => {
     give_name_but.innerText = 'отмена';
     sess_info_cont.style.opacity = '0';
     sess_input_cont.classList.add('focus');
-    window.scrollTo(0, document.body.scrollHeight);
+    // window.scrollTo({bottom: 0, behavior: "smooth"});
+    sess_input_cont.scrollTo({bottom: 0, behavior: "smooth"});
 });
 
 sess_input.addEventListener('blur', () => {
@@ -671,7 +671,7 @@ docs_cont_content.addEventListener('click', (e) => {
                 docs_cont_content.style.overflow = 'hidden';
             };
         }, 500);
-        
+
         docs_list.forEach((el) =>{
             if (el.id == e_id) {
                 const num_of_el = docs_list.indexOf(el);
@@ -822,7 +822,8 @@ function input_focus(){
     main_block.style.display = 'none';
     water_tag.style.display = 'none';
     head_cont.style.display = 'none';
-    window.scrollTo(0, document.body.scrollHeight);
+    // window.scrollTo({bottom: 0, behavior: "smooth"});
+    input_block.scrollTo({bottom: 0, behavior: "smooth"});
 };
 
 function input_blur(){
