@@ -28,7 +28,10 @@ const session_text = document.getElementById('session_text');
 const session_power_but = document.getElementById('session_power_but');
 const sessions_blur = document.getElementById('sessions_blur');
 
+const head_cont = document.getElementById('head_cont');
 const fire_but = document.getElementById('fire_but');
+const item_search_cont = document.getElementById('item_search_cont');
+const item_search_input = document.getElementById('item_search_input');
 
 const menue_but = document.getElementById('menue_but');
 const back_but = document.getElementById('back_but');
@@ -294,7 +297,7 @@ function full_reset(){
 };
 
 function menue_toggle(){
-    fire_but.classList.toggle('toggle');
+    head_cont.classList.toggle('toggle');
     menue_but.classList.toggle('toggle');
     back_but.classList.toggle('toggle');
     reload_but.classList.toggle('toggle');
@@ -596,6 +599,17 @@ sess_input.addEventListener('blur', () => {
     }, 10);
 });
 
+item_search_input.addEventListener('focus', () => {
+    fire_but.classList.add('hide');
+    item_search_cont.classList.add('hide');
+});
+
+item_search_input.addEventListener('blur', () => {
+    fire_but.classList.remove('hide');
+    item_search_cont.classList.remove('hide');
+});
+
+
 docs_cont_content.addEventListener('scroll', () => {
     const scrollBottom = docs_cont_content.scrollHeight - docs_cont_content.scrollTop - docs_cont_content.clientHeight
     // console.log(scrollBottom);
@@ -840,7 +854,6 @@ function input_blur(){
     water_tag.style.display = 'inline-block';
     input.blur();
 };
-
 
 function stream_start(){
     Quagga.init({
