@@ -18,7 +18,7 @@ const store_address_content = document.getElementById('store_address_content');
 const cancel_but_address = document.getElementById('cancel_but_address');
 
 //--------------
-const head_cont = document.getElementById('head_cont');
+const foot_cont = document.getElementById('foot_cont');
 const reload_but = document.getElementById('reload_but');
 const big_eye_but = document.getElementById('big_eye_but');
 const session_but = document.getElementById('session_but');
@@ -825,7 +825,7 @@ function input_focus(){
     // main_container.style.justifyContent = 'flex-end';
     main_block.style.display = 'none';
     water_tag.style.display = 'none';
-    head_cont.style.display = 'none';
+    foot_cont.style.display = 'none';
     // window.scrollTo({bottom: 0, behavior: "smooth"});
     input_block.scrollTo({bottom: 0, behavior: "smooth"});
 };
@@ -836,7 +836,7 @@ function input_blur(){
     // main_container.style.justifyContent = 'center';
 
     main_block.style.display = 'flex';
-    head_cont.style.display = 'flex';
+    foot_cont.style.display = 'flex';
     water_tag.style.display = 'inline-block';
     input.blur();
 };

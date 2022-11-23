@@ -75,7 +75,7 @@ button
         pointer-events: 0
 
 
-#head_cont
+#foot_cont
     z-index: 7
     position: absolute
     bottom: 2.5rem
@@ -85,7 +85,7 @@ button
     justify-content: center
     overflow: visible
     // border: 2px solid red
-    
+
 .but_head
     position: absolute
     z-index: 5
@@ -117,21 +117,48 @@ button
     &.toggle
         display: flex
 
-
-#fire_but
-    display: flex
+#head_cont
     position: absolute
+    top: 3rem
+    left: 0
     z-index: 7
-    left: -0.6rem
-    top: 0.7rem
-    height: 4rem
-    width: 4rem
-    justify-content: center
-    align-items: center
-    border-radius: 25px
+    flex-direction: row
+    width: 100%
+    // justify-content: space-between
     // border: 2px solid black
-    &.toggle
-        display: none
+    #fire_but
+        position: relative
+        display: flex
+        z-index: 7
+        height: 4rem
+        width: 5rem
+        justify-content: center
+        align-items: center
+        border-radius: 25px
+        // border: 2px solid black
+        &.toggle
+            display: none
+    #item_search_cont
+        flex-shrink: 1
+        height: 4rem
+        background-color: #ffffff46
+        border-radius: 25px
+        margin-right: 2rem
+        // border: 2px solid brown
+        span
+            position: absolute
+            right: 1rem
+            top: 1rem
+            color: #1a1a1a98
+            font-size: 2rem
+        input
+            font-size: 1.6rem
+            padding: 0 15px
+            margin-right: 3rem
+            width: 75%
+            height: 70%
+            color: #5e5e5ee0
+            background-color: #0031720e
 
 .menue_but
     right: -0.6rem
@@ -570,32 +597,12 @@ button
         transform: translateY(-1rem)
     #my_tag
         position: absolute
-        top: 1.5rem
+        top: 1rem
         width: 100%
         font-size: 1.1rem
         text-align: center
         color: #272b3d88
         // border: 2px solid white
-    #item_search_cont
-        // position: absolute
-        // top: 3.5rem
-        width: 80%
-        height: 4rem
-        margin-bottom: 1rem
-        background-color: #ffffff46
-        border-radius: 25px
-        // border: 2px solid brown
-        span
-            position: absolute
-            right: 1rem
-            top: 1rem
-            color: #1a1a1a98
-            font-size: 2rem
-        input
-            margin-right: 3rem
-            width: 75%
-            height: 70%
-            background-color: #0031720e
     #docs_cont
         width: 100%
         min-height: 15rem
@@ -966,7 +973,6 @@ input
     background-color: white
     border-radius: 25px
     width: 100%
-    
 
 #input
     height: 4.7rem
