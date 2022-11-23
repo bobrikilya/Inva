@@ -135,7 +135,7 @@ button:active, a:active, i:active {
 #head_cont {
   z-index: 7;
   position: absolute;
-  top: 1.3rem;
+  bottom: 1.5rem;
   width: 100%;
   min-width: 360px;
   flex-direction: row;
@@ -186,7 +186,7 @@ button:active, a:active, i:active {
   position: absolute;
   z-index: 7;
   left: -0.6rem;
-  bottom: 0.7rem;
+  top: 0.7rem;
   height: 4rem;
   width: 4rem;
   justify-content: center;
@@ -264,11 +264,11 @@ button:active, a:active, i:active {
 #all_sessions_cont {
   flex-shrink: 1;
   position: absolute;
-  top: -0.5rem;
+  bottom: -0.5rem;
   width: 110%;
-  height: 13rem;
-  padding-top: 4.9rem;
-  justify-content: flex-start;
+  height: 15rem;
+  padding-bottom: 4.9rem;
+  justify-content: flex-end;
   transition-duration: 0.2s;
   box-shadow: 0 2px 15px rgba(165, 164, 164, 0.231372549);
   display: none;
@@ -298,7 +298,7 @@ button:active, a:active, i:active {
   flex-shrink: 1;
   width: 100%;
   height: 100%;
-  transform: translateY(-20px);
+  transform: translateY(20px);
   opacity: 0;
 }
 #all_sess_cont_content.toggle {
@@ -306,12 +306,11 @@ button:active, a:active, i:active {
   transform: translateY(0);
   opacity: 1;
 }
-
-#session_power_but {
+#all_sess_cont_content #session_power_but {
   width: 7rem;
   padding: 10px;
   margin-top: 1.2rem;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.7rem;
   font-size: 2rem;
   border-radius: 25px;
   text-align: center;
@@ -320,15 +319,15 @@ button:active, a:active, i:active {
   transition-duration: 0.4s;
   cursor: pointer;
 }
-#session_power_but span {
+#all_sess_cont_content #session_power_but span {
   display: inline-block;
   transition-duration: 0.2s;
 }
-#session_power_but.active {
+#all_sess_cont_content #session_power_but.active {
   background-color: rgba(218, 20, 79, 0.6156862745);
   color: rgba(246, 249, 253, 0.9176470588);
 }
-#session_power_but.active span {
+#all_sess_cont_content #session_power_but.active span {
   transform: rotate(45deg);
 }
 
@@ -681,11 +680,19 @@ button:active, a:active, i:active {
   transition: 0.2s ease-out;
   opacity: 1;
   transform: translateY(0);
-  padding: 5.5rem 0 4vh 0;
+  padding: 5rem 0 4rem 0;
 }
 #menue_cont.toggle {
   opacity: 0.5;
   transform: translateY(-1rem);
+}
+#menue_cont #my_tag {
+  position: absolute;
+  top: 1.5rem;
+  width: 100%;
+  font-size: 1.1rem;
+  text-align: center;
+  color: rgba(39, 43, 61, 0.5333333333);
 }
 #menue_cont #docs_cont {
   width: 100%;
@@ -997,14 +1004,6 @@ button:active, a:active, i:active {
   white-space: nowrap;
   font-size: 1.55rem;
   margin-top: 2.5vh;
-  margin-bottom: 2vh;
-}
-#menue_cont #my_tag {
-  margin-top: 0.5rem;
-  width: 100%;
-  font-size: 1.1rem;
-  text-align: center;
-  color: rgba(39, 43, 61, 0.5333333333);
 }
 
 #main_block {

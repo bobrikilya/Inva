@@ -539,10 +539,8 @@ document.addEventListener('click', (event) => {
     if (all_sessions_cont.classList.contains('toggle')){
         const sessions_cont_inside = event.composedPath().includes(all_sessions_cont);
         const session_but_inside = event.composedPath().includes(session_but);
-        // const docs_cont_inside = event.composedPath().includes(docs_cont);
         // console.log(sessions_cont_inside);
         // console.log(session_but_inside);
-        // console.log(docs_cont_inside);
 
         if (!sessions_cont_inside && !session_but_inside ) { 
             all_sessions_cont.classList.remove('toggle');
@@ -627,12 +625,12 @@ docs_cont_content.addEventListener('touchstart', (e) => {
 });
 
 docs_cont_content.addEventListener('click', (e) => {
-    e.stopPropagation();
+    // e.stopPropagation();
     let full_doc;
     const tag = e.target.tagName;
 
+    // console.log(e.target);
     if (tag == 'LI') {
-        // console.log(e.target);
         docs_list.forEach(el=> {
             if (el['id'] == e.target.getAttribute('id')) docs_opening(el);
         });
@@ -693,7 +691,7 @@ docs_cont_content.addEventListener('click', (e) => {
 
 store_address_content.addEventListener('click', (e) => {
     e.preventDefault();
-    e.stopPropagation();
+    // e.stopPropagation();
     // const id = e.target.getAttribute('id');
     const tag = e.target.tagName;
     // console.log(tag);
