@@ -26,22 +26,37 @@
 <body class="cont">
     <div id="main_container" class="cont">
         <div id="install_notif">Установите</div>
-        <!-- <span id="setting_but" class="but_head"></span>
-            <i class="fa-solid fa-gear"></i>
-        </span> -->
-        <div id="head_cont" class="cont">
-            <span id="fire_but" class="but_head">
-                <i class="fa-solid fa-fire"></i>
+        <div id="foot_cont" class="cont">
+            <span id="reload_but" class="nav_but reload_eye">
+                <i class="fa-solid fa-arrows-rotate"></i>
             </span>
-            <div id="item_search_cont" class="cont">
-                <span>
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </span>
-                <input id="item_search_input" type="text">
+            <span id="big_eye_but" class="nav_but reload_eye">
+                <i class="fa-solid fa-eye"></i>
+            </span>
+            <div id="session_cont" class="cont">
+                <span id="session_but" class="cont">Нет сессии</span>
+                <div id="all_sessions_cont" class="cont">
+                    <div id="all_sess_cont_content" class="cont">
+                        <button id="session_power_but">
+                            <span>
+                                <i class="fa-solid fa-plus"></i>
+                            </span>
+                        </button>
+                        <span id="session_text">Подключиться<br> к сессии</span>
+                    </div>
+                    <div id="sessions_blur" class="blur"></div>
+                </div>
             </div>
+            <span id="menue_but" class="nav_but menue_but">
+                <!-- <i class="fa-solid fa-bars"></i> -->
+                <i class="fa-solid fa-house-user"></i>
+            </span>
+            <span id="back_but" class="nav_but menue_but">
+                <i class="fa-regular fa-circle-left"></i>
+            </span>
         </div>
         <div id="store_address_cont" class="container">
-            <ul id="store_address_content" class="cont chose_list">
+            <ul id="store_address_content" class="cont content chose_list">
                 <div class="cont">
                     <span class="cont">
                         <li><a id="Krasnoe" href="#">Красное</a></li>
@@ -62,57 +77,8 @@
             </ul>
             <div id="store_address_blur" class="blur"></div>
         </div>
-        <div id="ur_session_num_cont" class="cont">
-            <div id="session_num_content" class="cont">
-                <div id="sess_info_cont" class="cont">
-                    <h2>Вы подключены<br> к сессии</h2>
-                    <div id="num_cont" class="cont">
-                        <p>№</p>
-                        <span id="session_num">4</span>
-                    </div>
-                    <h3>Задать имя сессии?</h3>
-                </div>
-                <div id="sess_input_cont" class="cont">
-                    <input id="sess_input" type="text" maxlength="15" minlength="4">
-                    <div id="session_num_but_cont" class="cont">
-                        <button id="give_name_but" class="button">задать</button>
-                        <button id="next_but" class="button">далее</button>
-                    </div>
-                </div>
-            </div>
-            <div id="session_num_blur" class="blur"></div>
-        </div>
-        <div id="foot_cont" class="cont">
-            <span id="reload_but" class="but_head reload_eye">
-                <i class="fa-solid fa-arrows-rotate"></i>
-            </span>
-            <span id="big_eye_but" class="but_head reload_eye">
-                <i class="fa-solid fa-eye"></i>
-            </span>
-            <div id="session_cont" class="cont">
-                <span id="session_but" class="cont">Нет сессии</span>
-                <div id="all_sessions_cont" class="cont">
-                    <div id="all_sess_cont_content" class="cont">
-                        <button id="session_power_but">
-                            <span>
-                                <i class="fa-solid fa-plus"></i>
-                            </span>
-                        </button>
-                        <span id="session_text">Подключиться<br> к сессии</span>
-                    </div>
-                    <div id="sessions_blur" class="blur"></div>
-                </div>
-            </div>
-            <span id="menue_but" class="but_head menue_but">
-                <!-- <i class="fa-solid fa-bars"></i> -->
-                <i class="fa-solid fa-house-user"></i>
-            </span>
-            <span id="back_but" class="but_head menue_but">
-                <i class="fa-regular fa-circle-left"></i>
-            </span>
-        </div>
-        <div id="doc_types_cont" class="cont">
-            <ul id="doc_types_content" class="cont chose_list">
+        <div id="doc_types_cont" class="container">
+            <ul id="doc_types_content" class="cont content chose_list">
                 <li><a id="invenory_but" href="#" class="inv">
                     <span>
                         <i class="fa-solid fa-cart-flatbed"></i>
@@ -149,8 +115,28 @@
             </ul>
             <div id="doc_types_blur" class="blur"></div>
         </div>
-        <div id="are_u_sure_cont" class="cont">
-            <div id="are_u_sure_content" class="cont">
+        <div id="ur_session_num_cont" class="container">
+            <div id="session_num_content" class="cont content">
+                <div id="sess_info_cont" class="cont">
+                    <h2>Вы подключены<br> к сессии</h2>
+                    <div id="num_cont" class="cont">
+                        <p>№</p>
+                        <span id="session_num">4</span>
+                    </div>
+                    <h3>Задать имя сессии?</h3>
+                </div>
+                <div id="sess_input_cont" class="cont">
+                    <input id="sess_input" type="text" maxlength="15" minlength="4">
+                    <div id="session_num_but_cont" class="cont">
+                        <button id="give_name_but" class="button">задать</button>
+                        <button id="next_but" class="button">далее</button>
+                    </div>
+                </div>
+            </div>
+            <div id="session_num_blur" class="blur"></div>
+        </div>
+        <div id="are_u_sure_cont" class="container">
+            <div id="are_u_sure_content" class="cont content">
                 <div id="icons_cont" class="cont">
                     <i class="fa-solid fa-cloud"></i>
                     <i class="fa-solid fa-angles-right"></i>
@@ -164,45 +150,61 @@
             </div>
             <div id="are_u_sure_blur" class="blur"></div>
         </div>
-        <header class="container">
-            <ul id="menue_cont" class="cont">
-                <div id="my_tag">bobrikilya</div>
-                <div id="docs_cont" class="cont">
-                    <span id="check" class="cont">
-                        <i class="fa-regular fa-circle-check"></i>
-                        <!-- <i class="fa-regular fa-thumbs-up"></i> -->
-                        <!-- <i class="fa-solid fa-flag-checkered"></i> -->
-                        <span>Ошибка?</span>
+        <header class="cont">
+            <ul id="menue_content" class="cont">
+                <!-- <span id="setting_but" class="nav_but"></span>
+                    <i class="fa-solid fa-gear"></i>
+                </span> -->
+                <div id="menue_head_cont" class="cont">
+                    <span id="fire_but" class="nav_but">
+                        <i class="fa-solid fa-fire"></i>
                     </span>
-                    <ul id="docs_cont_content" class="cont">
-                        <span id="docs_not_found">Документов нет
-                            <div><i class="fa-regular fa-folder-open"></i></div>
+                    <div id="item_search_cont" class="cont">
+                        <span>
+                            <i class="fa-solid fa-magnifying-glass"></i>
                         </span>
-                        <span id="docs_info">документы</span>
-                    </ul>
-                </div>
-                <span id="expand_ic">
-                    <!-- <i class="fa-solid fa-angle-down"></i> -->
-                    <i class="fa-solid fa-caret-down"></i>
-                </span>
-                <div id="menue_sec_cont" class="cont">
-                    <div id="icons_bar">
-                        <span class="cont">
-                            <span id="download_but" class="download_butt">
-                                <i class="fa-solid fa-cloud-arrow-down"></i>
-                            </span>
-                            <!-- <p>закачать</p> -->
-                        </span>
-                        <span class="cont">
-                            <span id="download_back_but" class="download_butt">
-                                <i class="fa-solid fa-cloud-arrow-up"></i>
-                            </span>
-                            <!-- <p>отправить</p> -->
-                        </span>
+                        <input id="item_search_input" type="text">
                     </div>
-                    <a id="new_doc_but" href="#">
-                        <p>новый документ</p>
-                    </a>
+                </div>
+                <div id="menue_main_cont" class="cont">
+                    <div id="docs_cont" class="cont">
+                        <span id="check" class="cont">
+                            <i class="fa-regular fa-circle-check"></i>
+                            <!-- <i class="fa-regular fa-thumbs-up"></i> -->
+                            <!-- <i class="fa-solid fa-flag-checkered"></i> -->
+                            <span>Ошибка?</span>
+                        </span>
+                        <ul id="docs_cont_content" class="cont">
+                            <span id="docs_not_found">Документов нет
+                                <div><i class="fa-regular fa-folder-open"></i></div>
+                            </span>
+                            <span id="docs_info">документы</span>
+                        </ul>
+                    </div>
+                    <span id="expand_ic">
+                        <!-- <i class="fa-solid fa-angle-down"></i> -->
+                        <i class="fa-solid fa-caret-down"></i>
+                    </span>
+                    <div id="menue_sec_cont" class="cont">
+                        <div id="icons_bar">
+                            <span class="cont">
+                                <span id="download_but" class="download_butt">
+                                    <i class="fa-solid fa-cloud-arrow-down"></i>
+                                </span>
+                                <!-- <p>закачать</p> -->
+                            </span>
+                            <span class="cont">
+                                <span id="download_back_but" class="download_butt">
+                                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                                </span>
+                                <!-- <p>отправить</p> -->
+                            </span>
+                        </div>
+                        <a id="new_doc_but" href="#">
+                            <p>новый документ</p>
+                        </a>
+                    </div>
+                    <div id="my_tag">bobrikilya</div>
                 </div>
             </ul>
         </header>

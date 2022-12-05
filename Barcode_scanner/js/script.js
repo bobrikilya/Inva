@@ -28,7 +28,7 @@ const session_text = document.getElementById('session_text');
 const session_power_but = document.getElementById('session_power_but');
 const sessions_blur = document.getElementById('sessions_blur');
 
-const head_cont = document.getElementById('head_cont');
+// const menue_head_cont = document.getElementById('menue_head_cont');
 const fire_but = document.getElementById('fire_but');
 const item_search_cont = document.getElementById('item_search_cont');
 const item_search_input = document.getElementById('item_search_input');
@@ -39,7 +39,7 @@ const back_but = document.getElementById('back_but');
 //--------------
 
 const header = document.querySelector('header');
-const menue_cont = document.getElementById('menue_cont');
+const menue_content = document.getElementById('menue_content');
 
 const docs_cont = document.getElementById('docs_cont');
 const docs_cont_content = document.getElementById('docs_cont_content');
@@ -182,8 +182,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     };
 
-    if (Moz) sessions_blur.style.backgroundColor = '#ebf4fffa';
-    // if (Moz) sessions_blur.style.backgroundColor = '#ebf4fffa';
+    if (Moz) sessions_blur.style.backgroundColor = '#ebf4ff65';
 
     reload_but.classList.add('light');
     setTimeout(() => {reload_but.classList.remove('light')}, 1000);
@@ -297,7 +296,6 @@ function full_reset(){
 };
 
 function menue_toggle(){
-    head_cont.classList.toggle('toggle');
     menue_but.classList.toggle('toggle');
     back_but.classList.toggle('toggle');
     reload_but.classList.toggle('toggle');
@@ -319,7 +317,7 @@ function menue_toggle(){
     main_block.classList.toggle('toggle');
     input_block.classList.toggle('toggle');
 
-    setTimeout(() => {menue_cont.classList.toggle('toggle')}, 10);
+    setTimeout(() => {menue_content.classList.toggle('toggle')}, 10);
 };
 
 function no_session_acr(){
@@ -762,20 +760,20 @@ docs_cont_content.addEventListener('DOMSubtreeModified', (e) =>{
     docs_count = docs_cont_content.getElementsByTagName('li').length;
     // console.log(docs_count);
     if (docs_count == 0) {
-        // console.log('0');
+        // console.log('= 0');
         docs_not_found.classList.remove('no_active');
         localStorage.removeItem('docs_list');
     }else if (docs_count == 1) {
-        // console.log('1');
+        // console.log('= 1');
         docs_not_found.classList.add('no_active');
-    }else if (docs_count > 1 && docs_count <= 2) {
-        // console.log('0 > docs_count < 3');
+    }else if (docs_count == 2) {
+        // console.log('= 2');
         docs_cont_content.style.justifyContent = 'center';
         docs_cont.style.justifyContent = 'center';
         docs_cont_content.style.overflow = 'hidden';
         expand_ic.classList.remove('turn_on');
-    }else if (docs_count > 3){
-        // console.log('> 3');
+    }else if (docs_count > 2){
+        // console.log('> 2');
         docs_cont.style.justifyContent = 'flex-start';
         docs_cont_content.style.justifyContent = 'flex-start';
         // console.log('clientHeight ' + docs_cont_content.clientHeight);
