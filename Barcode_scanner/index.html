@@ -126,7 +126,7 @@
                     <h3>Задать имя сессии?</h3>
                 </div>
                 <div id="sess_input_cont" class="cont">
-                    <input id="sess_input" type="text" maxlength="15" minlength="4">
+                    <input id="sess_input" type="text" maxlength="15">
                     <div id="session_num_but_cont" class="cont">
                         <button id="give_name_but" class="button">задать</button>
                         <button id="next_but" class="button">далее</button>
@@ -152,19 +152,19 @@
         </div>
         <header class="cont">
             <ul id="menue_content" class="cont">
-                <!-- <span id="setting_but" class="nav_but"></span>
-                    <i class="fa-solid fa-gear"></i>
-                </span> -->
                 <div id="menue_head_cont" class="cont">
-                    <span id="fire_but" class="nav_but">
+                    <span id="fire_but" class="cont nav_but">
                         <i class="fa-solid fa-fire"></i>
                     </span>
                     <div id="item_search_cont" class="cont">
-                        <span>
+                        <p id="search_open">
                             <i class="fa-solid fa-magnifying-glass"></i>
-                        </span>
-                        <input id="item_search_input" type="text">
+                        </p>
+                        <input id="item_search_input" placeholder="Остатки на точке" type="text">
                     </div>
+                    <span id="setting_but" class="cont nav_but">
+                        <i class="fa-solid fa-gear"></i>
+                    </span>
                 </div>
                 <div id="menue_main_cont" class="cont">
                     <div id="docs_cont" class="cont">

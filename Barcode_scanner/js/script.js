@@ -119,6 +119,7 @@ download_back_but.addEventListener('click', () =>{
     download = 'download_back';
     are_u_sure_toggle();
 });
+item_search_cont.addEventListener('click', item_search_open);
 
 session_but.addEventListener('click', sessions_cont_toggle);
 
@@ -477,8 +478,8 @@ function sess_num_confirm(){
         session_name = `${sess_input.value}-${sess_num}`;
         // console.log(session_name);
     };
-    
     session_record();
+    sess_input.value = '';
 };
 
 function session_record(){
@@ -598,14 +599,13 @@ sess_input.addEventListener('blur', () => {
     }, 10);
 });
 
-item_search_input.addEventListener('focus', () => {
-    fire_but.classList.add('hide');
-    item_search_cont.classList.add('hide');
-});
+function item_search_open() {
+    item_search_cont.classList.add('open');
+    item_search_input.focus();
+};
 
 item_search_input.addEventListener('blur', () => {
-    fire_but.classList.remove('hide');
-    item_search_cont.classList.remove('hide');
+    item_search_cont.classList.remove('open');
 });
 
 
