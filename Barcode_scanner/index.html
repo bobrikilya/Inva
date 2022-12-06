@@ -35,8 +35,8 @@
             </span>
             <div id="session_cont" class="cont">
                 <span id="session_but" class="cont">Нет сессии</span>
-                <div id="all_sessions_cont" class="cont">
-                    <div id="all_sess_cont_content" class="cont">
+                <div id="session_nav_cont" class="cont">
+                    <div id="session_nav_content" class="cont">
                         <button id="session_power_but">
                             <span>
                                 <i class="fa-solid fa-plus"></i>
@@ -44,7 +44,7 @@
                         </button>
                         <span id="session_text">Подключиться<br> к сессии</span>
                     </div>
-                    <div id="sessions_blur" class="blur"></div>
+                    <div id="session_blur" class="blur"></div>
                 </div>
             </div>
             <span id="menue_but" class="nav_but menue_but">
@@ -54,28 +54,6 @@
             <span id="back_but" class="nav_but menue_but">
                 <i class="fa-regular fa-circle-left"></i>
             </span>
-        </div>
-        <div id="store_address_cont" class="container">
-            <ul id="store_address_content" class="cont content chose_list">
-                <div class="cont">
-                    <span class="cont">
-                        <li><a id="Krasnoe" href="#">Красное</a></li>
-                        <li><a id="Polock" href="#">Полоцк</a></li>
-                        <li><a id="Glubokoe" href="#">Глубокое</a></li>
-                        <li><a id="Radoshk" href="#">Радошк.</a></li>
-                    </span>
-                    <span class="cont">
-                        <li><a id="Sputnik" href="#">Спутник</a></li>
-                        <li><a id="Belmash" href="#">БелМаш</a></li>
-                        <li><a id="Libavo" href="#">Либаво</a></li>
-                        <li><a id="Turly" href="#">Тюрли</a></li>
-                    </span>
-                </div>
-                <span id="cancel_but_address" class="cont cancel_but">
-                    <i class="fa-solid fa-xmark"></i>
-                </span>
-            </ul>
-            <div id="store_address_blur" class="blur"></div>
         </div>
         <div id="doc_types_cont" class="container">
             <ul id="doc_types_content" class="cont content chose_list">
@@ -115,6 +93,28 @@
             </ul>
             <div id="doc_types_blur" class="blur"></div>
         </div>
+        <div id="store_address_cont" class="container">
+            <ul id="store_address_content" class="cont content chose_list">
+                <div class="cont">
+                    <span class="cont">
+                        <li><a id="Krasnoe" href="#">Красное</a></li>
+                        <li><a id="Polock" href="#">Полоцк</a></li>
+                        <li><a id="Glubokoe" href="#">Глубокое</a></li>
+                        <li><a id="Radoshk" href="#">Радошк.</a></li>
+                    </span>
+                    <span class="cont">
+                        <li><a id="Sputnik" href="#">Спутник</a></li>
+                        <li><a id="Belmash" href="#">БелМаш</a></li>
+                        <li><a id="Libavo" href="#">Либаво</a></li>
+                        <li><a id="Turly" href="#">Тюрли</a></li>
+                    </span>
+                </div>
+                <span id="cancel_but_address" class="cont cancel_but">
+                    <i class="fa-solid fa-xmark"></i>
+                </span>
+            </ul>
+            <div id="store_address_blur" class="blur"></div>
+        </div>
         <div id="ur_session_num_cont" class="container">
             <div id="session_num_content" class="cont content">
                 <div id="sess_info_cont" class="cont">
@@ -133,7 +133,7 @@
                     </div>
                 </div>
             </div>
-            <div id="session_num_blur" class="blur"></div>
+            <div id="ur_session_num_blur" class="blur"></div>
         </div>
         <div id="are_u_sure_cont" class="container">
             <div id="are_u_sure_content" class="cont content">
@@ -178,7 +178,12 @@
                             <span id="docs_not_found">Документов нет
                                 <div><i class="fa-regular fa-folder-open"></i></div>
                             </span>
-                            <span id="docs_info">документы</span>
+                            <span id="docs_info" class="cont">документы
+                                <span id="swipe_icon">
+                                    <i class="fa-solid fa-up-right-from-square"></i>
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </span>
+                            </span>
                         </ul>
                     </div>
                     <span id="expand_ic">

@@ -22,11 +22,11 @@ const foot_cont = document.getElementById('foot_cont');
 const reload_but = document.getElementById('reload_but');
 const big_eye_but = document.getElementById('big_eye_but');
 const session_but = document.getElementById('session_but');
-const all_sessions_cont = document.getElementById('all_sessions_cont');
-const all_sess_cont_content = document.getElementById('all_sess_cont_content');
+const session_nav_cont = document.getElementById('session_nav_cont');
+const session_nav_content = document.getElementById('session_nav_content');
 const session_text = document.getElementById('session_text');
 const session_power_but = document.getElementById('session_power_but');
-const sessions_blur = document.getElementById('sessions_blur');
+// const session_blur = document.getElementById('session_blur');
 
 // const menue_head_cont = document.getElementById('menue_head_cont');
 const fire_but = document.getElementById('fire_but');
@@ -43,6 +43,7 @@ const menue_content = document.getElementById('menue_content');
 
 const docs_cont = document.getElementById('docs_cont');
 const docs_cont_content = document.getElementById('docs_cont_content');
+const swipe_icon = docs_cont_content.querySelector('#swipe_icon');
 const docs_not_found = document.getElementById('docs_not_found');
 const expand_ic = document.getElementById('expand_ic');
 
@@ -182,7 +183,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     };
 
-    if (Moz) sessions_blur.style.backgroundColor = '#ebf4ff65';
+    // if (Moz) session_blur.style.backgroundColor = '#ebf4ff65';
 
     reload_but.classList.add('light');
     setTimeout(() => {reload_but.classList.remove('light')}, 1000);
@@ -431,7 +432,7 @@ function data_downloading_back(){
     setTimeout(() => {
         docs_cont.classList.add('download_height');
         setTimeout(() => {
-            docs_cont.style.minHeight = `14rem`;
+            docs_cont.style.minHeight = `15rem`;
             docs_cont.style.maxHeight = `55%`;
             docs_cont.classList.remove('download_height');
         },460);
@@ -439,8 +440,8 @@ function data_downloading_back(){
 };
 
 function sessions_cont_toggle(){
-    all_sessions_cont.classList.toggle('toggle');
-    setTimeout(() => {all_sess_cont_content.classList.toggle('toggle')}, 20);
+    session_nav_cont.classList.toggle('toggle');
+    setTimeout(() => {session_nav_content.classList.toggle('toggle')}, 20);
 };
 
 
@@ -542,15 +543,15 @@ function docs_opening(doc_data){
 };
 
 document.addEventListener('click', (event) => {
-    if (all_sessions_cont.classList.contains('toggle')){
-        const sessions_cont_inside = event.composedPath().includes(all_sessions_cont);
+    if (session_nav_cont.classList.contains('toggle')){
+        const sessions_cont_inside = event.composedPath().includes(session_nav_cont);
         const session_but_inside = event.composedPath().includes(session_but);
         // console.log(sessions_cont_inside);
         // console.log(session_but_inside);
 
         if (!sessions_cont_inside && !session_but_inside ) { 
-            all_sessions_cont.classList.remove('toggle');
-            all_sess_cont_content.classList.remove('toggle');
+            session_nav_cont.classList.remove('toggle');
+            session_nav_content.classList.remove('toggle');
         };
         
     };
@@ -761,10 +762,12 @@ docs_cont_content.addEventListener('DOMSubtreeModified', (e) =>{
     // console.log(docs_count);
     if (docs_count == 0) {
         // console.log('= 0');
+        swipe_icon.classList.remove('toggle');
         docs_not_found.classList.remove('no_active');
         localStorage.removeItem('docs_list');
     }else if (docs_count == 1) {
         // console.log('= 1');
+        swipe_icon.classList.add('toggle');
         docs_not_found.classList.add('no_active');
     }else if (docs_count == 2) {
         // console.log('= 2');

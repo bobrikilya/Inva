@@ -87,13 +87,12 @@ button
         pointer-events: 0
 
 .blur
-    position: absolute
+    position: fixed
     top: 0
     bottom: 0
     left: 0
     right: 0
     backdrop-filter: blur(32px)
-    // -webkit-backdrop-filter: blur(32px)
     background-color: #ddeafa60
     z-index: -1
 
@@ -160,8 +159,6 @@ button
             opacity: 1
             pointer-events: auto
         // border: 2px solid blue
-    #sessions_blur
-        border-radius: 40px
     #session_cont
         flex-direction: row
         overflow: visible
@@ -192,7 +189,7 @@ button
                 border: 1px solid #1a1a1a70
                 color: #1a1a1a70
                 pointer-events: none
-        #all_sessions_cont
+        #session_nav_cont
             flex-shrink: 1
             position: absolute
             bottom: -0.5rem
@@ -201,13 +198,13 @@ button
             padding-bottom: 4.9rem
             justify-content: flex-end
             transition-duration: 0.2s
-            box-shadow: 0 -2px 15px #a5a4a43b
+            box-shadow: 0 -5px 15px #a5a4a43b
             display: none
             border-radius: 40px
             z-index: 7
             &.toggle
                 display: flex
-            #all_sess_cont_content
+            #session_nav_content
                 flex-shrink: 1
                 width: 100%
                 height: 100%
@@ -219,8 +216,6 @@ button
                     opacity: 1
                 #session_power_but
                     width: 8rem
-                    // height: 12rem
-                    // padding: 15px
                     margin-top: 1.8rem
                     margin-bottom: 1.7rem
                     font-size: 2rem
@@ -240,6 +235,9 @@ button
                             transform: rotate(45deg)
                 #session_text
                     text-align: center
+            #session_blur
+                position: absolute
+                border-radius: 40px
 
 
 #ur_session_num_cont
@@ -315,12 +313,6 @@ button
                 background-color: #13c6e644
             #next_but
                 background-color: #36e61350
-
-
-#session_num_blur
-    position: fixed
-    backdrop-filter: blur(20px)
-    // -webkit-backdrop-filter: blur(20px)
 
 
 #are_u_sure_cont
@@ -408,8 +400,7 @@ button
         color: #9b035b5e
 
 .chose_list
-    margin-top: 1rem
-    // overflow: auto
+    margin-top: 4rem
     // border: 2px solid red
     li
         position: relative
@@ -426,22 +417,21 @@ button
             border-radius: 25px
             // border: 2px solid blue
     .cancel_but
-        margin-top: 1.25rem
+        margin-top: 4vh
         cursor: pointer
         border-radius: 50% 
         color: #f5596eee
-        font-size: 4rem
+        font-size: 4.2rem
         width: 8.5rem
         height: 4.5rem
 
-
-#doc_types_blur
-    background-color:#ffffff42
 
 #doc_types_cont
     z-index: 9
     // border: 2px solid yellow
     #doc_types_content
+        max-width: 330px
+        min-width: auto
         // border: 2px solid orange
         li
             margin-top: 0.7rem
@@ -512,16 +502,12 @@ header
             opacity: 0.5
             transform: translateY(-1rem)
         #menue_head_cont
-            // position: absolute
-            // top: 3.5rem
-            z-index: 7
+            margin-bottom: 0.2rem
             flex-direction: row
             flex-shrink: 0
             width: 100%
-            // min-width: 360px
             justify-content: flex-end
             overflow: visible
-            // padding: 0 1.5rem
             // border: 2px solid black
             &.toggle
                 display: none
@@ -567,10 +553,9 @@ header
             height: 100%
             flex-shrink: 1
             #docs_cont
-                margin-top: 0.5rem
                 width: 100%
                 min-height: 15rem
-                max-height: 50%
+                max-height: 55%
                 border-radius: 25px 
                 justify-content: center
                 background-color: #ffffff46
@@ -578,10 +563,10 @@ header
                 // border: 2px solid #ffffff36
                 &.download_height
                     transition-duration: 0.45s
-                    min-height: 14rem
-                    max-height: 14rem
+                    min-height: 15rem
+                    max-height: 15rem
                     justify-content: center
-                    // height: 16rem
+                    height: 15rem
                 #check
                     position: absolute
                     z-index: 10
@@ -634,6 +619,8 @@ header
                     #docs_info
                         position: absolute
                         top: 0.7rem
+                        overflow: visible
+                        width: 100%
                         font-size: 1.2rem
                         color: #1a1a1a91
                         transform: translateY(0)
@@ -642,6 +629,22 @@ header
                         &.hiden
                             transform: translateY(0.8rem)
                             opacity: 0
+                        #swipe_icon
+                            display: none
+                            opacity: 0
+                            position: absolute
+                            // top: 0.5rem
+                            left: 2rem
+                            // margin-top: 0.5rem
+                            color: #1a1a1a5b
+                            font-size: 1rem
+                            transition-duration: 0.2s
+                            i:first-child
+                                transform: rotate(45deg)
+                            i:last-child
+                                margin-left: 0.3rem
+                            &.toggle
+                                opacity: 1
                     #docs_not_found
                         position: absolute
                         margin-top: -1.4rem
@@ -743,7 +746,7 @@ header
                                 // border: 2px solid blue
                             .doc_lit_info
                                 color: #1a1a1a70
-                                margin-top: 0.2rem
+                                margin-top: 0.3rem
                                 font-size: 1.1rem
                                 width: 100%
                                 display: flex
@@ -791,7 +794,7 @@ header
                             i
                                 pointer-events: none
                     li:first-child
-                        margin-top: 2.2rem
+                        margin-top: 2.1rem
                     // li:last-child
                     //     margin-bottom: 0.8rem
             #expand_ic
@@ -829,10 +832,10 @@ header
                     width: 5rem
                     border-radius: 50%
                     // border: 2px solid red
-                    p
-                        color: #18191da2
-                        margin-top: 0.1rem
-                        font-size: 0.9rem
+                p
+                    color: #18191da2
+                    margin-top: -0.2rem
+                    font-size: 0.9rem
             #new_doc_but
                 display: flex
                 flex-direction: column
