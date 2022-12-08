@@ -81,6 +81,10 @@ const camera_button = document.getElementById('camera_butt');
 
 //--------------
 
+const oddments_cont = document.getElementById('oddments_cont');
+
+//--------------
+
 const input_block = document.getElementById('input_block');
 const input = document.getElementById('input');
 const clear_button = document.getElementById('clear_butt');
@@ -584,17 +588,19 @@ input.addEventListener('blur', () => {
 sess_input.addEventListener('focus', () => {
     give_name_but.innerText = 'отмена';
     sess_info_cont.style.opacity = '0';
-    sess_input_cont.classList.add('focus');
+    session_num_content.style.justifyContent = "flex-end"
+    // sess_input_cont.classList.add('focus');
     // window.scrollTo({bottom: 0, behavior: "smooth"});
     // sess_input_cont.scrollTo({bottom: 0, behavior: "smooth"});
-    sess_input_cont.scrollIntoView(false, {behavior: "smooth"});
+    // sess_input_cont.scrollIntoView(false, {behavior: "smooth"});
 });
 
 sess_input.addEventListener('blur', () => {
     setTimeout(() => {
         give_name_but.innerText = 'задать';
         sess_info_cont.style.opacity = '1';
-        sess_input_cont.classList.remove('focus');
+        session_num_content.style.justifyContent = "center"
+        // sess_input_cont.classList.remove('focus');
         sess_input.classList.remove('active');
     }, 10);
 });
@@ -602,10 +608,12 @@ sess_input.addEventListener('blur', () => {
 function item_search_open() {
     item_search_cont.classList.add('open');
     item_search_input.focus();
+    oddments_cont.classList.add('toggle')
 };
 
 item_search_input.addEventListener('blur', () => {
     item_search_cont.classList.remove('open');
+    oddments_cont.classList.remove('toggle')
 });
 
 
