@@ -548,7 +548,8 @@ input {
   width: 100%;
   border-radius: 25px;
 }
-.chose_list .cancel_but {
+
+.cancel_but {
   margin-top: 4vh;
   cursor: pointer;
   border-radius: 50%;
@@ -621,13 +622,14 @@ input {
 #items_cont #items_content {
   overflow: visible;
   width: 90%;
-  padding: 2.5rem 0;
+  padding-top: 2rem;
+  padding-bottom: 1.5rem;
   justify-content: flex-start;
 }
 #items_cont #items_content #item_search_cont {
   position: relative;
   width: 100%;
-  height: 4rem;
+  height: 5rem;
   background-color: rgba(2, 49, 70, 0.1764705882);
   border-radius: 25px;
   z-index: 8;
@@ -635,45 +637,57 @@ input {
 #items_cont #items_content #item_search_cont span {
   position: absolute;
   right: 1rem;
-  top: 0.9rem;
   color: rgba(26, 26, 26, 0.5960784314);
   font-size: 2rem;
   pointer-events: none;
 }
 #items_cont #items_content #item_search_cont input {
-  font-size: 1.7rem;
+  font-size: 1.6rem;
   padding: 0 15px;
   margin-right: 3rem;
-  width: 83%;
+  width: 80%;
   height: 70%;
   color: #222222;
   background-color: #e9f4f8;
 }
 #items_cont #items_content #under_search_cont {
   width: 80%;
-  height: 5rem;
+  height: 4rem;
   border-radius: 0 0 25px 25px;
   background-color: rgba(1, 54, 124, 0.2941176471);
 }
-#items_cont #items_content #items_list {
-  flex-shrink: 1;
-  justify-content: flex-start;
+#items_cont #items_content #items_list_cont {
+  margin-top: 1rem;
   width: 100%;
   height: 100%;
-  margin-top: 2rem;
-  overflow: auto;
+  flex-shrink: 1;
+  background-color: rgba(255, 255, 255, 0.2745098039);
+  border-radius: 25px;
 }
-#items_cont #items_content #items_list li {
+#items_cont #items_content #items_list_cont #items_list_cont_content {
+  width: 90%;
+  height: 100%;
+  overflow: auto;
+  justify-content: flex-start;
+  scroll-behavior: smooth;
+}
+#items_cont #items_content #items_list_cont #items_list_cont_content::-webkit-scrollbar {
+  width: 0;
+}
+#items_cont #items_content #items_list_cont #items_list_cont_content li {
   display: flex;
   flex-shrink: 0;
   width: 100%;
   height: 4rem;
   margin-top: 0.5rem;
-  background-color: rgba(255, 255, 255, 0.4862745098);
+  background-color: rgba(0, 96, 141, 0.1176470588);
   border-radius: 25px;
 }
-#items_cont #items_content #items_list li:first-child {
-  margin-top: 0;
+#items_cont #items_content #items_list_cont #items_list_cont_content li:first-child {
+  margin-top: 1rem;
+}
+#items_cont #items_content #cancel_but_item_search {
+  margin-top: 2vh;
 }
 
 header {

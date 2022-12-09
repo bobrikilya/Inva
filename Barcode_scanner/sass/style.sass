@@ -433,14 +433,14 @@ input
             width: 100%
             border-radius: 25px
             // border: 2px solid blue
-    .cancel_but
-        margin-top: 4vh
-        cursor: pointer
-        border-radius: 50% 
-        color: #f5596eee
-        font-size: 4.2rem
-        width: 8.5rem
-        height: 4.5rem
+.cancel_but
+    margin-top: 4vh
+    cursor: pointer
+    border-radius: 50% 
+    color: #f5596eee
+    font-size: 4.2rem
+    width: 8.5rem
+    height: 4.5rem
 
 
 #doc_types_cont
@@ -506,13 +506,14 @@ input
     #items_content
         overflow: visible
         width: 90%
-        padding: 2.5rem 0
+        padding-top: 2rem
+        padding-bottom: 1.5rem
         justify-content: flex-start
         // border: 2px solid red
         #item_search_cont
             position: relative
             width: 100%
-            height: 4rem
+            height: 5rem
             background-color: #0231462d
             border-radius: 25px
             z-index: 8
@@ -520,43 +521,54 @@ input
             span
                 position: absolute
                 right: 1rem
-                top: 0.9rem
                 color: #1a1a1a98
                 font-size: 2rem
                 pointer-events: none
             input
-                font-size: 1.7rem
+                font-size: 1.6rem
                 padding: 0 15px
                 margin-right: 3rem
-                width: 83%
+                width: 80%
                 height: 70%
                 color: #222222
                 background-color: #e9f4f8
         #under_search_cont
             width: 80%
-            height: 5rem
+            height: 4rem
             border-radius: 0 0 25px 25px
             background-color: #01367c4b
             // border: 2px solid black
-        #items_list
-            flex-shrink: 1
-            justify-content: flex-start
+        #items_list_cont
+            margin-top: 1rem
             width: 100%
             height: 100%
-            margin-top: 2rem
-            overflow: auto
-            // border: 2px solid blue
-            li
-                display: flex
-                flex-shrink: 0
-                width: 100%
-                height: 4rem
-                margin-top: 0.5rem
-                // background-color: #0092d638
-                background-color: #ffffff7c
-                border-radius: 25px
-            li:first-child 
-                margin-top: 0
+            flex-shrink: 1
+            background-color: #ffffff46
+            border-radius: 25px
+            #items_list_cont_content
+                width: 90%
+                height: 100%
+                overflow: auto
+                justify-content: flex-start
+                // border: 2px solid blue
+                scroll-behavior: smooth
+                &::-webkit-scrollbar
+                    width: 0
+                li
+                    display: flex
+                    flex-shrink: 0
+                    width: 100%
+                    height: 4rem
+                    margin-top: 0.5rem
+                    background-color: #00608d1e
+                    border-radius: 25px
+                li:first-child
+                    margin-top: 1rem
+        #cancel_but_item_search
+            margin-top: 2vh
+            // position: absolute
+            // bottom: 1rem
+
 
 header
     display: flex

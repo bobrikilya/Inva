@@ -83,7 +83,7 @@ const camera_button = document.getElementById('camera_butt');
 
 const items_cont = document.getElementById('items_cont');
 const items_content = items_cont.querySelector('#items_content');
-
+const cancel_but_item_search = items_cont.querySelector('#cancel_but_item_search');
 //--------------
 
 const input_block = document.getElementById('input_block');
@@ -124,7 +124,8 @@ download_back_but.addEventListener('click', () =>{
     download = 'download_back';
     are_u_sure_toggle();
 });
-item_search_icon.addEventListener('click', item_search_open);
+item_search_icon.addEventListener('click', items_cont_open);
+cancel_but_item_search.addEventListener('click', items_cont_close);
 
 session_but.addEventListener('click', sessions_cont_toggle);
 
@@ -606,7 +607,7 @@ sess_input.addEventListener('blur', () => {
     }, 10);
 });
 
-function item_search_open() {
+function items_cont_open() {
     items_cont.classList.add('toggle');
     setTimeout(() => {
         item_search_input.focus();
@@ -614,10 +615,10 @@ function item_search_open() {
     }, 80);
 };
 
-item_search_input.addEventListener('blur', () => {
+function items_cont_close() {
     items_cont.classList.remove('toggle');
     items_content.classList.remove('toggle');
-});
+};
 
 
 docs_cont_content.addEventListener('scroll', () => {
