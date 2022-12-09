@@ -30,7 +30,6 @@ body
 button, a, i
     &:active
         transition: 0s
-        transition-duration: 0s
         opacity: 0.4
 
 button
@@ -67,13 +66,13 @@ button
     max-width: 350px
     min-width: 310px
     height: 100%
-    // opacity: 0.5
+    opacity: 0.6
     // transform: translateY(-1rem)
+    transition: 0.15s ease-out
     // border: 2px solid brown
-    // &.toggle
-    //     transition: 0.2s ease-out
-    //     opacity: 1
-    //     transform: translateY(0)
+    &.toggle
+        opacity: 1
+        // transform: translateY(0)
 
 #install_notif
     position: fixed
@@ -488,7 +487,45 @@ button
                         // border: 2px solid red
 
 #oddments_cont
-    // z-index: 7
+    // display: flex
+    z-index: 8
+    #oddments_content
+        #item_search_cont
+            position: absolute
+            top: 2rem
+            width: 4rem
+            height: 4rem
+            background-color: #ffffff46
+            border-radius: 25px
+            transition-duration: 0.2s
+            z-index: 8
+            // border: 2px solid brown
+            span
+                position: absolute
+                // top: 0.9rem
+                // right: 1.1rem
+                color: #1a1a1a98
+                font-size: 2rem
+                pointer-events: none
+            input
+                font-size: 1.5rem
+                padding: 0 15px
+                margin-right: 3rem
+                width: 80%
+                height: 70%
+                color: #5e5e5ee0
+                background-color: #0031720e
+                opacity: 0
+                pointer-events: none
+            &.active
+                border-radius: 25px
+                width: 100%
+                span
+                    right: 1.1rem
+                    top: 0.9rem
+                input
+                    opacity: 1
+                    pointer-events: auto
 
 header
     display: flex
@@ -504,15 +541,15 @@ header
         max-width: 500px
         transition: 0.2s ease-out
         opacity: 1
-        transform: translateY(0)
+        // transform: translateY(0)
         // border: 2px solid brown
         &.toggle
-            opacity: 0.5
-            transform: translateY(-1rem)
+            opacity: 0.6
+            // transform: translateY(-1rem)
         #item_search_blur
             display: none
         #menue_head_cont
-            z-index: 10
+            z-index: 7
             flex-direction: row
             width: 100%
             // border: 2px solid black
@@ -520,43 +557,22 @@ header
                 display: none
             span
                 position: relative
-                z-index: 9
+                z-index: 8
                 margin: 0 3%
                 border-radius: 50%
                 opacity: 1
                 // border: 2px solid black
-            #item_search_cont
+            #item_search_icon
                 width: 4rem
                 height: 4rem
                 background-color: #ffffff46
                 border-radius: 50%
-                transition: 0.2s ease-out
-                z-index: 8
                 // border: 2px solid brown
-                &.open
-                    border-radius: 25px
-                    width: 100%
-                    input
-                        opacity: 1
-                        pointer-events: auto
-                    p
-                        right: 1.1rem
-                        top: 0.9rem
                 p
                     pointer-events: none
                     position: absolute
                     color: #1a1a1a98
                     font-size: 2rem
-                input
-                    opacity: 0
-                    pointer-events: none
-                    font-size: 1.5rem
-                    padding: 0 15px
-                    margin-right: 3rem
-                    width: 80%
-                    height: 70%
-                    color: #5e5e5ee0
-                    background-color: #0031720e
         #menue_main_cont
             width: 100%
             height: 100%
@@ -715,6 +731,7 @@ header
                                 opacity: 1
                                 transform: scale(1)
                         &:active
+                            transition: 0s
                             box-shadow: inset 0 0 15px #1414142d
                         &.deleting
                             transition-duration: 0.4s
@@ -781,6 +798,7 @@ header
                             transform: scale(1)
                             // border: 2px solid red
                             &:active
+                                transition: 0s
                                 box-shadow: inset 0 0 15px #1414144f
                             i
                                 pointer-events: none
@@ -797,6 +815,9 @@ header
                             transform: scale(0)
                             i
                                 pointer-events: none
+                            &:active
+                                transition: 0s
+                                box-shadow: inset 0 0 15px #1414141e
                     li:first-child
                         margin-top: 2.1rem
                     // li:last-child

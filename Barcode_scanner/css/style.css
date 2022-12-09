@@ -93,7 +93,6 @@ body {
 }
 button:active, a:active, i:active {
   transition: 0s;
-  transition-duration: 0s;
   opacity: 0.4;
 }
 
@@ -132,6 +131,11 @@ button {
   max-width: 350px;
   min-width: 310px;
   height: 100%;
+  opacity: 0.6;
+  transition: 0.15s ease-out;
+}
+.content.toggle {
+  opacity: 1;
 }
 
 #install_notif {
@@ -596,6 +600,49 @@ button {
   color: #18191d;
 }
 
+#oddments_cont {
+  z-index: 8;
+}
+#oddments_cont #oddments_content #item_search_cont {
+  position: absolute;
+  top: 2rem;
+  width: 4rem;
+  height: 4rem;
+  background-color: rgba(255, 255, 255, 0.2745098039);
+  border-radius: 25px;
+  transition-duration: 0.2s;
+  z-index: 8;
+}
+#oddments_cont #oddments_content #item_search_cont span {
+  position: absolute;
+  color: rgba(26, 26, 26, 0.5960784314);
+  font-size: 2rem;
+  pointer-events: none;
+}
+#oddments_cont #oddments_content #item_search_cont input {
+  font-size: 1.5rem;
+  padding: 0 15px;
+  margin-right: 3rem;
+  width: 80%;
+  height: 70%;
+  color: rgba(94, 94, 94, 0.8784313725);
+  background-color: rgba(0, 49, 114, 0.0549019608);
+  opacity: 0;
+  pointer-events: none;
+}
+#oddments_cont #oddments_content #item_search_cont.active {
+  border-radius: 25px;
+  width: 100%;
+}
+#oddments_cont #oddments_content #item_search_cont.active span {
+  right: 1.1rem;
+  top: 0.9rem;
+}
+#oddments_cont #oddments_content #item_search_cont.active input {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 header {
   display: flex;
   width: 100%;
@@ -612,17 +659,15 @@ header #menue_content {
   max-width: 500px;
   transition: 0.2s ease-out;
   opacity: 1;
-  transform: translateY(0);
 }
 header #menue_content.toggle {
-  opacity: 0.5;
-  transform: translateY(-1rem);
+  opacity: 0.6;
 }
 header #menue_content #item_search_blur {
   display: none;
 }
 header #menue_content #menue_head_cont {
-  z-index: 10;
+  z-index: 7;
   flex-direction: row;
   width: 100%;
 }
@@ -631,47 +676,22 @@ header #menue_content #menue_head_cont.toggle {
 }
 header #menue_content #menue_head_cont span {
   position: relative;
-  z-index: 9;
+  z-index: 8;
   margin: 0 3%;
   border-radius: 50%;
   opacity: 1;
 }
-header #menue_content #menue_head_cont #item_search_cont {
+header #menue_content #menue_head_cont #item_search_icon {
   width: 4rem;
   height: 4rem;
   background-color: rgba(255, 255, 255, 0.2745098039);
   border-radius: 50%;
-  transition: 0.2s ease-out;
-  z-index: 8;
 }
-header #menue_content #menue_head_cont #item_search_cont.open {
-  border-radius: 25px;
-  width: 100%;
-}
-header #menue_content #menue_head_cont #item_search_cont.open input {
-  opacity: 1;
-  pointer-events: auto;
-}
-header #menue_content #menue_head_cont #item_search_cont.open p {
-  right: 1.1rem;
-  top: 0.9rem;
-}
-header #menue_content #menue_head_cont #item_search_cont p {
+header #menue_content #menue_head_cont #item_search_icon p {
   pointer-events: none;
   position: absolute;
   color: rgba(26, 26, 26, 0.5960784314);
   font-size: 2rem;
-}
-header #menue_content #menue_head_cont #item_search_cont input {
-  opacity: 0;
-  pointer-events: none;
-  font-size: 1.5rem;
-  padding: 0 15px;
-  margin-right: 3rem;
-  width: 80%;
-  height: 70%;
-  color: rgba(94, 94, 94, 0.8784313725);
-  background-color: rgba(0, 49, 114, 0.0549019608);
 }
 header #menue_content #menue_main_cont {
   width: 100%;
@@ -849,6 +869,7 @@ header #menue_content #menue_main_cont #docs_cont #docs_cont_content li.del_togg
   transform: scale(1);
 }
 header #menue_content #menue_main_cont #docs_cont #docs_cont_content li:active {
+  transition: 0s;
   box-shadow: inset 0 0 15px rgba(20, 20, 20, 0.1764705882);
 }
 header #menue_content #menue_main_cont #docs_cont #docs_cont_content li.deleting {
@@ -920,6 +941,7 @@ header #menue_content #menue_main_cont #docs_cont #docs_cont_content li a {
   transform: scale(1);
 }
 header #menue_content #menue_main_cont #docs_cont #docs_cont_content li a:active {
+  transition: 0s;
   box-shadow: inset 0 0 15px rgba(20, 20, 20, 0.3098039216);
 }
 header #menue_content #menue_main_cont #docs_cont #docs_cont_content li a i {
@@ -939,6 +961,10 @@ header #menue_content #menue_main_cont #docs_cont #docs_cont_content li button {
 }
 header #menue_content #menue_main_cont #docs_cont #docs_cont_content li button i {
   pointer-events: none;
+}
+header #menue_content #menue_main_cont #docs_cont #docs_cont_content li button:active {
+  transition: 0s;
+  box-shadow: inset 0 0 15px rgba(20, 20, 20, 0.1176470588);
 }
 header #menue_content #menue_main_cont #docs_cont #docs_cont_content li:first-child {
   margin-top: 2.1rem;

@@ -30,7 +30,7 @@ const session_power_but = document.getElementById('session_power_but');
 
 // const menue_head_cont = document.getElementById('menue_head_cont');
 const fire_but = document.getElementById('fire_but');
-const item_search_cont = document.getElementById('item_search_cont');
+const item_search_icon = document.getElementById('item_search_icon');
 const item_search_input = document.getElementById('item_search_input');
 
 const menue_but = document.getElementById('menue_but');
@@ -82,6 +82,7 @@ const camera_button = document.getElementById('camera_butt');
 //--------------
 
 const oddments_cont = document.getElementById('oddments_cont');
+const item_search_cont = document.getElementById('item_search_cont');
 
 //--------------
 
@@ -123,7 +124,7 @@ download_back_but.addEventListener('click', () =>{
     download = 'download_back';
     are_u_sure_toggle();
 });
-item_search_cont.addEventListener('click', item_search_open);
+item_search_icon.addEventListener('click', item_search_open);
 
 session_but.addEventListener('click', sessions_cont_toggle);
 
@@ -606,14 +607,17 @@ sess_input.addEventListener('blur', () => {
 });
 
 function item_search_open() {
-    item_search_cont.classList.add('open');
-    item_search_input.focus();
-    oddments_cont.classList.add('toggle')
+    oddments_cont.classList.add('toggle');
+    setTimeout(() => {
+        item_search_input.focus();
+        item_search_cont.classList.add('active');
+        // console.log('sdvvsdvds');
+    }, 10);
 };
 
 item_search_input.addEventListener('blur', () => {
-    item_search_cont.classList.remove('open');
-    oddments_cont.classList.remove('toggle')
+    oddments_cont.classList.remove('toggle');
+    item_search_cont.classList.remove('active');
 });
 
 
