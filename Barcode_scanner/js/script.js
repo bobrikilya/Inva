@@ -319,7 +319,7 @@ function menue_toggle(){
         if (session_name) {
             session_record();
         }else {
-            no_session_acr();
+            no_session_act();
         };
     };
 
@@ -330,7 +330,7 @@ function menue_toggle(){
     setTimeout(() => {menue_content.classList.toggle('toggle')}, 10);
 };
 
-function no_session_acr(){
+function no_session_act(){
     session_but.classList.remove('active');
     session_power_but.classList.remove('active');
     session_name = false;
@@ -340,6 +340,7 @@ function no_session_acr(){
 };
 
 function doc_name_insert(doc_name){
+    // console.log('yea')
     session_but.innerText = doc_name;
     session_but.classList.add('no_active');
 };
@@ -378,6 +379,8 @@ function check_activ(){
 };
 
 function are_u_sure_toggle(){
+    header.classList.toggle('turn_off');
+    foot_cont.classList.toggle('turn_off');
     are_u_sure_cont.classList.toggle('toggle');
     setTimeout(() => {are_u_sure_content.classList.toggle('toggle')}, 10);
 };
@@ -456,6 +459,8 @@ function sessions_cont_toggle(){
 
 function address_chose_toggle(){
     if(!session_name){
+        header.classList.toggle('turn_off');
+        foot_cont.classList.toggle('turn_off');
         store_address_cont.classList.toggle('toggle');
         setTimeout(() => {store_address_content.classList.toggle('toggle')}, 10);
     }else {
@@ -465,6 +470,8 @@ function address_chose_toggle(){
 
 function sess_start_stop(){
     if(!session_name){
+        header.classList.toggle('turn_off');
+        foot_cont.classList.toggle('turn_off');
         address_chose_toggle();
         ur_session_num_cont.classList.add('toggle');
         setTimeout(() => {session_num_content.classList.add('toggle')}, 10);
@@ -474,14 +481,17 @@ function sess_start_stop(){
         session_name = `${today}-${sess_num}`;
         sess_input.setAttribute("placeholder", session_name);
     }else {
-        no_session_acr();
+        no_session_act();
     };
 };
 
 function sess_num_confirm(){
     ur_session_num_cont.classList.remove('toggle');
     session_num_content.classList.remove('toggle');
-    
+
+    header.classList.remove('turn_off');
+    foot_cont.classList.remove('turn_off');
+
     if (sess_input.value != 0){
         session_name = `${sess_input.value}-${sess_num}`;
         // console.log(session_name);
@@ -510,6 +520,8 @@ function sess_input_act(){
 };
 
 function docs_types_toggle(){
+    header.classList.toggle('turn_off');
+    foot_cont.classList.toggle('turn_off');
     doc_types_cont.classList.toggle('toggle');
     setTimeout(() => {doc_types_content.classList.toggle('toggle')}, 10);
 };
@@ -542,12 +554,12 @@ function add_doc(new_el){
 };
 
 function docs_opening(doc_data){
-    // console.log(doc_data['class_name']);
     if (doc_data['class_name'] == 'scan'){
+        // console.log(doc_data['text_name']);
+        menue_toggle();
         doc_name_insert(doc_data['text_name']);
         localStorage.setItem('last_opened_doc', JSON.stringify(doc_data));
         back_but.classList.add('active');
-        menue_toggle();
     };
 };
 
@@ -611,6 +623,8 @@ sess_input.addEventListener('blur', () => {
 
 function items_cont_open() {
     items_cont.classList.add('toggle');
+    header.classList.add('turn_off');
+    foot_cont.classList.add('turn_off');
     items_list_cont_content.scrollTo({top: 0, behavior: "smooth"});
     setTimeout(() => {
         item_search_input.focus();
@@ -619,6 +633,8 @@ function items_cont_open() {
 };
 
 function items_cont_close() {
+    header.classList.remove('turn_off');
+    foot_cont.classList.remove('turn_off');
     items_cont.classList.remove('toggle');
     items_content.classList.remove('toggle');
 };
