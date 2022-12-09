@@ -81,8 +81,8 @@ const camera_button = document.getElementById('camera_butt');
 
 //--------------
 
-const oddments_cont = document.getElementById('oddments_cont');
-const item_search_cont = document.getElementById('item_search_cont');
+const items_cont = document.getElementById('items_cont');
+const items_content = items_cont.querySelector('#items_content');
 
 //--------------
 
@@ -607,17 +607,16 @@ sess_input.addEventListener('blur', () => {
 });
 
 function item_search_open() {
-    oddments_cont.classList.add('toggle');
+    items_cont.classList.add('toggle');
     setTimeout(() => {
         item_search_input.focus();
-        item_search_cont.classList.add('active');
-        // console.log('sdvvsdvds');
-    }, 10);
+        items_content.classList.add('toggle');
+    }, 80);
 };
 
 item_search_input.addEventListener('blur', () => {
-    oddments_cont.classList.remove('toggle');
-    item_search_cont.classList.remove('active');
+    items_cont.classList.remove('toggle');
+    items_content.classList.remove('toggle');
 });
 
 
