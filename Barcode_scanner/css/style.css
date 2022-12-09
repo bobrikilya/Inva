@@ -26,7 +26,7 @@ html, body {
   width: 100%;
   font-size: 100%;
   line-height: 1;
-  font-size: 14px;
+  font-size: 16px;
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -97,9 +97,9 @@ button:active, a:active, i:active {
 }
 
 button {
-  height: 4.7rem;
+  height: 4.4rem;
   width: 50%;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   color: #18191d;
   border-radius: 25px;
 }
@@ -175,17 +175,17 @@ input {
   z-index: 6;
   margin: 0 8%;
   color: rgba(26, 26, 26, 0.6156862745);
-  font-size: 2.9rem;
+  font-size: 2.6rem;
   cursor: pointer;
   transition-duration: 0.2s;
-  height: 5rem;
-  width: 5rem;
+  height: 4rem;
+  width: 4rem;
 }
 
 #foot_cont {
   z-index: 5;
   position: absolute;
-  bottom: 2.4rem;
+  bottom: 2.3rem;
   width: 100%;
   min-width: 360px;
   padding-top: 1rem;
@@ -203,7 +203,7 @@ input {
   border-radius: 50%;
 }
 #foot_cont #reload_but {
-  left: -0.6rem;
+  left: -0.5rem;
 }
 #foot_cont #reload_but.light {
   transition-duration: 0.3s;
@@ -214,13 +214,13 @@ input {
 }
 #foot_cont #big_eye_but {
   display: none;
-  left: -0.3rem;
+  left: -0.35rem;
 }
 #foot_cont #big_eye_but.toggle {
   display: flex;
 }
 #foot_cont .menue_but {
-  right: -0.6rem;
+  right: -0.5rem;
   display: none;
   justify-content: center;
   align-items: center;
@@ -245,8 +245,8 @@ input {
 #foot_cont #session_cont {
   flex-direction: row;
   overflow: visible;
+  font-size: 1.1rem;
   width: 90%;
-  font-size: 1.2rem;
   color: rgba(39, 43, 61, 0.7607843137);
 }
 #foot_cont #session_cont #session_but {
@@ -276,10 +276,10 @@ input {
 #foot_cont #session_cont #session_nav_cont {
   flex-shrink: 1;
   position: absolute;
-  bottom: -0.5rem;
+  bottom: -0.8rem;
   width: 100%;
-  height: 16rem;
-  padding-bottom: 4.9rem;
+  height: 15rem;
+  padding-bottom: 4.8rem;
   justify-content: flex-end;
   transition-duration: 0.2s;
   box-shadow: 0 -5px 15px rgba(165, 164, 164, 0.231372549);
@@ -326,6 +326,7 @@ input {
   transform: rotate(45deg);
 }
 #foot_cont #session_cont #session_nav_cont #session_nav_content #session_text {
+  font-size: 1.1rem;
   text-align: center;
 }
 #foot_cont #session_cont #session_nav_cont #session_blur {
@@ -343,7 +344,7 @@ input {
 
 #ur_session_num_cont {
   z-index: 8;
-  padding: 2rem;
+  padding: 1.4rem;
   color: rgba(26, 26, 26, 0.7254901961);
   text-align: center;
   flex-shrink: 1;
@@ -351,36 +352,36 @@ input {
   bottom: auto;
 }
 #ur_session_num_cont h2 {
-  font-size: 1.9rem;
+  font-size: 1.8rem;
 }
 #ur_session_num_cont #session_num_content #sess_info_cont {
   overflow: visible;
 }
 #ur_session_num_cont #session_num_content #sess_info_cont #num_cont {
-  margin: 1.5rem 0;
+  margin: 1rem 0;
   width: 100%;
   flex-direction: row;
   align-items: flex-end;
 }
 #ur_session_num_cont #session_num_content #sess_info_cont p {
-  font-size: 2.7rem;
+  font-size: 2.5rem;
   margin-bottom: 0.4rem;
   margin-right: 0.4rem;
 }
 #ur_session_num_cont #session_num_content #sess_info_cont #session_num {
-  font-size: 5rem;
+  font-size: 4.5rem;
 }
 #ur_session_num_cont #session_num_content #sess_info_cont h3 {
   position: relative;
-  margin-top: 1.5rem;
-  font-size: 1.8rem;
+  margin-top: 1.3rem;
+  font-size: 1.6rem;
 }
 #ur_session_num_cont #session_num_content #sess_info_cont h3::after {
   content: "";
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  bottom: -1.5rem;
+  bottom: -1.3rem;
   width: 8rem;
   height: 2px;
   background-color: rgba(0, 28, 122, 0.0941176471);
@@ -388,7 +389,7 @@ input {
 }
 #ur_session_num_cont #session_num_content #sess_input_cont {
   width: 100%;
-  margin-top: 2.8rem;
+  margin-top: 2.6rem;
   overflow: visible;
 }
 #ur_session_num_cont #session_num_content #sess_input_cont.focus {
@@ -398,7 +399,7 @@ input {
 #ur_session_num_cont #session_num_content #sess_input {
   display: none;
   width: 100%;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   height: 4.7rem;
   margin-bottom: 0.5rem;
 }
@@ -412,9 +413,9 @@ input {
   width: 100%;
 }
 #ur_session_num_cont #session_num_content #session_num_but_cont button {
+  font-size: 1.3rem;
   width: 49%;
-  height: 5.5rem;
-  font-size: 1.5rem;
+  height: 5.2rem;
 }
 #ur_session_num_cont #session_num_content #session_num_but_cont #give_name_but {
   background-color: rgba(19, 198, 230, 0.2666666667);
@@ -429,7 +430,7 @@ input {
 #are_u_sure_cont #are_u_sure_content {
   overflow: visible;
   max-width: 420px;
-  padding: 1.5rem 20px;
+  padding: 1.2rem 20px;
   margin-bottom: -1rem;
 }
 #are_u_sure_cont #are_u_sure_content #icons_cont {
@@ -442,28 +443,28 @@ input {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 4rem;
-  height: 4rem;
+  width: 3.5rem;
+  height: 3.5rem;
 }
 #are_u_sure_cont #are_u_sure_content #icons_cont i.fa-cloud {
-  font-size: 6.5rem;
+  font-size: 6rem;
   color: rgba(112, 183, 196, 0.7450980392);
 }
 #are_u_sure_cont #are_u_sure_content #icons_cont i.fa-angles-right {
-  font-size: 3rem;
+  font-size: 2.5rem;
   color: rgba(64, 111, 155, 0.4039215686);
 }
 #are_u_sure_cont #are_u_sure_content #icons_cont i.fa-mobile-screen-button {
-  font-size: 6.5rem;
+  font-size: 6rem;
   color: rgba(0, 11, 71, 0.6235294118);
 }
 #are_u_sure_cont #are_u_sure_content #are_u_sure_text {
   position: relative;
-  margin-top: 5rem;
+  margin-top: 4rem;
   width: 280px;
   text-align: center;
-  font-size: 1.8rem;
-  line-height: 2.5rem;
+  font-size: 1.7rem;
+  line-height: 2.3rem;
   color: rgba(26, 26, 26, 0.7254901961);
 }
 #are_u_sure_cont #are_u_sure_content #are_u_sure_text::after {
@@ -471,7 +472,7 @@ input {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  bottom: -1.5rem;
+  bottom: -1.2rem;
   width: 8rem;
   height: 2px;
   background-color: rgba(0, 28, 122, 0.0941176471);
@@ -480,11 +481,11 @@ input {
 #are_u_sure_cont #are_u_sure_content #questions_cont {
   flex-direction: row;
   width: 100%;
-  margin-top: 3rem;
+  margin-top: 2.6rem;
 }
 #are_u_sure_cont #are_u_sure_content #questions_cont button {
   width: 10rem;
-  height: 5.5rem;
+  height: 5.2rem;
 }
 #are_u_sure_cont #are_u_sure_content #questions_cont #no_but {
   margin-right: 5px;
@@ -531,7 +532,7 @@ input {
 }
 
 .chose_list {
-  margin-top: 4rem;
+  margin-top: 3rem;
 }
 .chose_list li {
   position: relative;
@@ -553,9 +554,9 @@ input {
   cursor: pointer;
   border-radius: 50%;
   color: rgba(245, 89, 110, 0.9333333333);
-  font-size: 4.2rem;
-  width: 8.5rem;
-  height: 4.5rem;
+  font-size: 3.6rem;
+  width: 8rem;
+  height: 4rem;
 }
 
 #doc_types_cont {
@@ -566,9 +567,9 @@ input {
   min-width: auto;
 }
 #doc_types_cont #doc_types_content li {
-  margin-top: 0.7rem;
-  min-height: 5.5rem;
-  font-size: 1.6rem;
+  margin-top: 0.4rem;
+  min-height: 4.9rem;
+  font-size: 1.4rem;
   white-space: nowrap;
 }
 #doc_types_cont #doc_types_content li a {
@@ -606,11 +607,11 @@ input {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.4rem;
+  font-size: 1.25rem;
   background-color: rgba(115, 145, 209, 0.5019607843);
 }
 #store_address_cont #store_address_content div span li a {
-  height: 6rem;
+  height: 5.5rem;
   padding: 10px 10px;
   color: #18191d;
 }
@@ -621,14 +622,14 @@ input {
 #items_cont #items_content {
   overflow: visible;
   width: 90%;
-  padding-top: 2rem;
+  padding-top: 1.8rem;
   padding-bottom: 1.5rem;
   justify-content: flex-start;
 }
 #items_cont #items_content #item_search_cont {
   position: relative;
   width: 100%;
-  height: 5rem;
+  height: 4.7rem;
   background-color: rgba(2, 49, 70, 0.1764705882);
   border-radius: 25px;
   z-index: 8;
@@ -638,13 +639,13 @@ input {
   position: absolute;
   right: 1rem;
   color: rgba(26, 26, 26, 0.5960784314);
-  font-size: 2rem;
+  font-size: 1.7rem;
   pointer-events: none;
 }
 #items_cont #items_content #item_search_cont input {
-  font-size: 1.6rem;
+  font-size: 1.3rem;
   padding: 0 15px;
-  margin-right: 3rem;
+  margin-right: 2.8rem;
   width: 80%;
   height: 70%;
   color: rgba(34, 34, 34, 0.6862745098);
@@ -652,12 +653,12 @@ input {
 }
 #items_cont #items_content #items_sort_cont {
   width: 80%;
-  height: 3rem;
+  height: 2.8rem;
   border-radius: 0 0 25px 25px;
   background-color: rgba(0, 38, 87, 0.2941176471);
 }
 #items_cont #items_content #items_list_cont {
-  margin-top: 1rem;
+  margin-top: 0.8rem;
   width: 100%;
   height: 100%;
   flex-shrink: 1;
@@ -669,7 +670,7 @@ input {
   position: absolute;
   top: 0;
   width: 100%;
-  height: 6rem;
+  height: 5.3rem;
   border-radius: 25px;
   background-color: rgba(59, 0, 87, 0.2941176471);
   box-shadow: 0 5px 15px rgba(165, 164, 164, 0.1647058824);
@@ -689,16 +690,16 @@ input {
   display: flex;
   flex-shrink: 0;
   width: 100%;
-  height: 4rem;
-  margin-top: 0.5rem;
+  height: 3.7rem;
+  margin-top: 0.4rem;
   background-color: rgba(0, 96, 141, 0.1176470588);
   border-radius: 25px;
 }
 #items_cont #items_content #items_list_cont #items_list_cont_content li:first-child {
-  margin-top: 7rem;
+  margin-top: 5.8rem;
 }
 #items_cont #items_content #items_list_cont #items_list_cont_content li:last-child {
-  margin-bottom: 4rem;
+  margin-bottom: 3.5rem;
 }
 #items_cont #items_content #cancel_but_item_search {
   border-radius: 0;
@@ -715,8 +716,8 @@ header.turn_off {
   display: none;
 }
 header #menue_content {
-  padding-top: 2rem;
-  padding-bottom: 5rem;
+  padding-top: 1.8rem;
+  padding-bottom: 4.5rem;
   height: 100%;
   width: 90%;
   max-width: 500px;
@@ -742,8 +743,8 @@ header #menue_content #menue_head_cont span {
   opacity: 1;
 }
 header #menue_content #menue_head_cont #item_search_icon {
-  width: 4rem;
-  height: 4rem;
+  width: 3.8rem;
+  height: 3.8rem;
   background-color: rgba(255, 255, 255, 0.2745098039);
   border-radius: 50%;
 }
@@ -754,7 +755,7 @@ header #menue_content #menue_head_cont #item_search_icon p {
   pointer-events: none;
   position: absolute;
   color: rgba(26, 26, 26, 0.5960784314);
-  font-size: 2rem;
+  font-size: 1.8rem;
 }
 header #menue_content #menue_main_cont {
   width: 100%;
@@ -763,7 +764,7 @@ header #menue_content #menue_main_cont {
 }
 header #menue_content #menue_main_cont #docs_cont {
   width: 100%;
-  min-height: 15rem;
+  min-height: 13rem;
   max-height: 55%;
   border-radius: 25px;
   justify-content: center;
@@ -772,10 +773,10 @@ header #menue_content #menue_main_cont #docs_cont {
 }
 header #menue_content #menue_main_cont #docs_cont.download_height {
   transition-duration: 0.45s;
-  min-height: 15rem;
-  max-height: 15rem;
+  min-height: 13rem;
+  max-height: 13rem;
   justify-content: center;
-  height: 15rem;
+  height: 13rem;
 }
 header #menue_content #menue_main_cont #docs_cont #check {
   position: absolute;
@@ -794,7 +795,7 @@ header #menue_content #menue_main_cont #docs_cont #check.active {
 }
 header #menue_content #menue_main_cont #docs_cont #check i {
   position: relative;
-  font-size: 5rem;
+  font-size: 4rem;
   color: rgba(23, 194, 0, 0.5254901961);
 }
 header #menue_content #menue_main_cont #docs_cont #check i::after {
@@ -802,17 +803,17 @@ header #menue_content #menue_main_cont #docs_cont #check i::after {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  bottom: -1.6rem;
+  bottom: -1.4rem;
   width: 6rem;
   height: 2px;
   background-color: rgba(29, 24, 26, 0.1764705882);
   border-radius: 25px;
 }
 header #menue_content #menue_main_cont #docs_cont #check span {
-  margin-top: 2.5rem;
-  font-size: 1.6rem;
+  margin-top: 2.2rem;
+  font-size: 1.4rem;
   color: #18191d;
-  line-height: 1.6rem;
+  line-height: 1.4rem;
 }
 header #menue_content #menue_main_cont #docs_cont #docs_cont_content {
   justify-content: center;
@@ -833,19 +834,19 @@ header #menue_content #menue_main_cont #docs_cont #docs_cont_content::-webkit-sc
 }
 header #menue_content #menue_main_cont #docs_cont #docs_cont_content #docs_info {
   position: absolute;
-  top: 0.7rem;
+  top: 0.5rem;
   overflow: visible;
   width: 100%;
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: rgba(26, 26, 26, 0.568627451);
 }
 header #menue_content #menue_main_cont #docs_cont #docs_cont_content #docs_info #swipe_icon {
   display: none;
   opacity: 0;
   position: absolute;
-  left: 2rem;
+  left: 1.8rem;
   color: rgba(26, 26, 26, 0.3568627451);
-  font-size: 1rem;
+  font-size: 0.8rem;
   transition-duration: 0.2s;
 }
 header #menue_content #menue_main_cont #docs_cont #docs_cont_content #docs_info #swipe_icon i:first-child {
@@ -859,8 +860,8 @@ header #menue_content #menue_main_cont #docs_cont #docs_cont_content #docs_info 
 }
 header #menue_content #menue_main_cont #docs_cont #docs_cont_content #docs_not_found {
   position: absolute;
-  margin-top: -1.4rem;
-  font-size: 1.7rem;
+  margin-top: -1.5rem;
+  font-size: 1.5rem;
   color: rgba(26, 26, 26, 0.8901960784);
   transition-duration: 0.3s;
   pointer-events: none;
@@ -871,14 +872,14 @@ header #menue_content #menue_main_cont #docs_cont #docs_cont_content #docs_not_f
   height: 1rem;
   text-align: center;
   color: rgba(26, 26, 26, 0.5411764706);
-  margin-top: 1.7rem;
+  margin-top: 1.5rem;
 }
 header #menue_content #menue_main_cont #docs_cont #docs_cont_content #docs_not_found div::after {
   content: "";
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  bottom: -2.5rem;
+  bottom: -2.2rem;
   width: 8rem;
   height: 2px;
   background-color: rgba(29, 24, 26, 0.2745098039);
@@ -898,10 +899,10 @@ header #menue_content #menue_main_cont #docs_cont #docs_cont_content li {
   align-items: center;
   position: relative;
   border-radius: 25px;
-  margin-top: 0.6rem;
+  margin-top: 0.5rem;
   padding: 18px;
   width: 100%;
-  min-height: 6.4rem;
+  min-height: 6rem;
   color: rgba(26, 26, 26, 0.8901960784);
   cursor: pointer;
   white-space: nowrap;
@@ -909,7 +910,7 @@ header #menue_content #menue_main_cont #docs_cont #docs_cont_content li {
 }
 header #menue_content #menue_main_cont #docs_cont #docs_cont_content li.del_toggle {
   width: 75%;
-  margin-right: -6.5rem;
+  margin-right: -5.6rem;
   justify-content: center;
 }
 header #menue_content #menue_main_cont #docs_cont #docs_cont_content li.del_toggle #d_info {
@@ -921,7 +922,7 @@ header #menue_content #menue_main_cont #docs_cont #docs_cont_content li.del_togg
   transition-duration: 0.1s;
 }
 header #menue_content #menue_main_cont #docs_cont #docs_cont_content li.del_toggle a {
-  right: -2rem;
+  right: -1.8rem;
   opacity: 0;
   pointer-events: none;
   transform: scale(0);
@@ -950,38 +951,38 @@ header #menue_content #menue_main_cont #docs_cont #docs_cont_content li #doc_ico
   justify-content: center;
   align-items: center;
   position: absolute;
-  left: 0.7rem;
+  left: 0.6rem;
   font-size: 1.5rem;
   transition-duration: 0.3s;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2.2rem;
+  height: 2.2rem;
   background-color: rgba(255, 255, 255, 0.5254901961);
   border-radius: 25px;
   pointer-events: none;
 }
 header #menue_content #menue_main_cont #docs_cont #docs_cont_content li #d_info {
   pointer-events: none;
-  margin-left: 3rem;
+  margin-left: 2.6rem;
   width: 60%;
 }
 header #menue_content #menue_main_cont #docs_cont #docs_cont_content li #d_info h2 {
   width: 100%;
-  font-size: 1.45rem;
-  margin-bottom: 0.25rem;
+  font-size: 1.25rem;
+  margin-bottom: 0.3rem;
 }
 header #menue_content #menue_main_cont #docs_cont #docs_cont_content li #d_info .doc_lit_info {
   color: rgba(26, 26, 26, 0.4392156863);
-  margin-top: 0.3rem;
-  font-size: 1.1rem;
+  margin-top: 0.2rem;
+  font-size: 1rem;
   width: 100%;
   display: flex;
 }
 header #menue_content #menue_main_cont #docs_cont #docs_cont_content li #d_info .doc_lit_info p {
-  margin-left: 0.4rem;
+  margin-left: 0.3rem;
 }
 header #menue_content #menue_main_cont #docs_cont #docs_cont_content li #d_info .doc_lit_info span {
   color: rgba(26, 26, 26, 0.4392156863);
-  margin-left: 0.15rem;
+  margin-left: 0.1rem;
 }
 header #menue_content #menue_main_cont #docs_cont #docs_cont_content li a {
   position: absolute;
@@ -992,8 +993,8 @@ header #menue_content #menue_main_cont #docs_cont #docs_cont_content li a {
   justify-content: center;
   align-items: center;
   height: 100%;
-  width: 6rem;
-  font-size: 1.5rem;
+  width: 5.5rem;
+  font-size: 1.4rem;
   border-radius: 25px;
   cursor: pointer;
   color: rgba(29, 24, 26, 0.6431372549);
@@ -1012,10 +1013,10 @@ header #menue_content #menue_main_cont #docs_cont #docs_cont_content li a i {
 }
 header #menue_content #menue_main_cont #docs_cont #docs_cont_content li button {
   position: absolute;
-  left: -5.8rem;
+  left: -4.9rem;
   background-color: rgba(255, 103, 103, 0.1764705882);
-  width: 5rem;
-  height: 5rem;
+  width: 4.2rem;
+  height: 4.2rem;
   color: #a30101;
   transition-duration: 0.2s;
   pointer-events: none;
@@ -1030,12 +1031,12 @@ header #menue_content #menue_main_cont #docs_cont #docs_cont_content li button:a
   box-shadow: inset 0 0 15px rgba(20, 20, 20, 0.1176470588);
 }
 header #menue_content #menue_main_cont #docs_cont #docs_cont_content li:first-child {
-  margin-top: 2.1rem;
+  margin-top: 1.7rem;
 }
 header #menue_content #menue_main_cont #expand_ic {
-  margin-top: -0.8rem;
+  margin-top: -0.7rem;
   color: rgba(24, 25, 29, 0.0941176471);
-  font-size: 3.5rem;
+  font-size: 3rem;
   pointer-events: none;
   transition-duration: 0.6s;
   opacity: 0;
@@ -1048,7 +1049,7 @@ header #menue_content #menue_main_cont #expand_ic.turn_off {
   opacity: 0;
 }
 header #menue_content #menue_main_cont #menue_sec_cont {
-  margin-top: -0.9rem;
+  margin-top: -1.5rem;
   width: 80%;
 }
 header #menue_content #menue_main_cont #icons_bar {
@@ -1059,20 +1060,20 @@ header #menue_content #menue_main_cont #icons_bar {
 }
 header #menue_content #menue_main_cont #icons_bar .download_butt {
   z-index: 4;
-  font-size: 3.5rem;
+  font-size: 3.1rem;
   color: rgba(26, 26, 26, 0.5960784314);
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 5rem;
-  width: 5rem;
+  height: 4.5rem;
+  width: 4.5rem;
   border-radius: 50%;
 }
 header #menue_content #menue_main_cont #icons_bar p {
   color: rgba(24, 25, 29, 0.6352941176);
   margin-top: -0.2rem;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
 }
 header #menue_content #menue_main_cont #new_doc_but {
   display: flex;
@@ -1081,26 +1082,26 @@ header #menue_content #menue_main_cont #new_doc_but {
   align-items: center;
   padding: 3.5vh 5%;
   width: 100%;
-  min-width: 17rem;
-  min-height: 4.5rem;
+  min-width: 16rem;
+  min-height: 4.2rem;
   color: #18191d;
   background-color: rgba(136, 201, 255, 0.5882352941);
   border-radius: 25px;
   white-space: nowrap;
-  font-size: 1.55rem;
-  margin-top: 2vh;
+  font-size: 1.3rem;
+  margin-top: 1.5vh;
 }
 header #menue_content #menue_main_cont #my_tag {
-  margin-top: 1rem;
+  margin-top: 0.8rem;
   bottom: 0.7rem;
   width: 100%;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   text-align: center;
   color: rgba(39, 43, 61, 0.5333333333);
 }
 
 #main_block {
-  padding-top: 4.3rem;
+  padding-top: 1rem;
   transition-duration: 0.3s;
   flex-shrink: 1;
   height: 100%;
@@ -1163,7 +1164,7 @@ video {
 
 #input_block {
   z-index: 0;
-  padding-bottom: 5vh;
+  padding-bottom: 5.8rem;
   width: 100%;
   transition-duration: 0.3s;
   display: none;
@@ -1173,8 +1174,8 @@ video {
 }
 
 #input {
-  height: 4.7rem;
-  font-size: 2rem;
+  height: 4.4rem;
+  font-size: 1.8rem;
   margin: 1vh 0;
   letter-spacing: 4px;
 }
@@ -1203,7 +1204,7 @@ video {
   z-index: 2;
   transition-duration: 0.5s;
   width: 100%;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   text-align: center;
   color: rgba(39, 43, 61, 0.5411764706);
 }
@@ -1225,10 +1226,10 @@ video {
 #item_name {
   flex-shrink: 1;
   width: 95%;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   line-height: 2rem;
   text-align: center;
-  padding: 1rem 5%;
+  padding: 0.9rem 5%;
   margin-top: 2vh;
   margin-bottom: 2.5vh;
   border-radius: 25px;
@@ -1238,11 +1239,11 @@ video {
 @media (max-height: 700px) {
   #item_name {
     overflow: hidden;
-    font-size: 1.7rem;
-    padding: 0.9rem 5%;
-    line-height: 1.8rem;
+    font-size: 1.5rem;
+    padding: 0.7rem 5%;
+    line-height: 1.6rem;
     overflow: hidden;
-    min-height: 5.5rem;
+    min-height: 5rem;
   }
 }
 #price_cont {
@@ -1275,14 +1276,14 @@ video {
 }
 
 .icon_cont {
-  width: 3rem;
-  height: 3rem;
-  margin-left: 0.7rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-left: 0.6rem;
   border-radius: 50%;
   background-color: white;
 }
 .icon_cont i {
-  font-size: 1.9rem;
+  font-size: 1.6rem;
 }
 
 #icon_price i {
@@ -1300,28 +1301,27 @@ video {
 .item_title {
   width: 50%;
   margin-right: 2.2vw;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   white-space: nowrap;
   text-align: end;
 }
 
 .price_val {
   width: 50%;
-  margin-left: 2.2vw;
+  margin-left: 2vw;
   align-items: flex-start;
-  font-size: 1.8rem;
+  font-size: 1.7rem;
 }
 
 .item_value_r {
   margin-bottom: 0.5vh;
-  font-size: 2rem;
 }
 
 .item_value_c {
   color: #575f5b;
   width: 50%;
   margin-left: 0.5vw;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
 }
 
 .val {
@@ -1330,5 +1330,5 @@ video {
 
 .dop {
   display: inline-block;
-  margin-left: -0.3rem;
+  margin-left: -0.25rem;
 }

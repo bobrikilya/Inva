@@ -444,7 +444,7 @@ function data_downloading_back(){
     setTimeout(() => {
         docs_cont.classList.add('download_height');
         setTimeout(() => {
-            docs_cont.style.minHeight = `15rem`;
+            docs_cont.style.minHeight = `13rem`;
             docs_cont.style.maxHeight = `55%`;
             docs_cont.classList.remove('download_height');
         },460);
