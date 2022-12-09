@@ -83,7 +83,9 @@ const camera_button = document.getElementById('camera_butt');
 
 const items_cont = document.getElementById('items_cont');
 const items_content = items_cont.querySelector('#items_content');
+const items_list_cont_content = items_cont.querySelector('#items_list_cont_content');
 const cancel_but_item_search = items_cont.querySelector('#cancel_but_item_search');
+
 //--------------
 
 const input_block = document.getElementById('input_block');
@@ -590,7 +592,7 @@ input.addEventListener('blur', () => {
 sess_input.addEventListener('focus', () => {
     give_name_but.innerText = 'отмена';
     sess_info_cont.style.opacity = '0';
-    session_num_content.style.justifyContent = "flex-end"
+    session_num_content.style.justifyContent = "flex-end";
     // sess_input_cont.classList.add('focus');
     // window.scrollTo({bottom: 0, behavior: "smooth"});
     // sess_input_cont.scrollTo({bottom: 0, behavior: "smooth"});
@@ -609,6 +611,7 @@ sess_input.addEventListener('blur', () => {
 
 function items_cont_open() {
     items_cont.classList.add('toggle');
+    items_list_cont_content.scrollTo({top: 0, behavior: "smooth"});
     setTimeout(() => {
         item_search_input.focus();
         items_content.classList.add('toggle');

@@ -517,6 +517,7 @@ input
             background-color: #0231462d
             border-radius: 25px
             z-index: 8
+            box-shadow: 0 5px 15px #a5a4a43b
             // border: 2px solid brown
             span
                 position: absolute
@@ -530,13 +531,13 @@ input
                 margin-right: 3rem
                 width: 80%
                 height: 70%
-                color: #222222
+                color: #222222af
                 background-color: #e9f4f8
-        #under_search_cont
+        #items_sort_cont
             width: 80%
-            height: 4rem
+            height: 3rem
             border-radius: 0 0 25px 25px
-            background-color: #01367c4b
+            background-color: #0026574b
             // border: 2px solid black
         #items_list_cont
             margin-top: 1rem
@@ -545,13 +546,25 @@ input
             flex-shrink: 1
             background-color: #ffffff46
             border-radius: 25px
+            // overflow: visible
+            order: 2px solid orange
+            #doc_full_info_cont
+                position: absolute
+                top: 0
+                width: 100%
+                height: 6rem
+                border-radius: 25px
+                background-color: #3b00574b
+                box-shadow: 0 5px 15px #a5a4a42a
+                // border: 2px solid black
             #items_list_cont_content
+                flex-shrink: 1
                 width: 90%
                 height: 100%
                 overflow: auto
                 justify-content: flex-start
-                // border: 2px solid blue
                 scroll-behavior: smooth
+                // border: 2px solid blue
                 &::-webkit-scrollbar
                     width: 0
                 li
@@ -563,11 +576,14 @@ input
                     background-color: #00608d1e
                     border-radius: 25px
                 li:first-child
-                    margin-top: 1rem
+                    margin-top: 7rem
+                li:last-child
+                    margin-bottom: 4rem
         #cancel_but_item_search
-            margin-top: 2vh
-            // position: absolute
-            // bottom: 1rem
+            border-radius: 0
+            position: absolute
+            bottom: 1.2rem
+            // border: 2px solid blue
 
 
 header
@@ -611,7 +627,7 @@ header
                 background-color: #ffffff46
                 border-radius: 50%
                 // border: 2px solid brown
-                &.active
+                &:active
                     opacity: 0.4
                 p
                     pointer-events: none

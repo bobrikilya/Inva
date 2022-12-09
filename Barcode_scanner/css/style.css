@@ -633,6 +633,7 @@ input {
   background-color: rgba(2, 49, 70, 0.1764705882);
   border-radius: 25px;
   z-index: 8;
+  box-shadow: 0 5px 15px rgba(165, 164, 164, 0.231372549);
 }
 #items_cont #items_content #item_search_cont span {
   position: absolute;
@@ -647,14 +648,14 @@ input {
   margin-right: 3rem;
   width: 80%;
   height: 70%;
-  color: #222222;
+  color: rgba(34, 34, 34, 0.6862745098);
   background-color: #e9f4f8;
 }
-#items_cont #items_content #under_search_cont {
+#items_cont #items_content #items_sort_cont {
   width: 80%;
-  height: 4rem;
+  height: 3rem;
   border-radius: 0 0 25px 25px;
-  background-color: rgba(1, 54, 124, 0.2941176471);
+  background-color: rgba(0, 38, 87, 0.2941176471);
 }
 #items_cont #items_content #items_list_cont {
   margin-top: 1rem;
@@ -663,8 +664,19 @@ input {
   flex-shrink: 1;
   background-color: rgba(255, 255, 255, 0.2745098039);
   border-radius: 25px;
+  order: 2px solid orange;
+}
+#items_cont #items_content #items_list_cont #doc_full_info_cont {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 6rem;
+  border-radius: 25px;
+  background-color: rgba(59, 0, 87, 0.2941176471);
+  box-shadow: 0 5px 15px rgba(165, 164, 164, 0.1647058824);
 }
 #items_cont #items_content #items_list_cont #items_list_cont_content {
+  flex-shrink: 1;
   width: 90%;
   height: 100%;
   overflow: auto;
@@ -684,10 +696,15 @@ input {
   border-radius: 25px;
 }
 #items_cont #items_content #items_list_cont #items_list_cont_content li:first-child {
-  margin-top: 1rem;
+  margin-top: 7rem;
+}
+#items_cont #items_content #items_list_cont #items_list_cont_content li:last-child {
+  margin-bottom: 4rem;
 }
 #items_cont #items_content #cancel_but_item_search {
-  margin-top: 2vh;
+  border-radius: 0;
+  position: absolute;
+  bottom: 1.2rem;
 }
 
 header {
@@ -734,7 +751,7 @@ header #menue_content #menue_head_cont #item_search_icon {
   background-color: rgba(255, 255, 255, 0.2745098039);
   border-radius: 50%;
 }
-header #menue_content #menue_head_cont #item_search_icon.active {
+header #menue_content #menue_head_cont #item_search_icon:active {
   opacity: 0.4;
 }
 header #menue_content #menue_head_cont #item_search_icon p {
