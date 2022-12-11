@@ -30,6 +30,7 @@ body
 button, a, i
     &:active
         transition: 0s
+        transition-duration: 0s
         opacity: 0.4
 
 button
@@ -265,70 +266,48 @@ input
     transition: 0.2s ease-out
     bottom: auto
     // border: 3px solid #1a1a1a71
-    h2
-        font-size: 1.8rem
     #session_num_content
         // border: 3px solid black
         #sess_info_cont
             overflow: visible
+            // border: 2px solid green
+            span
+                font-size: 1.7rem
             #num_cont
-                margin: 1rem 0
+                margin: 1.5rem 0 2.2rem 0
                 width: 100%
                 flex-direction: row
                 align-items: flex-end
                 // border: 2px solid green
+                p
+                    font-size: 2.7rem
+                    margin-bottom: 0.4rem
+                    margin-right: 0.4rem
+                    // border: 2px solid green
+                #session_num
+                    font-size: 4.8rem
+                    // border: 2px solid brown
             p
-                font-size: 2.5rem
-                margin-bottom: 0.4rem
-                margin-right: 0.4rem
-                // border: 2px solid green
-            #session_num
-                font-size: 4.5rem
-                // border: 2px solid brown
-            h3
-                position: relative
-                margin-top: 1.3rem
-                font-size: 1.6rem
+                font-size: 1.7rem
+                margin-bottom: 1.2rem
+            #store_name
+                font-size: 1.9rem
                 &::after
                     content: ''
                     position: absolute
                     left: 50%
                     transform: translateX(-50%)
-                    bottom: -1.3rem
-                    width: 8rem
+                    bottom: -2rem
+                    width: 9rem
                     height: 2px
                     background-color: #001c7a18
                     border-radius: 25px
-        #sess_input_cont
-            width: 100%
-            margin-top: 2.6rem
-            overflow: visible
-            // border: 2px solid red
-            &.focus
-                margin-top: -1rem
-                position: fixed
-        #sess_input
-            display: none
-            width: 100%
-            font-size: 1.4rem
-            height: 4.7rem
-            margin-bottom: 0.5rem
-            &.active
-                display: flex
-        #session_num_but_cont
-            transition-duration: 0.2s
-            flex-direction: row
-            justify-content: space-between
-            width: 100%
-            // border: 2px solid green
-            button
-                font-size: 1.3rem
-                width: 49%
-                height: 5.2rem
-            #give_name_but
-                background-color: #13c6e644
-            #next_but
-                background-color: #36e61350
+        #ok_but
+            margin-top: 4rem
+            background-color: #36e61350
+            font-size: 1.3rem
+            width: 90%
+            height: 5.2rem
 
 
 #are_u_sure_cont

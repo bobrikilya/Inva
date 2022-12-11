@@ -93,6 +93,7 @@ body {
 }
 button:active, a:active, i:active {
   transition: 0s;
+  transition-duration: 0s;
   opacity: 0.4;
 }
 
@@ -351,77 +352,50 @@ input {
   transition: 0.2s ease-out;
   bottom: auto;
 }
-#ur_session_num_cont h2 {
-  font-size: 1.8rem;
-}
 #ur_session_num_cont #session_num_content #sess_info_cont {
   overflow: visible;
 }
+#ur_session_num_cont #session_num_content #sess_info_cont span {
+  font-size: 1.7rem;
+}
 #ur_session_num_cont #session_num_content #sess_info_cont #num_cont {
-  margin: 1rem 0;
+  margin: 1.5rem 0 2.2rem 0;
   width: 100%;
   flex-direction: row;
   align-items: flex-end;
 }
-#ur_session_num_cont #session_num_content #sess_info_cont p {
-  font-size: 2.5rem;
+#ur_session_num_cont #session_num_content #sess_info_cont #num_cont p {
+  font-size: 2.7rem;
   margin-bottom: 0.4rem;
   margin-right: 0.4rem;
 }
-#ur_session_num_cont #session_num_content #sess_info_cont #session_num {
-  font-size: 4.5rem;
+#ur_session_num_cont #session_num_content #sess_info_cont #num_cont #session_num {
+  font-size: 4.8rem;
 }
-#ur_session_num_cont #session_num_content #sess_info_cont h3 {
-  position: relative;
-  margin-top: 1.3rem;
-  font-size: 1.6rem;
+#ur_session_num_cont #session_num_content #sess_info_cont p {
+  font-size: 1.7rem;
+  margin-bottom: 1.2rem;
 }
-#ur_session_num_cont #session_num_content #sess_info_cont h3::after {
+#ur_session_num_cont #session_num_content #sess_info_cont #store_name {
+  font-size: 1.9rem;
+}
+#ur_session_num_cont #session_num_content #sess_info_cont #store_name::after {
   content: "";
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  bottom: -1.3rem;
-  width: 8rem;
+  bottom: -2rem;
+  width: 9rem;
   height: 2px;
   background-color: rgba(0, 28, 122, 0.0941176471);
   border-radius: 25px;
 }
-#ur_session_num_cont #session_num_content #sess_input_cont {
-  width: 100%;
-  margin-top: 2.6rem;
-  overflow: visible;
-}
-#ur_session_num_cont #session_num_content #sess_input_cont.focus {
-  margin-top: -1rem;
-  position: fixed;
-}
-#ur_session_num_cont #session_num_content #sess_input {
-  display: none;
-  width: 100%;
-  font-size: 1.4rem;
-  height: 4.7rem;
-  margin-bottom: 0.5rem;
-}
-#ur_session_num_cont #session_num_content #sess_input.active {
-  display: flex;
-}
-#ur_session_num_cont #session_num_content #session_num_but_cont {
-  transition-duration: 0.2s;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 100%;
-}
-#ur_session_num_cont #session_num_content #session_num_but_cont button {
-  font-size: 1.3rem;
-  width: 49%;
-  height: 5.2rem;
-}
-#ur_session_num_cont #session_num_content #session_num_but_cont #give_name_but {
-  background-color: rgba(19, 198, 230, 0.2666666667);
-}
-#ur_session_num_cont #session_num_content #session_num_but_cont #next_but {
+#ur_session_num_cont #session_num_content #ok_but {
+  margin-top: 4rem;
   background-color: rgba(54, 230, 19, 0.3137254902);
+  font-size: 1.3rem;
+  width: 90%;
+  height: 5.2rem;
 }
 
 #are_u_sure_cont {

@@ -5,11 +5,7 @@ const main_container = document.getElementById('main_container');
 const ur_session_num_cont = document.getElementById('ur_session_num_cont');
 const session_num_content = document.getElementById('session_num_content');
 const sess_info_cont = document.getElementById('sess_info_cont');
-const sess_input_cont = document.getElementById('sess_input_cont');
-const sess_input = document.getElementById('sess_input');
-const session_num_but_cont = document.getElementById('session_num_but_cont');
-const next_but = document.getElementById('next_but');
-const give_name_but = document.getElementById('give_name_but');
+const ok_but = session_num_content.querySelector('#ok_but');
 
 //--------------
 
@@ -103,7 +99,7 @@ clear_button.addEventListener('click', input_cleaning);
 search_button.addEventListener('click', searching);
 reload_but.addEventListener('click', refresh);
 
-menue_but.addEventListener('click', menue_toggle);
+menue_but.addEventListener('click', header_toggle);
 back_but.addEventListener('click', return_to_doc);
 
 new_doc_but.addEventListener('click', (e) => {
@@ -134,8 +130,7 @@ session_but.addEventListener('click', sessions_cont_toggle);
 session_power_but.addEventListener('click', address_chose_toggle);
 cancel_but_address.addEventListener('click', address_chose_toggle);
 
-next_but.addEventListener('click', sess_num_confirm);
-give_name_but.addEventListener('click', sess_input_act);
+ok_but.addEventListener('click', sess_num_confirm);
 
 fire_but.addEventListener('click', full_reset);
 // fire_but.addEventListener('click', installing);
@@ -305,15 +300,9 @@ function full_reset(){
     window.location.reload();
 };
 
-function menue_toggle(){
-    menue_but.classList.toggle('toggle');
-    back_but.classList.toggle('toggle');
-    reload_but.classList.toggle('toggle');
-    big_eye_but.classList.toggle('toggle');
-    header.classList.toggle('turn_off');
-    water_tag.classList.toggle('turn_on');
-
+function docs_cont_scroll() {
     if (!header.classList.contains('turn_off')){
+        // console.log('Scroll');
         docs_cont_content.scrollTo({top: 0, behavior: "smooth"});
         session_but.classList.remove('no_active');
         if (session_name) {
@@ -322,6 +311,17 @@ function menue_toggle(){
             no_session_act();
         };
     };
+};
+
+function header_toggle(){
+    menue_but.classList.toggle('toggle');
+    back_but.classList.toggle('toggle');
+    reload_but.classList.toggle('toggle');
+    big_eye_but.classList.toggle('toggle');
+    header.classList.toggle('turn_off');
+    water_tag.classList.toggle('turn_on');
+
+    docs_cont_scroll();
 
     // input_blur();
     main_block.classList.toggle('toggle');
@@ -468,10 +468,11 @@ function address_chose_toggle(){
     };
 };
 
-function sess_start_stop(){
+function sess_start_stop(address_name = false){
     if(!session_name){
         header.classList.toggle('turn_off');
         foot_cont.classList.toggle('turn_off');
+        store_name.innerText = address_name;
         address_chose_toggle();
         ur_session_num_cont.classList.add('toggle');
         setTimeout(() => {session_num_content.classList.add('toggle')}, 10);
@@ -479,7 +480,6 @@ function sess_start_stop(){
 
         sess_num = session_num.innerText;
         session_name = `${today}-${sess_num}`;
-        sess_input.setAttribute("placeholder", session_name);
     }else {
         no_session_act();
     };
@@ -492,32 +492,18 @@ function sess_num_confirm(){
     header.classList.remove('turn_off');
     foot_cont.classList.remove('turn_off');
 
-    if (sess_input.value != 0){
-        session_name = `${sess_input.value}-${sess_num}`;
-        // console.log(session_name);
-    };
     session_record();
-    sess_input.value = '';
+    setTimeout(data_downloading, 500);
 };
 
 function session_record(){
-    session_but.innerText = session_name.replace(' ', '_');
+    session_but.innerText = session_name;
     session_but.classList.add('active');
     session_power_but.classList.add('active');
     session_text.innerHTML = 'Отключиться<br> от сессии';
     localStorage.setItem('session_name', session_name);
 };
 
-function sess_input_act(){
-    sess_input.value = '';
-    if (!sess_input.classList.contains('active')){
-        sess_input.classList.add('active');
-        sess_input.focus();
-    }else {
-        // sess_input.blur();
-        // sess_input.classList.remove('active');
-    };
-};
 
 function docs_types_toggle(){
     header.classList.toggle('turn_off');
@@ -556,7 +542,7 @@ function add_doc(new_el){
 function docs_opening(doc_data){
     if (doc_data['class_name'] == 'scan'){
         // console.log(doc_data['text_name']);
-        menue_toggle();
+        header_toggle();
         doc_name_insert(doc_data['text_name']);
         localStorage.setItem('last_opened_doc', JSON.stringify(doc_data));
         back_but.classList.add('active');
@@ -600,26 +586,6 @@ input.addEventListener('blur', () => {
     setTimeout(input_blur, 20);
 });
 
-
-sess_input.addEventListener('focus', () => {
-    give_name_but.innerText = 'отмена';
-    sess_info_cont.style.opacity = '0';
-    session_num_content.style.justifyContent = "flex-end";
-    // sess_input_cont.classList.add('focus');
-    // window.scrollTo({bottom: 0, behavior: "smooth"});
-    // sess_input_cont.scrollTo({bottom: 0, behavior: "smooth"});
-    // sess_input_cont.scrollIntoView(false, {behavior: "smooth"});
-});
-
-sess_input.addEventListener('blur', () => {
-    setTimeout(() => {
-        give_name_but.innerText = 'задать';
-        sess_info_cont.style.opacity = '1';
-        session_num_content.style.justifyContent = "center"
-        // sess_input_cont.classList.remove('focus');
-        sess_input.classList.remove('active');
-    }, 10);
-});
 
 function items_cont_open() {
     items_cont.classList.add('toggle');
@@ -743,8 +709,9 @@ store_address_content.addEventListener('click', (e) => {
     // e.stopPropagation();
     // const id = e.target.getAttribute('id');
     const tag = e.target.tagName;
+    const address_name = e.target.innerText;
     // console.log(tag);
-    if (tag == 'A') sess_start_stop();
+    if (tag == 'A') sess_start_stop(address_name);
 });
 
 doc_types_content.addEventListener('click', (e) => {
@@ -792,29 +759,29 @@ docs_cont_content.addEventListener('DOMSubtreeModified', (e) =>{
     docs_count = docs_cont_content.getElementsByTagName('li').length;
     // console.log(docs_count);
     if (docs_count == 0) {
-        // console.log('= 0');
+        console.log('= 0');
         swipe_icon.classList.remove('toggle');
         docs_not_found.classList.remove('no_active');
         localStorage.removeItem('docs_list');
     }else if (docs_count == 1) {
-        // console.log('= 1');
+        console.log('= 1');
         swipe_icon.classList.add('toggle');
         docs_not_found.classList.add('no_active');
     }else if (docs_count == 2) {
-        // console.log('= 2');
+        console.log('= 2');
         docs_cont_content.style.justifyContent = 'center';
         docs_cont.style.justifyContent = 'center';
         docs_cont_content.style.overflow = 'hidden';
         expand_ic.classList.remove('turn_on');
     }else if (docs_count > 2){
-        // console.log('> 2');
+        console.log('> 2');
         docs_cont.style.justifyContent = 'flex-start';
         docs_cont_content.style.justifyContent = 'flex-start';
-        // console.log('clientHeight ' + docs_cont_content.clientHeight);
-        // console.log('scrollHeight ' + docs_cont_content.scrollHeight);
+        console.log('clientHeight ' + docs_cont_content.clientHeight);
+        console.log('scrollHeight' + docs_cont_content.scrollHeight);
         if (docs_cont_content.clientHeight + 30 < docs_cont_content.scrollHeight) {
-            expand_ic.classList.add('turn_on');
             docs_cont_content.style.overflow = 'auto';
+            expand_ic.classList.add('turn_on');
         }else {
             expand_ic.classList.remove('turn_on');
             docs_cont_content.style.overflow = 'hidden';
@@ -873,7 +840,7 @@ function input_focus(){
     water_tag.style.display = 'none';
     foot_cont.style.display = 'none';
     // window.scrollTo({bottom: 0, behavior: "smooth"});
-    input_block.scrollTo({bottom: 0, behavior: "smooth"});
+    window.scrollTo({bottom: 0, behavior: "smooth"});
 };
 
 function input_blur(){
