@@ -1,6 +1,7 @@
 @import "./_stylereset"
 @import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap")
 
+
 .cont
     position: relative
     overflow: hidden
@@ -55,6 +56,7 @@ input
     width: 100%
 
 #main_container
+    overflow-y: hidden 
     height: 100vh
     width: 100vw
     max-width: 500px
@@ -582,7 +584,7 @@ input
             background-color: #ffffff46
             border-radius: 25px
             // overflow: visible
-            order: 2px solid orange
+            // border: 2px solid orange
             #doc_full_info_cont
                 position: absolute
                 top: 0
@@ -603,7 +605,7 @@ input
                     color: #18191dd0
             #items_list_cont_content
                 flex-shrink: 1
-                width: 90%
+                width: 95%
                 height: 100%
                 overflow: auto
                 justify-content: flex-start
@@ -617,7 +619,7 @@ input
                     width: 100%
                     height: 3.7rem
                     margin-top: 0.4rem
-                    background-color: #00608d1e
+                    background-color: #00318d1e
                     border-radius: 25px
                 li:first-child
                     margin-top: 6rem
@@ -731,11 +733,11 @@ header
                         // border: 2px solid yellow
                 #docs_cont_content
                     justify-content: center
-                    align-items: center
-                    padding: 3%
-                    overflow: hidden
+                    align-items: flex-end
+                    overflow: auto
                     height: 100%
                     width: 100%
+                    padding: 3%
                     scroll-behavior: smooth
                     transition-duration: 0.8s
                     border-radius: 25px
@@ -748,7 +750,7 @@ header
                         position: absolute
                         top: 0.5rem
                         overflow: visible
-                        width: 100%
+                        width: 94%
                         font-size: 1rem
                         color: #1a1a1a91
                         #swipe_icon
@@ -769,7 +771,9 @@ header
                                 opacity: 1
                     #docs_not_found
                         position: absolute
-                        margin-top: -1.5rem
+                        top: 3.5rem
+                        width: 94%
+                        text-align: center
                         font-size: 1.5rem
                         color: #1a1a1ae3
                         transition-duration: 0.3s
@@ -815,30 +819,27 @@ header
                         // border: 2px solid blue
                         &.del_toggle
                             width: 75%
-                            margin-right: -5.6rem
                             justify-content: center
                             #d_info
                                 margin-left: 0
                                 width: auto
                             #doc_icon
-                                opacity: 0
                                 transition-duration: 0.1s
+                                opacity: 0
                             a
-                                right: -1.8rem
+                                transition-duration: 0.1s
+                                width: 10%
                                 opacity: 0
                                 pointer-events: none
-                                transform: scale(0)
                             button
                                 pointer-events: auto
                                 opacity: 1
-                                transform: scale(1)
                         &:active
                             transition: 0s
                             box-shadow: inset 0 0 15px #1414142d
                         &.deleting
-                            transition-duration: 0.4s
-                            transform: translateX(10rem)
-                            width: 2rem
+                            transition-duration: 0.3s
+                            width: 5rem
                             opacity: 0
                         &.opac
                             transition-duration: 0.5s
@@ -896,7 +897,7 @@ header
                             background-color: #7c7c7c1e
                             opacity: 1
                             pointer-events: auto
-                            transition-duration: 0.15s
+                            transition-duration: 0.35s
                             transform: scale(1)
                             // border: 2px solid red
                             &:active
@@ -906,7 +907,7 @@ header
                                 pointer-events: none
                         button //trash
                             position: absolute
-                            left: -4.9rem
+                            left: -4.8rem
                             background-color: #ff67672d
                             width: 4.2rem
                             height: 4.2rem
@@ -914,7 +915,6 @@ header
                             transition-duration: 0.2s
                             pointer-events: none
                             opacity: 0
-                            transform: scale(0)
                             i
                                 pointer-events: none
                             &:active
@@ -924,21 +924,8 @@ header
                         margin-top: 1.7rem
                     // li:last-child
                     //     margin-bottom: 0.8rem
-            #expand_ic
-                margin-top: -0.7rem
-                color: #18191d18
-                font-size: 3rem
-                pointer-events: none
-                transition-duration: 0.6s
-                opacity: 0
-                height: 3rem
-                // border: 2px solid black
-                &.turn_on
-                    opacity: 1
-                &.turn_off
-                    opacity: 0
             #menue_sec_cont
-                margin-top: -1.5rem
+                margin-top: 0.5rem
                 width: 80%
                 // border: 2px solid black
             #icons_bar

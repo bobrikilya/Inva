@@ -43,7 +43,6 @@ const docs_cont = document.getElementById('docs_cont');
 const docs_cont_content = document.getElementById('docs_cont_content');
 const swipe_icon = docs_cont_content.querySelector('#swipe_icon');
 const docs_not_found = document.getElementById('docs_not_found');
-const expand_ic = document.getElementById('expand_ic');
 
 const are_u_sure_cont = document.getElementById('are_u_sure_cont');
 const are_u_sure_content = document.getElementById('are_u_sure_content');
@@ -389,8 +388,6 @@ function data_downloading(){
     }else {
         check.querySelector('span').innerHTML = 'Данные загружены <br>с сервера';
         check_activ();
-        expand_ic.classList.add('turn_off');
-        setTimeout(() => {expand_ic.classList.remove('turn_off')}, 1900);
     };
 };
 
@@ -414,7 +411,6 @@ function downloading_back_act(){
 function data_downloading_back(){
     check.querySelector('span').innerHTML = 'Данные выгружены <br>на сервер';
     check_activ();
-    expand_ic.classList.remove('turn_on');
     back_but.classList.remove('active');
     localStorage.removeItem('last_opened_doc');
 
@@ -626,14 +622,6 @@ items_list_cont_content.addEventListener('scroll', () => {
     }else doc_full_info_cont.classList.remove('turn_off');
 });
 
-docs_cont_content.addEventListener('scroll', () => {
-    const scrollBottom = docs_cont_content.scrollHeight - docs_cont_content.scrollTop - docs_cont_content.clientHeight
-    // console.log(scrollBottom);
-    if (scrollBottom > 30) {
-        expand_ic.classList.add('turn_on');
-    }else expand_ic.classList.remove('turn_on');
-});
-
 docs_cont_content.addEventListener('touchstart', (e) => {
     const e_id = e.target.getAttribute('id');
     if (!e_id || e_id == 'docs_cont_content') return;  // preventEvent
@@ -698,13 +686,6 @@ docs_cont_content.addEventListener('click', (e) => {
 
         // console.log('clientHeight ' + docs_cont_content.clientHeight);
         // console.log('scrollHeight ' + docs_cont_content.scrollHeight);
-
-        setTimeout(() => {
-            if (docs_cont_content.clientHeight + 30 > docs_cont_content.scrollHeight) {
-                expand_ic.classList.remove('turn_on');
-                docs_cont_content.style.overflowY = 'hidden';
-            };
-        }, 500);
 
         docs_list.forEach((el) =>{
             if (el.id == e_id) {
@@ -779,33 +760,23 @@ docs_cont_content.addEventListener('DOMSubtreeModified', (e) =>{
     docs_count = docs_cont_content.getElementsByTagName('li').length;
     // console.log(docs_count);
     if (docs_count == 0) {
-        console.log('= 0');
+        // console.log('= 0');
         swipe_icon.classList.remove('toggle');
         docs_not_found.classList.remove('no_active');
         localStorage.removeItem('docs_list');
     }else if (docs_count == 1) {
-        console.log('= 1');
+        // console.log('= 1');
         swipe_icon.classList.add('toggle');
         docs_not_found.classList.add('no_active');
     }else if (docs_count == 2) {
-        console.log('= 2');
+        // console.log('= 2');
         docs_cont_content.style.justifyContent = 'center';
         docs_cont.style.justifyContent = 'center';
-        docs_cont_content.style.overflowY = 'hidden';
-        expand_ic.classList.remove('turn_on');
+        // docs_cont_content.style.overflowY = 'hidden';
     }else if (docs_count > 2){
-        console.log('> 2');
+        // console.log('> 2');
         docs_cont.style.justifyContent = 'flex-start';
         docs_cont_content.style.justifyContent = 'flex-start';
-        console.log('clientHeight ' + docs_cont_content.clientHeight);
-        console.log('scrollHeight' + docs_cont_content.scrollHeight);
-        if (docs_cont_content.clientHeight + 30 < docs_cont_content.scrollHeight) {
-            docs_cont_content.style.overflowY = 'auto';
-            expand_ic.classList.add('turn_on');
-        }else {
-            expand_ic.classList.remove('turn_on');
-            docs_cont_content.style.overflowY = 'hidden';
-        };
     };
 });
 
