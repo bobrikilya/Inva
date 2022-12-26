@@ -20,9 +20,9 @@ const big_eye_but = document.getElementById('big_eye_but');
 const session_but = document.getElementById('session_but');
 const session_nav_cont = document.getElementById('session_nav_cont');
 const session_nav_content = document.getElementById('session_nav_content');
-const session_text = document.getElementById('session_text');
 const session_power_but = document.getElementById('session_power_but');
-// const session_blur = document.getElementById('session_blur');
+const session_text = document.getElementById('session_text');
+const store_name_lit = document.getElementById('store_name_lit');
 
 // const menue_head_cont = document.getElementById('menue_head_cont');
 const fire_but = document.getElementById('fire_but');
@@ -163,7 +163,7 @@ yes_but.addEventListener('click', () =>{
 const doc = document.documentElement;
 
 let today = new Date().toLocaleDateString();
-let session_name = false;
+let sess_info_list = false;
 let docs_list = [];
 let sess_num;
 
@@ -184,9 +184,9 @@ const fMode = {exact: "environment"};
 // const fMode = {exact: "user"};
 
 document.addEventListener("DOMContentLoaded", () => {
-    if (localStorage.getItem('session_name')){
-        session_name = localStorage.getItem('session_name');
-        // console.log(session_name);
+    if (localStorage.getItem('sess_info')){
+        sess_info_list = JSON.parse(localStorage.getItem('sess_info'));
+        console.log(sess_info_list);
         session_record();
     };
     
@@ -198,7 +198,6 @@ document.addEventListener("DOMContentLoaded", () => {
             add_doc(el);
         });
     };
-
     // if (Moz) session_blur.style.backgroundColor = '#ebf4ff65';
 
     reload_but.classList.add('light');
@@ -317,7 +316,7 @@ function docs_cont_scroll() {
         // console.log('Scroll');
         docs_cont_content.scrollTo({top: 0, behavior: "smooth"});
         session_but.classList.remove('no_active');
-        if (session_name) {
+        if (sess_info_list) {
             session_record();
         }else {
             no_session_act();
@@ -345,10 +344,11 @@ function header_toggle(){
 function no_session_act(){
     session_but.classList.remove('active');
     session_power_but.classList.remove('active');
-    session_name = false;
+    store_name_lit.classList.remove('active');
+    sess_info_list = false;
     session_but.innerText = 'Нет сессии';
     session_text.innerHTML= 'Подключиться<br> к сессии';
-    localStorage.removeItem('session_name');
+    localStorage.removeItem('sess_info');
 };
 
 function doc_name_insert(doc_name){
@@ -380,7 +380,7 @@ function are_u_sure_toggle(){
 };
 
 function data_downloading(){
-    if (!session_name){
+    if (!sess_info_list){
         setTimeout(() => {
             warning.play();
             sessions_cont_toggle();
@@ -393,7 +393,7 @@ function data_downloading(){
 
 function downloading_back_act(){
     if (docs_count != 0) {
-        if (!session_name){
+        if (!sess_info_list){
             setTimeout(() => {
                 warning.play();
                 sessions_cont_toggle();
@@ -449,7 +449,7 @@ function sessions_cont_toggle(){
 
 
 function address_chose_toggle(){
-    if(!session_name){
+    if(!sess_info_list){
         header.classList.toggle('turn_off');
         foot_cont.classList.toggle('turn_off');
         store_address_cont.classList.toggle('toggle');
@@ -460,7 +460,7 @@ function address_chose_toggle(){
 };
 
 function sess_start_stop(address_name = false){
-    if(!session_name){
+    if(!sess_info_list){
         header.classList.toggle('turn_off');
         foot_cont.classList.toggle('turn_off');
         store_name.innerText = address_name;
@@ -470,7 +470,10 @@ function sess_start_stop(address_name = false){
         sessions_cont_toggle();
 
         sess_num = session_num.innerText;
-        session_name = `${today}-${sess_num}`;
+        sess_info_list = {
+                        "sess_n" : `${today}-${sess_num}`,
+                        "store_n" : address_name,
+                        };
     }else {
         no_session_act();
     };
@@ -488,11 +491,13 @@ function sess_num_confirm(){
 };
 
 function session_record(){
-    session_but.innerText = session_name;
+    session_but.innerText = sess_info_list['sess_n'];
+    store_name_lit.innerText = sess_info_list['store_n'];
     session_but.classList.add('active');
     session_power_but.classList.add('active');
-    session_text.innerHTML = 'Отключиться<br> от сессии';
-    localStorage.setItem('session_name', session_name);
+    store_name_lit.classList.add('active');
+    session_text.innerHTML = 'Отключиться<br> от сессии:';
+    localStorage.setItem('sess_info', JSON.stringify(sess_info_list));
 };
 
 
@@ -617,7 +622,7 @@ function search_type_swap(){
 items_list_cont_content.addEventListener('scroll', () => {
     const scrolltop = items_list_cont_content.scrollTop;
     // console.log(scrolltop);
-    if (scrolltop > 30) {
+    if (scrolltop > 25) {
         doc_full_info_cont.classList.add('turn_off');
     }else doc_full_info_cont.classList.remove('turn_off');
 });
@@ -684,8 +689,6 @@ docs_cont_content.addEventListener('click', (e) => {
         full_doc.classList.add('deleting');
         setTimeout(() => {full_doc.remove()}, 400);
 
-        // console.log('clientHeight ' + docs_cont_content.clientHeight);
-        // console.log('scrollHeight ' + docs_cont_content.scrollHeight);
 
         docs_list.forEach((el) =>{
             if (el.id == e_id) {
