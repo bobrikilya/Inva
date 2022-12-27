@@ -126,7 +126,7 @@ download_back_but.addEventListener('click', () =>{
     download = 'download_back';
     are_u_sure_toggle();
 });
-item_search_icon.addEventListener('click', items_cont_open);
+// item_search_icon.addEventListener('click', items_cont_open);
 cancel_but_item_search.addEventListener('click', items_cont_close);
 clear_item_search_but.addEventListener('click', () => {
     item_search_input.value = '';
@@ -186,7 +186,7 @@ const fMode = {exact: "environment"};
 document.addEventListener("DOMContentLoaded", () => {
     if (localStorage.getItem('sess_info')){
         sess_info_list = JSON.parse(localStorage.getItem('sess_info'));
-        console.log(sess_info_list);
+        // console.log(sess_info_list);
         session_record();
     };
     
@@ -290,6 +290,19 @@ function searching(){
         stream_cont.style.display = 'none';
         video.classList.remove('camera_on');
         scan_icon.classList.remove('camera_on');
+
+        let file_id = JSON.parse(localStorage.getItem('last_opened_doc'))['id'];
+        file_list = JSON.parse(localStorage.getItem(`${file_id}`));
+        
+        let counter = 0;
+        while (counter < 1000){
+            file_list.push({
+                'name' : 'Тест',
+                'code' : '123456789',
+            });
+            counter += 1;
+        };
+        localStorage.setItem(`${file_id}`, JSON.stringify(file_list));
     };
 };
 
@@ -535,6 +548,19 @@ function add_doc(new_el){
     `);
 };
 
+function add_item(item){
+    items_list_cont_content.insertAdjacentHTML('afterbegin', `
+        <li>
+            <div id="left_side" class="cont">
+                <span id="items_name">${item['name']}</span>
+                <span id="items_barcode">${item['code']}</span>
+            </div>
+            <div id="right_side">
+            </div>
+        </li>
+    `);
+};
+
 function docs_opening(doc_data){
     if (doc_data['class_name'] == 'scan'){
         // console.log(doc_data['text_name']);
@@ -542,6 +568,8 @@ function docs_opening(doc_data){
         doc_name_insert(doc_data['text_name']);
         localStorage.setItem('last_opened_doc', JSON.stringify(doc_data));
         back_but.classList.add('active');
+
+        localStorage.setItem(`${doc_data['id']}`, JSON.stringify([]));
     };
 };
 
@@ -592,7 +620,7 @@ item_search_input.addEventListener('keyup', (event) => {
     if (event.key == 'Enter') item_search_input.blur();
 });
 
-function items_cont_open() {
+function items_cont_open(file_name) {
     items_cont.classList.add('toggle');
     header.classList.add('turn_off');
     foot_cont.classList.add('turn_off');
@@ -601,6 +629,14 @@ function items_cont_open() {
         item_search_input.focus();
         items_content.classList.add('toggle');
     }, 80);
+
+    if (localStorage.getItem(`${file_name}`)){
+        file_list = JSON.parse(localStorage.getItem(`${file_name}`));
+
+        file_list.forEach(el => {
+            add_item(el);
+        });
+    };
 };
 
 function items_cont_close() {
@@ -608,11 +644,19 @@ function items_cont_close() {
     foot_cont.classList.remove('turn_off');
     items_cont.classList.remove('toggle');
     items_content.classList.remove('toggle');
+
+    items_list_cont_content.replaceChildren();
+    search_sort_cont.classList.remove('toggle');
+    items_list_cont_content.classList.remove('reverse');
 };
 
 function items_sort_swap(){
     // console.log('search_sort_swap');
     search_sort_cont.classList.toggle('toggle');
+    items_list_cont_content.classList.toggle('reverse');
+    const scrollsize = items_list_cont_content.scrollHeight - items_list_cont_content.clientHeight;
+    // console.log(scrollsize);
+    items_list_cont_content.scrollTo({top: -scrollsize, behavior: "instant"});
 };
 
 function search_type_swap(){
@@ -664,15 +708,16 @@ docs_cont_content.addEventListener('click', (e) => {
         });
     };
 
-    // Doc check
-    // if (tag == 'A') {
-    //     full_doc = e.target.parentNode;
-
-    //     // doc_up_moving(full_doc);
-    //     doc_name = full_doc.querySelector('h2').innerText;
-    //     console.log(doc_name);
-    //     doc_name_insert(doc_name);
-    // };
+    // Doc check / Eye
+    if (tag == 'A') {
+        full_doc = e.target.parentNode;
+        full_doc_id = full_doc.getAttribute('id');
+        items_cont_open(full_doc_id);
+        // doc_up_moving(full_doc);
+        // doc_name = full_doc.querySelector('h2').innerText;
+        // console.log(full_doc_id);
+        // doc_name_insert(doc_name);
+    };
 
     // Trash
     if (tag == 'BUTTON'){
@@ -701,12 +746,6 @@ docs_cont_content.addEventListener('click', (e) => {
         // console.log(num_of_el);
     };
 });
-
-
-// docs_cont_content.addEventListener('click', (e) => {
-//     const tag = e.target.tagName;
-//     if (tag == 'I') console.log(tag);
-// });
 
 store_address_content.addEventListener('click', (e) => {
     e.preventDefault();
