@@ -135,17 +135,14 @@ input
     // border: 2px solid red
     &.turn_off
         display: none
-    .reload_eye
+    .help_eye
         display: flex
         justify-content: center
         align-items: center
         border-radius: 50%
         // border: 2px solid red
-    #reload_but
+    #help_but
         left: -0.5rem
-        &.light
-            transition-duration: 0.3s
-            color: #3cbe1c
         &.toggle
             display: none
     #big_eye_but
@@ -516,7 +513,7 @@ input
         overflow: visible
         width: 90%
         max-width: 400px
-        padding-top: 1.2rem
+        padding-top: 0.8rem
         padding-bottom: 1.5rem
         justify-content: flex-start
         // border: 2px solid red
@@ -556,7 +553,7 @@ input
             justify-content: space-around
             // border: 2px solid black
             .sort_cont_but
-                width: 4rem
+                width: 4.5rem
                 height: 2rem
                 border-radius: 25px
                 background-color: #e9f4f8d2
@@ -619,7 +616,7 @@ input
             #items_list_cont_content
                 // flex-direction: column-reverse
                 flex-shrink: 1
-                width: 98%
+                width: 97%
                 padding-left: 10px
                 height: 100%
                 overflow-y: auto
@@ -631,14 +628,14 @@ input
                 &::-webkit-scrollbar
                     width: 10px
                 &::-webkit-scrollbar-thumb
-                    background-color: #00318d1e
+                    background-color: #00318d1c
                     border-radius: 25px
                 &.reverse
                     flex-direction: column-reverse
                     // justify-content: flex-end
                     li:first-child
                         margin-top: 0.4rem
-                        margin-bottom: 3.5rem
+                        margin-bottom: 4rem
                     li:last-child
                         margin-top: 6rem
                         margin-bottom: 0
@@ -662,12 +659,11 @@ input
                 li:first-child
                     margin-top: 6rem
                 li:last-child
-                    margin-bottom: 3.5rem
+                    margin-bottom: 4rem
         #cancel_but_item_search
-            text-shadow: 0 0 30px #02395354
-            border-radius: 0
             position: absolute
             bottom: 1.2rem
+            text-shadow: 0 10px 30px #02395354
             // border: 2px solid blue
 
 
@@ -702,19 +698,25 @@ header
                 border-radius: 50%
                 opacity: 1
                 // border: 2px solid black
-            #item_search_icon
+            #reload_but
                 width: 3.8rem
                 height: 3.8rem
                 background-color: #ffffff46
                 border-radius: 50%
+                transition-duration: 0.3s
                 // border: 2px solid brown
+                &.light
+                    background-color: #22c53d9d
+                    p
+                        color: #f6f9fdc5
                 &:active
                     opacity: 0.4
                 p
                     pointer-events: none
                     position: absolute
                     color: #1a1a1a98
-                    font-size: 1.8rem
+                    font-size: 2rem
+                    transition-duration: 0.4s
         #menue_main_cont
             width: 100%
             height: 100%

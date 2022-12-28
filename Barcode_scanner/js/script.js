@@ -15,7 +15,7 @@ const cancel_but_address = document.getElementById('cancel_but_address');
 
 //--------------
 const foot_cont = document.getElementById('foot_cont');
-const reload_but = document.getElementById('reload_but');
+const help_but = document.getElementById('help_but');
 const big_eye_but = document.getElementById('big_eye_but');
 const session_but = document.getElementById('session_but');
 const session_nav_cont = document.getElementById('session_nav_cont');
@@ -26,7 +26,7 @@ const store_name_lit = document.getElementById('store_name_lit');
 
 // const menue_head_cont = document.getElementById('menue_head_cont');
 const fire_but = document.getElementById('fire_but');
-const item_search_icon = document.getElementById('item_search_icon');
+const reload_but = document.getElementById('reload_but');
 const item_search_input = document.getElementById('item_search_input');
 const clear_item_search_but = document.getElementById('clear_item_search_but');
 const item_search_but = item_search_cont.querySelector('#item_search_but');
@@ -126,7 +126,7 @@ download_back_but.addEventListener('click', () =>{
     download = 'download_back';
     are_u_sure_toggle();
 });
-// item_search_icon.addEventListener('click', items_cont_open);
+
 cancel_but_item_search.addEventListener('click', items_cont_close);
 clear_item_search_but.addEventListener('click', () => {
     item_search_input.value = '';
@@ -340,7 +340,7 @@ function docs_cont_scroll() {
 function header_toggle(){
     menue_but.classList.toggle('toggle');
     back_but.classList.toggle('toggle');
-    reload_but.classList.toggle('toggle');
+    help_but.classList.toggle('toggle');
     big_eye_but.classList.toggle('toggle');
     header.classList.toggle('turn_off');
     water_tag.classList.toggle('turn_on');
@@ -359,7 +359,7 @@ function no_session_act(){
     session_power_but.classList.remove('active');
     store_name_lit.classList.remove('active');
     sess_info_list = false;
-    session_but.innerText = 'Нет сессии';
+    session_but.innerText = 'нет сессии';
     session_text.innerHTML= 'Подключиться<br> к сессии';
     localStorage.removeItem('sess_info');
 };
@@ -653,7 +653,8 @@ function items_cont_close() {
 function items_sort_swap(){
     // console.log('search_sort_swap');
     search_sort_cont.classList.toggle('toggle');
-    
+    // item_search_input.focus();
+
     setTimeout(() => {
         items_list_cont_content.classList.toggle('reverse');
         const scrollsize = items_list_cont_content.scrollHeight - items_list_cont_content.clientHeight;
@@ -664,12 +665,13 @@ function items_sort_swap(){
 
 function search_type_swap(){
     search_type_cont.classList.toggle('toggle');
+    item_search_input.focus();
 };
 
 items_list_cont_content.addEventListener('scroll', () => {
     const scrolltop = items_list_cont_content.scrollTop;
     // console.log(scrolltop);
-    if (scrolltop > 25) {
+    if (scrolltop > 65) {
         doc_full_info_cont.classList.add('turn_off');
     }else {
         doc_full_info_cont.classList.remove('turn_off');
