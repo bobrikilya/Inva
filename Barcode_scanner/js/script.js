@@ -653,10 +653,13 @@ function items_cont_close() {
 function items_sort_swap(){
     // console.log('search_sort_swap');
     search_sort_cont.classList.toggle('toggle');
-    items_list_cont_content.classList.toggle('reverse');
-    const scrollsize = items_list_cont_content.scrollHeight - items_list_cont_content.clientHeight;
-    // console.log(scrollsize);
-    items_list_cont_content.scrollTo({top: -scrollsize, behavior: "instant"});
+    
+    setTimeout(() => {
+        items_list_cont_content.classList.toggle('reverse');
+        const scrollsize = items_list_cont_content.scrollHeight - items_list_cont_content.clientHeight;
+        // console.log(scrollsize);
+        items_list_cont_content.scrollTo({top: -scrollsize, behavior: "instant"});
+    }, 280);
 };
 
 function search_type_swap(){
@@ -668,7 +671,9 @@ items_list_cont_content.addEventListener('scroll', () => {
     // console.log(scrolltop);
     if (scrolltop > 25) {
         doc_full_info_cont.classList.add('turn_off');
-    }else doc_full_info_cont.classList.remove('turn_off');
+    }else {
+        doc_full_info_cont.classList.remove('turn_off');
+    };
 });
 
 docs_cont_content.addEventListener('touchstart', (e) => {

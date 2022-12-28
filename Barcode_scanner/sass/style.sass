@@ -10,6 +10,7 @@
     justify-content: center
     align-items: center
     flex-shrink: 0
+    overscroll-behavior: contain
 
 body
     // Selecting ban
@@ -26,6 +27,7 @@ body
     overflow: hidden
     -webkit-tap-highlight-color: rgba(0,0,0,0)
     -webkit-tap-highlight-color: transparent
+    overscroll-behavior: contain
 
 button, a, i
     &:active
@@ -513,6 +515,7 @@ input
     #items_content
         overflow: visible
         width: 90%
+        max-width: 400px
         padding-top: 1.2rem
         padding-bottom: 1.5rem
         justify-content: flex-start
@@ -593,16 +596,16 @@ input
             flex-shrink: 1
             background-color: #ffffff46
             border-radius: 25px
-            // overflow: visible
             // border: 2px solid orange
             #doc_full_info_cont
                 position: absolute
+                z-index: 1
                 top: 0
                 width: 100%
                 padding: 20px
                 height: 5.3rem
                 border-radius: 25px
-                background-color: #3b00574b
+                background-color: #b19cc2
                 box-shadow: 0 5px 15px #a5a4a42a
                 transition-duration: 0.3s
                 // border: 2px solid black
@@ -616,14 +619,20 @@ input
             #items_list_cont_content
                 // flex-direction: column-reverse
                 flex-shrink: 1
-                width: 95%
+                width: 98%
+                padding-left: 10px
                 height: 100%
-                overflow: auto
+                overflow-y: auto
                 justify-content: flex-start
+                // align-items: flex-start
                 scroll-behavior: smooth
+                overscroll-behavior: contain
                 // border: 2px solid blue
                 &::-webkit-scrollbar
-                    width: 0
+                    width: 10px
+                &::-webkit-scrollbar-thumb
+                    background-color: #00318d1e
+                    border-radius: 25px
                 &.reverse
                     flex-direction: column-reverse
                     // justify-content: flex-end
@@ -636,7 +645,7 @@ input
                 li
                     display: flex
                     flex-shrink: 0
-                    width: 100%
+                    width: 97%
                     height: 3.7rem
                     margin-top: 0.4rem
                     background-color: #00318d1e
