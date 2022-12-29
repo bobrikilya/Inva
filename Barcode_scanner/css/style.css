@@ -723,6 +723,7 @@ input {
   transition-duration: 0.4s;
 }
 #items_cont #items_content #items_list_cont #doc_full_info_cont.turn_off {
+  filter: blur(3px);
   opacity: 0;
 }
 #items_cont #items_content #items_list_cont #doc_full_info_cont h2 {
@@ -753,7 +754,7 @@ input {
 }
 #items_cont #items_content #items_list_cont #items_list_cont_content.reverse li:first-child {
   margin-top: 0.4rem;
-  margin-bottom: 6rem;
+  margin-bottom: 5rem;
 }
 #items_cont #items_content #items_list_cont #items_list_cont_content.reverse li:last-child {
   margin-top: 6rem;
@@ -787,7 +788,7 @@ input {
   margin-top: 6rem;
 }
 #items_cont #items_content #items_list_cont #items_list_cont_content li:last-child {
-  margin-bottom: 6rem;
+  margin-bottom: 5rem;
 }
 #items_cont #items_content #cancel_but_item_search {
   position: absolute;

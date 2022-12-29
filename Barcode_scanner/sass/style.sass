@@ -607,6 +607,7 @@ input
                 transition-duration: 0.4s
                 // border: 2px solid black
                 &.turn_off
+                    filter: blur(3px)
                     opacity: 0
                 h2
                     font-size: 1.2rem
@@ -631,13 +632,13 @@ input
                     border-radius: 25px
                 &.reverse
                     flex-direction: column-reverse
-                    // justify-content: flex-end
-                    li:first-child
-                        margin-top: 0.4rem
-                        margin-bottom: 6rem
-                    li:last-child
-                        margin-top: 6rem
-                        margin-bottom: 0
+                    li
+                        &:first-child
+                            margin-top: 0.4rem
+                            margin-bottom: 5rem
+                        &:last-child
+                            margin-top: 6rem
+                            margin-bottom: 0
                 &.end_light
                     box-shadow: inset 0 -100px 70px #ffffff70
                 li
@@ -657,10 +658,10 @@ input
                     #right_side
                         width: 50%
                         height: 100%
-                li:first-child
-                    margin-top: 6rem
-                li:last-child
-                    margin-bottom: 6rem
+                    &:first-child
+                        margin-top: 6rem
+                    &:last-child
+                        margin-bottom: 5rem
         #cancel_but_item_search
             position: absolute
             bottom: 1.2rem

@@ -658,7 +658,7 @@ function items_sort_swap(){
     setTimeout(() => {
         items_list_cont_content.classList.toggle('reverse');
         const scrollsize = items_list_cont_content.scrollHeight - items_list_cont_content.clientHeight;
-        console.log(scrollsize);
+        // console.log(scrollsize);
         items_list_cont_content.scrollTo({top: -scrollsize, behavior: "instant"});
     }, 280);
 };
@@ -670,26 +670,31 @@ function search_type_swap(){
 
 items_list_cont_content.addEventListener('scroll', () => {
     const scrolltop = items_list_cont_content.scrollTop;
-    // console.log(scrolltop);
+    // console.log(-scrolltop);
+    // const offsetHeight = items_list_cont_content.offsetHeight;
     const scrollbottom = items_list_cont_content.scrollHeight - items_list_cont_content.clientHeight;
     // console.log(scrollbottom);
 
     setTimeout(() => {
         const scrolltop_2 = items_list_cont_content.scrollTop;
         // console.log(scrolltop_2);
-        if (scrolltop_2 > scrolltop + 300){
+        if (scrolltop_2 > scrolltop + 150){
             item_search_input.blur();
         };
     }, 500);
+    if (items_list_cont_content.classList.contains('reverse')){
+        scroll_size = scrollbottom + scrolltop - 0.66
+    } else scroll_size = scrolltop;
 
-    if (scrolltop == 0){
-        item_search_input.focus();
-    }else if (scrolltop < 65) {
+    console.log(scroll_size);
+
+    if (scroll_size < 65) {
         doc_full_info_cont.classList.remove('turn_off');
-    }else if (scrolltop > 65) {
+        if (scroll_size < 5) item_search_input.focus();
+    }else {
         doc_full_info_cont.classList.add('turn_off');
     };
-    if (scrolltop + 30 > scrollbottom && scrollbottom) {
+    if (scroll_size + 30 > scrollbottom && scrollbottom) {
         items_list_cont_content.classList.add('end_light');
     }else {
         items_list_cont_content.classList.remove('end_light');
