@@ -632,10 +632,10 @@ function items_cont_open(file_name) {
 
     if (localStorage.getItem(`${file_name}`)){
         file_list = JSON.parse(localStorage.getItem(`${file_name}`));
-
         file_list.forEach(el => {
             add_item(el);
         });
+        file_list = false;
     };
 };
 
@@ -658,7 +658,7 @@ function items_sort_swap(){
     setTimeout(() => {
         items_list_cont_content.classList.toggle('reverse');
         const scrollsize = items_list_cont_content.scrollHeight - items_list_cont_content.clientHeight;
-        // console.log(scrollsize);
+        console.log(scrollsize);
         items_list_cont_content.scrollTo({top: -scrollsize, behavior: "instant"});
     }, 280);
 };
@@ -671,11 +671,33 @@ function search_type_swap(){
 items_list_cont_content.addEventListener('scroll', () => {
     const scrolltop = items_list_cont_content.scrollTop;
     // console.log(scrolltop);
-    if (scrolltop > 65) {
-        doc_full_info_cont.classList.add('turn_off');
-    }else {
+    const scrollbottom = items_list_cont_content.scrollHeight - items_list_cont_content.clientHeight;
+    // console.log(scrollbottom);
+
+    setTimeout(() => {
+        const scrolltop_2 = items_list_cont_content.scrollTop;
+        // console.log(scrolltop_2);
+        if (scrolltop_2 > scrolltop + 300){
+            item_search_input.blur();
+        };
+    }, 500);
+
+    if (scrolltop == 0){
+        item_search_input.focus();
+    }else if (scrolltop < 65) {
         doc_full_info_cont.classList.remove('turn_off');
+    }else if (scrolltop > 65) {
+        doc_full_info_cont.classList.add('turn_off');
     };
+    if (scrolltop + 30 > scrollbottom && scrollbottom) {
+        items_list_cont_content.classList.add('end_light');
+    }else {
+        items_list_cont_content.classList.remove('end_light');
+    };
+});
+
+item_search_input.addEventListener('input', (e) => {
+    items_list_cont_content.scrollTo({top: -scrollsize, behavior: "instant"});
 });
 
 docs_cont_content.addEventListener('touchstart', (e) => {
@@ -730,6 +752,7 @@ docs_cont_content.addEventListener('click', (e) => {
     if (tag == 'BUTTON'){
         full_doc = e.target.parentNode;
         const e_id = full_doc.getAttribute('id');
+        // console.log(e_id);
 
         if (localStorage.getItem('last_opened_doc')) {
             if (e_id == JSON.parse(localStorage.getItem('last_opened_doc'))['id']){
@@ -750,6 +773,10 @@ docs_cont_content.addEventListener('click', (e) => {
                 return
             };
         });
+
+        if (localStorage.getItem(`${e_id}`)){
+            localStorage.removeItem(`${e_id}`);
+        };
         // console.log(num_of_el);
     };
 });

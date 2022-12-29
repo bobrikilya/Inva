@@ -604,11 +604,9 @@ input
                 border-radius: 25px
                 background-color: #b19cc2
                 box-shadow: 0 5px 15px #a5a4a42a
-                transition-duration: 0.3s
+                transition-duration: 0.4s
                 // border: 2px solid black
                 &.turn_off
-                    margin-top: -3rem
-                    height: 0
                     opacity: 0
                 h2
                     font-size: 1.2rem
@@ -616,7 +614,7 @@ input
             #items_list_cont_content
                 // flex-direction: column-reverse
                 flex-shrink: 1
-                width: 97%
+                width: 100%
                 padding-left: 10px
                 height: 100%
                 overflow-y: auto
@@ -624,6 +622,7 @@ input
                 // align-items: flex-start
                 scroll-behavior: smooth
                 overscroll-behavior: contain
+                transition-duration: 0.4s
                 // border: 2px solid blue
                 &::-webkit-scrollbar
                     width: 10px
@@ -635,14 +634,16 @@ input
                     // justify-content: flex-end
                     li:first-child
                         margin-top: 0.4rem
-                        margin-bottom: 4rem
+                        margin-bottom: 6rem
                     li:last-child
                         margin-top: 6rem
                         margin-bottom: 0
+                &.end_light
+                    box-shadow: inset 0 -100px 70px #ffffff70
                 li
                     display: flex
                     flex-shrink: 0
-                    width: 97%
+                    width: 96%
                     height: 3.7rem
                     margin-top: 0.4rem
                     background-color: #00318d1e
@@ -659,7 +660,7 @@ input
                 li:first-child
                     margin-top: 6rem
                 li:last-child
-                    margin-bottom: 4rem
+                    margin-bottom: 6rem
         #cancel_but_item_search
             position: absolute
             bottom: 1.2rem
