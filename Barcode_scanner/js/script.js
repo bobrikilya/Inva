@@ -200,6 +200,9 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     // if (Moz) session_blur.style.backgroundColor = '#ebf4ff65';
 
+    docs_cont_content.querySelector('a').click();
+
+
     reload_but.classList.add('light');
     setTimeout(() => {reload_but.classList.remove('light')}, 1000);
 }); 
@@ -295,7 +298,7 @@ function searching(){
         file_list = JSON.parse(localStorage.getItem(`${file_id}`));
         
         let counter = 0;
-        while (counter < 1000){
+        while (counter < 100){
             file_list.push({
                 'name' : 'Тест',
                 'code' : '123456789',
@@ -549,14 +552,23 @@ function add_doc(new_el){
 };
 
 function add_item(item){
+    // if (i_name.length > 27) i_name = i_name.sclice(0, 27);
     items_list_cont_content.insertAdjacentHTML('afterbegin', `
         <li>
-            <div id="left_side" class="cont">
-                <span id="items_name">${item['name']}</span>
-                <span id="items_barcode">${item['code']}</span>
+            <div id="left_side_cont" class="cont">
+                <span id="items_name">Имя красивое непафасное говна</span>
+                <div id="barcode_price_cont" class="cont">
+                    <span id="items_barcode">1234567891234</span>
+                    <div class="cont">
+                        <span id="items_price_icon">
+                            <i class="fa-solid fa-coins"></i>
+                        </span>
+                        <span id="items_price">1.25</span>
+                        <p>р.</p>
+                    </div>
+                </div>
             </div>
-            <div id="right_side">
-            </div>
+            <a id="items_quantity">0</a>
         </li>
     `);
 };
@@ -686,7 +698,7 @@ items_list_cont_content.addEventListener('scroll', () => {
         scroll_size = scrollbottom + scrolltop - 0.66
     } else scroll_size = scrolltop;
 
-    console.log(scroll_size);
+    // console.log(scroll_size);
 
     if (scroll_size < 65) {
         doc_full_info_cont.classList.remove('turn_off');
