@@ -83,6 +83,7 @@ const items_content = items_cont.querySelector('#items_content');
 const search_type_cont = items_cont.querySelector('#search_type_cont');
 const search_sort_cont = items_cont.querySelector('#search_sort_cont');
 const doc_full_info_cont = items_cont.querySelector('#doc_full_info_cont');
+const items_not_found = items_cont.querySelector('#items_not_found');
 const items_list_cont_content = items_cont.querySelector('#items_list_cont_content');
 const cancel_but_item_search = items_cont.querySelector('#cancel_but_item_search');
 
@@ -130,9 +131,9 @@ download_back_but.addEventListener('click', () =>{
 cancel_but_item_search.addEventListener('click', items_cont_close);
 clear_item_search_but.addEventListener('click', () => {
     item_search_input.value = '';
-    item_search_input.focus();
+    // item_search_input.focus();
 });
-item_search_but.addEventListener('click', () => {item_search_input.blur()});
+// item_search_but.addEventListener('click', () => {item_search_input.blur()});
 search_sort_cont.addEventListener('click', items_sort_swap);
 search_type_cont.addEventListener('click', search_type_swap);
 
@@ -298,9 +299,9 @@ function searching(){
         file_list = JSON.parse(localStorage.getItem(`${file_id}`));
         
         let counter = 0;
-        while (counter < 100){
+        while (counter < 50){
             file_list.push({
-                'name' : 'Тест',
+                'name' : `Тест ${counter}`,
                 'code' : '123456789',
             });
             counter += 1;
@@ -341,6 +342,10 @@ function docs_cont_scroll() {
 };
 
 function header_toggle(){
+
+    info_block.style.display = 'none';
+    // main_block.classList.remove('toggle');
+
     menue_but.classList.toggle('toggle');
     back_but.classList.toggle('toggle');
     help_but.classList.toggle('toggle');
@@ -552,11 +557,13 @@ function add_doc(new_el){
 };
 
 function add_item(item){
-    // if (i_name.length > 27) i_name = i_name.sclice(0, 27);
+    i_name = item['name'];
+    // console.log(i_name);
+    if (i_name.length > 27) i_name = i_name.sclice(0, 27);
     items_list_cont_content.insertAdjacentHTML('afterbegin', `
         <li>
             <div id="left_side_cont" class="cont">
-                <span id="items_name">Имя красивое непафасное говна</span>
+                <span id="items_name">${i_name}</span>
                 <div id="barcode_price_cont" class="cont">
                     <span id="items_barcode">1234567891234</span>
                     <div class="cont">
@@ -621,16 +628,16 @@ input.addEventListener('blur', () => {
 });
 
 
-item_search_input.addEventListener('keydown', (event) => {
-    if (event.key == '-' || event.key == '.') event.preventDefault();
-	if (['Escape', 'Delete', 'Tab', 'Backspace', 
-         'Home', 'End', 'ArrowLeft', 'ArrowRight',
-         '1','2','3','4','5','6','7','8','9','0'].includes(event.key)) {
-	} else event.preventDefault();
-});
-item_search_input.addEventListener('keyup', (event) => {
-    if (event.key == 'Enter') item_search_input.blur();
-});
+// item_search_input.addEventListener('keydown', (event) => {
+//     if (event.key == '-' || event.key == '.') event.preventDefault();
+// 	if (['Escape', 'Delete', 'Tab', 'Backspace', 
+//          'Home', 'End', 'ArrowLeft', 'ArrowRight',
+//          '1','2','3','4','5','6','7','8','9','0'].includes(event.key)) {
+// 	} else event.preventDefault();
+// });
+// item_search_input.addEventListener('keyup', (event) => {
+//     if (event.key == 'Enter') item_search_input.blur();
+// });
 
 function items_cont_open(file_name) {
     items_cont.classList.add('toggle');
@@ -638,12 +645,16 @@ function items_cont_open(file_name) {
     foot_cont.classList.add('turn_off');
     items_list_cont_content.scrollTo({top: 0, behavior: "smooth"});
     setTimeout(() => {
-        item_search_input.focus();
+        // item_search_input.focus();
         items_content.classList.add('toggle');
     }, 80);
 
     if (localStorage.getItem(`${file_name}`)){
         file_list = JSON.parse(localStorage.getItem(`${file_name}`));
+        console.log(file_list);
+        if (file_list == 0) items_not_found.style.display = 'flex';
+        else items_not_found.style.display = 'none';
+
         file_list.forEach(el => {
             add_item(el);
         });
@@ -677,7 +688,7 @@ function items_sort_swap(){
 
 function search_type_swap(){
     search_type_cont.classList.toggle('toggle');
-    item_search_input.focus();
+    // item_search_input.focus();
 };
 
 items_list_cont_content.addEventListener('scroll', () => {
@@ -702,14 +713,9 @@ items_list_cont_content.addEventListener('scroll', () => {
 
     if (scroll_size < 65) {
         doc_full_info_cont.classList.remove('turn_off');
-        if (scroll_size < 5) item_search_input.focus();
+        // if (scroll_size < 5) item_search_input.focus();
     }else {
         doc_full_info_cont.classList.add('turn_off');
-    };
-    if (scroll_size + 30 > scrollbottom && scrollbottom) {
-        items_list_cont_content.classList.add('end_light');
-    }else {
-        items_list_cont_content.classList.remove('end_light');
     };
 });
 
@@ -920,7 +926,7 @@ function input_focus(){
 
     // else input_block.style.paddingBottom = '50vh';
     // main_container.style.justifyContent = 'flex-end';
-    main_block.style.display = 'none';
+    main_block.classList.remove('toggle');
     water_tag.style.display = 'none';
     foot_cont.style.display = 'none';
     // window.scrollTo({bottom: 0, behavior: "smooth"});
@@ -932,7 +938,7 @@ function input_blur(){
     // input_block.style.paddingBottom = "5vh";
     // main_container.style.justifyContent = 'center';
 
-    main_block.style.display = 'flex';
+    main_block.classList.add('toggle');
     foot_cont.style.display = 'flex';
     water_tag.style.display = 'inline-block';
     input.blur();
