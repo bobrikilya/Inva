@@ -83,6 +83,11 @@ const items_content = items_cont.querySelector('#items_content');
 const search_type_cont = items_cont.querySelector('#search_type_cont');
 const search_sort_cont = items_cont.querySelector('#search_sort_cont');
 const doc_full_info_cont = items_cont.querySelector('#doc_full_info_cont');
+const doc_name = doc_full_info_cont.querySelector('#doc_name');
+const doc_items_sum = doc_full_info_cont.querySelector('#doc_items_sum');
+const doc_items_quantity = doc_full_info_cont.querySelector('#doc_items_quantity');
+const doc_create_time = doc_full_info_cont.querySelector('#doc_create_time');
+const doc_edit_time = doc_full_info_cont.querySelector('#doc_edit_time');
 const items_not_found = items_cont.querySelector('#items_not_found');
 const items_list_cont_content = items_cont.querySelector('#items_list_cont_content');
 const cancel_but_item_search = items_cont.querySelector('#cancel_but_item_search');
@@ -201,7 +206,8 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     // if (Moz) session_blur.style.backgroundColor = '#ebf4ff65';
 
-    docs_cont_content.querySelector('a').click();
+    if (docs_cont_content.querySelector('a')) 
+        docs_cont_content.querySelector('a').click();
 
 
     reload_but.classList.add('light');
@@ -299,7 +305,7 @@ function searching(){
         file_list = JSON.parse(localStorage.getItem(`${file_id}`));
         
         let counter = 0;
-        while (counter < 50){
+        while (counter < 100){
             file_list.push({
                 'name' : `Тест ${counter}`,
                 'code' : '123456789',
@@ -372,9 +378,9 @@ function no_session_act(){
     localStorage.removeItem('sess_info');
 };
 
-function doc_name_insert(doc_name){
+function doc_name_insert(doc_n){
     // console.log('yea')
-    session_but.innerText = doc_name;
+    session_but.innerText = doc_n;
     session_but.classList.add('no_active');
 };
 
@@ -557,38 +563,58 @@ function add_doc(new_el){
 };
 
 function add_item(item){
-    i_name = item['name'];
-    // console.log(i_name);
-    if (i_name.length > 27) i_name = i_name.sclice(0, 27);
-    items_list_cont_content.insertAdjacentHTML('afterbegin', `
-        <li>
-            <div id="left_side_cont" class="cont">
-                <span id="items_name">${i_name}</span>
-                <div id="barcode_price_cont" class="cont">
-                    <span id="items_barcode">1234567891234</span>
-                    <div class="cont">
-                        <span id="items_price_icon">
-                            <i class="fa-solid fa-coins"></i>
-                        </span>
-                        <span id="items_price">1.25</span>
-                        <p>р.</p>
+    if (item && 'name' in item){
+        i_name = item['name'];
+        // console.log(i_name);
+        if (i_name.length > 27) i_name = i_name.sclice(0, 27);
+        items_list_cont_content.insertAdjacentHTML('afterbegin', `
+            <li>
+                <div id="left_side_cont" class="cont">
+                    <span id="items_name">${i_name}</span>
+                    <div id="barcode_price_cont" class="cont">
+                        <span id="items_barcode">1234567891234</span>
+                        <div class="cont">
+                            <span id="items_price_icon">
+                                <i class="fa-solid fa-coins"></i>
+                            </span>
+                            <span id="items_price">1.25</span>
+                            <p>р.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <a id="items_quantity">0</a>
-        </li>
-    `);
+                <a id="items_quantity">0</a>
+            </li>
+        `);
+    };
+};
+
+function doc_info_inserting(info){
+    doc_name.innerText = info['doc_name'];
+    doc_items_sum.innerText = info['sum'];
+    doc_items_quantity.innerText = info['quant'];
+    doc_create_time.innerText = info['create'];
+    doc_edit_time.innerText = info['edit'];
 };
 
 function docs_opening(doc_data){
-    if (doc_data['class_name'] == 'scan'){
+    // console.log(doc_data);
+    if (doc_data['class_name'] == 'inv'){
         // console.log(doc_data['text_name']);
         header_toggle();
         doc_name_insert(doc_data['text_name']);
         localStorage.setItem('last_opened_doc', JSON.stringify(doc_data));
         back_but.classList.add('active');
 
-        localStorage.setItem(`${doc_data['id']}`, JSON.stringify([]));
+        let now = new Date();
+        create_time = now.toLocaleString();
+        // console.log(create_time);
+        localStorage.setItem(`${doc_data['id']}`, JSON.stringify([{
+            'doc_name': `${doc_data['text_name']}`,
+            'sum': 0,
+            'quant': 0,
+            'create': create_time,
+            'edit': create_time,
+        }]));
     };
 };
 
@@ -651,13 +677,18 @@ function items_cont_open(file_name) {
 
     if (localStorage.getItem(`${file_name}`)){
         file_list = JSON.parse(localStorage.getItem(`${file_name}`));
-        console.log(file_list);
-        if (file_list == 0) items_not_found.style.display = 'flex';
+        // console.log(file_list);
+        if (!file_list[1]) items_not_found.style.display = 'flex';
         else items_not_found.style.display = 'none';
 
-        file_list.forEach(el => {
-            add_item(el);
-        });
+        // file_list.forEach(el => {
+        //     add_item(el);
+        // });
+        doc_info_inserting(file_list[0]);
+        for (let el = 1; el < 51; el++){
+            add_item(file_list[el]);
+            // console.log(file_list[el])
+        };
         file_list = false;
     };
 };
