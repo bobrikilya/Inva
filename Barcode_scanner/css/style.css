@@ -808,7 +808,6 @@ input {
   font-size: 0.9rem;
 }
 #items_cont #items_content #items_list_cont #doc_full_info_cont #doc_right_info span {
-  font-size: 1.1rem;
   color: #222222;
 }
 #items_cont #items_content #items_list_cont #items_not_found {
@@ -825,15 +824,20 @@ input {
   display: flex;
 }
 #items_cont #items_content #items_list_cont #items_not_found span {
-  margin-top: 1.5rem;
+  overflow: visible;
+  margin-top: 1rem;
   font-size: 2.5rem;
+  width: 5rem;
+  height: 5rem;
+  background-color: rgba(113, 172, 190, 0.1294117647);
+  border-radius: 50%;
 }
 #items_cont #items_content #items_list_cont #items_not_found span::after {
   content: "";
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  bottom: -2rem;
+  bottom: -1.5rem;
   width: 6rem;
   height: 1px;
   background-color: rgba(37, 55, 82, 0.5960784314);

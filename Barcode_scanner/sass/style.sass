@@ -682,7 +682,6 @@ input
                         margin-bottom: 2px
                         font-size: 0.9rem
                     span
-                        font-size: 1.1rem
                         color: #222222
             #items_not_found
                 width: 100%
@@ -696,14 +695,19 @@ input
                 &.turn_on
                     display: flex
                 span
-                    margin-top: 1.5rem
+                    overflow: visible
+                    margin-top: 1rem
                     font-size: 2.5rem
+                    width: 5rem
+                    height: 5rem
+                    background-color: #71acbe21
+                    border-radius: 50%
                     &::after
                         content: ''
                         position: absolute
                         left: 50%
                         transform: translateX(-50%)
-                        bottom: -2rem
+                        bottom: -1.5rem
                         width: 6rem
                         height: 1px
                         background-color: #25375298

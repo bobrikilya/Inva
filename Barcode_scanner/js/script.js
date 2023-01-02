@@ -206,8 +206,8 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     // if (Moz) session_blur.style.backgroundColor = '#ebf4ff65';
 
-    if (docs_cont_content.querySelector('a')) 
-        docs_cont_content.querySelector('a').click();
+    // if (docs_cont_content.querySelector('a')) 
+    //     docs_cont_content.querySelector('a').click();
 
 
     reload_but.classList.add('light');
@@ -301,18 +301,42 @@ function searching(){
         video.classList.remove('camera_on');
         scan_icon.classList.remove('camera_on');
 
-        let file_id = JSON.parse(localStorage.getItem('last_opened_doc'))['id'];
-        file_list = JSON.parse(localStorage.getItem(`${file_id}`));
+        const file_id = JSON.parse(localStorage.getItem('last_opened_doc'));
+        let file_list = JSON.parse(localStorage.getItem(`${file_id}`));
         
-        let counter = 0;
-        while (counter < 100){
-            file_list.push({
-                'name' : `Тест ${counter}`,
-                'code' : '123456789',
-            });
-            counter += 1;
+        const quant_val = file_list.length;
+        const price_val = 1.25;
+        const edit_time = (new Date()).toLocaleString();
+        
+        file_list.push({
+            'name': `Тест ${quant_val}`,
+            'code': '123456789',
+            'price': price_val,
+            'quant': 0
+        });
+        // console.log(file_list);
+
+        // Doc full info updating
+        const sum_val = file_list[0]['sum'] + price_val;
+        file_list[0]['sum'] = sum_val;
+        file_list[0]['itms_quant'] = quant_val;
+        file_list[0]['edit'] = edit_time;
+
+        // Doc lit info updating
+        for (const doc of docs_list) {
+            if(doc['id'] == file_id) {
+                doc['sum'] = sum_val;
+                doc['itms_quant'] = quant_val;
+                break;
+            };
         };
+
         localStorage.setItem(`${file_id}`, JSON.stringify(file_list));
+        localStorage.setItem('docs_list', JSON.stringify(docs_list));
+        const full_doc = docs_cont_content.querySelector(`#${file_id}`);
+        full_doc.querySelector('#doc_sum p').innerText = sum_val;
+        full_doc.querySelector('#doc_count p').innerText = quant_val;
+        file_list = false;
     };
 };
 
@@ -385,7 +409,13 @@ function doc_name_insert(doc_n){
 };
 
 function return_to_doc(){
-    docs_opening(JSON.parse(localStorage.getItem('last_opened_doc')));
+    doc_id = JSON.parse(localStorage.getItem('last_opened_doc'));
+    for (const doc of docs_list) {
+        if(doc['id'] == doc_id) {
+            docs_opening(doc);
+            break;
+        };
+    };
 };
 
 
@@ -453,10 +483,12 @@ function data_downloading_back(){
     setTimeout(() => {
         li_list.forEach((el) =>{
                 el.classList.add('opac');
+                localStorage.removeItem(`${el['id']}`)
                 setTimeout(() => {el.remove()}, 500);
-            });
+        });
         docs_list = [];
         localStorage.removeItem('docs_list');
+        
     }, 300);
 
     setTimeout(() => {
@@ -544,11 +576,11 @@ function add_doc(new_el){
                 <div id="d_info" class="cont">
                     <h2>${new_el['text_name']}</h2>
                     <span id="doc_sum" class="doc_lit_info">Сумма:
-                        <p>0</p>
-                        <span>руб.</span>
+                        <p>${new_el['sum']}</p>
+                        <span>р.</span>
                     </span>
                     <span id="doc_count" class="doc_lit_info">Колич.:
-                        <p>0</p>
+                        <p>${new_el['itms_quant']}</p>
                         <span>эл.</span>
                     </span>
                 </div>
@@ -563,7 +595,7 @@ function add_doc(new_el){
 };
 
 function add_item(item){
-    if (item && 'name' in item){
+    if ('name' in item){
         i_name = item['name'];
         // console.log(i_name);
         if (i_name.length > 27) i_name = i_name.sclice(0, 27);
@@ -591,7 +623,7 @@ function add_item(item){
 function doc_info_inserting(info){
     doc_name.innerText = info['doc_name'];
     doc_items_sum.innerText = info['sum'];
-    doc_items_quantity.innerText = info['quant'];
+    doc_items_quantity.innerText = info['itms_quant'];
     doc_create_time.innerText = info['create'];
     doc_edit_time.innerText = info['edit'];
 };
@@ -602,19 +634,20 @@ function docs_opening(doc_data){
         // console.log(doc_data['text_name']);
         header_toggle();
         doc_name_insert(doc_data['text_name']);
-        localStorage.setItem('last_opened_doc', JSON.stringify(doc_data));
+        localStorage.setItem('last_opened_doc', JSON.stringify(doc_data['id']));
         back_but.classList.add('active');
 
-        let now = new Date();
-        create_time = now.toLocaleString();
-        // console.log(create_time);
-        localStorage.setItem(`${doc_data['id']}`, JSON.stringify([{
-            'doc_name': `${doc_data['text_name']}`,
-            'sum': 0,
-            'quant': 0,
-            'create': create_time,
-            'edit': create_time,
-        }]));
+        if (!localStorage.getItem(`${doc_data['id']}`)){
+            const create_time = (new Date()).toLocaleString();
+            // console.log(create_time);
+            localStorage.setItem(`${doc_data['id']}`, JSON.stringify([{
+                'doc_name': `${doc_data['text_name']}`,
+                'sum': 0,
+                'itms_quant': 0,
+                'create': create_time,
+                'edit': create_time
+            }]));
+        };
     };
 };
 
@@ -681,14 +714,14 @@ function items_cont_open(file_name) {
         if (!file_list[1]) items_not_found.style.display = 'flex';
         else items_not_found.style.display = 'none';
 
-        // file_list.forEach(el => {
-        //     add_item(el);
-        // });
         doc_info_inserting(file_list[0]);
-        for (let el = 1; el < 51; el++){
-            add_item(file_list[el]);
+        file_list.forEach(el => {
+            add_item(el);
+        });
+        // for (let el = 1; el < 51; el++){
+        //     add_item(file_list[el]);
             // console.log(file_list[el])
-        };
+        // };ы
         file_list = false;
     };
 };
@@ -786,9 +819,12 @@ docs_cont_content.addEventListener('click', (e) => {
 
     // console.log(e.target);
     if (tag == 'LI') {
-        docs_list.forEach(el=> {
-            if (el['id'] == e.target.getAttribute('id')) docs_opening(el);
-        });
+        for (const el of docs_list) {
+            if (el['id'] == e.target.getAttribute('id')) {
+                docs_opening(el);
+                break;
+            };
+        };
     };
 
     // Doc check / Eye
@@ -809,7 +845,7 @@ docs_cont_content.addEventListener('click', (e) => {
         // console.log(e_id);
 
         if (localStorage.getItem('last_opened_doc')) {
-            if (e_id == JSON.parse(localStorage.getItem('last_opened_doc'))['id']){
+            if (e_id == JSON.parse(localStorage.getItem('last_opened_doc'))){
                 back_but.classList.remove('active');
                 localStorage.removeItem('last_opened_doc');
             };
@@ -818,20 +854,18 @@ docs_cont_content.addEventListener('click', (e) => {
         full_doc.classList.add('deleting');
         setTimeout(() => {full_doc.remove()}, 400);
 
-
-        docs_list.forEach((el) =>{
-            if (el.id == e_id) {
-                const num_of_el = docs_list.indexOf(el);
-                docs_list.splice(num_of_el, 1)
-                localStorage.setItem('docs_list', JSON.stringify(docs_list));
-                return
-            };
-        });
-
         if (localStorage.getItem(`${e_id}`)){
             localStorage.removeItem(`${e_id}`);
         };
-        // console.log(num_of_el);
+        
+        for (const el of docs_list) {
+            if (el['id'] == e_id) {
+                const num_of_el = docs_list.indexOf(el);
+                docs_list.splice(num_of_el, 1)
+                localStorage.setItem('docs_list', JSON.stringify(docs_list));
+                break;
+            };
+        };
     };
 });
 
@@ -857,7 +891,13 @@ doc_types_content.addEventListener('click', (e) => {
     if(tag == 'A'){
 
         // Docs counter
-        let new_el = {"id": class_name + '_1', "class_name": class_name, "text_name": text_name + ' 1'};
+        let new_el = {
+            'id': class_name + '_1', 
+            'class_name': class_name, 
+            'text_name': text_name + ' 1',
+            'sum': 0,
+            'itms_quant': 0
+        };
         let max_count_list = [];
         if (localStorage.getItem('docs_list')){
             // console.log(docs_list);
@@ -1002,7 +1042,7 @@ function stream_start(){
         if (err) {
             console.log(err);
             console.log("Поломал");
-            return
+            return;
         }
         Quagga.start();
     });
