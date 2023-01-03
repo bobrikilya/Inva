@@ -109,6 +109,10 @@ clear_button.addEventListener('click', input_cleaning);
 search_button.addEventListener('click', searching);
 reload_but.addEventListener('click', refresh);
 
+big_eye_but.addEventListener('click', () =>{
+    header_toggle();
+    items_cont_open(last_op_doc);
+});
 menue_but.addEventListener('click', header_toggle);
 back_but.addEventListener('click', return_to_doc);
 
@@ -153,9 +157,7 @@ ok_but.addEventListener('click', sess_num_confirm);
 fire_but.addEventListener('click', full_reset);
 // fire_but.addEventListener('click', installing);
 
-no_but.addEventListener('click', () =>{
-    are_u_sure_toggle();
-});
+no_but.addEventListener('click', are_u_sure_toggle);
 yes_but.addEventListener('click', () =>{
     if (download == 'download') {
         are_u_sure_toggle();
@@ -172,6 +174,7 @@ let today = new Date().toLocaleDateString();
 let sess_info_list = false;
 let docs_list = [];
 let sess_num;
+let last_op_doc = false;
 
 let docs_count = 0;
 
@@ -203,6 +206,10 @@ document.addEventListener("DOMContentLoaded", () => {
         docs_list.forEach(el => {
             add_doc(el);
         });
+    };
+    if (localStorage.getItem('last_opened_doc')){
+        last_op_doc = JSON.parse(localStorage.getItem('last_opened_doc'));
+        back_but.classList.add('active');
     };
     // if (Moz) session_blur.style.backgroundColor = '#ebf4ff65';
 
@@ -293,15 +300,15 @@ function input_cleaning(){
 };
 
 function searching(){
-    if (input.value == '1') {
-        input_blur();
-        Quagga.pause();
-        info_block.style.display = 'flex';
-        stream_cont.style.display = 'none';
-        video.classList.remove('camera_on');
-        scan_icon.classList.remove('camera_on');
+    // if (input.value == '1') {
+        // input_blur();
+        // Quagga.pause();
+        // info_block.style.display = 'flex';
+        // stream_cont.style.display = 'none';
+        // video.classList.remove('camera_on');
+        // scan_icon.classList.remove('camera_on');
 
-        const file_id = JSON.parse(localStorage.getItem('last_opened_doc'));
+        const file_id = last_op_doc;
         let file_list = JSON.parse(localStorage.getItem(`${file_id}`));
         
         const quant_val = file_list.length;
@@ -337,7 +344,7 @@ function searching(){
         full_doc.querySelector('#doc_sum p').innerText = sum_val;
         full_doc.querySelector('#doc_count p').innerText = quant_val;
         file_list = false;
-    };
+    // };
 };
 
 function request(code){
@@ -409,7 +416,7 @@ function doc_name_insert(doc_n){
 };
 
 function return_to_doc(){
-    doc_id = JSON.parse(localStorage.getItem('last_opened_doc'));
+    doc_id = last_op_doc;
     for (const doc of docs_list) {
         if(doc['id'] == doc_id) {
             docs_opening(doc);
@@ -468,8 +475,10 @@ function downloading_back_act(){
 function data_downloading_back(){
     check.querySelector('span').innerHTML = 'Данные выгружены <br>на сервер';
     check_activ();
-    back_but.classList.remove('active');
+
     localStorage.removeItem('last_opened_doc');
+    last_op_doc = false;
+    back_but.classList.remove('active');
 
     // Docs removing
     li_list = docs_cont_content.querySelectorAll('li');
@@ -634,7 +643,8 @@ function docs_opening(doc_data){
         // console.log(doc_data['text_name']);
         header_toggle();
         doc_name_insert(doc_data['text_name']);
-        localStorage.setItem('last_opened_doc', JSON.stringify(doc_data['id']));
+        last_op_doc = doc_data['id'];
+        localStorage.setItem('last_opened_doc', JSON.stringify(last_op_doc));
         back_but.classList.add('active');
 
         if (!localStorage.getItem(`${doc_data['id']}`)){
@@ -741,12 +751,14 @@ function items_sort_swap(){
     // console.log('search_sort_swap');
     search_sort_cont.classList.toggle('toggle');
     // item_search_input.focus();
-
+    
     setTimeout(() => {
-        items_list_cont_content.classList.toggle('reverse');
         const scrollsize = items_list_cont_content.scrollHeight - items_list_cont_content.clientHeight;
-        // console.log(scrollsize);
-        items_list_cont_content.scrollTo({top: -scrollsize, behavior: "instant"});
+        if (scrollsize != 0){
+            items_list_cont_content.classList.toggle('reverse');
+            // console.log(scrollsize);
+            items_list_cont_content.scrollTo({top: -scrollsize, behavior: "instant"});
+        };
     }, 280);
 };
 
@@ -816,8 +828,8 @@ docs_cont_content.addEventListener('click', (e) => {
     // e.stopPropagation();
     let full_doc;
     const tag = e.target.tagName;
-
     // console.log(e.target);
+
     if (tag == 'LI') {
         for (const el of docs_list) {
             if (el['id'] == e.target.getAttribute('id')) {
@@ -831,7 +843,7 @@ docs_cont_content.addEventListener('click', (e) => {
     if (tag == 'A') {
         full_doc = e.target.parentNode;
         full_doc_id = full_doc.getAttribute('id');
-        items_cont_open(full_doc_id);
+        if (localStorage.getItem(`${full_doc_id}`)) items_cont_open(full_doc_id);
         // doc_up_moving(full_doc);
         // doc_name = full_doc.querySelector('h2').innerText;
         // console.log(full_doc_id);
@@ -844,10 +856,11 @@ docs_cont_content.addEventListener('click', (e) => {
         const e_id = full_doc.getAttribute('id');
         // console.log(e_id);
 
-        if (localStorage.getItem('last_opened_doc')) {
-            if (e_id == JSON.parse(localStorage.getItem('last_opened_doc'))){
-                back_but.classList.remove('active');
+        if (last_op_doc) {
+            if (e_id == last_op_doc){
                 localStorage.removeItem('last_opened_doc');
+                last_op_doc = false;
+                back_but.classList.remove('active');
             };
         };
 

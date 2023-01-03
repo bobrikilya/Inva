@@ -136,22 +136,21 @@ input
     &.turn_off
         display: none
     .help_eye
+        left: 0.5rem
         display: flex
         justify-content: center
         align-items: center
         border-radius: 50%
         // border: 2px solid red
     #help_but
-        left: -0.5rem
         &.toggle
             display: none
     #big_eye_but
         display: none
-        left: -0.35rem
         &.toggle
             display: flex
     .menue_but
-        right: -0.5rem
+        right: 0.5rem
         display: none
         justify-content: center
         align-items: center
@@ -205,7 +204,7 @@ input
             flex-shrink: 1
             position: absolute
             bottom: -0.8rem
-            width: 100%
+            width: 90%
             padding-bottom: 3.9rem
             justify-content: flex-end
             transition-duration: 0.2s
@@ -611,6 +610,8 @@ input
                 &.turn_off
                     filter: blur(2px)
                     opacity: 0
+                i
+                    pointer-events: none
                 div
                     width: 100%
                     height: 100%
@@ -696,10 +697,10 @@ input
                     display: flex
                 span
                     overflow: visible
-                    margin-top: 1rem
+                    margin-top: 0.8rem
                     font-size: 2.5rem
-                    width: 5rem
-                    height: 5rem
+                    width: 7rem
+                    height: 7rem
                     background-color: #71acbe21
                     border-radius: 50%
                     &::after
@@ -707,16 +708,18 @@ input
                         position: absolute
                         left: 50%
                         transform: translateX(-50%)
-                        bottom: -1.5rem
+                        bottom: -1rem
                         width: 6rem
-                        height: 1px
-                        background-color: #25375298
+                        height: 2px
+                        background-color: #2537522c
                         border-radius: 25px
+                    i
+                        pointer-events: none
             #items_list_cont_content
                 // flex-direction: column-reverse
                 flex-shrink: 1
                 width: 100%
-                padding-left: 10px
+                padding-left: 8px
                 height: 100%
                 overflow-y: auto
                 justify-content: flex-start
@@ -726,7 +729,7 @@ input
                 transition-duration: 0.4s
                 // border: 2px solid blue
                 &::-webkit-scrollbar
-                    width: 10px
+                    width: 8px
                 &::-webkit-scrollbar-thumb
                     background-color: #00318d1c
                     border-radius: 25px
@@ -745,11 +748,13 @@ input
                             &::after
                                 top: -1rem
                                 bottom: auto
+                i
+                    pointer-events: none
                 li
                     position: relative
                     display: flex
                     flex-shrink: 0
-                    width: 98%
+                    width: 97%
                     height: 3.7rem
                     margin-top: 0.5rem
                     background-color: #00318d1e
@@ -818,7 +823,7 @@ input
                             width: 7rem
                             height: 2px
                             background-color: #00318d1e
-                            border-radius: 25px
+                            borde-radius: 25px
                     &:last-child
                         margin-bottom: 5rem
                         &::after
