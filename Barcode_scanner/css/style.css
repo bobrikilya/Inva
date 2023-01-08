@@ -154,7 +154,7 @@ input {
   max-width: 350px;
   min-width: 310px;
   height: 100%;
-  opacity: 0.6;
+  opacity: 0.7;
   transition: 0.2s ease-out;
 }
 .content.toggle {
@@ -651,6 +651,7 @@ input {
   background-color: #e9f4f8;
 }
 #items_cont #items_content #items_sort_cont {
+  display: none;
   width: 80%;
   height: 2.8rem;
   border-radius: 0 0 25px 25px;
@@ -722,7 +723,6 @@ input {
   font-size: 1rem;
 }
 #items_cont #items_content #items_list_cont #doc_full_info_cont.turn_off {
-  filter: blur(2px);
   opacity: 0;
 }
 #items_cont #items_content #items_list_cont #doc_full_info_cont i {
@@ -785,7 +785,7 @@ input {
 }
 #items_cont #items_content #items_list_cont #doc_full_info_cont #doc_right_info {
   font-size: 1rem;
-  padding-left: 2vw;
+  padding-left: 0.5vw;
   justify-content: flex-end;
 }
 #items_cont #items_content #items_list_cont #doc_full_info_cont #doc_right_info div {
@@ -813,10 +813,11 @@ input {
 #items_cont #items_content #items_list_cont #items_not_found {
   width: 100%;
   position: absolute;
-  font-size: 2rem;
+  font-size: 1.7rem;
   text-align: center;
   color: rgba(37, 55, 82, 0.5960784314);
-  margin-top: -10%;
+  top: 27%;
+  pointer-events: none;
   overflow: visible;
   display: none;
 }
@@ -842,9 +843,6 @@ input {
   height: 2px;
   background-color: rgba(37, 55, 82, 0.1725490196);
   border-radius: 25px;
-}
-#items_cont #items_content #items_list_cont #items_not_found span i {
-  pointer-events: none;
 }
 #items_cont #items_content #items_list_cont #items_list_cont_content {
   flex-shrink: 1;
@@ -983,9 +981,97 @@ input {
   border-radius: 25px;
 }
 #items_cont #items_content #cancel_but_item_search {
+  display: none;
   position: absolute;
   bottom: 1.2rem;
   text-shadow: 0 10px 30px rgba(2, 57, 83, 0.3294117647);
+}
+#items_cont #items_content #items_keybrd_cont {
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  border-radius: 30px;
+  width: 100vw;
+  height: 38vh;
+  min-height: 17rem;
+  background-color: #e1e8ec;
+  box-shadow: 0 -5px 15px rgba(77, 77, 77, 0.0941176471);
+}
+#items_cont #items_content #items_keybrd_cont div {
+  width: 100%;
+  height: 100%;
+}
+#items_cont #items_content #items_keybrd_cont #items_keybrd_cont_up {
+  padding-top: 5px;
+  padding-right: 3px;
+  flex-shrink: 1;
+  flex-direction: row;
+}
+#items_cont #items_content #items_keybrd_cont #items_keybrd_cont_up button {
+  height: 24%;
+  margin: 1px;
+  font-size: 1.8rem;
+  border-radius: 30px;
+}
+#items_cont #items_content #items_keybrd_cont #items_keybrd_cont_up #items_keybrd_cont_left {
+  width: 80%;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+#items_cont #items_content #items_keybrd_cont #items_keybrd_cont_up #items_keybrd_cont_left button {
+  width: 32%;
+  background-color: rgba(255, 255, 255, 0.8274509804);
+  color: rgba(34, 34, 34, 0.9058823529);
+}
+#items_cont #items_content #items_keybrd_cont #items_keybrd_cont_up #items_keybrd_cont_right {
+  overflow: visible;
+  flex-shrink: 1;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+#items_cont #items_content #items_keybrd_cont #items_keybrd_cont_up #items_keybrd_cont_right button {
+  height: 24.3%;
+  width: 100%;
+  background-color: rgba(164, 182, 190, 0.3294117647);
+  color: rgba(46, 54, 73, 0.9058823529);
+}
+#items_cont #items_content #items_keybrd_cont #items_keybrd_cont_up #items_keybrd_cont_right .swap_but.toggle span:first-child {
+  top: -3rem;
+}
+#items_cont #items_content #items_keybrd_cont #items_keybrd_cont_up #items_keybrd_cont_right .swap_but.toggle span:last-child {
+  bottom: 0;
+}
+#items_cont #items_content #items_keybrd_cont #items_keybrd_cont_up #items_keybrd_cont_right .swap_but span {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-size: 1.4rem;
+  transition: 0.27s ease-out;
+}
+#items_cont #items_content #items_keybrd_cont #items_keybrd_cont_up #items_keybrd_cont_right .swap_but span i {
+  pointer-events: none;
+}
+#items_cont #items_content #items_keybrd_cont #items_keybrd_cont_up #items_keybrd_cont_right .swap_but span:first-child {
+  top: 0;
+}
+#items_cont #items_content #items_keybrd_cont #items_keybrd_cont_up #items_keybrd_cont_right .swap_but span:last-child {
+  bottom: -3rem;
+}
+#items_cont #items_content #items_keybrd_cont #items_keybrd_cont_up #items_keybrd_cont_right #close_item_cont_but {
+  background-color: rgba(245, 89, 110, 0.6352941176);
+}
+#items_cont #items_content #items_keybrd_cont #items_keybrd_cont_up #items_keybrd_cont_right #del_item_input_but {
+  background-color: #a4b6be;
+}
+#items_cont #items_content #items_keybrd_cont #items_keybrd_down_but {
+  height: 5vh;
+  font-size: 1.5rem;
+  width: 60%;
+  background: none;
+  color: rgba(34, 34, 34, 0.6039215686);
 }
 
 header {
@@ -1149,28 +1235,32 @@ header #menue_content #menue_main_cont #docs_cont #docs_cont_content #docs_info 
 }
 header #menue_content #menue_main_cont #docs_cont #docs_cont_content #docs_not_found {
   position: absolute;
-  top: 3.5rem;
+  top: 3.3rem;
   width: 94%;
+  overflow: visible;
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   color: rgba(26, 26, 26, 0.8901960784);
   transition-duration: 0.3s;
   pointer-events: none;
   opacity: 1;
 }
-header #menue_content #menue_main_cont #docs_cont #docs_cont_content #docs_not_found div {
-  width: 100%;
-  height: 1rem;
-  text-align: center;
+header #menue_content #menue_main_cont #docs_cont #docs_cont_content #docs_not_found span {
+  font-size: 1.5rem;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  background-color: rgba(113, 172, 190, 0.1098039216);
   color: rgba(26, 26, 26, 0.5411764706);
-  margin-top: 1.5rem;
+  margin-top: 0.5rem;
+  overflow: visible;
 }
-header #menue_content #menue_main_cont #docs_cont #docs_cont_content #docs_not_found div::after {
+header #menue_content #menue_main_cont #docs_cont #docs_cont_content #docs_not_found span::after {
   content: "";
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  bottom: -2.2rem;
+  bottom: -1rem;
   width: 8rem;
   height: 1.5px;
   background-color: rgba(29, 24, 26, 0.2745098039);

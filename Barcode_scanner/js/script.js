@@ -90,7 +90,7 @@ const doc_create_time = doc_full_info_cont.querySelector('#doc_create_time');
 const doc_edit_time = doc_full_info_cont.querySelector('#doc_edit_time');
 const items_not_found = items_cont.querySelector('#items_not_found');
 const items_list_cont_content = items_cont.querySelector('#items_list_cont_content');
-const cancel_but_item_search = items_cont.querySelector('#cancel_but_item_search');
+const cancel_but_item_search = items_cont.querySelector('#close_item_cont_but');
 
 //--------------
 
@@ -369,13 +369,16 @@ function docs_cont_scroll() {
     if (!header.classList.contains('turn_off')){
         // console.log('Scroll');
         docs_cont_content.scrollTo({top: 0, behavior: "smooth"});
-        session_but.classList.remove('no_active');
+    };
+};
+
+function sess_but_no_activ(){
+    session_but.classList.remove('no_active');
         if (sess_info_list) {
             session_record();
         }else {
             no_session_act();
         };
-    };
 };
 
 function header_toggle(){
@@ -391,6 +394,7 @@ function header_toggle(){
     water_tag.classList.toggle('turn_on');
 
     docs_cont_scroll();
+    sess_but_no_activ();
 
     // input_blur();
     main_block.classList.toggle('toggle');
@@ -540,7 +544,7 @@ function sess_start_stop(address_name = false){
         sess_num = session_num.innerText;
         sess_info_list = {
                         "sess_n" : `${today}-${sess_num}`,
-                        "store_n" : address_name,
+                        "store_n" : address_name
                         };
     }else {
         no_session_act();
@@ -745,15 +749,18 @@ function items_cont_close() {
     items_list_cont_content.replaceChildren();
     search_sort_cont.classList.remove('toggle');
     items_list_cont_content.classList.remove('reverse');
+
+    sess_but_no_activ();
 };
 
 function items_sort_swap(){
     // console.log('search_sort_swap');
-    search_sort_cont.classList.toggle('toggle');
     // item_search_input.focus();
-    
+
+    search_sort_cont.classList.toggle('toggle');
+    const scrollsize = items_list_cont_content.scrollHeight - items_list_cont_content.clientHeight;
+
     setTimeout(() => {
-        const scrollsize = items_list_cont_content.scrollHeight - items_list_cont_content.clientHeight;
         if (scrollsize != 0){
             items_list_cont_content.classList.toggle('reverse');
             // console.log(scrollsize);
@@ -795,8 +802,29 @@ items_list_cont_content.addEventListener('scroll', () => {
     };
 });
 
+
 item_search_input.addEventListener('input', (e) => {
+    const scrollsize = items_list_cont_content.scrollHeight - items_list_cont_content.clientHeight;
     items_list_cont_content.scrollTo({top: -scrollsize, behavior: "instant"});
+
+    // const all_items = items_list_cont_content.querySelectorAll('li');
+    // const val = item_search_input.value;
+    // // console.log(val);
+    // if (val != ''){
+    //     // console.log(item_search_input.value);
+    //     all_items.forEach(el => {
+    //         const i_name = el.querySelector('span');
+    //         // console.log(i_name.innerText);
+    //         if (i_name.innerText.search(val) == -1) {
+    //             el.classList.add('hide');
+    //         }else {
+    //             console.log(i_name.innerText);
+    //             el.classList.remove('hide');
+    //         };
+    //     });
+    // }else all_items.forEach(el => {
+    //     el.classList.remove('hide');
+    // });
 });
 
 docs_cont_content.addEventListener('touchstart', (e) => {
@@ -844,10 +872,9 @@ docs_cont_content.addEventListener('click', (e) => {
         full_doc = e.target.parentNode;
         full_doc_id = full_doc.getAttribute('id');
         if (localStorage.getItem(`${full_doc_id}`)) items_cont_open(full_doc_id);
-        // doc_up_moving(full_doc);
-        // doc_name = full_doc.querySelector('h2').innerText;
+        const doc_n = full_doc.querySelector('h2').innerText;
+        doc_name_insert(doc_n);
         // console.log(full_doc_id);
-        // doc_name_insert(doc_name);
     };
 
     // Trash
