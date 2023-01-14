@@ -510,7 +510,7 @@ input
         width: 90%
         max-width: 400px
         padding-top: 0.8rem
-        padding-bottom: 1.5rem
+        // padding-bottom: 1.5rem
         justify-content: flex-start
         // border: 2px solid red
         #item_search_cont
@@ -588,9 +588,12 @@ input
             width: 105%
             height: 100%
             flex-shrink: 1
-            background-color: #ffffff46
+            background-color: #ffffff56
             border-radius: 25px
+            margin-bottom: -1.7rem
             // border: 2px solid orange
+            &.keybrd_close
+                margin-bottom: -25vh
             #doc_full_info_cont
                 position: absolute
                 z-index: 1
@@ -737,7 +740,7 @@ input
                     li
                         &:first-child
                             margin-top: 0.5rem
-                            margin-bottom: 5rem
+                            margin-bottom: 6vh
                             &::after
                                 top: auto
                                 bottom: -1rem
@@ -756,7 +759,7 @@ input
                     width: 97%
                     height: 3.7rem
                     margin-top: 0.5rem
-                    background-color: #00318d1e
+                    background-color: #00318d2a
                     border-radius: 25px
                     #left_side_cont
                         flex-shrink: 1
@@ -824,7 +827,7 @@ input
                             background-color: #00318d1e
                             borde-radius: 25px
                     &:last-child
-                        margin-bottom: 5rem
+                        margin-bottom: 6vh
                         &::after
                             content: ''
                             position: absolute
@@ -835,22 +838,73 @@ input
                             height: 2px
                             background-color: #00318d1e
                             border-radius: 25px
-        #cancel_but_item_search
-            display: none
+        .swap_but
+            // background-color: #20aa3757
+            &:active
+                transition: 0s
+                transition-duration: 0s
+                opacity: 0.9
+            &.toggle
+                span:first-child
+                    top: -3rem
+                span:last-child
+                    bottom: 0
+            span
+                position: absolute
+                display: flex
+                justify-content: center
+                align-items: center
+                width: 100%
+                height: 100%
+                font-size: 1.4rem
+                transition: 0.27s ease-out
+                i
+                    pointer-events: none
+            span:first-child
+                top: 0
+            span:last-child
+                bottom: -3rem
+        #items_flight_buts_cont
             position: absolute
-            bottom: 1.2rem
-            text-shadow: 0 10px 30px #02395354
-            // border: 2px solid blue
+            bottom: 2vh
+            margin-top: 1rem
+            margin-bottom: 1rem
+            flex-direction: row
+            border-radius: 30px
+            button
+                margin: 0 1vw
+                height: 4rem
+                width: 5.5rem
+                border-radius: 30px
+                overflow: hidden
+                font-size: 1.6rem
+                color: #2e3649e7
+                background-color: #34b80042
+                background: none
+            #close_item_cont_but_2
+                border: none
+                width: 7rem
+                background-color: #eb7b8aea
         #items_keybrd_cont
-            position: absolute
+            // position: absolute
             z-index: 1
             bottom: 0
             border-radius: 30px
             width: 100vw
+            max-width: 500px
             height: 38vh
             min-height: 17rem
             background-color: #e1e8ec
-            box-shadow: 0 -5px 15px #4d4d4d18
+            // box-shadow: 0 -5px 15px #4d4d4d18
+            transition-duration: 0.15s
+            opacity: 1
+            pointer-events: auto
+            &.toggle
+                // display: none
+                transition: 0.2s
+                bottom: -2rem
+                opacity: 0
+                pointer-events: none
             div
                 width: 100%
                 height: 100%
@@ -864,6 +918,7 @@ input
                     margin: 1px
                     font-size: 1.8rem
                     border-radius: 30px
+                    transition-duration: 0.05s
                 #items_keybrd_cont_left
                     width: 80%
                     flex-direction: row
@@ -873,6 +928,8 @@ input
                         width: 32%
                         background-color: #ffffffd3
                         color: #222222e7
+                        &:active
+                            background-color: #9dc4ffd3
                 #items_keybrd_cont_right
                     overflow: visible
                     flex-shrink: 1
@@ -884,45 +941,30 @@ input
                         width: 100%
                         background-color: #a4b6be54
                         color: #2e3649e7
-                    .swap_but
-                        // background-color: #20aa3757
-                        &.toggle
-                            span:first-child
-                                top: -3rem
-                            span:last-child
-                                bottom: 0
-                        span
-                            position: absolute
-                            display: flex
-                            justify-content: center
-                            align-items: center
-                            width: 100%
-                            height: 100%
-                            font-size: 1.4rem
-                            transition: 0.27s ease-out
-                            i
-                                pointer-events: none
-                        span:first-child
-                            top: 0
-                        span:last-child
-                            bottom: -3rem
                     #close_item_cont_but
-                        background-color: #f5596ea2
+                        background-color: #eb7b8aea
                     #search_type_but
                         // background-color: #ffbf3594
                     #search_sort_but
                         // background-color: #20aa3763
                     #del_item_input_but
+                        &:active
+                            transition: 0s
+                            transition-duration: 0s
+                            opacity: 1
+                        background-color: #a4b6be
                         // width: 233%
                         // width: 187%
-                        // background-color: #2067aa63
-                        background-color: #a4b6be
-            #items_keybrd_down_but
+            #close_keybrd_but
                 height: 5vh
                 font-size: 1.5rem
-                width: 60%
+                width: 100%
                 background: none
                 color: #2222229a
+                // align-items: flex-start
+                // padding-left: 11vw
+                // align-items: flex-end
+                // padding-right: 31vw
                 // border: 2px solid brown
 
 
