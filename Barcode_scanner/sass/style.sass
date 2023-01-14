@@ -524,65 +524,27 @@ input
             z-index: 8
             box-shadow: 0 5px 15px #a5a4a43b
             // border: 2px solid brown
-            span
-                text-align: center
-                color: #1a1a1a98
-                font-size: 1.5rem
-                width: 2rem
-                // border: 2px solid brown
             #item_search_input
+                display: flex
+                justify-content: center
+                align-items: center
                 font-size: 1.4rem
-                // letter-spacing: 1px
+                // letter-spacing: 0
+                border-radius: 25px
                 padding: 0 10px
                 width: 100%
                 height: 70%
                 color: #222222af
                 margin: 0 0.5rem
                 background-color: #e9f4f8
-        #items_sort_cont
-            display: none
-            width: 80%
-            height: 2.8rem
-            border-radius: 0 0 25px 25px
-            background-color: #0026574b
-            flex-direction: row
-            padding: 0 10px
-            justify-content: space-around
-            // border: 2px solid black
-            .sort_cont_but
-                width: 4.5rem
-                height: 2rem
-                border-radius: 25px
-                background-color: #e9f4f8d2
-                color: #0026578f
-                // border: 1px solid #0026574b
-            .swap_but
-                &.toggle
-                    span:first-child
-                        top: -2rem
-                    span:last-child
-                        bottom: 0
-                span
-                    position: absolute
-                    display: flex
-                    justify-content: center
-                    align-items: center
-                    width: 100%
-                    height: 100%
-                    font-size: 1.3rem
-                    transition: 0.27s ease-out
-                    i
-                        pointer-events: none
-                span:first-child
-                    top: 0
-                span:last-child
-                    bottom: -2rem
-            #clear_item_search_but
-                i
-                    display: flex
-                    font-size: 1.3rem
-                    width: 100%
-                    height: 100%
+                &.not_place_hold
+                    font-size: 1.6rem
+                    letter-spacing: 3.5px
+            #item_search_but
+                text-align: center
+                color: #1a1a1a98
+                font-size: 1.5rem
+                width: 2rem
         #items_list_cont
             margin-top: 0.8rem
             width: 105%
@@ -740,7 +702,7 @@ input
                     li
                         &:first-child
                             margin-top: 0.5rem
-                            margin-bottom: 6vh
+                            margin-bottom: 3.2rem
                             &::after
                                 top: auto
                                 bottom: -1rem
@@ -827,7 +789,7 @@ input
                             background-color: #00318d1e
                             borde-radius: 25px
                     &:last-child
-                        margin-bottom: 6vh
+                        margin-bottom: 3.2rem
                         &::after
                             content: ''
                             position: absolute
@@ -917,7 +879,6 @@ input
                     height: 24%
                     margin: 1px
                     font-size: 1.8rem
-                    border-radius: 30px
                     transition-duration: 0.05s
                 #items_keybrd_cont_left
                     width: 80%
@@ -925,11 +886,25 @@ input
                     flex-wrap: wrap
                     // border: 2px solid blue
                     button
+                        position: relative
                         width: 32%
-                        background-color: #ffffffd3
                         color: #222222e7
+                        border-radius: 0
+                        background: none
+                        span
+                            pointer-events: none
+                            display: flex
+                            justify-content: center
+                            align-items: center
+                            width: 100%
+                            height: 100%
+                            background-color: #ffffffd3
+                            border-radius: 30px
                         &:active
-                            background-color: #9dc4ffd3
+                            opacity: 1
+                            span
+                                opacity: 1
+                                background-color: #9dc4ff56
                 #items_keybrd_cont_right
                     overflow: visible
                     flex-shrink: 1
@@ -939,22 +914,28 @@ input
                     button
                         height: 24.3%
                         width: 100%
+                        border-radius: 30px
                         background-color: #a4b6be54
                         color: #2e3649e7
-                    #close_item_cont_but
-                        background-color: #eb7b8aea
-                    #search_type_but
-                        // background-color: #ffbf3594
-                    #search_sort_but
-                        // background-color: #20aa3763
+                        i
+                            pointer-events: none
                     #del_item_input_but
+                        background-color: #a4b6be
                         &:active
                             transition: 0s
                             transition-duration: 0s
                             opacity: 1
-                        background-color: #a4b6be
-                        // width: 233%
-                        // width: 187%
+                            background-color: #88969c
+                        &.hold
+                            transition: 0.1s
+                            color: #860718ea
+                            font-size: 2.2rem
+                    #search_type_but
+                        // background-color: #ffbf3594
+                    #search_sort_but
+                        // background-color: #20aa3763
+                    #close_item_cont_but
+                        background-color: #eb7b8aea
             #close_keybrd_but
                 height: 5vh
                 font-size: 1.5rem
