@@ -200,6 +200,7 @@ let pick = new Audio('../audio/pick.mp3');
 let success = new Audio('../audio/success.mp3');
 let warning = new Audio('../audio/warning.mp3');
 let tap = new Audio('../audio/tap.mp3');
+let del = new Audio('../audio/delete.mp3');
 // let error = new Audio('../audio/error.mp3');
 
 
@@ -384,7 +385,6 @@ function full_reset(){
 
 function docs_cont_scroll() {
     if (!header.classList.contains('turn_off')){
-        // console.log('Scroll');
         docs_cont_content.scrollTo({top: 0, behavior: "smooth"});
     };
 };
@@ -450,6 +450,7 @@ function return_to_doc(){
 function check_activ(){
     check.classList.add('active');
     docs_cont_content.classList.add('check_blur');
+    success.currentTime = 0;
     success.play();
     setTimeout(() => {
         check.classList.remove('active')
@@ -467,6 +468,7 @@ function are_u_sure_toggle(){
 function data_downloading(){
     if (!sess_info_list){
         setTimeout(() => {
+            warning.currentTime = 0;
             warning.play();
             sessions_cont_toggle();
         }, 10);
@@ -480,6 +482,7 @@ function downloading_back_act(){
     if (docs_count != 0) {
         if (!sess_info_list){
             setTimeout(() => {
+                warning.currentTime = 0;
                 warning.play();
                 sessions_cont_toggle();
             }, 10);
@@ -487,6 +490,7 @@ function downloading_back_act(){
             data_downloading_back();
         };
     }else {
+        warning.currentTime = 0;
         warning.play();
         docs_not_found.classList.add('select');
         setTimeout(() => {docs_not_found.classList.remove('select')}, 900);
@@ -768,6 +772,7 @@ function items_cont_close() {
     items_content.classList.remove('toggle');
     search_val_clear();
     items_list_cont_content.replaceChildren();
+    search_type_but.classList.remove('toggle');
     search_sort_but.classList.remove('toggle');
     items_list_cont_content.classList.remove('reverse');
 };
@@ -793,6 +798,8 @@ function items_sort_swap(){
 function del_items_input(){
     // console.log(search_val);
     if (search_val){
+        tap.currentTime = 0;
+        tap.play();
         search_val = item_search_input.innerText = item_search_input.innerText.slice(0, -1);
         if (!search_val) search_val_clear();
     };
@@ -824,7 +831,7 @@ items_list_cont_content.addEventListener('scroll', () => {
 
     // console.log(scroll_size);
 
-    if (scroll_size < 65) {
+    if (scroll_size < 45) {
         doc_full_info_cont.classList.remove('turn_off');
         // if (scroll_size < 5) items_keybrd_open();
     }else {
@@ -833,14 +840,13 @@ items_list_cont_content.addEventListener('scroll', () => {
 });
 
 items_keybrd_cont_left.addEventListener('click', (e) => {
-    if (e.target.tagName == 'BUTTON'){
+    if (e.target.tagName == 'BUTTON' && search_val.length < 13){
+        tap.currentTime = 0;
         tap.play();
-        if (search_val.length < 13){
-            if (!search_val) item_search_input.innerText = '';
-            item_search_input.classList.add('not_place_hold');
-            search_val = item_search_input.innerText = item_search_input.innerText + `${e.target.innerText}`;
-            // console.log(search_val);
-        };
+        if (!search_val) item_search_input.innerText = '';
+        item_search_input.classList.add('not_place_hold');
+        search_val = item_search_input.innerText = item_search_input.innerText + `${e.target.innerText}`;
+        // console.log(search_val);
     };
 });
 
@@ -877,6 +883,8 @@ del_item_input_but.addEventListener('touchstart', (e) => {
     }, 300);
     setTimeout(() => {
         if (value) {
+            del.currentTime = 0;
+            del.play();
             search_val_clear();
             del_item_input_but.classList.add('hold');
             setTimeout(() => {
@@ -1153,7 +1161,10 @@ function stream_start(){
     });
 
     Quagga.onDetected((result) => {
-        if (audio_on) pick.play();
+        if (audio_on) {
+            pick.currentTime = 0;
+            pick.play();
+        };
         Quagga.pause();
         const code = result.codeResult.code;
         request(code);

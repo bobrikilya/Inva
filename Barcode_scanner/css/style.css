@@ -779,7 +779,7 @@ input {
   font-size: 1.7rem;
   text-align: center;
   color: rgba(37, 55, 82, 0.5960784314);
-  top: 27%;
+  margin-top: 20%;
   pointer-events: none;
   overflow: visible;
   display: none;
@@ -1079,6 +1079,7 @@ input {
 }
 #items_cont #items_content #items_keybrd_cont #items_keybrd_cont_up #items_keybrd_cont_right #del_item_input_but {
   background-color: #a4b6be;
+  transition: 0.1s ease-out;
 }
 #items_cont #items_content #items_keybrd_cont #items_keybrd_cont_up #items_keybrd_cont_right #del_item_input_but:active {
   transition: 0s;
@@ -1087,7 +1088,6 @@ input {
   background-color: #88969c;
 }
 #items_cont #items_content #items_keybrd_cont #items_keybrd_cont_up #items_keybrd_cont_right #del_item_input_but.hold {
-  transition: 0.1s;
   color: rgba(134, 7, 24, 0.9176470588);
   font-size: 2.2rem;
 }
