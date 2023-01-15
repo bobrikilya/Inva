@@ -550,7 +550,11 @@ input
             border-radius: 25px
             z-index: 8
             box-shadow: 0 5px 15px #a5a4a43b
+            transition: 0.1s ease-out
             // border: 2px solid brown
+            &.open_item
+                opacity: 0
+                pointer-events: none
             #item_search_input
                 display: flex
                 justify-content: center
@@ -580,10 +584,13 @@ input
             background-color: #ffffff56
             border-radius: 25px
             margin-bottom: -1.7rem
-            transition-duration: 0.1s
+            transition: 0.1s ease-out
             // border: 2px solid orange
             &.keybrd_close
                 margin-bottom: -25vh
+            &.open_item
+                opacity: 0
+                pointer-events: none
             #doc_full_info_cont
                 position: absolute
                 z-index: 1
@@ -654,7 +661,7 @@ input
                     #sum_quantity_cont
                         flex-direction: column
                 #doc_right_info
-                    font-size: 1rem
+                    font-size: 0.9rem
                     padding-left: 0.5vw
                     justify-content: flex-end
                     // border: 2px solid red
@@ -664,7 +671,7 @@ input
                         justify-content: flex-end
                         // border: 2px solid blue
                     div:first-child
-                        margin-bottom: 7px
+                        margin-bottom: 9px
                     h3 //icon
                         position: absolute
                         right: 3.5rem
@@ -673,7 +680,6 @@ input
                         color: #222222c2
                     p
                         margin-bottom: 2px
-                        font-size: 0.9rem
                     span
                         color: #222222
             #items_not_found
@@ -750,6 +756,9 @@ input
                     margin-top: 0.5rem
                     background-color: #00318d2a
                     border-radius: 25px
+                    transition: 0.15s ease-out
+                    span, p, a, div
+                        pointer-events: none
                     #left_side_cont
                         flex-shrink: 1
                         width: 100%
@@ -762,9 +771,9 @@ input
                             flex-direction: row
                             width: 100%
                         #items_name
+                            transition: 0.1s ease-out
                             white-space: nowrap
                             font-size: 1.15rem
-                            align-items: flex-start
                             width: 100%
                             height: 100%
                             // border: 2px solid black
@@ -773,24 +782,23 @@ input
                             color: #222222af
                             justify-content: space-between
                             // border: 2px solid red
-                            #items_barcode
-                                font-size: 1rem
-                                // border: 2px solid yellow
                             div
                                 width: auto
-                                // border: 2px solid green
-                                #items_price_icon
-                                    color: #22222294
-                                    margin-right: 1vw
+                                // border: 2px solid yellow
+                                span
+                                    &.icon
+                                        color: #22222294
+                                        margin-right: 1.2vw
+                                        i
+                                            font-size: 0.9rem
+                                #items_barcode
+                                    font-size: 1rem
+                                    // border: 2px solid green
                                 #items_price
                                     font-size: 1.2rem
                                 p
                                     font-size: 1.2rem
                     #items_quantity
-                        flex-shrink: 0
-                        display: flex
-                        justify-content: center
-                        align-items: center
                         height: 100%
                         width: 5.5rem
                         padding: 10px
@@ -800,8 +808,7 @@ input
                         cursor: pointer
                         color: #1d181aa4
                         background-color: #7c7c7c1e
-                        pointer-events: auto
-                        transition-duration: 0.35s
+                        // transition: 0.2s ease-out
                         // border: 2px solid red
                     &:first-child
                         margin-top: 8rem
@@ -827,6 +834,9 @@ input
                             height: 2px
                             background-color: #00318d1e
                             border-radius: 25px
+                @media ( max-width: 400px )
+                    #items_barcode_icon
+                        display: none
         #items_flight_buts_cont
             position: absolute
             bottom: 2vh
@@ -849,8 +859,70 @@ input
                 border: none
                 width: 7rem
                 background-color: #eb7b8aea
+        #item_edit_cont
+            z-index: 3
+            width: 90vw
+            height: 50vh
+            background-color: #00318d25
+            box-shadow: 0 0 15px #4d4d4d31
+            padding: 25px 15px
+            border-radius: 30px
+            margin-bottom: 2rem
+            margin-top: -4.7rem
+            transition: 0.1s ease-out
+            color: #222222d5
+            display: none
+            &.open_item
+                display: flex
+            #item_edit_name
+                text-align: center
+                white-space: pre-wrap
+                overflow: hidden
+                font-size: 1.4rem
+                line-height: 1.5rem
+                height: auto
+                width: 100%
+                background-color: #ffffff63
+                padding: 15px
+                border-radius: 25px
+                // border: 2px solid black
+            #barcode_price_edit_cont
+                width: 90%
+                margin-top: 1rem
+                // flex-direction: row
+                align-items: flex-start
+                font-size: 1.3rem
+                // border: 2px solid red
+                div
+                    margin-bottom: 0.8rem
+                    flex-direction: row
+                    // border: 2px solid yellow
+                    span
+                        &.icon
+                            // color: #222222c0
+                            display: flex
+                            justify-content: center
+                            align-items: center
+                            width: 2.5rem
+                            height: 2.5rem
+                            border-radius: 50%
+                            background-color: #ffffff2f
+                            margin-right: 3vw
+                            i
+                                font-size: 1.2rem
+            #items_edit_quantity
+                margin-top: 0.2rem
+                border-radius: 30px
+                height: 4rem
+                width: 70%
+                font-size: 1.5rem
+                background-color: #ffffffd3
+                // border: 2px solid green
+            &::after
+                display: none
+            &::before
+                display: none
         #items_keybrd_cont
-            // position: absolute
             z-index: 1
             bottom: 0
             border-radius: 30px
@@ -897,9 +969,13 @@ input
                         // border: 2px solid blue
                         &:active
                             opacity: 1
+                        p
+                            transition: 0.7s
+                        &.click
                             p
+                                transition: 0s
                                 opacity: 1
-                                background-color: #9dc4ff56
+                                background-color: #8ea0a8b4
                         p
                             pointer-events: none
                             display: flex
@@ -914,7 +990,7 @@ input
                                 color: #2e3649e7
                                 background-color: #a4b6be50
                     #point_but
-                        &:active
+                        &.click
                             p
                                 opacity: 1
                                 background-color: #8ea0a8b4
@@ -936,7 +1012,7 @@ input
                         background-color: #a4b6be
                         transition: 0.1s ease-out
                         &.hold
-                            color: #860718ea
+                            color: #4b010bea
                             font-size: 2.2rem
                         &:active
                             transition: 0s
@@ -965,7 +1041,6 @@ input
                 // align-items: flex-end
                 // padding-right: 31vw
                 // border: 2px solid brown
-
 
 header
     display: flex

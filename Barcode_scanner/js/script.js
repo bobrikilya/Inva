@@ -70,6 +70,14 @@ const search_sort_but_2 = items_flight_buts_cont.querySelector('#search_sort_but
 const close_item_cont_but_2 = items_flight_buts_cont.querySelector('#close_item_cont_but_2');
 const open_keybrd_but = items_flight_buts_cont.querySelector('#open_keybrd_but');
 
+const item_edit_cont = items_content.querySelector('#item_edit_cont');
+const item_edit_name = item_edit_cont.querySelector('#item_edit_name');
+const barcode_price_edit_cont = item_edit_cont.querySelector('#barcode_price_edit_cont');
+const item_edit_barcode = barcode_price_edit_cont.querySelector('#item_edit_barcode');
+const item_edit_price = barcode_price_edit_cont.querySelector('#item_edit_price');
+const items_edit_quantity = item_edit_cont.querySelector('#items_edit_quantity');
+
+
 const items_keybrd_cont = items_content.querySelector('#items_keybrd_cont');
 const items_keybrd_cont_left = items_keybrd_cont.querySelector('#items_keybrd_cont_left');
 const search_sort_but = items_keybrd_cont_left.querySelector('#search_sort_but');
@@ -240,8 +248,8 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     // if (Moz) session_blur.style.backgroundColor = '#ebf4ff65';
 
-    // if (docs_cont_content.querySelector('a')) 
-    //     docs_cont_content.querySelector('a').click();
+    if (docs_cont_content.querySelector('a')) 
+        docs_cont_content.querySelector('a').click();
 
 
     reload_but.classList.add('light');
@@ -338,29 +346,30 @@ function searching(){
         const file_id = last_op_doc;
         let file_list = JSON.parse(localStorage.getItem(`${file_id}`));
         
-        const quant_val = file_list.length;
+        const counter = file_list.length;
         const price_val = 1.25;
+        const quant_val = 1;
         const edit_time = (new Date()).toLocaleString();
         
         file_list.push({
-            'name': `Тест ${quant_val}`,
+            'name': `Тест ${counter}`,
             'code': '123456789',
             'price': price_val,
-            'quant': 0
+            'quant': quant_val
         });
         // console.log(file_list);
 
         // Doc full info updating
-        const sum_val = file_list[0]['sum'] + price_val;
+        const sum_val = file_list[0]['sum'] + price_val * quant_val;
         file_list[0]['sum'] = sum_val;
-        file_list[0]['itms_quant'] = quant_val;
+        file_list[0]['itms_quant'] = counter;
         file_list[0]['edit'] = edit_time;
 
         // Doc lit info updating
         for (const doc of docs_list) {
             if(doc['id'] == file_id) {
                 doc['sum'] = sum_val;
-                doc['itms_quant'] = quant_val;
+                doc['itms_quant'] = counter;
                 break;
             };
         };
@@ -369,7 +378,7 @@ function searching(){
         localStorage.setItem('docs_list', JSON.stringify(docs_list));
         const full_doc = docs_cont_content.querySelector(`#${file_id}`);
         full_doc.querySelector('#doc_sum p').innerText = sum_val;
-        full_doc.querySelector('#doc_count p').innerText = quant_val;
+        full_doc.querySelector('#doc_count p').innerText = counter;
         file_list = false;
     // };
 };
@@ -644,15 +653,20 @@ function add_item(item){
     if ('name' in item){
         i_name = item['name'];
         // console.log(i_name);
-        if (i_name.length > 27) i_name = i_name.sclice(0, 27);
+        // if (i_name.length > 27) i_name = i_name.sclice(0, 27);
         items_list_cont_content.insertAdjacentHTML('afterbegin', `
             <li>
                 <div id="left_side_cont" class="cont">
                     <span id="items_name">${i_name}</span>
                     <div id="barcode_price_cont" class="cont">
-                        <span id="items_barcode">1234567891234</span>
                         <div class="cont">
-                            <span id="items_price_icon">
+                            <span id="items_barcode_icon" class="icon">
+                                <i class="fa-solid fa-barcode"></i>
+                            </span>
+                            <span id="items_barcode">1234567891234</span>
+                        </div>
+                        <div class="cont">
+                            <span class="icon">
                                 <i class="fa-solid fa-coins"></i>
                             </span>
                             <span id="items_price">1.25</span>
@@ -660,7 +674,7 @@ function add_item(item){
                         </div>
                     </div>
                 </div>
-                <a id="items_quantity">0</a>
+                <a id="items_quantity" class="cont">${item['quant']}</a>
             </li>
         `);
     };
@@ -713,6 +727,19 @@ document.addEventListener('click', (event) => {
     };
 });
 
+items_content.addEventListener('click', (event) => {
+    if (item_edit_cont.classList.contains('open_item')){
+        // const item_edit_cont_inside = event.composedPath().includes(item_edit_cont);
+        const items_keybrd_cont_inside = event.composedPath().includes(items_keybrd_cont);
+        // console.log(item_edit_cont_inside);
+        // console.log(items_keybrd_cont_inside);
+
+        if (!items_keybrd_cont_inside) {
+            item_edit_toggle();
+        };
+    };
+});
+
 
 // Number filter ----------
 input.addEventListener('keydown', (event) => {
@@ -762,8 +789,10 @@ function items_cont_open(file_name) {
 };
 
 function items_keybrd_close(){
-    items_keybrd_cont.classList.add('toggle');
-    items_list_cont.classList.add('keybrd_close');
+    if (!item_edit_cont.classList.contains('open_item')){
+        items_keybrd_cont.classList.add('toggle');
+        items_list_cont.classList.add('keybrd_close');
+    };
 };
 
 function items_keybrd_open(){
@@ -787,6 +816,9 @@ function items_cont_close() {
     search_type_icon.classList.remove('toggle');
     search_sort_but.classList.remove('toggle');
     items_list_cont_content.classList.remove('reverse');
+    item_search_cont.classList.remove('open_item');
+    items_list_cont.classList.remove('open_item');
+    item_edit_cont.classList.remove('open_item');
 };
 
 function items_sort_swap(){
@@ -811,8 +843,7 @@ function del_items_input(){
         search_val = item_search_input.innerText = item_search_input.innerText.slice(0, -1);
         if (!search_val) search_val_clear();
     };
-    if (search_val.includes('.')) search_type_icon.classList.add('toggle')
-    else search_type_icon.classList.remove('toggle');
+    search_type_test();
 };
 
 function search_val_clear(){
@@ -821,16 +852,26 @@ function search_val_clear(){
     search_val = '';
 };
 
+function search_type_test(){
+    if (search_val.includes('.')) search_type_icon.classList.add('toggle')
+    else search_type_icon.classList.remove('toggle');
+};
+
+function item_edit_toggle(){
+    item_search_cont.classList.toggle('open_item');
+    items_list_cont.classList.toggle('open_item');
+    setTimeout(() => {
+        item_edit_cont.classList.toggle('open_item');
+    }, 10);
+};
+
 items_list_cont_content.addEventListener('scroll', () => {
     const scrolltop = items_list_cont_content.scrollTop;
-    // console.log(-scrolltop);
-    // const offsetHeight = items_list_cont_content.offsetHeight;
     const scrollbottom = items_list_cont_content.scrollHeight - items_list_cont_content.clientHeight;
-    // console.log(scrollbottom);
 
+    // // Keyboard closing while scroll
     // setTimeout(() => {
     //     const scrolltop_2 = items_list_cont_content.scrollTop;
-    //     // console.log(scrolltop_2);
     //     if (scrolltop_2 > scrolltop + 200){
     //         items_keybrd_close();
     //     };
@@ -843,15 +884,24 @@ items_list_cont_content.addEventListener('scroll', () => {
 
     if (scroll_size < 45) {
         doc_full_info_cont.classList.remove('turn_off');
+        // // Keyboard opening while scroll
         // if (scroll_size < 5) items_keybrd_open();
     }else {
         doc_full_info_cont.classList.add('turn_off');
     };
 });
 
-items_keybrd_cont_left.addEventListener('click', (e) => {
+items_list_cont_content.addEventListener('click', (e) => {
+    // console.log(e.target.tagName);
+    if (e.target.tagName == 'LI'){
+        item_edit_toggle();
+    };
+});
+
+items_keybrd_cont_left.addEventListener('touchstart', (e) => {
     if (e.target.tagName == 'BUTTON' && search_val.length < 13 
         && e.target.id != 'search_sort_but'){
+        e.target.classList.add('click');
         tap.currentTime = 0;
         tap.play();
         if (e.target.id != 'point_but'){
@@ -865,9 +915,11 @@ items_keybrd_cont_left.addEventListener('click', (e) => {
                 // console.log(search_val);
             };
         };
-        if (search_val.includes('.')) search_type_icon.classList.add('toggle')
-        else search_type_icon.classList.remove('toggle');
+        search_type_test();
     };
+    items_keybrd_cont_left.addEventListener('touchend', (event) => {
+        e.target.classList.remove('click');
+    });
 });
 
 // item_search_input.addEventListener('input', (e) => {
@@ -906,6 +958,7 @@ del_item_input_but.addEventListener('touchstart', (e) => {
             del.currentTime = 0;
             del.play();
             search_val_clear();
+            search_type_icon.classList.remove('toggle');
             del_item_input_but.classList.add('hold');
             setTimeout(() => {
                 del_item_input_but.classList.remove('hold');
