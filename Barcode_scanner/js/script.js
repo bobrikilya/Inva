@@ -1,120 +1,127 @@
 
 const main_container = document.getElementById('main_container');
 
-//--------------
-const ur_session_num_cont = document.getElementById('ur_session_num_cont');
-const session_num_content = document.getElementById('session_num_content');
-const sess_info_cont = document.getElementById('sess_info_cont');
-const ok_but = session_num_content.querySelector('#ok_but');
+// Foot --------------
 
-//--------------
+const foot_cont = document.getElementById('foot_cont');
+const help_but = foot_cont.querySelector('#help_but');
+const big_eye_but = foot_cont.querySelector('#big_eye_but');
+const session_but = foot_cont.querySelector('#session_but');
+const menue_but = foot_cont.querySelector('#menue_but');
+const back_but = foot_cont.querySelector('#back_but');
+
+const session_nav_cont = foot_cont.querySelector('#session_nav_cont');
+const session_nav_content = session_nav_cont.querySelector('#session_nav_content');
+const session_power_but = session_nav_content.querySelector('#session_power_but');
+const session_text = session_nav_content.querySelector('#session_text');
+const store_name_lit = session_nav_content.querySelector('#store_name_lit');
+
+// Doc types --------------
+
+const doc_types_cont = document.getElementById('doc_types_cont');
+const doc_types_content = doc_types_cont.querySelector('#doc_types_content');
+const cancel_but_doc_types = doc_types_content.querySelector('#cancel_but_doc_types');
+const invenory_but = doc_types_content.querySelector('#invenory_but');
+const price_request_but = doc_types_content.querySelector('#price_request_but');
+const prod_taking_but = doc_types_content.querySelector('#prod_taking_but');
+const prod_removing_but = doc_types_content.querySelector('#prod_removing_but');
+const scanner_but = doc_types_content.querySelector('#scanner_but');
+
+// Store address --------------
 
 const store_address_cont = document.getElementById('store_address_cont');
-const store_address_content = document.getElementById('store_address_content');
-const cancel_but_address = document.getElementById('cancel_but_address');
+const store_address_content = store_address_cont.querySelector('#store_address_content');
+const cancel_but_address = store_address_content.querySelector('#cancel_but_address');
 
-//--------------
-const foot_cont = document.getElementById('foot_cont');
-const help_but = document.getElementById('help_but');
-const big_eye_but = document.getElementById('big_eye_but');
-const session_but = document.getElementById('session_but');
-const session_nav_cont = document.getElementById('session_nav_cont');
-const session_nav_content = document.getElementById('session_nav_content');
-const session_power_but = document.getElementById('session_power_but');
-const session_text = document.getElementById('session_text');
-const store_name_lit = document.getElementById('store_name_lit');
+// Ur session --------------
+const ur_session_num_cont = document.getElementById('ur_session_num_cont');
+const session_num_content = ur_session_num_cont.querySelector('#session_num_content');
+const sess_info_cont = session_num_content.querySelector('#sess_info_cont');
+const ok_but = session_num_content.querySelector('#ok_but');
 
-// const menue_head_cont = document.getElementById('menue_head_cont');
-const fire_but = document.getElementById('fire_but');
-const reload_but = document.getElementById('reload_but');
-const item_search_input = document.getElementById('item_search_input');
-const clear_item_search_but = document.getElementById('clear_item_search_but');
-const item_search_but = item_search_cont.querySelector('#item_search_but');
-
-const menue_but = document.getElementById('menue_but');
-const back_but = document.getElementById('back_but');
-
-//--------------
-
-const header = document.querySelector('header');
-const menue_content = document.getElementById('menue_content');
-
-const docs_cont = document.getElementById('docs_cont');
-const docs_cont_content = document.getElementById('docs_cont_content');
-const swipe_icon = docs_cont_content.querySelector('#swipe_icon');
-const docs_not_found = document.getElementById('docs_not_found');
+// Are u sure --------------
 
 const are_u_sure_cont = document.getElementById('are_u_sure_cont');
 const are_u_sure_content = document.getElementById('are_u_sure_content');
 const no_but = are_u_sure_cont.querySelector('#no_but');
 const yes_but = are_u_sure_cont.querySelector('#yes_but');
 
-const new_doc_but = document.getElementById('new_doc_but');
-const icons_bar = document.getElementById('icons_bar');
-
-const download_but = document.getElementById('download_but');
-const download_back_but = document.getElementById('download_back_but');
-const check = document.getElementById('check');
-
-//--------------
-
-const doc_types_cont = document.getElementById('doc_types_cont');
-const doc_types_content = document.getElementById('doc_types_content');
-const cancel_but_doc_types = document.getElementById('cancel_but_doc_types');
-const invenory_but = document.getElementById('invenory_but');
-const price_request_but = document.getElementById('price_request_but');
-const prod_taking_but = document.getElementById('prod_taking_but');
-const prod_removing_but = document.getElementById('prod_removing_but');
-const scanner_but = document.getElementById('scanner_but');
-
-//--------------
-
-const main_block = document.getElementById('main_block');
-const stream_cont = main_block.querySelector('#stream_cont');
-const video = main_block.querySelector('#video');
-const scan_icon = main_block.querySelector('#scan_icon');
-const info_block = main_block.querySelector('#info_block');
-const camera_button = main_block.querySelector('#camera_butt');
-
-//--------------
+// Items search --------------
 
 const items_cont = document.getElementById('items_cont');
 const items_content = items_cont.querySelector('#items_content');
-// const search_type_but = items_cont.querySelector('#search_type_but');
-// const search_sort_but = items_cont.querySelector('#search_sort_but');
-const doc_full_info_cont = items_cont.querySelector('#doc_full_info_cont');
+
+const item_search_cont = items_content.querySelector('#item_search_cont');
+const item_search_input = item_search_cont.querySelector('#item_search_input');
+
+const doc_full_info_cont = items_content.querySelector('#doc_full_info_cont');
 const doc_name = doc_full_info_cont.querySelector('#doc_name');
 const doc_items_sum = doc_full_info_cont.querySelector('#doc_items_sum');
 const doc_items_quantity = doc_full_info_cont.querySelector('#doc_items_quantity');
 const doc_create_time = doc_full_info_cont.querySelector('#doc_create_time');
 const doc_edit_time = doc_full_info_cont.querySelector('#doc_edit_time');
-const items_not_found = items_cont.querySelector('#items_not_found');
-const items_list_cont_content = items_cont.querySelector('#items_list_cont_content');
+const items_not_found = items_content.querySelector('#items_not_found');
 
-const items_flight_buts_cont = items_cont.querySelector('#items_flight_buts_cont');
+const items_list_cont_content = items_content.querySelector('#items_list_cont_content');
+
+const items_flight_buts_cont = items_content.querySelector('#items_flight_buts_cont');
 const search_sort_but_2 = items_flight_buts_cont.querySelector('#search_sort_but_2');
 const close_item_cont_but_2 = items_flight_buts_cont.querySelector('#close_item_cont_but_2');
 const open_keybrd_but = items_flight_buts_cont.querySelector('#open_keybrd_but');
 
-const items_keybrd_cont = items_cont.querySelector('#items_keybrd_cont');
+const items_keybrd_cont = items_content.querySelector('#items_keybrd_cont');
 const items_keybrd_cont_left = items_keybrd_cont.querySelector('#items_keybrd_cont_left');
-const close_item_cont_but = items_cont.querySelector('#close_item_cont_but');
-const search_type_but = items_cont.querySelector('#search_type_but');
-const search_sort_but = items_cont.querySelector('#search_sort_but');
-const del_item_input_but = items_cont.querySelector('#del_item_input_but');
-const close_keybrd_but = items_cont.querySelector('#close_keybrd_but');
+const close_item_cont_but = items_keybrd_cont.querySelector('#close_item_cont_but');
+const search_type_but = items_keybrd_cont.querySelector('#search_type_but');
+const search_sort_but = items_keybrd_cont.querySelector('#search_sort_but');
+const del_item_input_but = items_keybrd_cont.querySelector('#del_item_input_but');
+const close_keybrd_but = items_keybrd_cont.querySelector('#close_keybrd_but');
 
-//--------------
+// Header (Menue) --------------
+
+const header = document.querySelector('header');
+const menue_content = header.querySelector('#menue_content');
+
+const menue_head_cont = menue_content.querySelector('#menue_head_cont');
+const fire_but = menue_head_cont.querySelector('#fire_but');
+const reload_but = menue_head_cont.querySelector('#reload_but');
+const setting_but = menue_head_cont.querySelector('#setting_but');
+
+const menue_main_cont = document.getElementById('menue_main_cont');
+const docs_cont = menue_main_cont.querySelector('#docs_cont');
+const check = docs_cont.querySelector('#check');
+const docs_cont_content = docs_cont.querySelector('#docs_cont_content');
+const docs_not_found = docs_cont_content.querySelector('#docs_not_found');
+const swipe_icon = docs_cont_content.querySelector('#swipe_icon');
+
+const menue_sec_cont = menue_main_cont.querySelector('#menue_sec_cont');
+const new_doc_but = menue_sec_cont.querySelector('#new_doc_but');
+const icons_bar = menue_sec_cont.querySelector('#icons_bar');
+const download_but = icons_bar.querySelector('#download_but');
+const download_back_but = icons_bar.querySelector('#download_back_but');
+
+
+// Main --------------
+
+const main_block = document.getElementById('main_block');
+const stream_cont = main_block.querySelector('#stream_cont');
+const video = stream_cont.querySelector('#video');
+const scan_icon = stream_cont.querySelector('#scan_icon');
+const info_block = main_block.querySelector('#info_block');
+const camera_button = main_block.querySelector('#camera_butt');
+
+// Input --------------
 
 const input_block = document.getElementById('input_block');
-const input = document.getElementById('input');
-const clear_button = document.getElementById('clear_butt');
-const search_button = document.getElementById('search_butt');
+const input = input_block.querySelector('#input');
+const clear_button = input_block.querySelector('#clear_butt');
+const search_button = input_block.querySelector('#search_butt');
 
-//--------------
+// Tag --------------
+
 const water_tag = document.getElementById('water_tag');
 
-
+// --------------------------------------------------------
 
 camera_button.addEventListener('click', camera_access);
 clear_button.addEventListener('click', input_cleaning);
@@ -155,7 +162,7 @@ close_item_cont_but_2.addEventListener('click', items_cont_close);
 search_sort_but_2.addEventListener('click', items_sort_swap);
 
 del_item_input_but.addEventListener('click', del_items_input);
-item_search_but.addEventListener('click', items_keybrd_open);
+item_search_cont.addEventListener('click', items_keybrd_open);
 search_type_but.addEventListener('click', search_type_swap);
 search_sort_but.addEventListener('click', items_sort_swap);
 close_item_cont_but.addEventListener('click', items_cont_close);
@@ -465,11 +472,16 @@ function are_u_sure_toggle(){
     setTimeout(() => {are_u_sure_content.classList.toggle('toggle')}, 10);
 };
 
+function warning_sound(){
+    warning.currentTime = 0;
+    warning.volume = 0.5;
+    warning.play();
+};
+
 function data_downloading(){
     if (!sess_info_list){
         setTimeout(() => {
-            warning.currentTime = 0;
-            warning.play();
+            warning_sound();
             sessions_cont_toggle();
         }, 10);
     }else {
@@ -482,16 +494,14 @@ function downloading_back_act(){
     if (docs_count != 0) {
         if (!sess_info_list){
             setTimeout(() => {
-                warning.currentTime = 0;
-                warning.play();
+                warning_sound();
                 sessions_cont_toggle();
             }, 10);
         }else {
             data_downloading_back();
         };
     }else {
-        warning.currentTime = 0;
-        warning.play();
+        warning_sound();
         docs_not_found.classList.add('select');
         setTimeout(() => {docs_not_found.classList.remove('select')}, 900);
     };

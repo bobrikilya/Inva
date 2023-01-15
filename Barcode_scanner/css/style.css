@@ -665,6 +665,7 @@ input {
   background-color: rgba(255, 255, 255, 0.337254902);
   border-radius: 25px;
   margin-bottom: -1.7rem;
+  transition-duration: 0.1s;
 }
 #items_cont #items_content #items_list_cont.keybrd_close {
   margin-bottom: -25vh;
@@ -927,7 +928,7 @@ input {
   width: 7rem;
   height: 2px;
   background-color: rgba(0, 49, 141, 0.1176470588);
-  borde-radius: 25px;
+  border-radius: 25px;
 }
 #items_cont #items_content #items_list_cont #items_list_cont_content li:last-child {
   margin-bottom: 3.2rem;
@@ -949,7 +950,7 @@ input {
   opacity: 0.9;
 }
 #items_cont #items_content .swap_but.toggle span:first-child {
-  top: -3rem;
+  top: -5rem;
 }
 #items_cont #items_content .swap_but.toggle span:last-child {
   bottom: 0;
@@ -971,7 +972,7 @@ input {
   top: 0;
 }
 #items_cont #items_content .swap_but span:last-child {
-  bottom: -3rem;
+  bottom: -5rem;
 }
 #items_cont #items_content #items_flight_buts_cont {
   position: absolute;
@@ -987,10 +988,12 @@ input {
   width: 5.5rem;
   border-radius: 30px;
   overflow: hidden;
-  font-size: 1.6rem;
   color: rgba(46, 54, 73, 0.9058823529);
   background-color: rgba(52, 184, 0, 0.2588235294);
   background: none;
+}
+#items_cont #items_content #items_flight_buts_cont button i {
+  font-size: 1.7rem;
 }
 #items_cont #items_content #items_flight_buts_cont #close_item_cont_but_2 {
   border: none;
@@ -1005,14 +1008,15 @@ input {
   max-width: 500px;
   height: 38vh;
   min-height: 17rem;
+  max-height: 25rem;
   background-color: #e1e8ec;
+  box-shadow: 0 -5px 15px rgba(77, 77, 77, 0.0549019608);
   transition-duration: 0.15s;
   opacity: 1;
   pointer-events: auto;
 }
 #items_cont #items_content #items_keybrd_cont.toggle {
   transition: 0.2s;
-  bottom: -2rem;
   opacity: 0;
   pointer-events: none;
 }
@@ -1044,6 +1048,13 @@ input {
   border-radius: 0;
   background: none;
 }
+#items_cont #items_content #items_keybrd_cont #items_keybrd_cont_up #items_keybrd_cont_left button:active {
+  opacity: 1;
+}
+#items_cont #items_content #items_keybrd_cont #items_keybrd_cont_up #items_keybrd_cont_left button:active span {
+  opacity: 1;
+  background-color: rgba(157, 196, 255, 0.337254902);
+}
 #items_cont #items_content #items_keybrd_cont #items_keybrd_cont_up #items_keybrd_cont_left button span {
   pointer-events: none;
   display: flex;
@@ -1054,12 +1065,22 @@ input {
   background-color: rgba(255, 255, 255, 0.8274509804);
   border-radius: 30px;
 }
-#items_cont #items_content #items_keybrd_cont #items_keybrd_cont_up #items_keybrd_cont_left button:active {
-  opacity: 1;
+#items_cont #items_content #items_keybrd_cont #items_keybrd_cont_up #items_keybrd_cont_left button p {
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(164, 182, 190, 0.3294117647);
+  border-radius: 30px;
 }
-#items_cont #items_content #items_keybrd_cont #items_keybrd_cont_up #items_keybrd_cont_left button:active span {
-  opacity: 1;
-  background-color: rgba(157, 196, 255, 0.337254902);
+#items_cont #items_content #items_keybrd_cont #items_keybrd_cont_up #items_keybrd_cont_left #up_but {
+  font-size: 1.2rem;
+  align-items: flex-end;
+}
+#items_cont #items_content #items_keybrd_cont #items_keybrd_cont_up #items_keybrd_cont_left #point_but {
+  align-items: flex-start;
 }
 #items_cont #items_content #items_keybrd_cont #items_keybrd_cont_up #items_keybrd_cont_right {
   overflow: visible;

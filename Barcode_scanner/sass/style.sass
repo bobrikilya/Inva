@@ -553,6 +553,7 @@ input
             background-color: #ffffff56
             border-radius: 25px
             margin-bottom: -1.7rem
+            transition-duration: 0.1s
             // border: 2px solid orange
             &.keybrd_close
                 margin-bottom: -25vh
@@ -786,7 +787,7 @@ input
                             width: 7rem
                             height: 2px
                             background-color: #00318d1e
-                            borde-radius: 25px
+                            border-radius: 25px
                     &:last-child
                         margin-bottom: 3.2rem
                         &::after
@@ -807,7 +808,7 @@ input
                 opacity: 0.9
             &.toggle
                 span:first-child
-                    top: -3rem
+                    top: -5rem
                 span:last-child
                     bottom: 0
             span
@@ -824,7 +825,7 @@ input
             span:first-child
                 top: 0
             span:last-child
-                bottom: -3rem
+                bottom: -5rem
         #items_flight_buts_cont
             position: absolute
             bottom: 2vh
@@ -838,10 +839,11 @@ input
                 width: 5.5rem
                 border-radius: 30px
                 overflow: hidden
-                font-size: 1.6rem
                 color: #2e3649e7
                 background-color: #34b80042
                 background: none
+                i
+                    font-size: 1.7rem
             #close_item_cont_but_2
                 border: none
                 width: 7rem
@@ -855,15 +857,16 @@ input
             max-width: 500px
             height: 38vh
             min-height: 17rem
+            max-height: 25rem
             background-color: #e1e8ec
-            // box-shadow: 0 -5px 15px #4d4d4d18
+            box-shadow: 0 -5px 15px #4d4d4d0e
             transition-duration: 0.15s
             opacity: 1
             pointer-events: auto
             &.toggle
                 // display: none
                 transition: 0.2s
-                bottom: -2rem
+                // bottom: -2rem
                 opacity: 0
                 pointer-events: none
             div
@@ -890,6 +893,12 @@ input
                         color: #222222e7
                         border-radius: 0
                         background: none
+                        // border: 2px solid blue
+                        &:active
+                            opacity: 1
+                            span
+                                opacity: 1
+                                background-color: #9dc4ff56
                         span
                             pointer-events: none
                             display: flex
@@ -899,11 +908,20 @@ input
                             height: 100%
                             background-color: #ffffffd3
                             border-radius: 30px
-                        &:active
-                            opacity: 1
-                            span
-                                opacity: 1
-                                background-color: #9dc4ff56
+                        p
+                            pointer-events: none
+                            display: flex
+                            justify-content: center
+                            align-items: center
+                            width: 100%
+                            height: 100%
+                            background-color: #a4b6be54
+                            border-radius: 30px
+                    #up_but
+                        font-size: 1.2rem
+                        align-items: flex-end
+                    #point_but
+                        align-items: flex-start
                 #items_keybrd_cont_right
                     overflow: visible
                     flex-shrink: 1
