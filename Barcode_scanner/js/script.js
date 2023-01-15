@@ -53,6 +53,7 @@ const items_content = items_cont.querySelector('#items_content');
 
 const item_search_cont = items_content.querySelector('#item_search_cont');
 const item_search_input = item_search_cont.querySelector('#item_search_input');
+const search_type_icon = item_search_cont.querySelector('#search_type_icon');
 
 const doc_full_info_cont = items_content.querySelector('#doc_full_info_cont');
 const doc_name = doc_full_info_cont.querySelector('#doc_name');
@@ -71,10 +72,12 @@ const open_keybrd_but = items_flight_buts_cont.querySelector('#open_keybrd_but')
 
 const items_keybrd_cont = items_content.querySelector('#items_keybrd_cont');
 const items_keybrd_cont_left = items_keybrd_cont.querySelector('#items_keybrd_cont_left');
-const close_item_cont_but = items_keybrd_cont.querySelector('#close_item_cont_but');
-const search_type_but = items_keybrd_cont.querySelector('#search_type_but');
-const search_sort_but = items_keybrd_cont.querySelector('#search_sort_but');
-const del_item_input_but = items_keybrd_cont.querySelector('#del_item_input_but');
+const search_sort_but = items_keybrd_cont_left.querySelector('#search_sort_but');
+const point_but = items_keybrd_cont_left.querySelector('#point_but');
+const items_keybrd_cont_right = items_content.querySelector('#items_keybrd_cont_right');
+const del_item_input_but = items_keybrd_cont_right.querySelector('#del_item_input_but');
+const keybrd_search_but = items_keybrd_cont_right.querySelector('#keybrd_search_but');
+const close_item_cont_but = items_keybrd_cont_right.querySelector('#close_item_cont_but');
 const close_keybrd_but = items_keybrd_cont.querySelector('#close_keybrd_but');
 
 // Header (Menue) --------------
@@ -163,7 +166,6 @@ search_sort_but_2.addEventListener('click', items_sort_swap);
 
 del_item_input_but.addEventListener('click', del_items_input);
 item_search_cont.addEventListener('click', items_keybrd_open);
-search_type_but.addEventListener('click', search_type_swap);
 search_sort_but.addEventListener('click', items_sort_swap);
 close_item_cont_but.addEventListener('click', items_cont_close);
 close_keybrd_but.addEventListener('click', items_keybrd_close);
@@ -782,13 +784,9 @@ function items_cont_close() {
     items_content.classList.remove('toggle');
     search_val_clear();
     items_list_cont_content.replaceChildren();
-    search_type_but.classList.remove('toggle');
+    search_type_icon.classList.remove('toggle');
     search_sort_but.classList.remove('toggle');
     items_list_cont_content.classList.remove('reverse');
-};
-
-function search_type_swap(){
-    search_type_but.classList.toggle('toggle');
 };
 
 function items_sort_swap(){
@@ -802,7 +800,7 @@ function items_sort_swap(){
             // console.log(scrollsize);
             items_list_cont_content.scrollTo({top: -scrollsize, behavior: "instant"});
         };
-    }, 300);
+    }, 340);
 };
 
 function del_items_input(){
@@ -813,6 +811,8 @@ function del_items_input(){
         search_val = item_search_input.innerText = item_search_input.innerText.slice(0, -1);
         if (!search_val) search_val_clear();
     };
+    if (search_val.includes('.')) search_type_icon.classList.add('toggle')
+    else search_type_icon.classList.remove('toggle');
 };
 
 function search_val_clear(){
@@ -850,13 +850,23 @@ items_list_cont_content.addEventListener('scroll', () => {
 });
 
 items_keybrd_cont_left.addEventListener('click', (e) => {
-    if (e.target.tagName == 'BUTTON' && search_val.length < 13){
+    if (e.target.tagName == 'BUTTON' && search_val.length < 13 
+        && e.target.id != 'search_sort_but'){
         tap.currentTime = 0;
         tap.play();
-        if (!search_val) item_search_input.innerText = '';
-        item_search_input.classList.add('not_place_hold');
-        search_val = item_search_input.innerText = item_search_input.innerText + `${e.target.innerText}`;
-        // console.log(search_val);
+        if (e.target.id != 'point_but'){
+            if (!search_val) item_search_input.innerText = '';
+            item_search_input.classList.add('not_place_hold');
+            search_val = item_search_input.innerText = item_search_input.innerText + `${e.target.innerText}`;
+            // console.log(search_val);
+        }else {
+            if (search_val && !search_val.includes('.')){
+                search_val = item_search_input.innerText = item_search_input.innerText + `.`;
+                // console.log(search_val);
+            };
+        };
+        if (search_val.includes('.')) search_type_icon.classList.add('toggle')
+        else search_type_icon.classList.remove('toggle');
     };
 });
 

@@ -502,12 +502,39 @@ input
                         color: #18191d
                         // border: 2px solid red
 
+.swap_but
+    // background-color: #20aa3757
+    &:active
+        transition: 0s
+        transition-duration: 0s
+        opacity: 0.9
+    &.toggle
+        span:first-child
+            top: -5rem
+        span:last-child
+            bottom: 0
+    span
+        position: absolute
+        display: flex
+        justify-content: center
+        align-items: center
+        width: 100%
+        height: 100%
+        font-size: 1.4rem
+        transition: 0.32s ease-out
+        i
+            pointer-events: none
+    span:first-child
+        top: 0
+    span:last-child
+        bottom: -5rem
+
 #items_cont
     // display: flex
     z-index: 8
     #items_content
         overflow: visible
-        width: 90%
+        width: 95%
         max-width: 400px
         padding-top: 0.8rem
         // padding-bottom: 1.5rem
@@ -516,7 +543,7 @@ input
         #item_search_cont
             position: relative
             flex-direction: row
-            width: 100%
+            width: 93%
             height: 4.7rem
             padding: 0 0.7rem
             background-color: #0231462d
@@ -539,15 +566,15 @@ input
                 background-color: #e9f4f8
                 &.not_place_hold
                     font-size: 1.6rem
-                    letter-spacing: 3.5px
-            #item_search_but
-                text-align: center
+                    letter-spacing: 3px
+            #search_type_icon
                 color: #1a1a1a98
-                font-size: 1.5rem
                 width: 2rem
+                height: 4rem
+                // border: 2px solid brown
         #items_list_cont
             margin-top: 0.8rem
-            width: 105%
+            width: 100%
             height: 100%
             flex-shrink: 1
             background-color: #ffffff56
@@ -800,32 +827,6 @@ input
                             height: 2px
                             background-color: #00318d1e
                             border-radius: 25px
-        .swap_but
-            // background-color: #20aa3757
-            &:active
-                transition: 0s
-                transition-duration: 0s
-                opacity: 0.9
-            &.toggle
-                span:first-child
-                    top: -5rem
-                span:last-child
-                    bottom: 0
-            span
-                position: absolute
-                display: flex
-                justify-content: center
-                align-items: center
-                width: 100%
-                height: 100%
-                font-size: 1.4rem
-                transition: 0.27s ease-out
-                i
-                    pointer-events: none
-            span:first-child
-                top: 0
-            span:last-child
-                bottom: -5rem
         #items_flight_buts_cont
             position: absolute
             bottom: 2vh
@@ -896,10 +897,10 @@ input
                         // border: 2px solid blue
                         &:active
                             opacity: 1
-                            span
+                            p
                                 opacity: 1
                                 background-color: #9dc4ff56
-                        span
+                        p
                             pointer-events: none
                             display: flex
                             justify-content: center
@@ -908,20 +909,15 @@ input
                             height: 100%
                             background-color: #ffffffd3
                             border-radius: 30px
-                        p
-                            pointer-events: none
-                            display: flex
-                            justify-content: center
-                            align-items: center
-                            width: 100%
-                            height: 100%
-                            background-color: #a4b6be54
-                            border-radius: 30px
-                    #up_but
-                        font-size: 1.2rem
-                        align-items: flex-end
+                        &.dop_buts
+                            p
+                                color: #2e3649e7
+                                background-color: #a4b6be50
                     #point_but
-                        align-items: flex-start
+                        &:active
+                            p
+                                opacity: 1
+                                background-color: #8ea0a8b4
                 #items_keybrd_cont_right
                     overflow: visible
                     flex-shrink: 1
@@ -939,19 +935,24 @@ input
                     #del_item_input_but
                         background-color: #a4b6be
                         transition: 0.1s ease-out
+                        &.hold
+                            color: #860718ea
+                            font-size: 2.2rem
                         &:active
                             transition: 0s
                             transition-duration: 0s
                             opacity: 1
                             background-color: #88969c
-                        &.hold
-                            color: #860718ea
-                            font-size: 2.2rem
-                    #search_type_but
-                        // background-color: #ffbf3594
-                    #search_sort_but
-                        // background-color: #20aa3763
+                    #keybrd_search_but
+                        height: 36.45%
+                        background-color: #06b3234d
+                        &:active
+                            transition: 0s
+                            transition-duration: 0s
+                            opacity: 1
+                            background-color: #0952189a
                     #close_item_cont_but
+                        height: 36.45%
                         background-color: #eb7b8aea
             #close_keybrd_but
                 height: 5vh
