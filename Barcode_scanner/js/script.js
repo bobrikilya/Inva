@@ -489,6 +489,11 @@ function warning_sound(){
     warning.play();
 };
 
+function tap_sound(){
+    tap.currentTime = 0;
+    tap.play();
+};
+
 function data_downloading(){
     if (!sess_info_list){
         setTimeout(() => {
@@ -825,6 +830,7 @@ function items_sort_swap(){
     search_sort_but.classList.toggle('toggle');
     search_sort_but_2.classList.toggle('toggle');
     const scrollsize = items_list_cont_content.scrollHeight - items_list_cont_content.clientHeight;
+    // console.log(scrollsize);
 
     setTimeout(() => {
         if (scrollsize != 0){
@@ -832,14 +838,13 @@ function items_sort_swap(){
             // console.log(scrollsize);
             items_list_cont_content.scrollTo({top: -scrollsize, behavior: "instant"});
         };
-    }, 340);
+    }, 330);
 };
 
 function del_items_input(){
     // console.log(search_val);
     if (search_val){
-        tap.currentTime = 0;
-        tap.play();
+        tap_sound();
         search_val = item_search_input.innerText = item_search_input.innerText.slice(0, -1);
         if (!search_val) search_val_clear();
     };
@@ -894,6 +899,7 @@ items_list_cont_content.addEventListener('scroll', () => {
 items_list_cont_content.addEventListener('click', (e) => {
     // console.log(e.target.tagName);
     if (e.target.tagName == 'LI'){
+        items_keybrd_cont.classList.remove('toggle');
         item_edit_toggle();
     };
 });
@@ -902,8 +908,7 @@ items_keybrd_cont_left.addEventListener('touchstart', (e) => {
     if (e.target.tagName == 'BUTTON' && search_val.length < 13 
         && e.target.id != 'search_sort_but'){
         e.target.classList.add('click');
-        tap.currentTime = 0;
-        tap.play();
+        tap_sound();
         if (e.target.id != 'point_but'){
             if (!search_val) item_search_input.innerText = '';
             item_search_input.classList.add('not_place_hold');
