@@ -70,14 +70,6 @@ const search_sort_but_2 = items_flight_buts_cont.querySelector('#search_sort_but
 const close_item_cont_but_2 = items_flight_buts_cont.querySelector('#close_item_cont_but_2');
 const open_keybrd_but = items_flight_buts_cont.querySelector('#open_keybrd_but');
 
-const item_edit_cont = items_content.querySelector('#item_edit_cont');
-const item_edit_name = item_edit_cont.querySelector('#item_edit_name');
-const barcode_price_edit_cont = item_edit_cont.querySelector('#barcode_price_edit_cont');
-const item_edit_barcode = barcode_price_edit_cont.querySelector('#item_edit_barcode');
-const item_edit_price = barcode_price_edit_cont.querySelector('#item_edit_price');
-const items_edit_quantity = item_edit_cont.querySelector('#items_edit_quantity');
-
-
 const items_keybrd_cont = items_content.querySelector('#items_keybrd_cont');
 const items_keybrd_cont_left = items_keybrd_cont.querySelector('#items_keybrd_cont_left');
 const search_sort_but = items_keybrd_cont_left.querySelector('#search_sort_but');
@@ -210,6 +202,8 @@ let search_val = '';
 let is_file = false;
 
 let docs_count = 0;
+let active_item = false;
+let input_foc_val = item_search_input;
 
 let audio_on = true;
 
@@ -732,19 +726,6 @@ document.addEventListener('click', (event) => {
     };
 });
 
-items_content.addEventListener('click', (event) => {
-    if (item_edit_cont.classList.contains('open_item')){
-        // const item_edit_cont_inside = event.composedPath().includes(item_edit_cont);
-        const items_keybrd_cont_inside = event.composedPath().includes(items_keybrd_cont);
-        // console.log(item_edit_cont_inside);
-        // console.log(items_keybrd_cont_inside);
-
-        if (!items_keybrd_cont_inside) {
-            item_edit_toggle();
-        };
-    };
-});
-
 
 // Number filter ----------
 input.addEventListener('keydown', (event) => {
@@ -794,7 +775,7 @@ function items_cont_open(file_name) {
 };
 
 function items_keybrd_close(){
-    if (!item_edit_cont.classList.contains('open_item')){
+    if (!active_item || !active_item.classList.contains('edit')){
         items_keybrd_cont.classList.add('toggle');
         items_list_cont.classList.add('keybrd_close');
     };
@@ -821,9 +802,7 @@ function items_cont_close() {
     search_type_icon.classList.remove('toggle');
     search_sort_but.classList.remove('toggle');
     items_list_cont_content.classList.remove('reverse');
-    item_search_cont.classList.remove('open_item');
-    items_list_cont.classList.remove('open_item');
-    item_edit_cont.classList.remove('open_item');
+    active_item = false;
 };
 
 function items_sort_swap(){
@@ -862,12 +841,28 @@ function search_type_test(){
     else search_type_icon.classList.remove('toggle');
 };
 
-function item_edit_toggle(){
-    item_search_cont.classList.toggle('open_item');
-    items_list_cont.classList.toggle('open_item');
-    setTimeout(() => {
-        item_edit_cont.classList.toggle('open_item');
-    }, 10);
+function item_edit_toggle(elem = false){
+    // console.log(active_item);
+    if (elem){
+        if (active_item && active_item != elem) {
+            active_item.classList.remove('edit');
+        };
+        active_item = elem;
+        elem.classList.toggle('edit');
+        if (elem.classList.contains('edit')){
+            input_foc_val = elem.querySelector('#items_quantity');
+            keybrd_search_but.classList.add('change_icons');
+            close_item_cont_but.classList.add('change_icons');
+            item_search_input.classList.add('dark');
+        }else {
+            active_item = false;
+            input_foc_val = item_search_input;
+            keybrd_search_but.classList.remove('change_icons');
+            close_item_cont_but.classList.remove('change_icons');
+            item_search_input.classList.remove('dark');
+        };
+        elem.scrollIntoView({block: "center", behavior: "smooth"});
+    };
 };
 
 items_list_cont_content.addEventListener('scroll', () => {
@@ -897,30 +892,31 @@ items_list_cont_content.addEventListener('scroll', () => {
 });
 
 items_list_cont_content.addEventListener('click', (e) => {
-    // console.log(e.target.tagName);
+    // console.log(e.target);
     if (e.target.tagName == 'LI'){
         items_keybrd_cont.classList.remove('toggle');
-        item_edit_toggle();
+        item_edit_toggle(e.target);
     };
 });
 
 items_keybrd_cont_left.addEventListener('touchstart', (e) => {
-    if (e.target.tagName == 'BUTTON' && search_val.length < 13 
-        && e.target.id != 'search_sort_but'){
-        e.target.classList.add('click');
-        tap_sound();
-        if (e.target.id != 'point_but'){
-            if (!search_val) item_search_input.innerText = '';
-            item_search_input.classList.add('not_place_hold');
-            search_val = item_search_input.innerText = item_search_input.innerText + `${e.target.innerText}`;
-            // console.log(search_val);
-        }else {
-            if (search_val && !search_val.includes('.')){
-                search_val = item_search_input.innerText = item_search_input.innerText + `.`;
+    if (e.target.tagName == 'BUTTON') {
+        if (search_val.length < 13 && e.target.id != 'search_sort_but'){
+            e.target.classList.add('click');
+            tap_sound();
+            if (e.target.id != 'point_but'){
+                if (!search_val) input_foc_val.innerText = '';
+                input_foc_val.classList.add('not_place_hold');
+                search_val = input_foc_val.innerText = input_foc_val.innerText + `${e.target.innerText}`;
                 // console.log(search_val);
+            }else {
+                if (search_val && !search_val.includes('.')){
+                    search_val = input_foc_val.innerText = input_foc_val.innerText + `.`;
+                    // console.log(search_val);
+                };
             };
+            search_type_test();
         };
-        search_type_test();
     };
     items_keybrd_cont_left.addEventListener('touchend', (event) => {
         e.target.classList.remove('click');

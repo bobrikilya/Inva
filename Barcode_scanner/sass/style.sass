@@ -556,16 +556,13 @@ input
             border-radius: 25px
             z-index: 8
             box-shadow: 0 5px 15px #a5a4a43b
-            transition: 0.1s
             // border: 2px solid brown
-            &.open_item
-                opacity: 0
-                pointer-events: none
             #item_search_input
                 display: flex
                 justify-content: center
                 align-items: center
                 font-size: 1.4rem
+                white-space: nowrap
                 // letter-spacing: 0
                 border-radius: 25px
                 padding: 0 10px
@@ -574,9 +571,12 @@ input
                 color: #222222af
                 margin: 0 0.5rem
                 background-color: #e9f4f8
+                transition: background 0.2s
                 &.not_place_hold
                     font-size: 1.6rem
                     letter-spacing: 3px
+                &.dark
+                    background: none
             #search_type_icon
                 color: #1a1a1a98
                 width: 2rem
@@ -590,14 +590,12 @@ input
             background-color: #ffffff56
             border-radius: 25px
             margin-bottom: -1.7rem
-            transition: 0.1s ease-out
+            padding-bottom: 1.7rem
             // border: 2px solid orange
             &.keybrd_close
                 transition: 0.2s ease-out
                 margin-bottom: -25vh
-            &.open_item
-                opacity: 0
-                pointer-events: none
+                padding-bottom: 0
             #doc_full_info_cont
                 position: absolute
                 z-index: 1
@@ -743,7 +741,7 @@ input
                     li
                         &:first-child
                             margin-top: 0.5rem
-                            margin-bottom: 3.2rem
+                            margin-bottom: 1.7rem
                             &::after
                                 top: auto
                                 bottom: -1rem
@@ -758,13 +756,45 @@ input
                 li
                     position: relative
                     display: flex
+                    justify-content: center
+                    align-items: center
                     flex-shrink: 0
                     width: 97%
-                    height: 3.7rem
+                    // height: 3.7rem
+                    min-height: 3.7rem
+                    max-height: 3.7rem
                     margin-top: 0.5rem
                     background-color: #00318d2a
                     border-radius: 20px
-                    transition: 0.15s ease-out
+                    // transition-duration: 0.2s
+                    &.edit
+                        // transition: 0.3s ease-out
+                        height: auto
+                        min-height: 8rem
+                        max-height: 20rem
+                        box-shadow: 0 0 10px #4141414d
+                        background-color: #0129754f
+                        #left_side_cont
+                            #items_name
+                                white-space: pre-wrap
+                                font-size: 1.25rem
+                            #barcode_price_cont
+                                align-items: flex-start
+                                flex-direction: column
+                                div
+                                    margin-top: 0.5rem
+                                    #items_barcode
+                                        font-size: 1.2rem
+                                    #items_price
+                                        font-size: 1.3rem
+                                    p
+                                        font-size: 1.3rem
+                        #items_quantity
+                            background-color: #e9f4f8
+                            border-radius: 30px
+                            width: 7rem
+                            margin-right: 20px
+                            font-size: 1.3rem
                     span, p, a, div
                         pointer-events: none
                     #left_side_cont
@@ -779,7 +809,7 @@ input
                             flex-direction: row
                             width: 100%
                         #items_name
-                            transition: 0.1s ease-out
+                            transition-duration: 0.2s
                             white-space: nowrap
                             font-size: 1.15rem
                             width: 100%
@@ -808,6 +838,7 @@ input
                                     font-size: 1.2rem
                     #items_quantity
                         height: 100%
+                        max-height: 5.5rem
                         width: 5.5rem
                         padding: 10px
                         margin-left: 3px
@@ -816,7 +847,7 @@ input
                         cursor: pointer
                         color: #1d181aa4
                         background-color: #7c7c7c1e
-                        // transition: 0.2s ease-out
+                        // transition-duration: 0.1s
                         // border: 2px solid red
                     &:first-child
                         margin-top: 8rem
@@ -831,7 +862,7 @@ input
                             background-color: #00318d1e
                             border-radius: 25px
                     &:last-child
-                        margin-bottom: 3.2rem
+                        margin-bottom: 1.7rem
                         &::after
                             content: ''
                             position: absolute
@@ -867,104 +898,13 @@ input
                 border: none
                 width: 7rem
                 background-color: #eb7b8aea
-        #item_edit_cont
-            z-index: 3
-            width: 90vw
-            max-width: 450px
-            height: auto
-            min-height: 23rem
-            max-height: 55vh
-            background-color: #37589642
-            box-shadow: 0 0 20px #57575746
-            padding: 25px 15px
-            border-radius: 30px
-            margin-bottom: 1rem
-            margin-top: -4.7rem
-            // transition: 0.1s ease-out
-            color: #222222d5
-            display: none
-            justify-content: flex-end
-            &.open_item
-                display: flex
-            h3
-                position: relative
-                font-size: 1.5rem
-                color: #001f5833
-                margin-bottom: 1.7rem
-                &::after
-                    content: ''
-                    position: absolute
-                    left: 50%
-                    transform: translateX(-50%)
-                    bottom: -0.2rem
-                    width: 12rem
-                    height: 2px
-                    background-color: #001f5827
-                    border-radius: 25px
-            #item_edit_name
-                position: relative
-                text-align: center
-                white-space: pre-wrap
-                overflow: hidden
-                font-size: 1.4rem
-                line-height: 1.5rem
-                height: auto
-                width: 100%
-                background-color: #ffffff63
-                padding: 15px
-                border-radius: 25px
-                overflow: visible
-                // border: 2px solid black
-            #barcode_price_edit_cont
-                width: 90%
-                margin-top: 1rem
-                // flex-direction: row
-                align-items: flex-start
-                font-size: 1.3rem
-                // border: 2px solid red
-                div
-                    margin-bottom: 0.8rem
-                    flex-direction: row
-                    // border: 2px solid yellow
-                    span
-                        &.icon
-                            color: #222222c0
-                            display: flex
-                            justify-content: center
-                            align-items: center
-                            width: 2.5rem
-                            height: 2.5rem
-                            border-radius: 50%
-                            background-color: #ffffff2f
-                            margin-right: 3vw
-                            i
-                                font-size: 1.2rem
-            #items_edit_quantity
-                margin-top: 0.2rem
-                margin-bottom: 10%
-                border-radius: 30px
-                height: 4rem
-                width: 70%
-                font-size: 1.5rem
-                background-color: #ffffffd3
-                overflow: visible
-                // border: 2px solid green
-                &::after
-                    content: ''
-                    position: absolute
-                    left: 50%
-                    transform: translateX(-50%)
-                    bottom: -1.5rem
-                    width: 7rem
-                    height: 2px
-                    background-color: #001f5827
-                    border-radius: 25px
         #items_keybrd_cont
             z-index: 1
             bottom: 0
             border-radius: 30px
             width: 100vw
             max-width: 500px
+            min-width: 350px
             height: 38vh
             min-height: 17rem
             max-height: 25rem
@@ -1044,7 +984,18 @@ input
                         background-color: #a4b6be54
                         color: #2e3649e7
                         i
+                            transition-duration: 0.1s
                             pointer-events: none
+                            position: absolute
+                        .first_ic
+                            opacity: 1
+                        .sec_ic
+                            opacity: 0
+                        &.change_icons
+                            .first_ic
+                                opacity: 0
+                            .sec_ic
+                                opacity: 1
                     #del_item_input_but
                         background-color: #a4b6be
                         transition: 0.1s ease-out
