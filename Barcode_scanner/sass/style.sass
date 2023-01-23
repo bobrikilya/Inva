@@ -97,7 +97,7 @@ input
 
 #install_notif
     position: fixed
-    display: flex
+    display: none
     justify-content: center
     align-items: center
     background-color: #fff
@@ -209,15 +209,15 @@ input
         #session_nav_cont
             flex-shrink: 1
             position: absolute
-            bottom: -0.8rem
-            width: 90%
-            padding-bottom: 3.9rem
+            bottom: -2.5rem
+            width: 101vw
+            padding-bottom: 5.5rem
             justify-content: flex-end
-            transition-duration: 0.2s
             box-shadow: 0 -5px 15px #a5a4a43b
-            display: none
-            border-radius: 40px
+            background-color: #c6dfe7
+            border-radius: 30px
             z-index: 7
+            display: none
             &.toggle
                 display: flex
             #session_nav_content
@@ -253,7 +253,7 @@ input
                     text-align: center
                 #store_name_lit
                     font-size: 1.4rem
-                    margin-top: 0.6rem
+                    margin-top: 0.8rem
                     transition-duration: 0.4s
                     height: 0
                     opacity: 0
@@ -261,15 +261,6 @@ input
                     &.active
                         height: 2rem
                         opacity: 0.8
-            #session_blur
-                position: absolute
-                top: 0
-                bottom: 0
-                left: 0
-                right: 0
-                background-color: #bdd9e2
-                z-index: -1
-                border-radius: 40px
 
 
 #ur_session_num_cont
@@ -589,8 +580,8 @@ input
             flex-shrink: 1
             background-color: #ffffff56
             border-radius: 25px
-            margin-bottom: -1.7rem
-            padding-bottom: 1.7rem
+            margin-bottom: -3rem
+            padding-bottom: 3rem
             // border: 2px solid orange
             &.keybrd_close
                 transition: 0.2s ease-out
@@ -741,15 +732,15 @@ input
                     li
                         &:first-child
                             margin-top: 0.5rem
-                            margin-bottom: 1.7rem
+                            margin-bottom: 3rem
                             &::after
                                 top: auto
-                                bottom: -1rem
+                                bottom: -2rem
                         &:last-child
                             margin-top: 8rem
                             margin-bottom: 0
                             &::after
-                                top: -1rem
+                                top: -2rem
                                 bottom: auto
                 i
                     pointer-events: none
@@ -760,13 +751,12 @@ input
                     align-items: center
                     flex-shrink: 0
                     width: 97%
-                    // height: 3.7rem
                     min-height: 3.7rem
                     max-height: 3.7rem
                     margin-top: 0.5rem
                     background-color: #00318d2a
                     border-radius: 20px
-                    // transition-duration: 0.2s
+                    // transition: 0.2s ease-out
                     &.edit
                         // transition: 0.3s ease-out
                         height: auto
@@ -794,7 +784,7 @@ input
                             border-radius: 30px
                             width: 7rem
                             margin-right: 20px
-                            font-size: 1.3rem
+                            font-size: 1.4rem
                     span, p, a, div
                         pointer-events: none
                     #left_side_cont
@@ -856,19 +846,19 @@ input
                             position: absolute
                             left: 50%
                             transform: translateX(-50%)
-                            top: -1rem
+                            top: -2rem
                             width: 7rem
                             height: 2px
                             background-color: #00318d1e
                             border-radius: 25px
                     &:last-child
-                        margin-bottom: 1.7rem
+                        margin-bottom: 3rem
                         &::after
                             content: ''
                             position: absolute
                             left: 50%
                             transform: translateX(-50%)
-                            bottom: -1rem
+                            bottom: -2rem
                             width: 7rem
                             height: 2px
                             background-color: #00318d1e
@@ -983,10 +973,11 @@ input
                         border-radius: 30px
                         background-color: #a4b6be54
                         color: #2e3649e7
+                        font-size: 1.7rem
                         i
+                            position: absolute
                             transition-duration: 0.1s
                             pointer-events: none
-                            position: absolute
                         .first_ic
                             opacity: 1
                         .sec_ic
@@ -1001,7 +992,7 @@ input
                         transition: 0.1s ease-out
                         &.hold
                             color: #4b010bea
-                            font-size: 2.2rem
+                            font-size: 1.9rem
                         &:active
                             transition: 0s
                             transition-duration: 0s

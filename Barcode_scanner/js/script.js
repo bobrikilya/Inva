@@ -203,7 +203,9 @@ let is_file = false;
 
 let docs_count = 0;
 let active_item = false;
-let input_foc_val = item_search_input;
+let old_quant_val = false;
+let new_quant_val = false;
+let first_item_open = false;
 
 let audio_on = true;
 
@@ -217,11 +219,23 @@ let del = new Audio('../audio/delete.mp3');
 
 
 // For easy working ----------
-const Moz = navigator.userAgent.includes('Mozilla/5.0 (iPhone');
+// const Moz = navigator.userAgent.includes('Mozilla/5.0 (iPhone');
+
 const fMode = {exact: "environment"};
 // const fMode = {exact: "user"};
 
 document.addEventListener("DOMContentLoaded", () => {
+    // let data_ip = false;
+    // keybrd_search_but.addEventListener('click', () => {
+    //     fetch('https://ipapi.co/json/')
+    //         .then(d => d.json())
+    //         .then(d => {
+    //             data_ip = d.ip
+    //             alert(data_ip);
+    //             console.log(navigator.userAgent);
+    //         });
+        // alert(navigator.userAgent, data_ip);
+    // });
     if (localStorage.getItem('sess_info')){
         sess_info_list = JSON.parse(localStorage.getItem('sess_info'));
         // console.log(sess_info_list);
@@ -242,7 +256,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     // if (Moz) session_blur.style.backgroundColor = '#ebf4ff65';
 
-    if (docs_cont_content.querySelector('a')) 
+    if (docs_cont_content.querySelector('a'))
         docs_cont_content.querySelector('a').click();
 
 
@@ -609,7 +623,7 @@ function session_record(){
     session_but.classList.add('active');
     session_power_but.classList.add('active');
     store_name_lit.classList.add('active');
-    session_text.innerHTML = 'Отключиться<br> от сессии:';
+    session_text.innerText = 'Отключиться от сессии:';
     localStorage.setItem('sess_info', JSON.stringify(sess_info_list));
 };
 
@@ -797,12 +811,12 @@ function items_cont_close() {
     };
 
     items_content.classList.remove('toggle');
-    search_val_clear();
+    search_val_cleaning();
+    item_search_val_cleaning();
     items_list_cont_content.replaceChildren();
     search_type_icon.classList.remove('toggle');
     search_sort_but.classList.remove('toggle');
     items_list_cont_content.classList.remove('reverse');
-    active_item = false;
 };
 
 function items_sort_swap(){
@@ -821,16 +835,26 @@ function items_sort_swap(){
 };
 
 function del_items_input(){
-    // console.log(search_val);
-    if (search_val){
-        tap_sound();
-        search_val = item_search_input.innerText = item_search_input.innerText.slice(0, -1);
-        if (!search_val) search_val_clear();
+    if (!active_item){
+        // console.log(search_val);
+        if (search_val){
+            tap_sound();
+            search_val = item_search_input.innerText = item_search_input.innerText.slice(0, -1);
+            if (!search_val) search_val_cleaning();
+        };
+        search_type_test();
+    }else {
+        if (new_quant_val && new_quant_val != '0'){
+            let elem = active_item.querySelector('#items_quantity');
+            tap_sound();
+            new_quant_val = elem.innerText = elem.innerText.slice(0, -1);
+            if(!new_quant_val) new_quant_val = elem.innerText = '0';
+        };
+        // console.log(new_quant_val, old_quant_val);
     };
-    search_type_test();
 };
 
-function search_val_clear(){
+function search_val_cleaning(){
     item_search_input.classList.remove('not_place_hold');
     item_search_input.innerText = 'Поиск по документу';
     search_val = '';
@@ -850,19 +874,26 @@ function item_edit_toggle(elem = false){
         active_item = elem;
         elem.classList.toggle('edit');
         if (elem.classList.contains('edit')){
-            input_foc_val = elem.querySelector('#items_quantity');
             keybrd_search_but.classList.add('change_icons');
             close_item_cont_but.classList.add('change_icons');
             item_search_input.classList.add('dark');
+            new_quant_val = old_quant_val = elem.querySelector('#items_quantity').innerText;
+            first_item_open = true;
         }else {
-            active_item = false;
-            input_foc_val = item_search_input;
-            keybrd_search_but.classList.remove('change_icons');
-            close_item_cont_but.classList.remove('change_icons');
-            item_search_input.classList.remove('dark');
+            item_search_val_cleaning();
         };
         elem.scrollIntoView({block: "center", behavior: "smooth"});
     };
+};
+
+function item_search_val_cleaning(){
+    active_item = false;
+    old_quant_val = false;
+    new_quant_val = false;
+    first_item_open = false;
+    keybrd_search_but.classList.remove('change_icons');
+    close_item_cont_but.classList.remove('change_icons');
+    item_search_input.classList.remove('dark');
 };
 
 items_list_cont_content.addEventListener('scroll', () => {
@@ -882,7 +913,7 @@ items_list_cont_content.addEventListener('scroll', () => {
 
     // console.log(scroll_size);
 
-    if (scroll_size < 45) {
+    if (scroll_size < 40) {
         doc_full_info_cont.classList.remove('turn_off');
         // // Keyboard opening while scroll
         // if (scroll_size < 5) items_keybrd_open();
@@ -901,21 +932,41 @@ items_list_cont_content.addEventListener('click', (e) => {
 
 items_keybrd_cont_left.addEventListener('touchstart', (e) => {
     if (e.target.tagName == 'BUTTON') {
-        if (search_val.length < 13 && e.target.id != 'search_sort_but'){
-            e.target.classList.add('click');
-            tap_sound();
+        e.target.classList.add('click');
+        if (!active_item && search_val.length < 13 
+            && e.target.id != 'search_sort_but'){
             if (e.target.id != 'point_but'){
-                if (!search_val) input_foc_val.innerText = '';
-                input_foc_val.classList.add('not_place_hold');
-                search_val = input_foc_val.innerText = input_foc_val.innerText + `${e.target.innerText}`;
+                tap_sound();
+                if (!search_val) item_search_input.innerText = '';
+                item_search_input.classList.add('not_place_hold');
+                search_val = item_search_input.innerText = item_search_input.innerText + `${e.target.innerText}`;
                 // console.log(search_val);
             }else {
                 if (search_val && !search_val.includes('.')){
-                    search_val = input_foc_val.innerText = input_foc_val.innerText + `.`;
+                    tap_sound();
+                    search_val = item_search_input.innerText = item_search_input.innerText + `.`;
                     // console.log(search_val);
                 };
             };
             search_type_test();
+        }else if (active_item){
+            let elem = active_item.querySelector('#items_quantity');
+            if (new_quant_val.length < 5){
+                if (e.target.id != 'point_but'){
+                    tap_sound();
+                    if (first_item_open) {
+                        first_item_open = false;
+                        elem.innerText = '';
+                    }else if (new_quant_val == '0') elem.innerText = '';
+                    new_quant_val = elem.innerText = elem.innerText + `${e.target.innerText}`;
+                }else {
+                    // if (!new_quant_val.includes('.')){
+                    //     tap_sound();
+                    //     new_quant_val = elem.innerText = elem.innerText + `.`;
+                    // };
+                };
+                // console.log(new_quant_val, old_quant_val);
+            };
         };
     };
     items_keybrd_cont_left.addEventListener('touchend', (event) => {
@@ -955,11 +1006,20 @@ del_item_input_but.addEventListener('touchstart', (e) => {
         value = true;
     }, 300);
     setTimeout(() => {
+        
         if (value) {
             del.currentTime = 0;
             del.play();
-            search_val_clear();
-            search_type_icon.classList.remove('toggle');
+            if (!active_item){
+                search_val_cleaning();
+                search_type_icon.classList.remove('toggle');
+            }else {
+                if (new_quant_val != '0'){
+                    let elem = active_item.querySelector('#items_quantity');
+                    new_quant_val = elem.innerText = '0';
+                    // console.log(new_quant_val, old_quant_val);
+                };
+            };
             del_item_input_but.classList.add('hold');
             setTimeout(() => {
                 del_item_input_but.classList.remove('hold');
