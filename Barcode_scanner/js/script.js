@@ -167,7 +167,6 @@ search_sort_but_2.addEventListener('click', items_sort_swap);
 del_item_input_but.addEventListener('click', del_items_input);
 item_search_cont.addEventListener('click', items_keybrd_open);
 search_sort_but.addEventListener('click', items_sort_swap);
-close_item_cont_but.addEventListener('click', items_cont_close);
 close_keybrd_but.addEventListener('click', items_keybrd_close);
 
 session_but.addEventListener('click', sessions_cont_toggle);
@@ -360,6 +359,7 @@ function searching(){
         const edit_time = (new Date()).toLocaleString();
         
         file_list.push({
+            'id': counter,
             'name': `Тест ${counter}`,
             'code': '123456789',
             'price': price_val,
@@ -669,6 +669,7 @@ function add_item(item){
         // if (i_name.length > 27) i_name = i_name.sclice(0, 27);
         items_list_cont_content.insertAdjacentHTML('afterbegin', `
             <li>
+                <h1>${item['id']}</h1>
                 <div id="left_side_cont" class="cont">
                     <span id="items_name">${i_name}</span>
                     <div id="barcode_price_cont" class="cont">
@@ -693,7 +694,7 @@ function add_item(item){
     };
 };
 
-function doc_info_inserting(info){
+function doc_full_info_inserting(info){
     doc_name.innerText = info['doc_name'];
     doc_items_sum.innerText = info['sum'];
     doc_items_quantity.innerText = info['itms_quant'];
@@ -761,6 +762,7 @@ input.addEventListener('blur', () => {
 });
 
 function items_cont_open(file_name) {
+    full_doc_id = file_name;
     items_keybrd_open();
     items_cont.classList.add('toggle');
     header.classList.add('turn_off');
@@ -776,7 +778,7 @@ function items_cont_open(file_name) {
         if (!file_list[1]) items_not_found.style.display = 'flex';
         else items_not_found.style.display = 'none';
 
-        doc_info_inserting(file_list[0]);
+        doc_full_info_inserting(file_list[0]);
         file_list.forEach(el => {
             add_item(el);
         });
@@ -845,10 +847,11 @@ function del_items_input(){
         search_type_test();
     }else {
         if (new_quant_val && new_quant_val != '0'){
-            let elem = active_item.querySelector('#items_quantity');
+            const elem = active_item.querySelector('#items_quantity');
             tap_sound();
             new_quant_val = elem.innerText = elem.innerText.slice(0, -1);
             if(!new_quant_val) new_quant_val = elem.innerText = '0';
+            delete elem;
         };
         // console.log(new_quant_val, old_quant_val);
     };
@@ -879,10 +882,10 @@ function item_edit_toggle(elem = false){
             item_search_input.classList.add('dark');
             new_quant_val = old_quant_val = elem.querySelector('#items_quantity').innerText;
             first_item_open = true;
+            elem.scrollIntoView({block: "center", behavior: "smooth"});
         }else {
-            item_search_val_cleaning();
+            item_edit_confirm();
         };
-        elem.scrollIntoView({block: "center", behavior: "smooth"});
     };
 };
 
@@ -894,6 +897,58 @@ function item_search_val_cleaning(){
     keybrd_search_but.classList.remove('change_icons');
     close_item_cont_but.classList.remove('change_icons');
     item_search_input.classList.remove('dark');
+};
+
+function item_edit_cancel(){
+    // console.log(active_item);
+    active_item.querySelector('#items_quantity').innerText = old_quant_val;
+    active_item.classList.remove('edit');
+    item_search_val_cleaning();
+};
+
+function item_edit_confirm(){
+    // console.log(active_item);
+    if (new_quant_val != old_quant_val){
+        let file_list = JSON.parse(localStorage.getItem(`${full_doc_id}`));
+
+        // console.log(active_item);
+        for (const item of file_list) {
+            if(item['id'] == active_item.querySelector('h1').innerText) {
+                item['quant'] = parseFloat(new_quant_val);
+                break;
+            };
+        };
+
+        const el_price = active_item.querySelector('#left_side_cont #barcode_price_cont #items_price').innerText;
+        const price_diff = (parseFloat(new_quant_val) - parseFloat(old_quant_val))*parseFloat(el_price)
+        const full_doc = docs_cont_content.querySelector(`#${full_doc_id}`);
+        console.log(full_doc_id);
+        
+        const new_sum_val = parseFloat(file_list[0]['sum']) + price_diff;
+        file_list[0]['sum'] = new_sum_val;
+
+
+        for (const doc of docs_list) {
+            if(doc['id'] == full_doc_id) {
+                doc['sum'] = new_sum_val;
+                break;
+            };
+        };
+
+
+        localStorage.setItem(`${full_doc_id}`, JSON.stringify(file_list));
+        localStorage.setItem('docs_list', JSON.stringify(docs_list));
+        doc_items_sum.innerText = new_sum_val;
+        full_doc.querySelector('#d_info #doc_sum p').innerText = new_sum_val;
+
+        file_list = false;
+        delete full_doc;
+        delete el_price;
+        delete price_diff;
+        delete new_sum_val;
+    };
+    active_item.classList.remove('edit');
+    item_search_val_cleaning();
 };
 
 items_list_cont_content.addEventListener('scroll', () => {
@@ -950,14 +1005,14 @@ items_keybrd_cont_left.addEventListener('touchstart', (e) => {
             };
             search_type_test();
         }else if (active_item){
-            let elem = active_item.querySelector('#items_quantity');
+            const elem = active_item.querySelector('#items_quantity');
+            if (first_item_open) {
+                first_item_open = false;
+                new_quant_val = elem.innerText = '';
+            }else if (new_quant_val == '0') elem.innerText = '';
             if (new_quant_val.length < 5){
                 if (e.target.id != 'point_but'){
                     tap_sound();
-                    if (first_item_open) {
-                        first_item_open = false;
-                        elem.innerText = '';
-                    }else if (new_quant_val == '0') elem.innerText = '';
                     new_quant_val = elem.innerText = elem.innerText + `${e.target.innerText}`;
                 }else {
                     // if (!new_quant_val.includes('.')){
@@ -967,6 +1022,7 @@ items_keybrd_cont_left.addEventListener('touchstart', (e) => {
                 };
                 // console.log(new_quant_val, old_quant_val);
             };
+            delete elem;
         };
     };
     items_keybrd_cont_left.addEventListener('touchend', (event) => {
@@ -1015,8 +1071,7 @@ del_item_input_but.addEventListener('touchstart', (e) => {
                 search_type_icon.classList.remove('toggle');
             }else {
                 if (new_quant_val != '0'){
-                    let elem = active_item.querySelector('#items_quantity');
-                    new_quant_val = elem.innerText = '0';
+                    new_quant_val = active_item.querySelector('#items_quantity').innerText = '0';
                     // console.log(new_quant_val, old_quant_val);
                 };
             };
@@ -1030,6 +1085,17 @@ del_item_input_but.addEventListener('touchstart', (e) => {
         if (timeout) clearTimeout(timeout);
     });
 });
+
+close_item_cont_but.addEventListener('click', () => {
+    if (!active_item) items_cont_close()
+    else item_edit_cancel();
+});
+
+keybrd_search_but.addEventListener('click', () => {
+    if (!active_item) return
+    else item_edit_confirm();
+});
+
 
 docs_cont_content.addEventListener('touchstart', (e) => {
     const e_id = e.target.getAttribute('id');
@@ -1081,6 +1147,7 @@ docs_cont_content.addEventListener('click', (e) => {
             // const doc_n = full_doc.querySelector('h2').innerText;
             // doc_name_insert(doc_n);
         };
+        // delete full_doc;
         // console.log(full_doc_id);
     };
 
@@ -1110,6 +1177,8 @@ docs_cont_content.addEventListener('click', (e) => {
                 const num_of_el = docs_list.indexOf(el);
                 docs_list.splice(num_of_el, 1)
                 localStorage.setItem('docs_list', JSON.stringify(docs_list));
+                delete e_id;
+                delete full_doc;
                 break;
             };
         };
