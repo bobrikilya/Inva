@@ -711,7 +711,7 @@ input {
 #items_cont #items_content #items_list_cont #items_not_found {
   width: 100%;
   position: absolute;
-  font-size: 1.7rem;
+  font-size: 1.6rem;
   text-align: center;
   color: rgba(37, 55, 82, 0.5960784314);
   margin-top: 20%;
@@ -720,6 +720,9 @@ input {
   display: none;
 }
 #items_cont #items_content #items_list_cont #items_not_found.turn_on {
+  display: flex;
+}
+#items_cont #items_content #items_list_cont #items_not_found.turn_on_2 {
   display: flex;
 }
 #items_cont #items_content #items_list_cont #items_not_found span {
@@ -744,7 +747,8 @@ input {
 }
 @media (max-height: 700px) {
   #items_cont #items_content #items_list_cont #items_not_found {
-    margin-top: 25%;
+    font-size: 1.5rem;
+    margin-top: 30%;
   }
   #items_cont #items_content #items_list_cont #items_not_found span {
     font-size: 2rem;

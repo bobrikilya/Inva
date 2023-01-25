@@ -824,8 +824,8 @@ function items_cont_open(file_name) {
     if (localStorage.getItem(`${file_name}`)){
         file_list = JSON.parse(localStorage.getItem(`${file_name}`));
         // console.log(file_list);
-        if (!file_list[1]) items_not_found.style.display = 'flex';
-        else items_not_found.style.display = 'none';
+        if (!file_list[1]) items_not_found.classList.add('turn_on')
+        else items_not_found.classList.remove('turn_on');
 
         file_list.forEach(el => {
             add_item(el);
@@ -871,6 +871,8 @@ function items_cont_close() {
     search_type_icon.classList.remove('toggle');
     search_sort_but.classList.remove('toggle');
     items_list_cont_content.classList.remove('reverse');
+    items_not_found.classList.remove('turn_on_2');
+    items_not_found.querySelector('p').innerText = 'Файл пуст';
     doc_name = false;
     doc_full_info_cont = false;
     doc_items_sum = false;
@@ -920,7 +922,7 @@ function del_items_input(){
 
 function search_val_cleaning(){
     item_search_input.classList.remove('not_place_hold');
-    item_search_input.innerText = 'Поиск по документу';
+    item_search_input.innerText = 'Поиск по файлу';
     search_val = '';
 };
 
@@ -1012,31 +1014,49 @@ function item_edit_confirm(){
 };
 
 function items_searching(){
-    const all_items = items_list_cont_content.querySelectorAll('li');
+    // const all_items = items_list_cont_content.querySelectorAll('li');
+    const all_items = JSON.parse(localStorage.getItem(`${full_doc_id}`));
+    const doc_info = all_items.shift();
     const val = item_search_input.innerText;
-    // console.log(val);
-    if (val != 'Поиск по документу'){
-        // console.log(item_search_input.value);
-        all_items.forEach(el => {
-            const i_name = el.querySelector('span');
-            if (i_name.innerText.search(val) == -1) {
-                // console.log(el.querySelector('span').innerText);
-                el.classList.add('hide');
-            }else {
-                // console.log(i_name.innerText);
-                el.classList.remove('hide');
-            };
+    if (val != 'Поиск по файлу'){
+        
+        const new_items_list = all_items.filter(item => item['name'].includes(val))
+        // console.log(new_items_list);
+        delete all_items;
+        
+        items_list_cont_content.replaceChildren();
+
+        if (!new_items_list[0]) {
+            items_not_found.querySelector('p').innerText = 'Поиск безуспешен';
+            items_not_found.classList.add('turn_on_2');
+        }else {
+            items_not_found.classList.remove('turn_on_2');
+            items_not_found.querySelector('p').innerText = 'Файл пуст';
+        };
+
+        new_items_list.forEach(el => {
+            add_item(el);
         });
+
+        add_doc_full_info(doc_info);
+
+        delete new_items_list;
+
         item_search_input.classList.add('light');
         setTimeout(() => {
             item_search_input.classList.remove('light');
         }, 400);
         items_list_cont_content.scrollBy({top: 0, behavior: "instant"});
-    }else all_items.forEach(el => {
-        // console.log(val);
-        el.classList.remove('hide');
-    });
-    delete all_items;
+    }else {
+        items_not_found.classList.remove('turn_on_2');
+        items_not_found.querySelector('p').innerText = 'Файл пуст';
+        all_items.forEach(el => {
+            add_item(el);
+        });
+        add_doc_full_info(doc_info);
+        delete all_items;
+    };
+    delete doc_info;
     delete val;
 };
 

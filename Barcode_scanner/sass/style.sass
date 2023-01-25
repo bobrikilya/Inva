@@ -594,7 +594,7 @@ input
             #items_not_found
                 width: 100%
                 position: absolute
-                font-size: 1.7rem
+                font-size: 1.6rem
                 text-align: center
                 color: #25375298
                 margin-top: 20%
@@ -602,6 +602,8 @@ input
                 overflow: visible
                 display: none
                 &.turn_on
+                    display: flex
+                &.turn_on_2
                     display: flex
                 span
                     overflow: visible
@@ -623,7 +625,8 @@ input
                         border-radius: 25px
             @media ( max-height: 700px )
                 #items_not_found
-                    margin-top: 25%
+                    font-size: 1.5rem
+                    margin-top: 30%
                     span
                         font-size: 2rem
                         width: 5rem
