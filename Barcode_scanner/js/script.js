@@ -55,15 +55,16 @@ const item_search_cont = items_content.querySelector('#item_search_cont');
 const item_search_input = item_search_cont.querySelector('#item_search_input');
 const search_type_icon = item_search_cont.querySelector('#search_type_icon');
 
-const doc_full_info_cont = items_content.querySelector('#doc_full_info_cont');
-const doc_name = doc_full_info_cont.querySelector('#doc_name');
-const doc_items_sum = doc_full_info_cont.querySelector('#doc_items_sum');
-const doc_items_quantity = doc_full_info_cont.querySelector('#doc_items_quantity');
-const doc_create_time = doc_full_info_cont.querySelector('#doc_create_time');
-const doc_edit_time = doc_full_info_cont.querySelector('#doc_edit_time');
 const items_not_found = items_content.querySelector('#items_not_found');
 
 const items_list_cont_content = items_content.querySelector('#items_list_cont_content');
+
+let doc_full_info_cont = false;
+let doc_name = false;
+let doc_items_sum = false;
+let doc_items_quantity = false;
+let doc_create_time = false;
+let doc_edit_time = false;
 
 const items_flight_buts_cont = items_content.querySelector('#items_flight_buts_cont');
 const search_sort_but_2 = items_flight_buts_cont.querySelector('#search_sort_but_2');
@@ -74,7 +75,7 @@ const items_keybrd_cont = items_content.querySelector('#items_keybrd_cont');
 const items_keybrd_cont_left = items_keybrd_cont.querySelector('#items_keybrd_cont_left');
 const search_sort_but = items_keybrd_cont_left.querySelector('#search_sort_but');
 const point_but = items_keybrd_cont_left.querySelector('#point_but');
-const items_keybrd_cont_right = items_content.querySelector('#items_keybrd_cont_right');
+const items_keybrd_cont_right = items_keybrd_cont.querySelector('#items_keybrd_cont_right');
 const del_item_input_but = items_keybrd_cont_right.querySelector('#del_item_input_but');
 const keybrd_search_but = items_keybrd_cont_right.querySelector('#keybrd_search_but');
 const close_item_cont_but = items_keybrd_cont_right.querySelector('#close_item_cont_but');
@@ -349,45 +350,53 @@ function searching(){
         // stream_cont.style.display = 'none';
         // video.classList.remove('camera_on');
         // scan_icon.classList.remove('camera_on');
+        let file_counter = 0;
+        const add_items_limit = 10;
+        while (file_counter < add_items_limit){
+            file_counter++;
+            // console.log(file_counter);
 
-        const file_id = last_op_doc;
-        let file_list = JSON.parse(localStorage.getItem(`${file_id}`));
-        
-        const counter = file_list.length;
-        const price_val = 1.25;
-        const quant_val = 1;
-        const edit_time = (new Date()).toLocaleString();
-        
-        file_list.push({
-            'id': counter,
-            'name': `Тест ${counter}`,
-            'code': '123456789',
-            'price': price_val,
-            'quant': quant_val
-        });
-        // console.log(file_list);
+            const file_id = last_op_doc;
+            let file_list = JSON.parse(localStorage.getItem(`${file_id}`));
+            
+            const counter = file_list.length;
+            const price_val = 1.25;
+            const quant_val = 1;
+            const edit_time = (new Date()).toLocaleString();
+            
+            file_list.push({
+                'id': counter,
+                'name': `Тест ${counter}`,
+                'code': '123456789',
+                'price': price_val,
+                'quant': quant_val
+            });
+            // console.log(file_list);
 
-        // Doc full info updating
-        const sum_val = file_list[0]['sum'] + price_val * quant_val;
-        file_list[0]['sum'] = sum_val;
-        file_list[0]['itms_quant'] = counter;
-        file_list[0]['edit'] = edit_time;
+            // Doc full info updating
+            const sum_val = file_list[0]['sum'] + price_val * quant_val;
+            file_list[0]['sum'] = sum_val;
+            file_list[0]['itms_quant'] = counter;
+            file_list[0]['edit'] = edit_time;
 
-        // Doc lit info updating
-        for (const doc of docs_list) {
-            if(doc['id'] == file_id) {
-                doc['sum'] = sum_val;
-                doc['itms_quant'] = counter;
-                break;
+            // Doc lit info updating
+            for (const doc of docs_list) {
+                if(doc['id'] == file_id) {
+                    doc['sum'] = sum_val;
+                    doc['itms_quant'] = counter;
+                    break;
+                };
             };
-        };
 
-        localStorage.setItem(`${file_id}`, JSON.stringify(file_list));
-        localStorage.setItem('docs_list', JSON.stringify(docs_list));
-        const full_doc = docs_cont_content.querySelector(`#${file_id}`);
-        full_doc.querySelector('#doc_sum p').innerText = sum_val;
-        full_doc.querySelector('#doc_count p').innerText = counter;
-        file_list = false;
+            localStorage.setItem(`${file_id}`, JSON.stringify(file_list));
+            localStorage.setItem('docs_list', JSON.stringify(docs_list));
+            const full_doc = docs_cont_content.querySelector(`#${file_id}`);
+            full_doc.querySelector('#doc_sum p').innerText = sum_val;
+            full_doc.querySelector('#doc_count p').innerText = counter;
+
+            file_list = false;
+            delete edit_time;
+        };
     // };
 };
 
@@ -694,12 +703,52 @@ function add_item(item){
     };
 };
 
-function doc_full_info_inserting(info){
-    doc_name.innerText = info['doc_name'];
-    doc_items_sum.innerText = info['sum'];
-    doc_items_quantity.innerText = info['itms_quant'];
-    doc_create_time.innerText = info['create'];
-    doc_edit_time.innerText = info['edit'];
+function add_doc_full_info(info){
+
+    items_list_cont_content.insertAdjacentHTML('afterbegin', `
+        <div id="doc_full_info_cont" class="cont">
+            <div id="doc_left_info" class="cont">
+                <div id="doc_name" class="cont">${info['doc_name']}</div>
+                <div id="sum_quantity_cont" class="cont">
+                    <div id="doc_items_sum_cont" class="cont">
+                        <h3>
+                            <i class="fa-solid fa-sack-dollar"></i>
+                        </h3>
+                        <p id="doc_items_sum_text">Сумма:</p>
+                        <span id="doc_items_sum">${info['sum']}</span>
+                        <h4>р.</h4>
+                    </div>
+                    <div id="doc_items_quantity_cont" class="cont">
+                        <h3>
+                            <i class="fa-solid fa-list"></i>
+                        </h3>
+                        <p id="doc_items_quantity_text">Колич.:</p>
+                        <span id="doc_items_quantity">${info['itms_quant']}</span>
+                        <h4>эл.</h4>
+                    </div>
+                </div>
+            </div>
+            <div id="doc_right_info" class="cont">
+                <div id="doc_create_cont" class="cont">
+                    <h3>
+                        <i class="fa-regular fa-clock"></i>
+                    </h3>
+                    <p id="doc_create_text" class="doc_right_text">Cоздан:</p>
+                    <span id="doc_create_time">${info['create']}</span>
+                </div>
+                <div id="doc_edit_cont" class="cont">
+                    <p id="doc_edit_text" class="doc_right_text">Изменён:</p>
+                    <span id="doc_edit_time">${info['edit']}</span>
+                </div>
+            </div>
+        </div>
+    `);
+    doc_full_info_cont = items_list_cont_content.querySelector('#doc_full_info_cont');
+    doc_name = doc_full_info_cont.querySelector('#doc_name');
+    doc_items_sum = doc_full_info_cont.querySelector('#doc_items_sum');
+    doc_items_quantity = doc_full_info_cont.querySelector('#doc_items_quantity');
+    doc_create_time = doc_full_info_cont.querySelector('#doc_create_time');
+    doc_edit_time = doc_full_info_cont.querySelector('#doc_edit_time');
 };
 
 function docs_opening(doc_data){
@@ -722,6 +771,7 @@ function docs_opening(doc_data){
                 'create': create_time,
                 'edit': create_time
             }]));
+            delete create_time;
         };
     };
 };
@@ -767,7 +817,6 @@ function items_cont_open(file_name) {
     items_cont.classList.add('toggle');
     header.classList.add('turn_off');
     foot_cont.classList.add('turn_off');
-    items_list_cont_content.scrollTo({top: 0, behavior: "smooth"});
     setTimeout(() => {
         items_content.classList.add('toggle');
     }, 80);
@@ -778,14 +827,17 @@ function items_cont_open(file_name) {
         if (!file_list[1]) items_not_found.style.display = 'flex';
         else items_not_found.style.display = 'none';
 
-        doc_full_info_inserting(file_list[0]);
         file_list.forEach(el => {
             add_item(el);
         });
+
+        add_doc_full_info(file_list[0]);
+
         // for (let el = 1; el < 51; el++){
         //     add_item(file_list[el]);
             // console.log(file_list[el])
-        // };ы
+        // };
+        // doc_full_info_cont.style.order = '-1';
         file_list = false;
     };
 };
@@ -819,6 +871,12 @@ function items_cont_close() {
     search_type_icon.classList.remove('toggle');
     search_sort_but.classList.remove('toggle');
     items_list_cont_content.classList.remove('reverse');
+    doc_name = false;
+    doc_full_info_cont = false;
+    doc_items_sum = false;
+    doc_items_quantity = false;
+    doc_create_time = false;
+    doc_edit_time = false;
 };
 
 function items_sort_swap(){
@@ -829,9 +887,9 @@ function items_sort_swap(){
 
     setTimeout(() => {
         if (scrollsize != 0){
-            items_list_cont_content.classList.toggle('reverse');
+            // items_list_cont_content.classList.toggle('reverse');
             // console.log(scrollsize);
-            items_list_cont_content.scrollTo({top: -scrollsize, behavior: "instant"});
+            // items_list_cont_content.scrollTo({top: -scrollsize, behavior: "instant"});
         };
     }, 330);
 };
@@ -842,7 +900,10 @@ function del_items_input(){
         if (search_val){
             tap_sound();
             search_val = item_search_input.innerText = item_search_input.innerText.slice(0, -1);
-            if (!search_val) search_val_cleaning();
+            if (!search_val) {
+                search_val_cleaning();
+                items_searching();
+            };
         };
         search_type_test();
     }else {
@@ -922,7 +983,7 @@ function item_edit_confirm(){
         const el_price = active_item.querySelector('#left_side_cont #barcode_price_cont #items_price').innerText;
         const price_diff = (parseFloat(new_quant_val) - parseFloat(old_quant_val))*parseFloat(el_price)
         const full_doc = docs_cont_content.querySelector(`#${full_doc_id}`);
-        console.log(full_doc_id);
+        // console.log(full_doc_id);
         
         const new_sum_val = parseFloat(file_list[0]['sum']) + price_diff;
         file_list[0]['sum'] = new_sum_val;
@@ -934,7 +995,6 @@ function item_edit_confirm(){
                 break;
             };
         };
-
 
         localStorage.setItem(`${full_doc_id}`, JSON.stringify(file_list));
         localStorage.setItem('docs_list', JSON.stringify(docs_list));
@@ -951,36 +1011,65 @@ function item_edit_confirm(){
     item_search_val_cleaning();
 };
 
-items_list_cont_content.addEventListener('scroll', () => {
-    const scrolltop = items_list_cont_content.scrollTop;
-    const scrollbottom = items_list_cont_content.scrollHeight - items_list_cont_content.clientHeight;
+function items_searching(){
+    const all_items = items_list_cont_content.querySelectorAll('li');
+    const val = item_search_input.innerText;
+    // console.log(val);
+    if (val != 'Поиск по документу'){
+        // console.log(item_search_input.value);
+        all_items.forEach(el => {
+            const i_name = el.querySelector('span');
+            if (i_name.innerText.search(val) == -1) {
+                // console.log(el.querySelector('span').innerText);
+                el.classList.add('hide');
+            }else {
+                // console.log(i_name.innerText);
+                el.classList.remove('hide');
+            };
+        });
+        item_search_input.classList.add('light');
+        setTimeout(() => {
+            item_search_input.classList.remove('light');
+        }, 400);
+        items_list_cont_content.scrollBy({top: 0, behavior: "instant"});
+    }else all_items.forEach(el => {
+        // console.log(val);
+        el.classList.remove('hide');
+    });
+    delete all_items;
+    delete val;
+};
 
-    // // Keyboard closing while scroll
-    // setTimeout(() => {
-    //     const scrolltop_2 = items_list_cont_content.scrollTop;
-    //     if (scrolltop_2 > scrolltop + 200){
-    //         items_keybrd_close();
-    //     };
-    // }, 200);
-    if (items_list_cont_content.classList.contains('reverse')){
-        scroll_size = scrollbottom + scrolltop - 0.66
-    } else scroll_size = scrolltop;
+// items_list_cont_content.addEventListener('scroll', () => {
+//     const scrolltop = items_list_cont_content.scrollTop;
+//     const scrollbottom = items_list_cont_content.scrollHeight - items_list_cont_content.clientHeight;
 
-    // console.log(scroll_size);
+//     // // Keyboard closing while scroll
+//     // setTimeout(() => {
+//     //     const scrolltop_2 = items_list_cont_content.scrollTop;
+//     //     if (scrolltop_2 > scrolltop + 200){
+//     //         items_keybrd_close();
+//     //     };
+//     // }, 200);
+//     if (items_list_cont_content.classList.contains('reverse')){
+//         scroll_size = scrollbottom + scrolltop - 0.66
+//     } else scroll_size = scrolltop;
 
-    if (scroll_size < 40) {
-        doc_full_info_cont.classList.remove('turn_off');
-        // // Keyboard opening while scroll
-        // if (scroll_size < 5) items_keybrd_open();
-    }else {
-        doc_full_info_cont.classList.add('turn_off');
-    };
-});
+//     // console.log(scroll_size);
+
+//     if (scroll_size < 40) {
+//         // doc_full_info_cont.classList.remove('turn_off');
+//         // // Keyboard opening while scroll
+//         // if (scroll_size < 5) items_keybrd_open();
+//     }else {
+//         // doc_full_info_cont.classList.add('turn_off');
+//     };
+// });
 
 items_list_cont_content.addEventListener('click', (e) => {
     // console.log(e.target);
     if (e.target.tagName == 'LI'){
-        items_keybrd_cont.classList.remove('toggle');
+        items_keybrd_open();
         item_edit_toggle(e.target);
     };
 });
@@ -1004,22 +1093,22 @@ items_keybrd_cont_left.addEventListener('touchstart', (e) => {
                 };
             };
             search_type_test();
-        }else if (active_item){
+        }else if (active_item && e.target.id != 'point_but'){
             const elem = active_item.querySelector('#items_quantity');
-            if (first_item_open) {
+            if (first_item_open && e.target.id != 'point_but') {
                 first_item_open = false;
                 new_quant_val = elem.innerText = '';
             }else if (new_quant_val == '0') elem.innerText = '';
             if (new_quant_val.length < 5){
-                if (e.target.id != 'point_but'){
+                // if (e.target.id != 'point_but'){
                     tap_sound();
                     new_quant_val = elem.innerText = elem.innerText + `${e.target.innerText}`;
-                }else {
-                    // if (!new_quant_val.includes('.')){
-                    //     tap_sound();
-                    //     new_quant_val = elem.innerText = elem.innerText + `.`;
-                    // };
-                };
+                // }else {
+                //     if (!new_quant_val.includes('.')){
+                //         tap_sound();
+                //         new_quant_val = elem.innerText = elem.innerText + `.`;
+                //     };
+                // };
                 // console.log(new_quant_val, old_quant_val);
             };
             delete elem;
@@ -1069,6 +1158,7 @@ del_item_input_but.addEventListener('touchstart', (e) => {
             if (!active_item){
                 search_val_cleaning();
                 search_type_icon.classList.remove('toggle');
+                items_searching();
             }else {
                 if (new_quant_val != '0'){
                     new_quant_val = active_item.querySelector('#items_quantity').innerText = '0';
@@ -1092,7 +1182,7 @@ close_item_cont_but.addEventListener('click', () => {
 });
 
 keybrd_search_but.addEventListener('click', () => {
-    if (!active_item) return
+    if (!active_item) items_searching()
     else item_edit_confirm();
 });
 
