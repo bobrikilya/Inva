@@ -206,6 +206,7 @@ let active_item = false;
 let old_quant_val = false;
 let new_quant_val = false;
 let first_item_open = false;
+let last_search = false;
 
 let audio_on = true;
 
@@ -672,6 +673,7 @@ function add_doc(new_el){
 };
 
 function add_item(item){
+    // console.log(item)
     if ('name' in item){
         i_name = item['name'];
         // console.log(i_name);
@@ -821,11 +823,17 @@ function items_cont_open(file_name) {
         items_content.classList.add('toggle');
     }, 80);
 
+    items_list_full_inserting(file_name);
+};
+
+function items_list_full_inserting(file_name){
     if (localStorage.getItem(`${file_name}`)){
         file_list = JSON.parse(localStorage.getItem(`${file_name}`));
         // console.log(file_list);
         if (!file_list[1]) items_not_found.classList.add('turn_on')
         else items_not_found.classList.remove('turn_on');
+
+        items_list_cont_content.replaceChildren();
 
         file_list.forEach(el => {
             add_item(el);
@@ -843,10 +851,11 @@ function items_cont_open(file_name) {
 };
 
 function items_keybrd_close(){
-    if (!active_item || !active_item.classList.contains('edit')){
-        items_keybrd_cont.classList.add('toggle');
-        items_list_cont.classList.add('keybrd_close');
+    if (active_item && active_item.classList.contains('edit')){
+        active_item.classList.remove('edit');
     };
+    items_keybrd_cont.classList.add('toggle');
+    items_list_cont.classList.add('keybrd_close');
 };
 
 function items_keybrd_open(){
@@ -855,6 +864,7 @@ function items_keybrd_open(){
 };
 
 function items_cont_close() {
+    items_list_cont_content.scrollTo({top: 0, behavior: "instant"});
     items_cont.classList.remove('toggle');
     foot_cont.classList.remove('turn_off');
     sess_but_no_activ();
@@ -863,7 +873,7 @@ function items_cont_close() {
     if (is_file) {
         return_to_doc();
     };
-
+    
     items_content.classList.remove('toggle');
     search_val_cleaning();
     item_search_val_cleaning();
@@ -871,7 +881,7 @@ function items_cont_close() {
     search_type_icon.classList.remove('toggle');
     search_sort_but.classList.remove('toggle');
     items_list_cont_content.classList.remove('reverse');
-    items_not_found.classList.remove('turn_on_2');
+    items_not_found.classList.remove('turn_on');
     items_not_found.querySelector('p').innerText = 'Файл пуст';
     doc_name = false;
     doc_full_info_cont = false;
@@ -1015,23 +1025,22 @@ function item_edit_confirm(){
 
 function items_searching(){
     // const all_items = items_list_cont_content.querySelectorAll('li');
-    const all_items = JSON.parse(localStorage.getItem(`${full_doc_id}`));
-    const doc_info = all_items.shift();
     const val = item_search_input.innerText;
+    
     if (val != 'Поиск по файлу'){
+        const all_items = JSON.parse(localStorage.getItem(`${full_doc_id}`));
+        if (!all_items[1]) return;
+        // console.log(all_items);
+        const doc_info = all_items.shift();
         
-        const new_items_list = all_items.filter(item => item['name'].includes(val))
-        // console.log(new_items_list);
+        const new_items_list = all_items.filter(item => item['name'].includes(val)).map(item => str_marking(item, val));
         delete all_items;
         
         items_list_cont_content.replaceChildren();
 
         if (!new_items_list[0]) {
             items_not_found.querySelector('p').innerText = 'Поиск безуспешен';
-            items_not_found.classList.add('turn_on_2');
-        }else {
-            items_not_found.classList.remove('turn_on_2');
-            items_not_found.querySelector('p').innerText = 'Файл пуст';
+            items_not_found.classList.add('turn_on');
         };
 
         new_items_list.forEach(el => {
@@ -1040,26 +1049,29 @@ function items_searching(){
 
         add_doc_full_info(doc_info);
 
+        last_search = true;
         delete new_items_list;
+        delete doc_info;
+        delete val;
 
         item_search_input.classList.add('light');
         setTimeout(() => {
             item_search_input.classList.remove('light');
         }, 400);
-        items_list_cont_content.scrollBy({top: 0, behavior: "instant"});
-    }else {
-        items_not_found.classList.remove('turn_on_2');
-        items_not_found.querySelector('p').innerText = 'Файл пуст';
-        all_items.forEach(el => {
-            add_item(el);
-        });
-        add_doc_full_info(doc_info);
-        delete all_items;
+        items_list_cont_content.scrollTo({top: 0, behavior: "instant"});
+    }else if (val == 'Поиск по файлу' && last_search){
+        items_list_full_inserting(full_doc_id);
+        last_search = false;
+        items_list_cont_content.scrollTo({top: 0, behavior: "instant"});
     };
-    delete doc_info;
-    delete val;
 };
 
+
+function str_marking(item, val){
+    // console.log(str, val);
+    item['name'] = item['name'].replace(val, `<span>${val}</span>`)
+    return item;
+};
 // items_list_cont_content.addEventListener('scroll', () => {
 //     const scrolltop = items_list_cont_content.scrollTop;
 //     const scrollbottom = items_list_cont_content.scrollHeight - items_list_cont_content.clientHeight;

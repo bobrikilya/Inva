@@ -4,7 +4,6 @@
   "display": "fullscreen",
   "background_color": "#b8d6e06e",
   "theme_color": "#b8d6e06e",
-  "orientation": "portrait",
   "start_url": "/index.html",
   "icons": [{
     "src": "img/logo.png",
