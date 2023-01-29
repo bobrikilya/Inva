@@ -657,7 +657,6 @@ input
                     justify-content: space-between
                     color: #222222ec
                     font-size: 1rem
-                    pointer-events: none
                     // border: 2px solid black
                     // &.turn_off
                     //     opacity: 0
@@ -672,8 +671,9 @@ input
                         // flex-direction: row
                     #doc_left_info
                         padding-right: 2vw
-                        font-size: 1rem
+                        font-size: 1.2rem
                         justify-content: space-between
+                        pointer-events: none
                         // border: 2px solid black
                         div
                             justify-content: flex-start
@@ -685,19 +685,18 @@ input
                             margin-left: 2px
                             color: #222222c2
                         p //text
-                            margin-left: 10px
+                            font-size: 1.1rem
+                            margin-left: 15px
                             margin-right: 5px
                         span //value
-                            font-size: 1.2rem
                             color: #222222
                         h4 // value type (r, elem)
-                            font-size: 1.2rem
                             color: #222222
                             margin-left: 2px
                         #doc_name
                             align-items: flex-start
                             color: #222222
-                            font-size: 1.6em
+                            font-size: 1.5rem
                             margin-bottom: 7px
                             // border: 2px solid black
                             &::after
@@ -712,28 +711,42 @@ input
                                 border-radius: 25px
                         #sum_quantity_cont
                             flex-direction: column
-                    #doc_right_info
-                        font-size: 0.9rem
-                        padding-left: 0.5vw
-                        justify-content: flex-end
+                    #doc_dop_info_but
+                        color: #222222bb
+                        width: 4rem
+                        height: 100%
+                        // margin-right: 5%
                         // border: 2px solid red
-                        div
-                            height: auto
-                            align-items: flex-end
-                            justify-content: flex-end
-                            // border: 2px solid blue
-                        div:first-child
-                            margin-bottom: 9px
-                        h3 //icon
-                            position: absolute
-                            right: 3.5rem
-                            top: -0.15rem
-                            margin-right: 0.2rem
-                            color: #222222c2
-                        p
-                            margin-bottom: 2px
-                        span
-                            color: #222222
+                        #doc_dop_info_icon
+                            pointer-events: none
+                            width: 2.7rem
+                            height: 2.7rem 
+                            border-radius: 50%
+                            border: 3px solid #222222bb
+                            font-size: 1.3rem
+                    // #doc_dop_info
+                    //     display: none
+                    //     font-size: 0.9rem
+                    //     padding-left: 0.5vw
+                    //     justify-content: flex-end
+                    //     // border: 2px solid red
+                    //     div
+                    //         height: auto
+                    //         align-items: flex-end
+                    //         justify-content: flex-end
+                    //         // border: 2px solid blue
+                    //     div:first-child
+                    //         margin-bottom: 9px
+                    //     h3 //icon
+                    //         position: absolute
+                    //         right: 3.5rem
+                    //         top: -0.15rem
+                    //         margin-right: 0.2rem
+                    //         color: #222222c2
+                    //     p
+                    //         margin-bottom: 2px
+                    //     span
+                    //         color: #222222
                 i
                     pointer-events: none
                 li

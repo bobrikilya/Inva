@@ -62,9 +62,10 @@ const items_list_cont_content = items_content.querySelector('#items_list_cont_co
 let doc_full_info_cont = false;
 let doc_name = false;
 let doc_items_sum = false;
-let doc_items_quantity = false;
-let doc_create_time = false;
-let doc_edit_time = false;
+// let doc_items_quantity = false;
+// let doc_create_time = false;
+// let doc_edit_time = false;
+let doc_dop_info_but = false;
 
 const items_flight_buts_cont = items_content.querySelector('#items_flight_buts_cont');
 const search_sort_but_2 = items_flight_buts_cont.querySelector('#search_sort_but_2');
@@ -160,6 +161,8 @@ download_back_but.addEventListener('click', () =>{
     download = 'download_back';
     are_u_sure_toggle();
 });
+
+// doc_dop_info_but.addEventListener('click', doc_dop_info_cont_toggle);
 
 open_keybrd_but.addEventListener('click', items_keybrd_open);
 close_item_cont_but_2.addEventListener('click', items_cont_close);
@@ -730,27 +733,20 @@ function add_doc_full_info(info){
                     </div>
                 </div>
             </div>
-            <div id="doc_right_info" class="cont">
-                <div id="doc_create_cont" class="cont">
-                    <h3>
-                        <i class="fa-regular fa-clock"></i>
-                    </h3>
-                    <p id="doc_create_text" class="doc_right_text">Cоздан:</p>
-                    <span id="doc_create_time">${info['create']}</span>
-                </div>
-                <div id="doc_edit_cont" class="cont">
-                    <p id="doc_edit_text" class="doc_right_text">Изменён:</p>
-                    <span id="doc_edit_time">${info['edit']}</span>
-                </div>
+            <div id="doc_dop_info_but" class="cont">
+                <span id="doc_dop_info_icon" class="cont">
+                    <i class="fa-solid fa-info"></i>
+                </span>
             </div>
-        </div>
     `);
     doc_full_info_cont = items_list_cont_content.querySelector('#doc_full_info_cont');
-    doc_name = doc_full_info_cont.querySelector('#doc_name');
-    doc_items_sum = doc_full_info_cont.querySelector('#doc_items_sum');
-    doc_items_quantity = doc_full_info_cont.querySelector('#doc_items_quantity');
-    doc_create_time = doc_full_info_cont.querySelector('#doc_create_time');
-    doc_edit_time = doc_full_info_cont.querySelector('#doc_edit_time');
+    doc_left_info = doc_full_info_cont.querySelector('#doc_left_info');
+    doc_name = doc_left_info.querySelector('#doc_name');
+    doc_items_sum = doc_left_info.querySelector('#doc_items_sum');
+    // doc_items_quantity = doc_left_info.querySelector('#doc_items_quantity');
+    // doc_create_time = doc_left_info.querySelector('#doc_create_time');
+    // doc_edit_time = doc_left_info.querySelector('#doc_edit_time');
+    doc_dop_info_but = doc_full_info_cont.querySelector('#doc_dop_info_but');
 };
 
 function docs_opening(doc_data){
@@ -1041,6 +1037,9 @@ function items_searching(){
         if (!new_items_list[0]) {
             items_not_found.querySelector('p').innerText = 'Поиск безуспешен';
             items_not_found.classList.add('turn_on');
+        }else {
+            items_not_found.querySelector('p').innerText = 'Файл пуст';
+            items_not_found.classList.remove('turn_on');
         };
 
         new_items_list.forEach(el => {
