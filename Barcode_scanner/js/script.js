@@ -823,10 +823,10 @@ function items_cont_open(file_name) {
         items_content.classList.add('toggle');
     }, 80);
 
-    items_list_full_inserting(file_name);
+    items_full_inserting(file_name);
 };
 
-function items_list_full_inserting(file_name){
+function items_full_inserting(file_name){
     if (localStorage.getItem(`${file_name}`)){
         file_list = JSON.parse(localStorage.getItem(`${file_name}`));
         // console.log(file_list);
@@ -956,9 +956,9 @@ function items_sort_swap(){
     if (new_items_list[1]) new_items_list[1] = new_items_list[1].reverse();
     setTimeout(() => {
         if (!new_items_list[1]){
-            items_list_full_inserting(full_doc_id);
+            items_full_inserting(full_doc_id);
         }else {
-            add_item_searching();
+            items_search_inserting();
         };
         items_list_cont_content.scrollTo({top: 0, behavior: "instant"});
     }, 330);
@@ -1099,7 +1099,7 @@ function items_searching(){
             new_items_list[1] = new_items_list[1].reverse();
         };
         
-        add_item_searching()
+        items_search_inserting()
         
         item_search_input.classList.add('light');
         setTimeout(() => {
@@ -1108,7 +1108,7 @@ function items_searching(){
         items_list_cont_content.scrollTo({top: 0, behavior: "instant"});
 
     }else if (val == 'Поиск по файлу' && last_search){
-        items_list_full_inserting(full_doc_id);
+        items_full_inserting(full_doc_id);
         last_search = false;
         new_items_list = false;
         items_list_cont_content.scrollTo({top: 0, behavior: "instant"});
@@ -1116,7 +1116,7 @@ function items_searching(){
     delete val;
 };
 
-function add_item_searching(){
+function items_search_inserting(){
     // console.log(reverse, new_items_list[1]);
 
     items_list_cont_content.replaceChildren();
@@ -1187,12 +1187,12 @@ items_keybrd_cont_left.addEventListener('touchstart', (e) => {
                 tap_sound();
                 if (!search_val) item_search_input.innerText = '';
                 item_search_input.classList.add('not_place_hold');
-                search_val = item_search_input.innerText = item_search_input.innerText + `${e.target.innerText}`;
-                // console.log(search_val);
+                search_val = item_search_input.innerText = `${item_search_input.innerText}${parseInt(e.target.innerText)}`;
+                console.log(search_val);
             }else {
                 if (search_val && !search_val.includes('.')){
                     tap_sound();
-                    search_val = item_search_input.innerText = item_search_input.innerText + `.`;
+                    search_val = item_search_input.innerText = `${parseInt(item_search_input.innerText)}.`;
                     // console.log(search_val);
                 };
             };
@@ -1206,11 +1206,11 @@ items_keybrd_cont_left.addEventListener('touchstart', (e) => {
             if (new_quant_val.length < 5){
                 // if (e.target.id != 'point_but'){
                     tap_sound();
-                    new_quant_val = elem.innerText = elem.innerText + `${e.target.innerText}`;
+                    new_quant_val = elem.innerText = `${elem.innerText}${e.target.innerText}`;
                 // }else {
                 //     if (!new_quant_val.includes('.')){
                 //         tap_sound();
-                //         new_quant_val = elem.innerText = elem.innerText + `.`;
+                //         new_quant_val = elem.innerText = `${elem.innerText}.`;
                 //     };
                 // };
                 // console.log(new_quant_val, old_quant_val);
@@ -1393,7 +1393,7 @@ doc_types_content.addEventListener('click', (e) => {
     e.preventDefault();
     // const id = e.target.getAttribute('id');
     const class_name = e.target.classList[0];
-    const text_name = e.target.innerText;
+    const text_name = e.target.innerText.trim();
     const tag = e.target.tagName;
     // let new_text_name = false;
     // console.log(class_name, text_name, tag);
@@ -1402,9 +1402,9 @@ doc_types_content.addEventListener('click', (e) => {
 
         // Docs counter
         let new_el = {
-            'id': class_name + '_1', 
+            'id': `${class_name}_1`, 
             'class_name': class_name, 
-            'text_name': text_name + ' 1',
+            'text_name': `${text_name} 1`,
             'sum': 0,
             'itms_quant': 0
         };
@@ -1420,9 +1420,8 @@ doc_types_content.addEventListener('click', (e) => {
                 const max_num = parseInt(Math.max.apply(null, max_count_list)) + 1;
                 new_id = `${class_name}_${max_num}`;
                 new_text_name = `${text_name} ${max_num}`;
-                new_el["id"] = new_id;
-                // console.log(new_text_name.replace(' -', '-'))
-                new_el["text_name"] = new_text_name;
+                new_el['id'] = new_id;
+                new_el['text_name'] = new_text_name;
             };
         };
         docs_list.push(new_el);
