@@ -841,7 +841,7 @@ function items_list_full_inserting(file_name){
         // file_list[1].forEach(el => {
         //     add_item(el);
         // });
-        
+        current_part = 0;
         upload_parts = Math.ceil(file_list[1].length/30);
         // console.log(upload_parts);
         items_uploading(file_list[1]);
@@ -1040,7 +1040,7 @@ function item_edit_confirm(){
         const el_price = active_item.querySelector('#left_side_cont #barcode_price_cont #items_price').innerText;
         const price_diff = (parseFloat(new_quant_val) - parseFloat(old_quant_val))*parseFloat(el_price)
         const full_doc = docs_cont_content.querySelector(`#${full_doc_id}`);
-        // console.log(full_doc_id);
+        // console.log(price_diff);
         
         const new_sum_val = parseFloat(file_list[0]['sum']) + price_diff;
         file_list[0]['sum'] = new_sum_val;
@@ -1091,8 +1091,8 @@ function items_searching(){
             items_not_found.classList.remove('turn_on');
         };
 
-        upload_parts = Math.ceil(new_items_list.length/30);
         current_part = 0;
+        upload_parts = Math.ceil(new_items_list.length/30);
 
         add_doc_full_info(doc_info);
         items_uploading(new_items_list);
