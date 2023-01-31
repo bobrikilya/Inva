@@ -213,6 +213,7 @@ let new_items_list = false;
 let last_search = false;
 let upload_parts = false;
 let current_part = 0;
+let reverse = false;
 
 let audio_on = true;
 
@@ -841,6 +842,11 @@ function items_list_full_inserting(file_name){
         // file_list[1].forEach(el => {
         //     add_item(el);
         // });
+
+        if (reverse){
+            file_list[1] = file_list[1].reverse();
+        };
+
         current_part = 0;
         upload_parts = Math.ceil(file_list[1].length/30);
         // console.log(upload_parts);
@@ -870,13 +876,16 @@ items_list_cont_content.addEventListener('scroll', () =>{
     // const scrolltop = items_list_cont_content.scrollTop;
     const scrollbottom = items_list_cont_content.scrollHeight - items_list_cont_content.clientHeight - items_list_cont_content.scrollTop;
     if (upload_parts > 1 && scrollbottom < 500){
-        if (!new_items_list){
+        if (!new_items_list[1]){
             file_list = JSON.parse(localStorage.getItem(`${full_doc_id}`));
+            if (reverse){
+                file_list[1] = file_list[1].reverse();
+            };
             items_uploading(file_list[1], current_part)
             // console.log(upload_parts);
             file_list = false;
         }else {
-            items_uploading(new_items_list, current_part)
+            items_uploading(new_items_list[1], current_part)
             // console.log(upload_parts);
             // file_list = false;
         };
@@ -934,20 +943,24 @@ function items_cont_close() {
     last_search = false;
     upload_parts = false;
     current_part = 0;
+    reverse = false;
 };
 
 function items_sort_swap(){
     search_sort_but.classList.toggle('toggle');
     search_sort_but_2.classList.toggle('toggle');
-    const scrollsize = items_list_cont_content.scrollHeight - items_list_cont_content.clientHeight;
+    // const scrollsize = items_list_cont_content.scrollHeight - items_list_cont_content.clientHeight;
     // console.log(scrollsize);
-
+    if (search_sort_but.classList.contains('toggle')) reverse = true
+    else reverse = false;
+    if (new_items_list[1]) new_items_list[1] = new_items_list[1].reverse();
     setTimeout(() => {
-        if (scrollsize != 0){
-            // items_list_cont_content.classList.toggle('reverse');
-            // console.log(scrollsize);
-            // items_list_cont_content.scrollTo({top: -scrollsize, behavior: "instant"});
+        if (!new_items_list[1]){
+            items_list_full_inserting(full_doc_id);
+        }else {
+            add_item_searching();
         };
+        items_list_cont_content.scrollTo({top: 0, behavior: "instant"});
     }, 330);
 };
 
@@ -1072,39 +1085,28 @@ function items_searching(){
     // console.log(search_val);
     const val = item_search_input.innerText;
     if (val != 'Поиск по файлу'){
-
         const all_items = JSON.parse(localStorage.getItem(`${full_doc_id}`));
         if (!all_items[1][0]) return;
         // console.log(all_items);
         const doc_info = all_items.shift();
         
-        new_items_list = all_items[0].filter(item => item['name'].includes(val)).map(item => str_marking(item, val));
+        new_items_list = [doc_info, all_items[0].filter(item => item['name'].includes(val)).map(item => str_marking(item, val))];
         delete all_items;
-        // console.log(new_items_list);
-        items_list_cont_content.replaceChildren();
-
-        if (!new_items_list[0]) {
-            items_not_found.querySelector('p').innerText = 'Поиск безуспешен';
-            items_not_found.classList.add('turn_on');
-        }else {
-            items_not_found.querySelector('p').innerText = 'Файл пуст';
-            items_not_found.classList.remove('turn_on');
-        };
-
-        current_part = 0;
-        upload_parts = Math.ceil(new_items_list.length/30);
-
-        add_doc_full_info(doc_info);
-        items_uploading(new_items_list);
-
-        last_search = true;
         delete doc_info;
+        // console.log(new_items_list);
+
+        if (reverse){
+            new_items_list[1] = new_items_list[1].reverse();
+        };
+        
+        add_item_searching()
         
         item_search_input.classList.add('light');
         setTimeout(() => {
             item_search_input.classList.remove('light');
         }, 400);
         items_list_cont_content.scrollTo({top: 0, behavior: "instant"});
+
     }else if (val == 'Поиск по файлу' && last_search){
         items_list_full_inserting(full_doc_id);
         last_search = false;
@@ -1114,6 +1116,28 @@ function items_searching(){
     delete val;
 };
 
+function add_item_searching(){
+    // console.log(reverse, new_items_list[1]);
+
+    items_list_cont_content.replaceChildren();
+
+    if (!new_items_list[1][0]) {
+        items_not_found.querySelector('p').innerText = 'Поиск безуспешен';
+        items_not_found.classList.add('turn_on');
+    }else {
+        items_not_found.querySelector('p').innerText = 'Файл пуст';
+        items_not_found.classList.remove('turn_on');
+    };
+
+    current_part = 0;
+    upload_parts = Math.ceil(new_items_list[1].length/30);
+
+    add_doc_full_info(new_items_list[0]);
+    items_uploading(new_items_list[1]);
+
+    last_search = true;
+    // delete doc_info;
+};
 
 function str_marking(item, val){
     // console.log(str, val);
