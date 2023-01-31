@@ -196,6 +196,7 @@ input
             color: #e20303d5
             cursor: pointer
             white-space: nowrap
+            // overflow: hidden
             transition-duration: 0.2s
             &.active
                 transition-duration: 0.2s
@@ -636,7 +637,7 @@ input
                 height: 100%
                 overflow-y: auto
                 justify-content: flex-start
-                scroll-behavior: smooth
+                // scroll-behavior: smooth
                 overscroll-behavior: contain
                 transition-duration: 0.4s
                 // border: 2px solid blue
@@ -816,7 +817,10 @@ input
                             height: 100%
                             transition-duration: 0.2s
                             span
-                                color: #019915
+                                color: #0f7e00
+                                font-size: 1.25rem
+                                // background-color: #ffffff41
+                                // border-radius: 10px
                             // border: 2px solid black
                         #barcode_price_cont
                             margin-top: 0.3rem
@@ -1134,6 +1138,7 @@ header
                     width: 100%
                     padding: 3%
                     scroll-behavior: smooth
+                    overscroll-behavior: contain
                     transition-duration: 0.8s
                     border-radius: 25px
                     // border: 2px solid red
@@ -1357,7 +1362,7 @@ header
                 align-items: center
                 padding: 3.5vh 5%
                 width: 100%
-                min-width: 16rem
+                min-width: 40%
                 min-height: 4.2rem
                 color: #18191d
                 background-color:#88c9ff96
@@ -1374,7 +1379,9 @@ header
                 text-align: center
                 color: #272b3d88
                 // border: 2px solid white
-
+            @media ( max-height: 600px )
+                #my_tag
+                    display: none
 
 
 #main_block

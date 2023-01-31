@@ -759,7 +759,6 @@ input {
   height: 100%;
   overflow-y: auto;
   justify-content: flex-start;
-  scroll-behavior: smooth;
   -ms-scroll-chaining: none;
       overscroll-behavior: contain;
   transition-duration: 0.4s;
@@ -932,7 +931,8 @@ input {
   transition-duration: 0.2s;
 }
 #items_cont #items_content #items_list_cont #items_list_cont_content li #left_side_cont #items_name span {
-  color: #019915;
+  color: #0f7e00;
+  font-size: 1.25rem;
 }
 #items_cont #items_content #items_list_cont #items_list_cont_content li #left_side_cont #barcode_price_cont {
   margin-top: 0.3rem;
@@ -1285,6 +1285,8 @@ header #menue_content #menue_main_cont #docs_cont #docs_cont_content {
   width: 100%;
   padding: 3%;
   scroll-behavior: smooth;
+  -ms-scroll-chaining: none;
+      overscroll-behavior: contain;
   transition-duration: 0.8s;
   border-radius: 25px;
 }
@@ -1531,7 +1533,7 @@ header #menue_content #menue_main_cont #new_doc_but {
   align-items: center;
   padding: 3.5vh 5%;
   width: 100%;
-  min-width: 16rem;
+  min-width: 40%;
   min-height: 4.2rem;
   color: #18191d;
   background-color: rgba(136, 201, 255, 0.5882352941);
@@ -1547,6 +1549,11 @@ header #menue_content #menue_main_cont #my_tag {
   font-size: 0.9rem;
   text-align: center;
   color: rgba(39, 43, 61, 0.5333333333);
+}
+@media (max-height: 600px) {
+  header #menue_content #menue_main_cont #my_tag {
+    display: none;
+  }
 }
 
 #main_block {
