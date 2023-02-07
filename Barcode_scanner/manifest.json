@@ -3,7 +3,6 @@
   "short_name": "Инва",
   "display": "fullscreen",
   "background_color": "#b8d6e06e",
-  "theme_color": "#b8d6e06e",
   "start_url": "/index.html",
   "icons": [{
     "src": "img/logo.png",

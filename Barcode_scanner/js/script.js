@@ -135,8 +135,8 @@ reload_but.addEventListener('click', refresh);
 
 big_eye_but.addEventListener('click', () =>{
     header_toggle();
-    is_file = true;
-    items_cont_open(last_op_doc);
+    STORAGE.is_file = true;
+    items_cont_open(STORAGE.last_op_doc);
 });
 menue_but.addEventListener('click', header_toggle);
 back_but.addEventListener('click', return_to_doc);
@@ -156,7 +156,7 @@ download_but.addEventListener('click', () =>{
     are_u_sure_toggle();
 });
 download_back_but.addEventListener('click', () =>{
-    are_u_sure_content.querySelector('#icons_cont').style.flexDirection = "row-reverse";
+    are_u_sure_content.querySelector('#icons_cont').style.flexDirection = "row-STORAGE.reverse";
     are_u_sure_content.querySelector('#are_u_sure_text').innerText = 'Выгрузить данные на сервер?';
     download = 'download_back';
     are_u_sure_toggle();
@@ -194,28 +194,31 @@ yes_but.addEventListener('click', () =>{
     }else are_u_sure_toggle();
 });
 
-const doc = document.documentElement;
+window.STORAGE = {};
+// const doc = document.documentElement;
 
-let today = new Date().toLocaleDateString();
-let sess_info_list = false;
-let docs_list = [];
-let sess_num;
-let last_op_doc = false;
-let search_val = '';
-let is_file = false;
+STORAGE.today = new Date().toLocaleDateString();
 
-let docs_count = 0;
-let active_item = false;
-let old_quant_val = false;
-let new_quant_val = false;
-let first_item_open = false;
-let new_items_list = false;
-let last_search = false;
-let upload_parts = false;
-let current_part = 0;
-let reverse = false;
 
-let audio_on = true;
+STORAGE.sess_info_list = false;
+STORAGE.docs_list = [];
+STORAGE.sess_num;
+STORAGE.last_op_doc = false;
+STORAGE.search_val = '';
+STORAGE.is_file = false;
+
+STORAGE.docs_count = 0;
+STORAGE.active_item = false;
+STORAGE.old_quant_val = false;
+STORAGE.new_quant_val = false;
+STORAGE.first_item_open = false;
+STORAGE.new_items_list = false;
+STORAGE.last_search = false;
+STORAGE.upload_parts = false;
+STORAGE.current_part = 0;
+STORAGE.reverse = false;
+
+STORAGE.audio_on = true;
 
 let pick = new Audio('../audio/pick.mp3');
 let success = new Audio('../audio/success.mp3');
@@ -245,27 +248,27 @@ document.addEventListener("DOMContentLoaded", () => {
         // alert(navigator.userAgent, data_ip);
     // });
     if (localStorage.getItem('sess_info')){
-        sess_info_list = JSON.parse(localStorage.getItem('sess_info'));
-        // console.log(sess_info_list);
+        STORAGE.sess_info_list = JSON.parse(localStorage.getItem('sess_info'));
+        // console.log(STORAGE.sess_info_list);
         session_record();
     };
     
     // localStorage.removeItem('docs_list');
     if (localStorage.getItem('docs_list')) {
-        // console.log(docs_list);
-        docs_list = JSON.parse(localStorage.getItem('docs_list'));
-        docs_list.forEach(el => {
+        // console.log(STORAGE.docs_list);
+        STORAGE.docs_list = JSON.parse(localStorage.getItem('docs_list'));
+        STORAGE.docs_list.forEach(el => {
             add_doc(el);
         });
     };
     if (localStorage.getItem('last_opened_doc')){
-        last_op_doc = JSON.parse(localStorage.getItem('last_opened_doc'));
+        STORAGE.last_op_doc = JSON.parse(localStorage.getItem('last_opened_doc'));
         back_but.classList.add('active');
     };
     // if (Moz) session_blur.style.backgroundColor = '#ebf4ff65';
 
-    if (docs_cont_content.querySelector('a'))
-        docs_cont_content.querySelector('a').click();
+    // if (docs_cont_content.querySelector('a'))
+    //     docs_cont_content.querySelector('a').click();
 
 
     reload_but.classList.add('light');
@@ -359,12 +362,12 @@ function searching(){
         // video.classList.remove('camera_on');
         // scan_icon.classList.remove('camera_on');
         let file_counter = 0;
-        const add_items_limit = 10;
+        const add_items_limit = 100;
         while (file_counter < add_items_limit){
             file_counter++;
             // console.log(file_counter);
 
-            const file_id = last_op_doc;
+            const file_id = STORAGE.last_op_doc;
             let file_list = JSON.parse(localStorage.getItem(`${file_id}`));
 
             const counter = file_list[1].length;
@@ -388,7 +391,7 @@ function searching(){
             file_list[0]['edit'] = edit_time;
 
             // Doc lit info updating
-            for (const doc of docs_list) {
+            for (const doc of STORAGE.docs_list) {
                 if(doc['id'] == file_id) {
                     doc['sum'] = sum_val;
                     doc['itms_quant'] = counter;
@@ -397,7 +400,7 @@ function searching(){
             };
 
             localStorage.setItem(`${file_id}`, JSON.stringify(file_list));
-            localStorage.setItem('docs_list', JSON.stringify(docs_list));
+            localStorage.setItem('docs_list', JSON.stringify(STORAGE.docs_list));
             const full_doc = docs_cont_content.querySelector(`#${file_id}`);
             full_doc.querySelector('#doc_sum p').innerText = sum_val;
             full_doc.querySelector('#doc_count p').innerText = counter;
@@ -434,7 +437,7 @@ function docs_cont_scroll() {
 
 function sess_but_no_activ(){
     session_but.classList.remove('no_active');
-        if (sess_info_list) {
+        if (STORAGE.sess_info_list) {
             session_record();
         }else {
             no_session_act();
@@ -467,7 +470,7 @@ function no_session_act(){
     session_but.classList.remove('active');
     session_power_but.classList.remove('active');
     store_name_lit.classList.remove('active');
-    sess_info_list = false;
+    STORAGE.sess_info_list = false;
     session_but.innerText = 'нет сессии';
     session_text.innerHTML= 'Подключиться<br> к сессии';
     localStorage.removeItem('sess_info');
@@ -480,8 +483,8 @@ function doc_name_insert(doc_n){
 };
 
 function return_to_doc(){
-    doc_id = last_op_doc;
-    for (const doc of docs_list) {
+    doc_id = STORAGE.last_op_doc;
+    for (const doc of STORAGE.docs_list) {
         if(doc['id'] == doc_id) {
             docs_opening(doc);
             break;
@@ -520,7 +523,7 @@ function tap_sound(){
 };
 
 function data_downloading(){
-    if (!sess_info_list){
+    if (!STORAGE.sess_info_list){
         setTimeout(() => {
             warning_sound();
             sessions_cont_toggle();
@@ -532,8 +535,8 @@ function data_downloading(){
 };
 
 function downloading_back_act(){
-    if (docs_count != 0) {
-        if (!sess_info_list){
+    if (STORAGE.docs_count != 0) {
+        if (!STORAGE.sess_info_list){
             setTimeout(() => {
                 warning_sound();
                 sessions_cont_toggle();
@@ -553,7 +556,7 @@ function data_downloading_back(){
     check_activ();
 
     localStorage.removeItem('last_opened_doc');
-    last_op_doc = false;
+    STORAGE.last_op_doc = false;
     back_but.classList.remove('active');
 
     // Docs removing
@@ -571,7 +574,7 @@ function data_downloading_back(){
                 localStorage.removeItem(`${el['id']}`)
                 setTimeout(() => {el.remove()}, 500);
         });
-        docs_list = [];
+        STORAGE.docs_list = [];
         localStorage.removeItem('docs_list');
         
     }, 300);
@@ -593,7 +596,7 @@ function sessions_cont_toggle(){
 
 
 function address_chose_toggle(){
-    if(!sess_info_list){
+    if(!STORAGE.sess_info_list){
         header.classList.toggle('turn_off');
         foot_cont.classList.toggle('turn_off');
         store_address_cont.classList.toggle('toggle');
@@ -604,7 +607,7 @@ function address_chose_toggle(){
 };
 
 function sess_start_stop(address_name = false){
-    if(!sess_info_list){
+    if(!STORAGE.sess_info_list){
         header.classList.toggle('turn_off');
         foot_cont.classList.toggle('turn_off');
         store_name.innerText = address_name;
@@ -613,9 +616,9 @@ function sess_start_stop(address_name = false){
         setTimeout(() => {session_num_content.classList.add('toggle')}, 10);
         sessions_cont_toggle();
 
-        sess_num = session_num.innerText;
-        sess_info_list = {
-                        "sess_n" : `${today}-${sess_num}`,
+        STORAGE.sess_num = session_num.innerText;
+        STORAGE.sess_info_list = {
+                        "sess_n" : `${STORAGE.today}-${STORAGE.sess_num}`,
                         "store_n" : address_name
                         };
     }else {
@@ -635,13 +638,13 @@ function sess_num_confirm(){
 };
 
 function session_record(){
-    session_but.innerText = sess_info_list['sess_n'];
-    store_name_lit.innerText = sess_info_list['store_n'];
+    session_but.innerText = STORAGE.sess_info_list['sess_n'];
+    store_name_lit.innerText = STORAGE.sess_info_list['store_n'];
     session_but.classList.add('active');
     session_power_but.classList.add('active');
     store_name_lit.classList.add('active');
     session_text.innerText = 'Отключиться от сессии:';
-    localStorage.setItem('sess_info', JSON.stringify(sess_info_list));
+    localStorage.setItem('sess_info', JSON.stringify(STORAGE.sess_info_list));
 };
 
 
@@ -759,8 +762,8 @@ function docs_opening(doc_data){
         // console.log(doc_data['text_name']);
         header_toggle();
         doc_name_insert(doc_data['text_name']);
-        last_op_doc = doc_data['id'];
-        localStorage.setItem('last_opened_doc', JSON.stringify(last_op_doc));
+        STORAGE.last_op_doc = doc_data['id'];
+        localStorage.setItem('last_opened_doc', JSON.stringify(STORAGE.last_op_doc));
         back_but.classList.add('active');
 
         if (!localStorage.getItem(`${doc_data['id']}`)){
@@ -843,13 +846,13 @@ function items_full_inserting(file_name){
         //     add_item(el);
         // });
 
-        if (reverse){
+        if (STORAGE.reverse){
             file_list[1] = file_list[1].reverse();
         };
 
-        current_part = 0;
-        upload_parts = Math.ceil(file_list[1].length/30);
-        // console.log(upload_parts);
+        STORAGE.current_part = 0;
+        STORAGE.upload_parts = Math.ceil(file_list[1].length/30);
+        // console.log(STORAGE.upload_parts);
         items_uploading(file_list[1]);
         
         // doc_full_info_cont.style.order = '-1';
@@ -858,8 +861,8 @@ function items_full_inserting(file_name){
 };
 
 function items_uploading(f_list){
-    if (current_part <= upload_parts){
-        let el = current_part * 30;
+    if (STORAGE.current_part <= STORAGE.upload_parts){
+        let el = STORAGE.current_part * 30;
         for (let num = 0; num < 30; num++){
             if (f_list[el]){
                 add_item(f_list[el]);
@@ -869,30 +872,30 @@ function items_uploading(f_list){
         };
     }
     delete num;
-    current_part++;
+    STORAGE.current_part++;
 };
 
 items_list_cont_content.addEventListener('scroll', () =>{
     // const scrolltop = items_list_cont_content.scrollTop;
     const scrollbottom = items_list_cont_content.scrollHeight - items_list_cont_content.clientHeight - items_list_cont_content.scrollTop;
-    if (upload_parts > 1 && scrollbottom < 500){
-        if (!new_items_list[1]){
+    if (STORAGE.upload_parts > 1 && scrollbottom < 500){
+        if (!STORAGE.new_items_list[1]){
             file_list = JSON.parse(localStorage.getItem(`${full_doc_id}`));
-            if (reverse){
+            if (STORAGE.reverse){
                 file_list[1] = file_list[1].reverse();
             };
-            items_uploading(file_list[1], current_part)
-            // console.log(upload_parts);
+            items_uploading(file_list[1], STORAGE.current_part)
+            // console.log(STORAGE.upload_parts);
             file_list = false;
         }else {
-            items_uploading(new_items_list[1], current_part)
-            // console.log(upload_parts);
+            items_uploading(STORAGE.new_items_list[1], STORAGE.current_part)
+            // console.log(STORAGE.upload_parts);
             // file_list = false;
         };
     };
-    if (active_item){
-        if (active_item.getBoundingClientRect().top < 0 ||
-            active_item.getBoundingClientRect().top > items_list_cont_content.clientHeight + 100){
+    if (STORAGE.active_item){
+        if (STORAGE.active_item.getBoundingClientRect().top < 0 ||
+            STORAGE.active_item.getBoundingClientRect().top > items_list_cont_content.clientHeight + 100){
             item_edit_cancel();
         };
     };
@@ -905,7 +908,7 @@ function items_keybrd_open(){
     items_list_cont.classList.remove('keybrd_close');
 };
 function items_keybrd_close(){
-    if (active_item && active_item.classList.contains('edit')){
+    if (STORAGE.active_item && STORAGE.active_item.classList.contains('edit')){
         item_edit_confirm();
     };
     items_keybrd_cont.classList.add('toggle');
@@ -920,7 +923,7 @@ function items_cont_close() {
     sess_but_no_activ();
     header.classList.remove('turn_off');
     
-    if (is_file) {
+    if (STORAGE.is_file) {
         return_to_doc();
     };
     
@@ -930,7 +933,7 @@ function items_cont_close() {
     items_list_cont_content.replaceChildren();
     search_type_icon.classList.remove('toggle');
     search_sort_but.classList.remove('toggle');
-    items_list_cont_content.classList.remove('reverse');
+    items_list_cont_content.classList.remove('STORAGE.reverse');
     items_not_found.classList.remove('turn_on');
     items_not_found.querySelector('p').innerText = 'Файл пуст';
     doc_name = false;
@@ -939,11 +942,11 @@ function items_cont_close() {
     doc_items_quantity = false;
     doc_create_time = false;
     doc_edit_time = false;
-    new_items_list = false;
-    last_search = false;
-    upload_parts = false;
-    current_part = 0;
-    reverse = false;
+    STORAGE.new_items_list = false;
+    STORAGE.last_search = false;
+    STORAGE.upload_parts = false;
+    STORAGE.current_part = 0;
+    STORAGE.reverse = false;
 };
 
 function items_sort_swap(){
@@ -951,11 +954,12 @@ function items_sort_swap(){
     search_sort_but_2.classList.toggle('toggle');
     // const scrollsize = items_list_cont_content.scrollHeight - items_list_cont_content.clientHeight;
     // console.log(scrollsize);
-    if (search_sort_but.classList.contains('toggle')) reverse = true
-    else reverse = false;
-    if (new_items_list[1]) new_items_list[1] = new_items_list[1].reverse();
+    if (STORAGE.active_item) item_edit_confirm()
+    if (search_sort_but.classList.contains('toggle')) STORAGE.reverse = true
+    else STORAGE.reverse = false;
+    if (STORAGE.new_items_list[1]) STORAGE.new_items_list[1] = STORAGE.new_items_list[1].reverse();
     setTimeout(() => {
-        if (!new_items_list[1]){
+        if (!STORAGE.new_items_list[1]){
             items_full_inserting(full_doc_id);
         }else {
             items_search_inserting();
@@ -965,54 +969,58 @@ function items_sort_swap(){
 };
 
 function del_items_input(){
-    if (!active_item){
-        // console.log(search_val);
-        if (search_val){
+    if (!STORAGE.active_item){
+        // console.log(STORAGE.search_val);
+        if (STORAGE.search_val){
             tap_sound();
-            search_val = item_search_input.innerText = item_search_input.innerText.slice(0, -1);
-            if (!search_val) {
+            STORAGE.search_val = item_search_input.innerText = item_search_input.innerText.slice(0, -1);
+            if (!STORAGE.search_val) {
                 search_val_cleaning();
                 items_searching();
             };
         };
         search_type_test();
     }else {
-        if (new_quant_val && new_quant_val != '0'){
-            const elem = active_item.querySelector('#items_quantity');
-            tap_sound();
-            new_quant_val = elem.innerText = elem.innerText.slice(0, -1);
-            if(!new_quant_val) new_quant_val = elem.innerText = '0';
-            delete elem;
+        // console.log(STORAGE.first_item_open)
+        const elem = STORAGE.active_item.querySelector('#items_quantity');
+        tap_sound();
+        if (STORAGE.new_quant_val && STORAGE.new_quant_val != '0' 
+            && !STORAGE.first_item_open){
+            STORAGE.new_quant_val = elem.innerText = elem.innerText.slice(0, -1);
+            if(!STORAGE.new_quant_val) STORAGE.new_quant_val = elem.innerText = '0';
+        }else if (STORAGE.first_item_open) {
+            STORAGE.new_quant_val = elem.innerText = '0';
         };
-        // console.log(new_quant_val, old_quant_val);
+        delete elem;
+        // console.log(STORAGE.new_quant_val, STORAGE.old_quant_val);
     };
 };
 
 function search_val_cleaning(){
     item_search_input.classList.remove('not_place_hold');
     item_search_input.innerText = 'Поиск по файлу';
-    search_val = '';
+    STORAGE.search_val = '';
 };
 
 function search_type_test(){
-    if (search_val.includes('.')) search_type_icon.classList.add('toggle')
+    if (STORAGE.search_val.includes('.')) search_type_icon.classList.add('toggle')
     else search_type_icon.classList.remove('toggle');
 };
 
 function item_edit_toggle(elem = false){
-    // console.log(active_item);
+    // console.log(STORAGE.active_item);
     if (elem){
-        if (active_item && active_item != elem) {
-            active_item.classList.remove('edit');
+        if (STORAGE.active_item && STORAGE.active_item != elem) {
+            STORAGE.active_item.classList.remove('edit');
         };
-        active_item = elem;
+        STORAGE.active_item = elem;
         elem.classList.toggle('edit');
         if (elem.classList.contains('edit')){
             keybrd_search_but.classList.add('change_icons');
             close_item_cont_but.classList.add('change_icons');
             item_search_input.classList.add('dark');
-            new_quant_val = old_quant_val = elem.querySelector('#items_quantity').innerText;
-            first_item_open = true;
+            STORAGE.new_quant_val = STORAGE.old_quant_val = elem.querySelector('#items_quantity').innerText;
+            STORAGE.first_item_open = true;
             elem.scrollIntoView({block: "center", behavior: "auto"});
         }else {
             item_edit_confirm();
@@ -1021,37 +1029,37 @@ function item_edit_toggle(elem = false){
 };
 
 function item_search_val_cleaning(){
-    active_item = false;
-    old_quant_val = false;
-    new_quant_val = false;
-    first_item_open = false;
+    STORAGE.active_item = false;
+    STORAGE.old_quant_val = false;
+    STORAGE.new_quant_val = false;
+    STORAGE.first_item_open = false;
     keybrd_search_but.classList.remove('change_icons');
     close_item_cont_but.classList.remove('change_icons');
     item_search_input.classList.remove('dark');
 };
 
 function item_edit_cancel(){
-    // console.log(active_item);
-    active_item.querySelector('#items_quantity').innerText = old_quant_val;
-    active_item.classList.remove('edit');
+    // console.log(STORAGE.active_item);
+    STORAGE.active_item.querySelector('#items_quantity').innerText = STORAGE.old_quant_val;
+    STORAGE.active_item.classList.remove('edit');
     item_search_val_cleaning();
 };
 
 function item_edit_confirm(){
-    // console.log(active_item);
-    if (new_quant_val != old_quant_val){
+    // console.log(STORAGE.old_quant_val);
+    if (STORAGE.new_quant_val != STORAGE.old_quant_val){
         let file_list = JSON.parse(localStorage.getItem(`${full_doc_id}`));
 
-        // console.log(active_item);
+        // console.log(STORAGE.active_item);
         for (const item of file_list[1]) {
-            if(item['id'] == active_item.querySelector('h1').innerText) {
-                item['quant'] = parseFloat(new_quant_val);
+            if(item['id'] == STORAGE.active_item.querySelector('h1').innerText) {
+                item['quant'] = parseFloat(STORAGE.new_quant_val);
                 break;
             };
         };
 
-        const el_price = active_item.querySelector('#left_side_cont #barcode_price_cont #items_price').innerText;
-        const price_diff = (parseFloat(new_quant_val) - parseFloat(old_quant_val))*parseFloat(el_price)
+        const el_price = STORAGE.active_item.querySelector('#left_side_cont #barcode_price_cont #items_price').innerText;
+        const price_diff = (parseFloat(STORAGE.new_quant_val) - parseFloat(STORAGE.old_quant_val))*parseFloat(el_price)
         const full_doc = docs_cont_content.querySelector(`#${full_doc_id}`);
         // console.log(price_diff);
         
@@ -1059,7 +1067,7 @@ function item_edit_confirm(){
         file_list[0]['sum'] = new_sum_val;
 
 
-        for (const doc of docs_list) {
+        for (const doc of STORAGE.docs_list) {
             if(doc['id'] == full_doc_id) {
                 doc['sum'] = new_sum_val;
                 break;
@@ -1067,7 +1075,7 @@ function item_edit_confirm(){
         };
 
         localStorage.setItem(`${full_doc_id}`, JSON.stringify(file_list));
-        localStorage.setItem('docs_list', JSON.stringify(docs_list));
+        localStorage.setItem('docs_list', JSON.stringify(STORAGE.docs_list));
         doc_items_sum.innerText = new_sum_val;
         full_doc.querySelector('#d_info #doc_sum p').innerText = new_sum_val;
 
@@ -1077,12 +1085,12 @@ function item_edit_confirm(){
         delete price_diff;
         delete new_sum_val;
     };
-    active_item.classList.remove('edit');
+    STORAGE.active_item.classList.remove('edit');
     item_search_val_cleaning();
 };
 
 function items_searching(){
-    // console.log(search_val);
+    // console.log(STORAGE.search_val);
     const val = item_search_input.innerText;
     if (val != 'Поиск по файлу'){
         const all_items = JSON.parse(localStorage.getItem(`${full_doc_id}`));
@@ -1090,13 +1098,13 @@ function items_searching(){
         // console.log(all_items);
         const doc_info = all_items.shift();
         
-        new_items_list = [doc_info, all_items[0].filter(item => item['name'].includes(val)).map(item => str_marking(item, val))];
+        STORAGE.new_items_list = [doc_info, all_items[0].filter(item => item['name'].includes(val)).map(item => str_marking(item, val))];
         delete all_items;
         delete doc_info;
-        // console.log(new_items_list);
+        // console.log(STORAGE.new_items_list);
 
-        if (reverse){
-            new_items_list[1] = new_items_list[1].reverse();
+        if (STORAGE.reverse){
+            STORAGE.new_items_list[1] = STORAGE.new_items_list[1].reverse();
         };
         
         items_search_inserting()
@@ -1107,21 +1115,21 @@ function items_searching(){
         }, 400);
         items_list_cont_content.scrollTo({top: 0, behavior: "instant"});
 
-    }else if (val == 'Поиск по файлу' && last_search){
+    }else if (val == 'Поиск по файлу' && STORAGE.last_search){
         items_full_inserting(full_doc_id);
-        last_search = false;
-        new_items_list = false;
+        STORAGE.last_search = false;
+        STORAGE.new_items_list = false;
         items_list_cont_content.scrollTo({top: 0, behavior: "instant"});
     };
     delete val;
 };
 
 function items_search_inserting(){
-    // console.log(reverse, new_items_list[1]);
+    // console.log(STORAGE.reverse, STORAGE.new_items_list[1]);
 
     items_list_cont_content.replaceChildren();
 
-    if (!new_items_list[1][0]) {
+    if (!STORAGE.new_items_list[1][0]) {
         items_not_found.querySelector('p').innerText = 'Поиск безуспешен';
         items_not_found.classList.add('turn_on');
     }else {
@@ -1129,13 +1137,13 @@ function items_search_inserting(){
         items_not_found.classList.remove('turn_on');
     };
 
-    current_part = 0;
-    upload_parts = Math.ceil(new_items_list[1].length/30);
+    STORAGE.current_part = 0;
+    STORAGE.upload_parts = Math.ceil(STORAGE.new_items_list[1].length/30);
 
-    add_doc_full_info(new_items_list[0]);
-    items_uploading(new_items_list[1]);
+    add_doc_full_info(STORAGE.new_items_list[0]);
+    items_uploading(STORAGE.new_items_list[1]);
 
-    last_search = true;
+    STORAGE.last_search = true;
     // delete doc_info;
 };
 
@@ -1155,7 +1163,7 @@ function str_marking(item, val){
 //     //         items_keybrd_close();
 //     //     };
 //     // }, 200);
-//     if (items_list_cont_content.classList.contains('reverse')){
+//     if (items_list_cont_content.classList.contains('STORAGE.reverse')){
 //         scroll_size = scrollbottom + scrolltop - 0.66
 //     } else scroll_size = scrolltop;
 
@@ -1181,39 +1189,39 @@ items_list_cont_content.addEventListener('click', (e) => {
 items_keybrd_cont_left.addEventListener('touchstart', (e) => {
     if (e.target.tagName == 'BUTTON') {
         e.target.classList.add('click');
-        if (!active_item && search_val.length < 13 
-            && e.target.id != 'search_sort_but'){
+        if (!STORAGE.active_item && STORAGE.search_val.length < 13 
+            && e.target.id != 'search_sort_but') {
             if (e.target.id != 'point_but'){
                 tap_sound();
-                if (!search_val) item_search_input.innerText = '';
+                if (!STORAGE.search_val) item_search_input.innerText = '';
                 item_search_input.classList.add('not_place_hold');
-                search_val = item_search_input.innerText = `${item_search_input.innerText}${parseInt(e.target.innerText)}`;
-                console.log(search_val);
+                STORAGE.search_val = item_search_input.innerText = `${item_search_input.innerText}${parseInt(e.target.innerText)}`;
+                // console.log(STORAGE.search_val);
             }else {
-                if (search_val && !search_val.includes('.')){
+                if (STORAGE.search_val && !STORAGE.search_val.includes('.')){
                     tap_sound();
-                    search_val = item_search_input.innerText = `${parseInt(item_search_input.innerText)}.`;
-                    // console.log(search_val);
+                    STORAGE.search_val = item_search_input.innerText = `${parseInt(item_search_input.innerText)}.`;
+                    // console.log(STORAGE.search_val);
                 };
             };
             search_type_test();
-        }else if (active_item && e.target.id != 'point_but'){
-            const elem = active_item.querySelector('#items_quantity');
-            if (first_item_open && e.target.id != 'point_but') {
-                first_item_open = false;
-                new_quant_val = elem.innerText = '';
-            }else if (new_quant_val == '0') elem.innerText = '';
-            if (new_quant_val.length < 5){
+        }else if (STORAGE.active_item && e.target.id != 'point_but' && e.target.id != 'search_sort_but'){
+            const elem = STORAGE.active_item.querySelector('#items_quantity');
+            if (STORAGE.first_item_open && e.target.id != 'point_but') {
+                STORAGE.first_item_open = false;
+                STORAGE.new_quant_val = elem.innerText = '';
+            }else if (STORAGE.new_quant_val == '0') elem.innerText = '';
+            if (STORAGE.new_quant_val.length < 5){
                 // if (e.target.id != 'point_but'){
                     tap_sound();
-                    new_quant_val = elem.innerText = `${elem.innerText}${e.target.innerText}`;
-                // }else {
-                //     if (!new_quant_val.includes('.')){
+                    STORAGE.new_quant_val = elem.innerText = `${elem.innerText}${e.target.innerText}`;
+                // }else if (e.target.id == 'point_but'){
+                //     if (!STORAGE.new_quant_val.includes('.')){
                 //         tap_sound();
-                //         new_quant_val = elem.innerText = `${elem.innerText}.`;
+                //         STORAGE.new_quant_val = elem.innerText = `${elem.innerText}.`;
                 //     };
                 // };
-                // console.log(new_quant_val, old_quant_val);
+                // console.log(STORAGE.new_quant_val, STORAGE.old_quant_val);
             };
             delete elem;
         };
@@ -1259,14 +1267,14 @@ del_item_input_but.addEventListener('touchstart', (e) => {
         if (value) {
             del.currentTime = 0;
             del.play();
-            if (!active_item){
+            if (!STORAGE.active_item){
                 search_val_cleaning();
                 search_type_icon.classList.remove('toggle');
                 items_searching();
             }else {
-                if (new_quant_val != '0'){
-                    new_quant_val = active_item.querySelector('#items_quantity').innerText = '0';
-                    // console.log(new_quant_val, old_quant_val);
+                if (STORAGE.new_quant_val != '0'){
+                    STORAGE.new_quant_val = STORAGE.active_item.querySelector('#items_quantity').innerText = '0';
+                    // console.log(STORAGE.new_quant_val, STORAGE.old_quant_val);
                 };
             };
             del_item_input_but.classList.add('hold');
@@ -1281,12 +1289,12 @@ del_item_input_but.addEventListener('touchstart', (e) => {
 });
 
 close_item_cont_but.addEventListener('click', () => {
-    if (!active_item) items_cont_close()
+    if (!STORAGE.active_item) items_cont_close()
     else item_edit_cancel();
 });
 
 keybrd_search_but.addEventListener('click', () => {
-    if (!active_item) items_searching()
+    if (!STORAGE.active_item) items_searching()
     else item_edit_confirm();
 });
 
@@ -1323,7 +1331,7 @@ docs_cont_content.addEventListener('click', (e) => {
     // console.log(e.target);
 
     if (tag == 'LI') {
-        for (const el of docs_list) {
+        for (const el of STORAGE.docs_list) {
             if (el['id'] == e.target.getAttribute('id')) {
                 docs_opening(el);
                 break;
@@ -1337,7 +1345,7 @@ docs_cont_content.addEventListener('click', (e) => {
         full_doc_id = full_doc.getAttribute('id');
         if (localStorage.getItem(`${full_doc_id}`)) {
             items_cont_open(full_doc_id);
-            is_file = false;
+            STORAGE.is_file = false;
             // const doc_n = full_doc.querySelector('h2').innerText;
             // doc_name_insert(doc_n);
         };
@@ -1351,10 +1359,10 @@ docs_cont_content.addEventListener('click', (e) => {
         const e_id = full_doc.getAttribute('id');
         // console.log(e_id);
 
-        if (last_op_doc) {
-            if (e_id == last_op_doc){
+        if (STORAGE.last_op_doc) {
+            if (e_id == STORAGE.last_op_doc){
                 localStorage.removeItem('last_opened_doc');
-                last_op_doc = false;
+                STORAGE.last_op_doc = false;
                 back_but.classList.remove('active');
             };
         };
@@ -1366,11 +1374,11 @@ docs_cont_content.addEventListener('click', (e) => {
             localStorage.removeItem(`${e_id}`);
         };
         
-        for (const el of docs_list) {
+        for (const el of STORAGE.docs_list) {
             if (el['id'] == e_id) {
-                const num_of_el = docs_list.indexOf(el);
-                docs_list.splice(num_of_el, 1)
-                localStorage.setItem('docs_list', JSON.stringify(docs_list));
+                const num_of_el = STORAGE.docs_list.indexOf(el);
+                STORAGE.docs_list.splice(num_of_el, 1)
+                localStorage.setItem('docs_list', JSON.stringify(STORAGE.docs_list));
                 delete e_id;
                 delete full_doc;
                 break;
@@ -1410,8 +1418,8 @@ doc_types_content.addEventListener('click', (e) => {
         };
         let max_count_list = [];
         if (localStorage.getItem('docs_list')){
-            // console.log(docs_list);
-            docs_list.forEach(el => {
+            // console.log(STORAGE.docs_list);
+            STORAGE.docs_list.forEach(el => {
                 if (el['class_name'] == new_el['class_name']){
                     max_count_list.push(parseInt(el['id'].split('_')[1]));
                 };
@@ -1424,8 +1432,8 @@ doc_types_content.addEventListener('click', (e) => {
                 new_el['text_name'] = new_text_name;
             };
         };
-        docs_list.push(new_el);
-        localStorage.setItem('docs_list', JSON.stringify(docs_list));
+        STORAGE.docs_list.push(new_el);
+        localStorage.setItem('docs_list', JSON.stringify(STORAGE.docs_list));
 
         add_doc(new_el);
         docs_opening(new_el);
@@ -1436,23 +1444,23 @@ doc_types_content.addEventListener('click', (e) => {
 
 // Docs_cont handling
 docs_cont_content.addEventListener('DOMSubtreeModified', (e) =>{
-    docs_count = docs_cont_content.getElementsByTagName('li').length;
-    // console.log(docs_count);
-    if (docs_count == 0) {
+    STORAGE.docs_count = docs_cont_content.getElementsByTagName('li').length;
+    // console.log(STORAGE.docs_count);
+    if (STORAGE.docs_count == 0) {
         // console.log('= 0');
         swipe_icon.classList.remove('toggle');
         docs_not_found.classList.remove('no_active');
         localStorage.removeItem('docs_list');
-    }else if (docs_count == 1) {
+    }else if (STORAGE.docs_count == 1) {
         // console.log('= 1');
         swipe_icon.classList.add('toggle');
         docs_not_found.classList.add('no_active');
-    }else if (docs_count == 2) {
+    }else if (STORAGE.docs_count == 2) {
         // console.log('= 2');
         docs_cont_content.style.justifyContent = 'center';
         docs_cont.style.justifyContent = 'center';
         // docs_cont_content.style.overflowY = 'hidden';
-    }else if (docs_count > 2){
+    }else if (STORAGE.docs_count > 2){
         // console.log('> 2');
         docs_cont.style.justifyContent = 'flex-start';
         docs_cont_content.style.justifyContent = 'flex-start';
@@ -1557,7 +1565,7 @@ function stream_start(){
     });
 
     Quagga.onDetected((result) => {
-        if (audio_on) {
+        if (STORAGE.audio_on) {
             pick.currentTime = 0;
             pick.play();
         };

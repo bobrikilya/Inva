@@ -76,14 +76,12 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
-  -ms-scroll-chaining: none;
-      overscroll-behavior: contain;
+  overscroll-behavior: contain;
 }
 
 body {
   -moz-user-select: none;
   -webkit-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   max-width: 100vw;
   height: 100vh;
@@ -92,8 +90,7 @@ body {
   overflow: hidden;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-tap-highlight-color: transparent;
-  -ms-scroll-chaining: none;
-      overscroll-behavior: contain;
+  overscroll-behavior: contain;
 }
 button:active, a:active, i:active {
   transition: 0s;
@@ -759,8 +756,7 @@ input {
   height: 100%;
   overflow-y: auto;
   justify-content: flex-start;
-  -ms-scroll-chaining: none;
-      overscroll-behavior: contain;
+  overscroll-behavior: contain;
   transition-duration: 0.4s;
 }
 #items_cont #items_content #items_list_cont #items_list_cont_content::-webkit-scrollbar {
@@ -1285,8 +1281,7 @@ header #menue_content #menue_main_cont #docs_cont #docs_cont_content {
   width: 100%;
   padding: 3%;
   scroll-behavior: smooth;
-  -ms-scroll-chaining: none;
-      overscroll-behavior: contain;
+  overscroll-behavior: contain;
   transition-duration: 0.8s;
   border-radius: 25px;
 }
