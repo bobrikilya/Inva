@@ -96,6 +96,7 @@ const menue_main_cont = document.getElementById('menue_main_cont');
 const docs_cont = menue_main_cont.querySelector('#docs_cont');
 const check = docs_cont.querySelector('#check');
 const docs_cont_content = docs_cont.querySelector('#docs_cont_content');
+const docs_info = docs_cont_content.querySelector('#docs_info');
 const docs_not_found = docs_cont_content.querySelector('#docs_not_found');
 const swipe_icon = docs_cont_content.querySelector('#swipe_icon');
 
@@ -229,13 +230,14 @@ let del = new Audio('../audio/delete.mp3');
 
 
 
-// For easy working ----------
+// --- For easy working
 // const Moz = navigator.userAgent.includes('Mozilla/5.0 (iPhone');
 
 const fMode = {exact: "environment"};
 // const fMode = {exact: "user"};
 
 document.addEventListener("DOMContentLoaded", () => {
+    //--- IP user Info
     // let data_ip = false;
     // keybrd_search_but.addEventListener('click', () => {
     //     fetch('https://ipapi.co/json/')
@@ -247,12 +249,12 @@ document.addEventListener("DOMContentLoaded", () => {
     //         });
         // alert(navigator.userAgent, data_ip);
     // });
+
     if (localStorage.getItem('sess_info')){
         STORAGE.sess_info_list = JSON.parse(localStorage.getItem('sess_info'));
         // console.log(STORAGE.sess_info_list);
         session_record();
     };
-    
     // localStorage.removeItem('docs_list');
     if (localStorage.getItem('docs_list')) {
         // console.log(STORAGE.docs_list);
@@ -265,12 +267,11 @@ document.addEventListener("DOMContentLoaded", () => {
         STORAGE.last_op_doc = JSON.parse(localStorage.getItem('last_opened_doc'));
         back_but.classList.add('active');
     };
-    // if (Moz) session_blur.style.backgroundColor = '#ebf4ff65';
 
     // if (docs_cont_content.querySelector('a'))
     //     docs_cont_content.querySelector('a').click();
 
-
+    //--- Reload green indication
     reload_but.classList.add('light');
     setTimeout(() => {reload_but.classList.remove('light')}, 1000);
 }); 
@@ -287,21 +288,20 @@ const options = {
 function camera_access(){
     if (!video.classList.contains('active')){
         video.classList.add('camera_on');
-        // if       (navigator.getUserMedia!=null) {
-        //           navigator.getUserMedia(options, getStream, noStream);
-        // // Chrome
-        // }else if (navigator.webkitGetUserMedia!=null){
-        //           navigator.webkitGetUserMedia(options, getStream, noStream);
-        // // Firefox
-        // }else if (navigator.mozGetUserMedia!=null){
-        //           navigator.mozGetUserMedia(options, getStream, noStream);
-        // // Other
-        // }else if (navigator.msGetUserMedia!=null){
-        //           navigator.msGetUserMedia(options, getStream, noStream);
+        if       (navigator.getUserMedia!=null) {
+                  navigator.getUserMedia(options, getStream, noStream);
+        // Chrome
+        }else if (navigator.webkitGetUserMedia!=null){
+                  navigator.webkitGetUserMedia(options, getStream, noStream);
+        // Firefox
+        }else if (navigator.mozGetUserMedia!=null){
+                  navigator.mozGetUserMedia(options, getStream, noStream);
+        // Other
+        }else if (navigator.msGetUserMedia!=null){
+                  navigator.msGetUserMedia(options, getStream, noStream);
         // Apple
-        if (navigator.mediaDevices.getUserMedia!=null){
+        }else if (navigator.mediaDevices.getUserMedia!=null){
                 navigator.mediaDevices.getUserMedia(options).then(getStream).catch(noStream);
-
         }else () => {
             alert("Камера не найдена");
             Quagga.pause();
@@ -425,8 +425,12 @@ function refresh(){
 };
 
 function full_reset(){
-    localStorage.clear();
-    window.location.reload();
+    // localStorage.clear();
+    const deleteRequest = indexedDB.deleteDatabase('store')
+    deleteRequest.onsuccess = function(){
+        console.log('База данных удалена!');
+    };
+    setTimeout(() => {window.location.reload()}, 500);
 };
 
 function docs_cont_scroll() {
@@ -471,6 +475,7 @@ function no_session_act(){
     session_power_but.classList.remove('active');
     store_name_lit.classList.remove('active');
     STORAGE.sess_info_list = false;
+    STORAGE.docs_list = [];
     session_but.innerText = 'нет сессии';
     session_text.innerHTML= 'Подключиться<br> к сессии';
     localStorage.removeItem('sess_info');
@@ -529,9 +534,87 @@ function data_downloading(){
             sessions_cont_toggle();
         }, 10);
     }else {
-        check.querySelector('span').innerHTML = 'Данные загружены <br>с сервера';
-        check_activ();
+        // data_request();
+        // rest_test();
     };
+};
+
+async function rest_test(){
+    
+    const url = 'https://github.com/bobrikilya/Inva-data';
+
+    const data = `{
+    "Id": 78912,
+    "Customer": "Jason Sweet",
+    "Quantity": 1,
+    "Price": 18.00
+    }`;
+
+    const response = await fetch(url, {
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        // body: data,
+    });
+
+    const text = await response.text();
+
+    console.log(text);
+
+};
+
+function data_request(){
+    const indexedDB = window.indexedDB ||
+                      window.mozIndexedDB ||
+                      window.webkitIndexedDB ||
+                      window.msIndexedDB ||
+                      window.shimIndexedDB;
+
+    const openRequest = indexedDB.open('store', 1);
+
+    openRequest.onerror = function() {
+        console.error("Error", openRequest.error);
+    };
+
+    openRequest.onupgradeneeded = function() {
+        const db = openRequest.result;
+        if (!db.objectStoreNames.contains('items')) { // если хранилище "books" не существует
+            db.createObjectStore('items', {keyPath: 'code'}); // создаём хранилище
+        };
+    };
+    
+    openRequest.onsuccess = function() {
+        const db = openRequest.result;
+        // db.onversionchange = function() {
+        //     db.close();
+        //     alert("База данных устарела, пожалуйста, перезагрузите страницу.")
+        // };
+
+        // db.createObjectStore('items', {keyPath: 'code'});
+        const transaction = db.transaction("items", "readwrite");
+        const items_trans = transaction.objectStore("items");
+        let request;
+        fetch('https://jsonplaceholder.typicode.com/posts')
+            .then((response) => response.json())
+            // .then((json) => console.log(json));
+
+            .then((json) => json.forEach(el => {
+                request = items_trans.add(el);
+            }));
+        // request.onsuccess = function() {
+        //     console.log("Книга добавлена в хранилище", request.result);
+        // };
+
+        // request.onerror = function() {
+        //     console.log("Ошибка", request.error);
+        // };
+    };
+
+
+    // check.querySelector('span').innerHTML = 'Данные загружены <br>с сервера';
+    // check_activ();
 };
 
 function downloading_back_act(){
@@ -542,7 +625,8 @@ function downloading_back_act(){
                 sessions_cont_toggle();
             }, 10);
         }else {
-            data_downloading_back();
+            rest_test();
+            // downloading_back_info();
         };
     }else {
         warning_sound();
@@ -551,7 +635,7 @@ function downloading_back_act(){
     };
 };
 
-function data_downloading_back(){
+function downloading_back_info(){
     check.querySelector('span').innerHTML = 'Данные выгружены <br>на сервер';
     check_activ();
 
@@ -622,7 +706,11 @@ function sess_start_stop(address_name = false){
                         "store_n" : address_name
                         };
     }else {
-        no_session_act();
+        if (localStorage.getItem('docs_list')){
+            warning_sound();
+            docs_info.classList.add('select');
+            setTimeout(() => {docs_info.classList.remove('select')}, 900);
+        }else no_session_act();
     };
 };
 
@@ -1021,7 +1109,7 @@ function item_edit_toggle(elem = false){
             item_search_input.classList.add('dark');
             STORAGE.new_quant_val = STORAGE.old_quant_val = elem.querySelector('#items_quantity').innerText;
             STORAGE.first_item_open = true;
-            elem.scrollIntoView({block: "center", behavior: "auto"});
+            elem.scrollIntoView({block: "nearest", behavior: "auto"});
         }else {
             item_edit_confirm();
         };
@@ -1152,29 +1240,26 @@ function str_marking(item, val){
     item['name'] = item['name'].replace(val, `<span>${val}</span>`)
     return item;
 };
+
+//---------- Keyboard open/close while scroll
 // items_list_cont_content.addEventListener('scroll', () => {
 //     const scrolltop = items_list_cont_content.scrollTop;
 //     const scrollbottom = items_list_cont_content.scrollHeight - items_list_cont_content.clientHeight;
 
-//     // // Keyboard closing while scroll
-//     // setTimeout(() => {
-//     //     const scrolltop_2 = items_list_cont_content.scrollTop;
-//     //     if (scrolltop_2 > scrolltop + 200){
-//     //         items_keybrd_close();
-//     //     };
-//     // }, 200);
+//     //--- Keyboard closing while fast down scroll
+//     setTimeout(() => {
+//         const scrolltop_2 = items_list_cont_content.scrollTop;
+//         if (scrolltop_2 > scrolltop + 200){
+//             items_keybrd_close();
+//         };
+//     }, 200);
 //     if (items_list_cont_content.classList.contains('STORAGE.reverse')){
 //         scroll_size = scrollbottom + scrolltop - 0.66
 //     } else scroll_size = scrolltop;
 
-//     // console.log(scroll_size);
-
+//     // --- Keyboard opening on top
 //     if (scroll_size < 40) {
-//         // doc_full_info_cont.classList.remove('turn_off');
-//         // // Keyboard opening while scroll
-//         // if (scroll_size < 5) items_keybrd_open();
-//     }else {
-//         // doc_full_info_cont.classList.add('turn_off');
+//         if (scroll_size < 5) items_keybrd_open();
 //     };
 // });
 
@@ -1195,12 +1280,12 @@ items_keybrd_cont_left.addEventListener('touchstart', (e) => {
                 tap_sound();
                 if (!STORAGE.search_val) item_search_input.innerText = '';
                 item_search_input.classList.add('not_place_hold');
-                STORAGE.search_val = item_search_input.innerText = `${item_search_input.innerText}${parseInt(e.target.innerText)}`;
+                STORAGE.search_val = item_search_input.innerText = `${item_search_input.innerText}${e.target.innerText.trim()}`;
                 // console.log(STORAGE.search_val);
             }else {
                 if (STORAGE.search_val && !STORAGE.search_val.includes('.')){
                     tap_sound();
-                    STORAGE.search_val = item_search_input.innerText = `${parseInt(item_search_input.innerText)}.`;
+                    STORAGE.search_val = item_search_input.innerText = `${item_search_input.innerText}.`;
                     // console.log(STORAGE.search_val);
                 };
             };
@@ -1214,7 +1299,7 @@ items_keybrd_cont_left.addEventListener('touchstart', (e) => {
             if (STORAGE.new_quant_val.length < 5){
                 // if (e.target.id != 'point_but'){
                     tap_sound();
-                    STORAGE.new_quant_val = elem.innerText = `${elem.innerText}${e.target.innerText}`;
+                    STORAGE.new_quant_val = elem.innerText = `${elem.innerText}${e.target.innerText.trim()}`;
                 // }else if (e.target.id == 'point_but'){
                 //     if (!STORAGE.new_quant_val.includes('.')){
                 //         tap_sound();
@@ -1477,7 +1562,7 @@ docs_cont_content.addEventListener('DOMSubtreeModified', (e) =>{
 // });
 ////////////////////////////////////////////////////////////////////////////
 
-// Label installing for Android
+// // --- Label installing for Android
 // let deferredPrompt;
 
 // window.addEventListener('beforeinstallprompt', (e) => {

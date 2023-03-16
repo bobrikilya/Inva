@@ -1298,6 +1298,11 @@ header #menue_content #menue_main_cont #docs_cont #docs_cont_content #docs_info 
   width: 94%;
   font-size: 1rem;
   color: rgba(26, 26, 26, 0.568627451);
+  transition-duration: 0.3s;
+}
+header #menue_content #menue_main_cont #docs_cont #docs_cont_content #docs_info.select {
+  font-size: 1.15rem;
+  color: red;
 }
 header #menue_content #menue_main_cont #docs_cont #docs_cont_content #docs_info #swipe_icon {
   display: none;
