@@ -195,7 +195,7 @@ yes_but.addEventListener('click', () =>{
     }else are_u_sure_toggle();
 });
 
-window.STORAGE = {};
+window.STORAGE = {}; 
 // const doc = document.documentElement;
 
 STORAGE.today = new Date().toLocaleDateString();
