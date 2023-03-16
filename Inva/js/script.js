@@ -221,11 +221,11 @@ STORAGE.reverse = false;
 
 STORAGE.audio_on = true;
 
-let pick = new Audio('../audio/pick.mp3');
-let success = new Audio('../audio/success.mp3');
-let warning = new Audio('../audio/warning.mp3');
-let tap = new Audio('../audio/tap.mp3');
-let del = new Audio('../audio/delete.mp3');
+let pick = new Audio('audio/pick.mp3');
+let success = new Audio('audio/success.mp3');
+let warning = new Audio('audio/warning.mp3');
+let tap = new Audio('audio/tap.mp3');
+let del = new Audio('audio/delete.mp3');
 // let error = new Audio('../audio/error.mp3');
 
 
