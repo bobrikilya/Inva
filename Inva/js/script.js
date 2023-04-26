@@ -1,3 +1,10 @@
+// import { Octokit } from "octokit";
+
+
+// const octokit = new Octokit({ 
+//     baseUrl: "https://github.com/Stroypr/Inva_data",
+//     auth: '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',
+//   });
 
 const main_container = document.getElementById('main_container');
 
@@ -151,13 +158,15 @@ let download = false;
 
 cancel_but_doc_types.addEventListener('click', docs_types_toggle);
 download_but.addEventListener('click', () =>{
+    are_u_sure_content.querySelector('#update_info').classList.remove('hide');
     are_u_sure_content.querySelector('#icons_cont').style.flexDirection = "row";
     are_u_sure_content.querySelector('#are_u_sure_text').innerText = 'Загрузить данные с сервера?';
     download = 'download';
     are_u_sure_toggle();
 });
 download_back_but.addEventListener('click', () =>{
-    are_u_sure_content.querySelector('#icons_cont').style.flexDirection = "row-STORAGE.reverse";
+    are_u_sure_content.querySelector('#update_info').classList.add('hide');
+    are_u_sure_content.querySelector('#icons_cont').style.flexDirection = "row-reverse";
     are_u_sure_content.querySelector('#are_u_sure_text').innerText = 'Выгрузить данные на сервер?';
     download = 'download_back';
     are_u_sure_toggle();
@@ -541,7 +550,7 @@ function data_downloading(){
 
 async function rest_test(){
     
-    const url = 'https://github.com/bobrikilya/Inva-data';
+    const url = 'https://github.com/Stroypr/Inva_data';
 
     const data = `{
     "Id": 78912,

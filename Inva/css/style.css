@@ -413,7 +413,18 @@ input {
   overflow: visible;
   max-width: 420px;
   padding: 1.2rem 20px;
-  margin-bottom: -1rem;
+  margin-bottom: 1rem;
+}
+#are_u_sure_cont #are_u_sure_content #update_info {
+  width: 100%;
+  text-align: center;
+  font-size: 1rem;
+  margin-bottom: 4rem;
+  text-transform: uppercase;
+  color: rgba(26, 26, 26, 0.7803921569);
+}
+#are_u_sure_cont #are_u_sure_content #update_info.hide {
+  opacity: 0;
 }
 #are_u_sure_cont #are_u_sure_content #icons_cont {
   justify-content: space-between;

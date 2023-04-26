@@ -2,7 +2,7 @@
   "name": "Стройпродукт: Инва",
   "short_name": "Инва",
   "display": "fullscreen",
-  "background_color": "#b8d6e06e",
+  "background_color": "#88b7c7",
   "start_url": "/index.html",
   "icons": [{
     "src": "img/logo-48.png",
